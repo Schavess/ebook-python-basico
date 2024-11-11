@@ -1,0 +1,15 @@
+# Pastas de build e arquivos gerados
+_book/
+_bookdown_files/
+
+# Arquivos de configuração do RStudio
+.Rproj.user/
+
+# Arquivos temporários
+.Rhistory
+.RData
+.DS_Store
+
+# Outros arquivos ou pastas desnecessárias (opcional)
+*.log
+*.aux
