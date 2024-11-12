@@ -12,13 +12,49 @@ p code {
   white-space: inherit;
 }
 
+pre,
+pre code {
+  background-color: #2d2d4d !important;
+  color: #f8f8f2 !important;
+  border: 1px solid #444;
+  overflow-x: auto;
+}
+
 pre {
-  word-break: normal;
-  word-wrap: normal;
+  background-color: #2d2d4d !important;
+  padding: 15px !important;
+  border-radius: 5px;
+  border: 1px solid #444;
+  overflow-x: auto;
+  margin: 0 !important;
+  box-shadow: none !important;
 }
 
 pre code {
   white-space: inherit;
+  background-color: transparent !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo para a barra de rolagem */
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background-color: #2d2d2d;
+  /* Fundo da barra de rolagem para combinar com o bloco */
+  border-radius: 5px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background-color: #444;
+  /* Cor do polegar da barra de rolagem */
+  border-radius: 5px;
+  border: 2px solid #2d2d2d;
+  /* Bordas para dar contraste */
 }
 
 .author-container {

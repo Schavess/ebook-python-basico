@@ -5,10 +5,6 @@ thm:tri
 histogramas-para-distribuição-diamétrica
 criando-dados-para-demonstração
 construindo-os-histogramas
-definir-as-classes-diamétricas-com-intervalo-de-2-cm
-criar-layout-para-os-gráficos
-definir-lista-de-parcelas
-loop-para-plotar-histogramas-de-cada-parcela
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables

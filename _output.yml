@@ -1,4 +1,5 @@
 bookdown::gitbook:
+  highlight: "zenburn"
   css: style.css
   config:
     toc:
