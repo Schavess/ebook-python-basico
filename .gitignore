@@ -1,5 +1,5 @@
 # Pastas de build e arquivos gerados
-_book/
+#_book/
 _bookdown_files/
 
 # Arquivos de configuração do RStudio
