@@ -1,19 +1,27 @@
+body,
+p {
+  text-align: justify;
+}
+
 p.caption {
   color: #777;
   margin-top: 10px;
 }
+
 p code {
   white-space: inherit;
 }
+
 pre {
   word-break: normal;
   word-wrap: normal;
 }
+
 pre code {
   white-space: inherit;
 }
 
-.book .chapter .header h1::before {
-  content: "Capítulo ";
+/* Oculta a numeração do capítulo no index */
+.book .chapter:first-of-type h1 .header-section-number {
+  display: none;
 }
-

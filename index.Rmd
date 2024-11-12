@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
+# url: your book url like https://entreflorestasedados.netlify.app/
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
   This is a minimal example of using the bookdown package to write a book.
@@ -13,56 +13,30 @@ description: |
   set in the _output.yml file.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
+numbered: no
 ---
 
-# About
+# Sobre {-}
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+"Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R. O livro aborda desde os conceitos básicos de manipulação de dados até análises avançadas em silvicultura, com exemplos detalhados e aplicações reais.
 
-## Usage 
+## Por que este livro? {-}
+Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento e monitoramento ambiental.
 
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+## Autor {-}
 
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+<div style="display: flex; justify-content: center; text-align: center;">
+  <img src="images/ArthurExpo.png" alt="Arthur Guilherme Schirmbeck Chaves" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
+</div>
 
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+Sou Arthur Guilherme Schirmbeck Chaves, professor do curso de Engenharia Florestal no IFMT. Como engenheiro florestal e analista de sistemas com vasta experiência em silvicultura e análise de dados, criei este livro para compartilhar soluções baseadas em dados que utilizo em meu trabalho e ensino. Meu objetivo é auxiliar profissionais e estudantes a compreender e aplicar análises de dados na área florestal de maneira eficaz e prática.
 
-## Render book
+### Redes Sociais {-}
 
-You can render the HTML version of this example book without changing anything:
+Acompanhe meu trabalho nas redes sociais:
+<a href="https://www.instagram.com/arthur_schaves/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="30"></a>
+<a href="https://www.youtube.com/@prof.arthur6493" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" width="30"></a>
 
-1. Find the **Build** pane in the RStudio IDE, and
-
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
-
-Or build the book from the R console:
-
-```{r, eval=FALSE}
-bookdown::render_book()
-```
-
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-```{r eval=FALSE}
-bookdown::serve_book()
-```
-
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll("h1").forEach(function(el) {
-    el.innerHTML = el.innerHTML.replace("Chapter", "Capítulo");
-  });
-});
-</script>
+<iframe width="560" height="315" src="https://youtu.be/raCHvNXzrlE" 
+frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
