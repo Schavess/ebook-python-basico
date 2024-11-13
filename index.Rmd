@@ -1,28 +1,26 @@
 ---
 title: "Entre Florestas e Dados"
+description: '"Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções
+práticas para análises de dados florestais utilizando a linguagem R.'
+lang: pt-BR
 author: "Arthur Guilherme Schirmbeck Chaves"
-date: "`r Sys.Date()`"
+date: "Última atualização: `r Sys.Date()`"
+split_bib: true
+cover-image: "images/CapaEntreDadosEFlorestas.jpeg"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+github-repo: "rstudio/bookdown-demo"
 css: "custom.css"
+number_sections: true
 ---
 
-# {-}
-
-<div class="author-container">
-  <img class="book-image" src="images\CapaEntreDadosEFlorestas.jpeg" alt="Capa" />
-</div>
-
 # Sobre {-}
-
 "Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
 análises de dados florestais utilizando a linguagem R.
 
 ## Por que este livro? {-}
-
 Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
 florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
 e monitoramento ambiental.
@@ -44,8 +42,7 @@ e monitoramento ambiental.
 </div>
 
 Olá! Sou Arthur Guilherme Schirmbeck Chaves, professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
-analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados.
-Estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados, que aplico em minhas
-atividades
-profissionais e didáticas. Meu objetivo é capacitar profissionais e estudantes a compreender e implementar análises de
-dados na área florestal de forma eficaz, precisa e diretamente aplicável às demandas do setor.
+analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
+estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados que aplico em minhas
+atividades profissionais e didáticas. Meu objetivo é capacitar profissionais e estudantes a compreender e implementar
+análises de dados na área florestal de forma eficaz, precisa e diretamente aplicável às demandas do setor.

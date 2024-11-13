@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="pt-BR" xml:lang="pt-BR">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Cross-references | Entre Florestas e Dados</title>
-  <meta name="description" content="2 Cross-references | Entre Florestas e Dados" />
+  <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Cross-references | Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+  <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Cross-references | Entre Florestas e Dados" />
   
-  
-  
+  <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
 
 <meta name="author" content="Arthur Guilherme Schirmbeck Chaves" />
 
 
-<meta name="date" content="2024-11-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="histogramas-para-distribuição-diamétrica.html"/>
+<link rel="prev" href="dendrometria.html"/>
 <link rel="next" href="parts.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -161,16 +160,17 @@ div.csl-indent {
 <li><a href="./">Entre Florestas e Dados</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#section" id="toc-section"></a></li>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html"><i class="fa fa-check"></i>Sobre</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre</a>
 <ul>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html#por-que-este-livro"><i class="fa fa-check"></i>Por que este livro?</a></li>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html#autor"><i class="fa fa-check"></i>Autor</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-este-livro"><i class="fa fa-check"></i>Por que este livro?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autor"><i class="fa fa-check"></i>Autor</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html"><i class="fa fa-check"></i><b>1</b> Histogramas para distribuição diamétrica</a>
+<li class="chapter" data-level="1" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>1</b> Dendrometria</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html#criando-dados-para-demonstração"><i class="fa fa-check"></i><b>1.1</b> Criando dados para demonstração</a></li>
-<li class="chapter" data-level="1.2" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html#construindo-os-histogramas"><i class="fa fa-check"></i><b>1.2</b> Construindo os histogramas</a></li>
+<li class="chapter" data-level="1.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>1.1</b> Diâmetros</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>1.1.1</b> Histogramas de distribuição diamétrica</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>2</b> Cross-references</a>
 <ul>
@@ -241,9 +241,9 @@ div.csl-indent {
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cross.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
 <span id="cb3-2"><a href="cross.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig"></span>
-<img src="_main_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
+<img src="Entre_Florestas_e_Dados_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
 <p class="caption">
-Figure 2.1: Here is a nice figure!
+Figura 2.1: Here is a nice figure!
 </p>
 </div>
 <p>Don’t miss Table <a href="cross.html#tab:nice-tab">2.1</a>.</p>
@@ -252,7 +252,7 @@ Figure 2.1: Here is a nice figure!
 <span id="cb4-3"><a href="cross.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
 <span id="cb4-4"><a href="cross.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
-<caption><span id="tab:nice-tab">Table 2.1: </span>Here is a nice table!</caption>
+<caption><span id="tab:nice-tab">Tabela 2.1: </span>Here is a nice table!</caption>
 <thead>
 <tr class="header">
 <th align="right">temperature</th>
@@ -310,7 +310,7 @@ Figure 2.1: Here is a nice figure!
           </div>
         </div>
       </div>
-<a href="histogramas-para-distribuição-diamétrica.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dendrometria.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="parts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -353,7 +353,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["Entre_Florestas_e_Dados.pdf", "Entre_Florestas_e_Dados.epub"],
 "search": {
 "engine": "fuse",
 "options": null

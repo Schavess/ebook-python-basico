@@ -1,4 +1,17 @@
-delete_merged_file: true
+book_filename: "Entre_Florestas_e_Dados"
 language:
-  ui:
-    chapter_name: ""  # Deixe em branco para remover o prefixo "Chapter"
+  label:
+    fig: "Figura "
+    tab: "Tabela "
+split_by: section
+toc_depth: 2
+split_bib: true
+rmd_files:
+  - index.Rmd         # Página inicial com capa e introdução
+  - 01-dendrometria.Rmd
+  # - 02-cross-refs.Rmd
+  # - 03-parts.Rmd
+  # - 04-citations.Rmd
+  # - 05-blocks.Rmd
+  # - 06-share.Rmd
+  # - 07-references.Rmd

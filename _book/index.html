@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="pt-BR" xml:lang="pt-BR">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Entre Florestas e Dados</title>
-  <meta name="description" content="Entre Florestas e Dados" />
+  <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
-  
-  
+  <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+  <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Entre Florestas e Dados" />
   
-  
-  
+  <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
 
 <meta name="author" content="Arthur Guilherme Schirmbeck Chaves" />
 
 
-<meta name="date" content="2024-11-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +30,7 @@
   
   
 
-<link rel="next" href="sobre.html"/>
+<link rel="next" href="dendrometria.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -122,28 +121,6 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -161,41 +138,18 @@ div.csl-indent {
 <li><a href="./">Entre Florestas e Dados</a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#section" id="toc-section"></a></li>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html"><i class="fa fa-check"></i>Sobre</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre</a>
 <ul>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html#por-que-este-livro"><i class="fa fa-check"></i>Por que este livro?</a></li>
-<li class="chapter" data-level="" data-path="sobre.html"><a href="sobre.html#autor"><i class="fa fa-check"></i>Autor</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-este-livro"><i class="fa fa-check"></i>Por que este livro?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autor"><i class="fa fa-check"></i>Autor</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html"><i class="fa fa-check"></i><b>1</b> Histogramas para distribuição diamétrica</a>
+<li class="chapter" data-level="1" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>1</b> Dendrometria</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html#criando-dados-para-demonstração"><i class="fa fa-check"></i><b>1.1</b> Criando dados para demonstração</a></li>
-<li class="chapter" data-level="1.2" data-path="histogramas-para-distribuição-diamétrica.html"><a href="histogramas-para-distribuição-diamétrica.html#construindo-os-histogramas"><i class="fa fa-check"></i><b>1.2</b> Construindo os histogramas</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>2</b> Cross-references</a>
+<li class="chapter" data-level="1.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>1.1</b> Diâmetros</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>2.1</b> Chapters and sub-chapters</a></li>
-<li class="chapter" data-level="2.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>2.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="1.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>1.1.1</b> Histogramas de distribuição diamétrica</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
-<li class="chapter" data-level="4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>4</b> Footnotes and citations</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>4.1</b> Footnotes</a></li>
-<li class="chapter" data-level="4.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>4.2</b> Citations</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>5.1</b> Equations</a></li>
-<li class="chapter" data-level="5.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>5.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="5.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>5.3</b> Callout blocks</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Publishing</a></li>
-<li class="chapter" data-level="6.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>6.2</b> 404 pages</a></li>
-<li class="chapter" data-level="6.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>6.3</b> Metadata for sharing</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -219,12 +173,38 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">Entre Florestas e Dados</h1>
 <p class="author"><em>Arthur Guilherme Schirmbeck Chaves</em></p>
-<p class="date"><em>2024-11-12</em></p>
+<p class="date"><em>Última atualização: 2024-11-12</em></p>
 </div>
-<div id="section" class="section level1 unnumbered">
-<h1 class="unnumbered"></h1>
+<div id="sobre" class="section level1 unnumbered hasAnchor">
+<h1>Sobre<a href="index.html#sobre" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
+análises de dados florestais utilizando a linguagem R.</p>
+<div id="por-que-este-livro" class="section level2 unnumbered hasAnchor">
+<h2>Por que este livro?<a href="index.html#por-que-este-livro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
+florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
+e monitoramento ambiental.</p>
+</div>
+<div id="autor" class="section level2 unnumbered hasAnchor">
+<h2>Autor<a href="index.html#autor" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="author-container">
-<p><img class="book-image" src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa" /></p>
+<p><img class="author-image" src="images/ArthurExpo.png" alt="Arthur Guilherme Schirmbeck Chaves" /></p>
+</div>
+<div class="icons-container">
+<p><a class="no-underline" href="https://www.instagram.com/arthur_schaves/" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="30">
+</a>
+<a class="no-underline" href="https://www.youtube.com/@prof.arthur6493" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube"
+      width="40">
+</a></p>
+</div>
+<p>Olá! Sou Arthur Guilherme Schirmbeck Chaves, professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
+analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
+estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados que aplico em minhas
+atividades profissionais e didáticas. Meu objetivo é capacitar profissionais e estudantes a compreender e implementar
+análises de dados na área florestal de forma eficaz, precisa e diretamente aplicável às demandas do setor.</p>
+
 </div>
 </div>
             </section>
@@ -233,7 +213,7 @@ div.csl-indent {
         </div>
       </div>
 
-<a href="sobre.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dendrometria.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -275,7 +255,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["Entre_Florestas_e_Dados.pdf", "Entre_Florestas_e_Dados.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -292,20 +272,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

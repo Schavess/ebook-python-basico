@@ -1,20 +1,15 @@
-# Histogramas para distribuição diamétrica
+# Dendrometria
+
+## Diâmetros
+
+### Histogramas de distribuição diamétrica
 Este tipo de abordagem é útil para se verificar o grau de aproximação da Normalidade dos dados pela "formato" das classes.
 
 Os engenheiros florestais geralmente estabelecem classes diamétricas de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.
 
-## Criando dados para demonstração
+#### Criando dados para demonstração
 
 ```{r}
-
-# Instalar pacotes, caso ainda não tenham sido instalados
-if (!require(writexl)) install.packages("writexl")
-if (!require(readxl)) install.packages("readxl")
-
-# Carregar pacotes
-library(writexl)
-library(readxl)
-
 # Definir número de árvores por parcela
 n_arvores <- 50
 
@@ -30,29 +25,16 @@ dados_inventario <- data.frame(
   Parcela = rep(c("Parcela 1", "Parcela 2", "Parcela 3"), each = n_arvores),
   Diametro = c(parcela1, parcela2, parcela3)
 )
-
-# Abrir uma janela para escolher o diretório
-# caminho_diretorio <- choose.dir()
-
-# Salvar os dados em um arquivo .xlsx
-# arquivo <- file.path(caminho_diretorio, "dados_inventario.xlsx")
-# writexl::write_xlsx(dados_inventario, arquivo)
-
-# cat("Dados de inventário salvos em:", arquivo, "\n")
-    
 ```
 
-## Construindo os histogramas
+#### Construindo os histogramas
 
 ```{r}
-# Certificar que a coluna "Diametro" seja numérica
-dados_inventario$Diametro <- as.numeric(dados_inventario$Diametro)
-
 # Definir as classes diamétricas com intervalo de 2 cm
 intervalo <- 2
 min_diametro <- floor(min(dados_inventario$Diametro))  # Valor mínimo de diâmetro arredondado para baixo
 max_diametro <- ceiling(max(dados_inventario$Diametro))  # Valor máximo de diâmetro arredondado para cima
-intervalos <- seq(min_diametro - 2, max_diametro + 2, by = 2)  # Definir as classes com intervalo de 2 cm
+intervalos <- seq(min_diametro - intervalo, max_diametro + intervalo, by = intervalo)  # Definir as classes com intervalo de 2 cm
 
 # Criar layout para os gráficos
 par(mfrow = c(1, 3))  # Define 3 gráficos em uma linha
@@ -70,6 +52,7 @@ for (parcela in parcelas) {
        main = paste("Histograma de Diâmetro -", parcela),
        xlab = "Diâmetro (cm)", 
        ylab = "Frequência",
+       ylim = c(0, 10),
        col = "skyblue",
        border = "black")
 }
