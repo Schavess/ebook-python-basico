@@ -89,3 +89,28 @@ pre::-webkit-scrollbar-thumb {
   text-decoration: none;
   display: inline-block;
 }
+
+/* Esconde o botão de compartilhamento */
+a[title="Share"] {
+  display: none;
+}
+
+/* Esconde o botão do Facebook */
+a[title="Facebook"] {
+  display: none !important;
+}
+
+/* Esconde o botão do Twitter */
+a[title="Twitter"] {
+  display: none !important;
+}
+
+/* Esconde o botão de edição */
+a[title="Edit"] {
+  display: none !important;
+}
+
+/* Esconde o botão de informações */
+a[title="Information about the toolbar"] {
+  display: none !important;
+}
