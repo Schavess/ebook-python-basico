@@ -142,7 +142,7 @@
 
 \title{Entre Florestas e Dados}
 \author{Arthur Guilherme Schirmbeck Chaves}
-\date{Última atualização: 2024-11-14}
+\date{Última atualização: 2024-11-15}
 
 \begin{document}
 \maketitle
@@ -234,7 +234,6 @@ Os engenheiros florestais geralmente estabelecem classes diamétricas em interva
   \CommentTok{\# Selecionar os dados da parcela atual}
 \NormalTok{  dados\_parcela }\OtherTok{\textless{}{-}}\NormalTok{ dados\_inventario[dados\_inventario}\SpecialCharTok{$}\NormalTok{Parcela }\SpecialCharTok{==}\NormalTok{ parcela, }\StringTok{"Diametro"}\NormalTok{]}
   \CommentTok{\# Plotar o histograma}
-  \FunctionTok{print}\NormalTok{(parcela)}
   \FunctionTok{hist}\NormalTok{(dados\_parcela,}
        \AttributeTok{breaks =}\NormalTok{ intervalos,}
        \AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Histograma {-} parcela "}\NormalTok{, parcela),}
@@ -246,18 +245,6 @@ Os engenheiros florestais geralmente estabelecem classes diamétricas em interva
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## [1] "1"
-\end{verbatim}
-
-\begin{verbatim}
-## [1] "2"
-\end{verbatim}
-
-\begin{verbatim}
-## [1] "3"
-\end{verbatim}
 
 \includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-2-1.pdf}
 

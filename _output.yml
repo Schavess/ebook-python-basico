@@ -1,14 +1,28 @@
 bookdown::gitbook:
   highlight: "zenburn"
   css: style.css
+  # includes:
+  #   before_body: header.html
   config:
     toc:
+      collapse: section
       before: |
-        <li><a href="./">Entre Florestas e Dados</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <div class="toc-header">
+            <div class="image-container">
+                <img src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa do Livro">
+                <div class="text-overlay-title">
+                    <h5>Entre Florestas e Dados</h5>
+                </div>
+                <div class="text-overlay-author">
+                    <p style="font-size: 10px; text-align: center; padding: 5px">Arthur Guilherme Schirmbeck Chaves</p>
+                </div>
+            </div>
+        </div>
+
+      # after: |
+      #   <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
-    download: ["pdf", "epub"]
+    download: []
     language:
       chapter_title: ""  #"Capítulo "
       search_placeholder: "Procurar no livro..."
