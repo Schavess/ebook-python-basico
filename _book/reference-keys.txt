@@ -5,4 +5,4 @@ criando-dados-para-demonstração
 construindo-os-histogramas
 alturas
 altura-dominante
-calculando-altura-dominante-por-parcela
+calculando-altura-dominante-por-parcela-assman

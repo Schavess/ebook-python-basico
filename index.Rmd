@@ -1,12 +1,12 @@
 ---
 title: "Entre Florestas e Dados"
+author: "Arthur Guilherme Schirmbeck Chaves"
+cover-image: "images/CapaEntreDadosEFlorestas.jpeg"
 description: '"Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções
 práticas para análises de dados florestais utilizando a linguagem R.'
 lang: pt-BR
-author: "Arthur Guilherme Schirmbeck Chaves"
 date: "Última atualização: `r Sys.Date()`"
 split_bib: true
-cover-image: "images/CapaEntreDadosEFlorestas.jpeg"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

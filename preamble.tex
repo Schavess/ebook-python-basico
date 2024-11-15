@@ -1,1 +1,16 @@
-\usepackage{booktabs}
+\usepackage{fvextra}       % Extensão para controlar blocos de código
+\usepackage{listings}
+
+\lstset{
+  breaklines=true,           % Quebra automática de linha
+  breakatwhitespace=false,    % Quebra onde necessário, não apenas em espaços
+  basicstyle=\ttfamily\small, % Fonte de código menor
+  columns=flexible,           % Ajusta o espaçamento para evitar overflow
+  keepspaces=true             % Preserva os espaços no código
+}
+
+% Configuração específica do fvextra
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+\usepackage{etoolbox}
+\patchcmd{\tableofcontents}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{}

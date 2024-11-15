@@ -1,0 +1,378 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{brazilian}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{fvextra}       % Extensão para controlar blocos de código
+\usepackage{listings}
+
+\lstset{
+  breaklines=true,           % Quebra automática de linha
+  breakatwhitespace=false,    % Quebra onde necessário, não apenas em espaços
+  basicstyle=\ttfamily\small, % Fonte de código menor
+  columns=flexible,           % Ajusta o espaçamento para evitar overflow
+  keepspaces=true             % Preserva os espaços no código
+}
+
+% Configuração específica do fvextra
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+\usepackage{etoolbox}
+\patchcmd{\tableofcontents}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Entre Florestas e Dados},
+  pdfauthor={Arthur Guilherme Schirmbeck Chaves},
+  pdflang={pt-BR},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Entre Florestas e Dados}
+\author{Arthur Guilherme Schirmbeck Chaves}
+\date{Última atualização: 2024-11-14}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{sobre}{%
+\chapter*{Sobre}\label{sobre}}
+\addcontentsline{toc}{chapter}{Sobre}
+
+``Entre Florestas e Dados'' é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
+análises de dados florestais utilizando a linguagem R.
+
+\hypertarget{por-que-este-livro}{%
+\section*{Por que este livro?}\label{por-que-este-livro}}
+\addcontentsline{toc}{section}{Por que este livro?}
+
+Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
+florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
+e monitoramento ambiental.
+
+\hypertarget{autor}{%
+\section*{Autor}\label{autor}}
+\addcontentsline{toc}{section}{Autor}
+
+Olá! Sou Arthur Guilherme Schirmbeck Chaves, professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
+analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
+estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados que aplico em minhas
+atividades profissionais e didáticas. Meu objetivo é capacitar profissionais e estudantes a compreender e implementar
+análises de dados na área florestal de forma eficaz, precisa e diretamente aplicável às demandas do setor.
+
+\hypertarget{dendrometria}{%
+\chapter{Dendrometria}\label{dendrometria}}
+
+\hypertarget{diuxe2metros}{%
+\section{Diâmetros}\label{diuxe2metros}}
+
+\hypertarget{histogramas-de-distribuiuxe7uxe3o-diamuxe9trica}{%
+\subsection{Histogramas de distribuição diamétrica}\label{histogramas-de-distribuiuxe7uxe3o-diamuxe9trica}}
+
+Este tipo de abordagem é útil para se verificar o grau de aproximação da Normalidade dos dados pela ``formato'' das classes através da frequência de indivíduos por classe diamétrica.
+
+Os engenheiros florestais geralmente estabelecem classes diamétricas em intervalos fixos de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.
+
+\hypertarget{criando-dados-para-demonstrauxe7uxe3o}{%
+\subsubsection{Criando dados para demonstração}\label{criando-dados-para-demonstrauxe7uxe3o}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definir número de árvores por parcela}
+\NormalTok{n\_arvores }\OtherTok{\textless{}{-}} \DecValTok{50}
+
+\CommentTok{\# Gerar dados de 3 parcelas com diâmetros distribuídos normalmente}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)  }\CommentTok{\# Para garantir reprodutibilidade}
+
+\NormalTok{parcela1 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n\_arvores, }\AttributeTok{mean =} \DecValTok{25}\NormalTok{, }\AttributeTok{sd =} \DecValTok{5}\NormalTok{)  }\CommentTok{\# Parcela 1 com média 25 cm e desvio padrão 5 cm}
+\NormalTok{parcela2 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n\_arvores, }\AttributeTok{mean =} \DecValTok{30}\NormalTok{, }\AttributeTok{sd =} \DecValTok{7}\NormalTok{)  }\CommentTok{\# Parcela 2 com média 30 cm e desvio padrão 7 cm}
+\NormalTok{parcela3 }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(n\_arvores, }\AttributeTok{mean =} \DecValTok{35}\NormalTok{, }\AttributeTok{sd =} \DecValTok{6}\NormalTok{)  }\CommentTok{\# Parcela 3 com média 35 cm e desvio padrão 6 cm}
+
+\CommentTok{\# Criar um data frame com os dados das parcelas}
+\NormalTok{dados\_inventario }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Parcela =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{), }\AttributeTok{each =}\NormalTok{ n\_arvores),}
+  \AttributeTok{Diametro =} \FunctionTok{c}\NormalTok{(parcela1, parcela2, parcela3)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{construindo-os-histogramas}{%
+\subsubsection{Construindo os histogramas}\label{construindo-os-histogramas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Definir as classes diamétricas com intervalo de 2 cm}
+\NormalTok{intervalo }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{min\_diametro }\OtherTok{\textless{}{-}} \FunctionTok{floor}\NormalTok{(}\FunctionTok{min}\NormalTok{(dados\_inventario}\SpecialCharTok{$}\NormalTok{Diametro))  }\CommentTok{\# Valor mínimo de diâmetro arredondado para baixo}
+\NormalTok{max\_diametro }\OtherTok{\textless{}{-}} \FunctionTok{ceiling}\NormalTok{(}\FunctionTok{max}\NormalTok{(dados\_inventario}\SpecialCharTok{$}\NormalTok{Diametro))  }\CommentTok{\# Valor máximo de diâmetro arredondado para cima}
+\NormalTok{intervalos }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(min\_diametro }\SpecialCharTok{{-}}\NormalTok{ intervalo, max\_diametro }\SpecialCharTok{+}\NormalTok{ intervalo, }\AttributeTok{by =}\NormalTok{ intervalo)  }\CommentTok{\# Definir as classes com intervalo de 2 cm}
+
+\CommentTok{\# Criar layout para os gráficos}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{))  }\CommentTok{\# Define 3 gráficos em uma linha}
+
+\CommentTok{\# Definir lista de parcelas}
+\NormalTok{parcelas }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(dados\_inventario}\SpecialCharTok{$}\NormalTok{Parcela)}
+
+\CommentTok{\# Loop para plotar histogramas de cada parcela}
+\ControlFlowTok{for}\NormalTok{ (parcela }\ControlFlowTok{in}\NormalTok{ parcelas) \{}
+  \CommentTok{\# Selecionar os dados da parcela atual}
+\NormalTok{  dados\_parcela }\OtherTok{\textless{}{-}}\NormalTok{ dados\_inventario[dados\_inventario}\SpecialCharTok{$}\NormalTok{Parcela }\SpecialCharTok{==}\NormalTok{ parcela, }\StringTok{"Diametro"}\NormalTok{]}
+  \CommentTok{\# Plotar o histograma}
+  \FunctionTok{print}\NormalTok{(parcela)}
+  \FunctionTok{hist}\NormalTok{(dados\_parcela,}
+       \AttributeTok{breaks =}\NormalTok{ intervalos,}
+       \AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Histograma {-} parcela "}\NormalTok{, parcela),}
+       \AttributeTok{xlab =} \StringTok{"Diâmetro (cm)"}\NormalTok{, }
+       \AttributeTok{ylab =} \StringTok{"Frequência"}\NormalTok{,}
+       \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{),}
+       \AttributeTok{col =} \StringTok{"skyblue"}\NormalTok{,}
+       \AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1"
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "2"
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "3"
+\end{verbatim}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\hypertarget{alturas}{%
+\section{Alturas}\label{alturas}}
+
+\hypertarget{altura-dominante}{%
+\subsection{Altura Dominante}\label{altura-dominante}}
+
+A altura dominante, que representa a média das alturas das árvores mais altas e/ou mais grossas de um determinado número de árvores por hectare, é menos influenciada por variações de densidade e competições locais entre árvores menores, tornando-a uma medida confiável da qualidade do sítio. Com ela, é possível estimar o potencial de crescimento da floresta, modelar curvas de crescimento e projetar a produção futura, auxiliando no planejamento sustentável e na tomada de decisões estratégicas no manejo florestal.
+
+Dados exemplo:
+\href{data/DesafioCalcHdom.csv}{Baixar dados}
+
+\begin{table}
+\centering
+\begin{tabular}{r|r|r|r|r|l}
+\hline
+A.Parc. & Parc & n & DAP & Ht & Hdom\\
+\hline
+720 & 711 & 1 & 19.74 & 14.65 & NA\\
+\hline
+720 & 711 & 2 & NA & NA & NA\\
+\hline
+720 & 711 & 3 & 19.19 & 14.44 & NA\\
+\hline
+720 & 711 & 4 & 17.83 & 13.89 & NA\\
+\hline
+720 & 711 & 5 & 18.46 & 14.15 & NA\\
+\hline
+720 & 711 & 6 & 20.05 & 14.78 & NA\\
+\hline
+\end{tabular}
+\end{table}
+
+\hypertarget{calculando-altura-dominante-por-parcela-assman}{%
+\subsubsection{Calculando altura dominante por parcela (Assman)}\label{calculando-altura-dominante-por-parcela-assman}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BD }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"data/DesafioCalcHdom.csv"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(BD)[}\DecValTok{1}\NormalTok{] }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"areaParc"}\NormalTok{)}
+\NormalTok{BD }\OtherTok{\textless{}{-}}\NormalTok{ BD[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{]}
+\NormalTok{BD }\OtherTok{\textless{}{-}}\NormalTok{ BD[}\FunctionTok{order}\NormalTok{(BD}\SpecialCharTok{$}\NormalTok{Parc, BD}\SpecialCharTok{$}\NormalTok{Ht, }\AttributeTok{decreasing =} \ConstantTok{TRUE}\NormalTok{),]}
+\FunctionTok{row.names}\NormalTok{(BD) }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+
+\NormalTok{Parc }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(BD}\SpecialCharTok{$}\NormalTok{Parc)}
+\NormalTok{Hdom }\OtherTok{\textless{}{-}} \FunctionTok{unique}\NormalTok{(BD}\SpecialCharTok{$}\NormalTok{Parc)}
+
+\NormalTok{j }\OtherTok{\textless{}{-}} \DecValTok{1}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ Parc) \{}
+\NormalTok{  a }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(BD[}\FunctionTok{which}\NormalTok{(BD}\SpecialCharTok{$}\NormalTok{Parc}\SpecialCharTok{==}\NormalTok{i),}\DecValTok{1}\NormalTok{])}\SpecialCharTok{*}\DecValTok{100}\SpecialCharTok{/}\DecValTok{10000}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{  H }\OtherTok{\textless{}{-}}\NormalTok{ BD[}\FunctionTok{which}\NormalTok{(BD}\SpecialCharTok{$}\NormalTok{Parc}\SpecialCharTok{==}\NormalTok{i),}\DecValTok{5}\NormalTok{]}
+\NormalTok{  Hdom[j] }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(H[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{a]), }\DecValTok{2}\NormalTok{)}
+\NormalTok{  j }\OtherTok{\textless{}{-}}\NormalTok{ j}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{\}}
+
+\NormalTok{BD2 }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(Parc, Hdom))}
+\NormalTok{BD }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(BD, BD2)}
+
+\FunctionTok{rm}\NormalTok{(a, H, Hdom, i, j, Parc)}
+\end{Highlighting}
+\end{Shaded}
+
+Resultado:
+
+\begin{table}
+\centering
+\begin{tabular}{r|r}
+\hline
+Parc & Hdom\\
+\hline
+711 & 14.58\\
+\hline
+623 & 14.02\\
+\hline
+622 & 13.54\\
+\hline
+621 & 14.62\\
+\hline
+534 & 15.00\\
+\hline
+533 & 14.62\\
+\hline
+532 & 14.76\\
+\hline
+531 & 14.95\\
+\hline
+453 & 14.51\\
+\hline
+452 & 14.53\\
+\hline
+451 & 14.52\\
+\hline
+344 & 15.06\\
+\hline
+343 & 14.48\\
+\hline
+342 & 14.78\\
+\hline
+341 & 14.96\\
+\hline
+262 & 13.28\\
+\hline
+261 & 14.33\\
+\hline
+173 & 14.10\\
+\hline
+172 & 14.22\\
+\hline
+171 & 14.80\\
+\hline
+\end{tabular}
+\end{table}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

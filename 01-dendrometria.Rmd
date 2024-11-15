@@ -3,9 +3,9 @@
 ## Diâmetros
 
 ### Histogramas de distribuição diamétrica
-Este tipo de abordagem é útil para se verificar o grau de aproximação da Normalidade dos dados pela "formato" das classes.
+Este tipo de abordagem é útil para se verificar o grau de aproximação da Normalidade dos dados pela "formato" das classes através da frequência de indivíduos por classe diamétrica.
 
-Os engenheiros florestais geralmente estabelecem classes diamétricas de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.
+Os engenheiros florestais geralmente estabelecem classes diamétricas em intervalos fixos de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.
 
 #### Criando dados para demonstração
 
@@ -22,7 +22,7 @@ parcela3 <- rnorm(n_arvores, mean = 35, sd = 6)  # Parcela 3 com média 35 cm e 
 
 # Criar um data frame com os dados das parcelas
 dados_inventario <- data.frame(
-  Parcela = rep(c("Parcela 1", "Parcela 2", "Parcela 3"), each = n_arvores),
+  Parcela = rep(c("1", "2", "3"), each = n_arvores),
   Diametro = c(parcela1, parcela2, parcela3)
 )
 ```
@@ -49,7 +49,7 @@ for (parcela in parcelas) {
   # Plotar o histograma
   hist(dados_parcela,
        breaks = intervalos,
-       main = paste("Histograma de Diâmetro -", parcela),
+       main = paste("Histograma - parcela ", parcela),
        xlab = "Diâmetro (cm)", 
        ylab = "Frequência",
        ylim = c(0, 10),
@@ -62,14 +62,28 @@ for (parcela in parcelas) {
 
 ### Altura Dominante
 
-#### Calculando altura dominante por parcela
+A altura dominante, que representa a média das alturas das árvores mais altas e/ou mais grossas de um determinado número de árvores por hectare, é menos influenciada por variações de densidade e competições locais entre árvores menores, tornando-a uma medida confiável da qualidade do sítio. Com ela, é possível estimar o potencial de crescimento da floresta, modelar curvas de crescimento e projetar a produção futura, auxiliando no planejamento sustentável e na tomada de decisões estratégicas no manejo florestal.
+
+<br>
+
+Dados exemplo:
+[Baixar dados](data/DesafioCalcHdom.csv)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#install.packages("kableExtra")
+
+BD <- read.csv2("data/DesafioCalcHdom.csv")
+
+library(kableExtra)
+
+# Exibir o data.frame com formatação extra
+head(BD) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+```
+
+#### Calculando altura dominante por parcela (Assman)
 ```{r}
-## INSTITUTO FEDERAL DE MATO GROSSO
-## PROF. ARTHUR GUILHERME SCHIRMBECK CHAVES
-## MENSURAÇÃO E MANEJO FLORESTAL NO R
-
-#OBJETIVO: Calcular a Altura Dominante em função de Ht e areaParc
-
 BD <- read.csv2("data/DesafioCalcHdom.csv")
 colnames(BD)[1] = c("areaParc")
 BD <- BD[, 1:5]
@@ -83,7 +97,7 @@ j <- 1
 for (i in Parc) {
   a <- round(mean(BD[which(BD$Parc==i),1])*100/10000, 0)
   H <- BD[which(BD$Parc==i),5]
-  Hdom[j] <- round(mean(H[1:a]), 4)
+  Hdom[j] <- round(mean(H[1:a]), 2)
   j <- j+1
 }
 
@@ -93,8 +107,8 @@ BD <- merge(BD, BD2)
 rm(a, H, Hdom, i, j, Parc)
 
 ```
-
-Exibindo os dados
+<br>
+Resultado:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 #install.packages("kableExtra")
 
