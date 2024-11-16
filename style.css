@@ -180,3 +180,29 @@ a[title="Information about the toolbar"] {
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
 }
+
+/* Personalizando a largura e cor do scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Largura do scrollbar */
+}
+
+/* Cor e arredondamento do "thumb" (a parte rolável) */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Cor do thumb */
+  border-radius: 4px;
+  /* Borda arredondada */
+}
+
+/* Cor do "track" (fundo do scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Fundo claro */
+}
+
+/* Hover no thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  /* Cor mais escura ao passar o mouse */
+}
