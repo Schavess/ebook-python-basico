@@ -1,16 +1,36 @@
-\usepackage{fvextra}       % Extensão para controlar blocos de código
+% Configuração básica de fontes e margens
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+% Extensão para controle de blocos de código
+\usepackage{fvextra}
 \usepackage{listings}
 
+% Configuração dos blocos de código
 \lstset{
-  breaklines=true,           % Quebra automática de linha
-  breakatwhitespace=false,    % Quebra onde necessário, não apenas em espaços
-  basicstyle=\ttfamily\small, % Fonte de código menor
-  columns=flexible,           % Ajusta o espaçamento para evitar overflow
-  keepspaces=true             % Preserva os espaços no código
+  breaklines=true,           % Habilita quebra automática de linha
+  breakatwhitespace=false,   % Quebra onde necessário, não apenas em espaços
+  basicstyle=\ttfamily\small,% Fonte menor e monoespaçada
+  columns=flexible,          % Ajusta espaçamento para evitar overflow
+  keepspaces=true,           % Preserva os espaços
+  frame=single,              % Adiciona borda ao redor do código
+  xleftmargin=5pt,           % Margem esquerda
+  xrightmargin=5pt           % Margem direita
 }
 
-% Configuração específica do fvextra
+% Configuração para ambientes Verbatim do fvextra
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
 
+% Ajustes no índice (sumário)
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0pt} % Remove espaço antes do título do índice
+\setlength{\cftaftertoctitleskip}{0pt}  % Remove espaço após o título do índice
+
+% Remover número de página em páginas específicas
 \usepackage{etoolbox}
 \patchcmd{\tableofcontents}{\thispagestyle{plain}}{\thispagestyle{empty}}{}{}
+
+% Remover espaços adicionais após capítulos
+\makeatletter
+\renewcommand{\cleardoublepage}{\clearpage}
+\makeatother

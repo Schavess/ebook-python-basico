@@ -6,3 +6,6 @@ construindo-os-histogramas
 alturas
 altura-dominante
 calculando-altura-dominante-por-parcela-assman
+inventário-florestal
+métodos-de-amostragem
+processos-de-amostragem

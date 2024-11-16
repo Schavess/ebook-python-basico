@@ -8,7 +8,8 @@ toc_depth: 2
 split_bib: true
 rmd_files:
   - index.Rmd         # Página inicial com capa e introdução
-  - 01-dendrometria.Rmd
+  - dendrometria.Rmd
+  - inventario.Rmd
   # - 02-cross-refs.Rmd
   # - 03-parts.Rmd
   # - 04-citations.Rmd

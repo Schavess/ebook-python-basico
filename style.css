@@ -123,13 +123,13 @@ a[title="Information about the toolbar"] {
 
 /* Personaliza os links do índice */
 .book .book-summary a:hover {
-  color: #e35f07 !important;
+  color: #0aaa0a !important;
   text-decoration: underline !important;
 }
 
 .book .book-summary .active a {
   font-weight: bold;
-  color: #e35f07 !important;
+  color: #0aaa0a !important;
 }
 
 .book .book-summary ul {

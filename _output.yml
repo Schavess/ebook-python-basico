@@ -5,7 +5,7 @@ bookdown::gitbook:
   #   before_body: header.html
   config:
     toc:
-      collapse: section
+      collapse: subsection
       before: |
         <div class="toc-header">
             <div class="image-container">
@@ -27,11 +27,13 @@ bookdown::gitbook:
       chapter_title: ""  #"Capítulo "
       search_placeholder: "Procurar no livro..."
       toc_title: "Índice"
+
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+
 bookdown::epub_book: default
 
