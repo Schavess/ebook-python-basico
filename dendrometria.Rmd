@@ -110,8 +110,6 @@ rm(a, H, Hdom, i, j, Parc)
 <br>
 Resultado:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-#install.packages("kableExtra")
-
 library(kableExtra)
 
 # Exibir o data.frame com formatação extra

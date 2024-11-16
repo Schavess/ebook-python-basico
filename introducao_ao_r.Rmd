@@ -1,0 +1,99 @@
+# Introdução ao R
+
+## Instalação
+
+## RStudio
+
+## Fundamentos da linguagem
+
+## Gerenciamento de pacotes
+
+## Importação e exportação da dados
+
+## Pipe (%>%) do dplyr
+
+### O que é o %>%?
+O operador <strong>*%>%*</strong> é chamado de pipe.
+Ele permite encadear funções de maneira a facilitar a leitura e compreensão do código.
+Ao invés de ficar atribuindo valores intermediários ou aninhando várias funções, você simplesmente passa o resultado de uma função como entrada para a próxima.
+
+### Exemplos de Uso
+Vamos usar o conjunto de dados mtcars para entender como o pipe facilita a manipulação de dados:
+
+Sem <strong>*%>%*</strong> (Sem Pipe)
+Imagine que queremos fazer as seguintes operações no dataset mtcars:
+
+Filtrar apenas os carros que têm mais de 20 milhas por galão (mpg > 20).
+Selecionar apenas as colunas mpg, cyl, e hp.
+Sem o operador <strong>*%>%*</strong>, o código ficaria assim:
+```{r}
+library(dplyr)
+
+# Sem pipe
+filtered_data <- filter(mtcars, mpg > 20)
+selected_data <- select(filtered_data, mpg, cyl, hp)
+
+
+```
+<br>
+Com <strong>*%>%*</strong> (Com Pipe)
+Podemos simplificar isso usando o pipe:
+
+```{r}
+library(dplyr)
+
+# Usando pipe
+selected_data <- mtcars %>%
+  filter(mpg > 20) %>%
+  select(mpg, cyl, hp)
+```
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(kableExtra)
+
+head(selected_data) %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+```
+<br>
+Note como o código com <strong>*%>%*</strong> é mais legível e direto. Ele segue uma lógica sequencial que permite facilmente entender o que está sendo feito em cada etapa.
+
+## data.table
+
+### O que é o :=?
+O operador := é chamado de operador de atribuição por referência.
+Ele pertence ao pacote data.table e é usado para adicionar ou modificar colunas em um data.table.
+O := é mais eficiente do que usar <- em um data.table, pois faz as modificações "por referência", o que significa que não cria cópias desnecessárias dos dados, sendo muito mais rápido e eficiente em termos de memória.
+
+### Exemplos de Uso
+Vamos usar o pacote data.table para entender como o := funciona.
+
+Primeiro, vamos criar um data.table com alguns dados fictícios:
+```{r}
+library(data.table)
+
+# Criação de um data.table
+DT <- data.table(
+  id = 1:5,
+  valor = c(10, 15, 20, 25, 30)
+)
+
+```
+Adicionando uma Nova Coluna com :=
+Podemos adicionar uma nova coluna chamada valor_2 que seja o dobro do valor existente na coluna valor:
+```{r}
+DT[, valor_2 := valor * 2]
+
+print(DT)
+
+```
+<br>
+
+Modificando uma Coluna Existente com :=
+Podemos também modificar uma coluna existente. Vamos modificar a coluna valor_2 para ser o triplo do valor da coluna valor:
+```{r}
+DT[, valor_2 := valor * 3]
+
+print(DT)
+```
+
+## Manipulação de dados 

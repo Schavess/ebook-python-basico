@@ -7,7 +7,8 @@ split_by: section
 toc_depth: 2
 split_bib: true
 rmd_files:
-  - index.Rmd         # Página inicial com capa e introdução
+  - index.Rmd
+  - introducao_ao_r.Rmd
   - dendrometria.Rmd
   - inventario.Rmd
   # - 02-cross-refs.Rmd
