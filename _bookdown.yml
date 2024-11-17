@@ -4,7 +4,7 @@ language:
     fig: "Figura "
     tab: "Tabela "
 split_by: section
-toc_depth: 2
+toc_depth: 3
 split_bib: true
 rmd_files:
   - index.Rmd

@@ -14,6 +14,8 @@ link-citations: yes
 github-repo: "rstudio/bookdown-demo"
 css: "custom.css"
 number_sections: true
+output: 
+  bookdown::html_book
 ---
 
 # Sobre {-}

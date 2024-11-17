@@ -1,6 +1,6 @@
 introdução-ao-r
-instalação
-rstudio
+instalação-do-r
+instalação-do-rstudio
 fundamentos-da-linguagem
 gerenciamento-de-pacotes
 importação-e-exportação-da-dados

@@ -121,27 +121,6 @@ a[title="Information about the toolbar"] {
   display: none !important;
 }
 
-/* Personaliza os links do índice */
-.book .book-summary a:hover {
-  color: #0aaa0a !important;
-  text-decoration: underline !important;
-}
-
-.book .book-summary .active a {
-  font-weight: bold;
-  color: #0aaa0a !important;
-}
-
-.book .book-summary ul {
-  margin-left: 15px;
-  /* Recuo para subcapítulos */
-}
-
-.book .book-summary ul li {
-  list-style: none;
-  /* Remove os marcadores padrão */
-}
-
 /*Capa no Sumário*/
 .toc-header {
   text-align: center;
