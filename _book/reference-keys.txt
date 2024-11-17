@@ -21,3 +21,16 @@ altura-dominante
 calculando-altura-dominante-por-parcela-assman
 inventário-florestal
 levantamento-fitossociológico
+densidade-absoluta
+densidade-relativa
+domninância-absoluta
+dominância-relativa
+dominância-absoluta
+frequência-absoluta
+frequência-relativa
+valor-de-cobertura
+porcentagem-de-cobertura
+valor-de-importância
+porcentagem-de-importância
+índice-de-shannom
+índice-de-morisita

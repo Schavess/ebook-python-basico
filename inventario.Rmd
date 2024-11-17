@@ -1,6 +1,63 @@
 # Inventário florestal
 
 ## Levantamento Fitossociológico
-sçsdhjfoaisdjfoiashjdofjhoasdhjfsdfjasdjf
-<br>
-aosuidhjfoiasjhdfhjaoisdhjfo
+
+### Densidade absoluta
+$$
+DA_i = \frac{n_i}{A}
+$$
+
+### Densidade relativa
+$$
+DR_i = \frac{DA_i}{\sum_{i=1}^s (DA_i)}
+$$
+
+### Dominância absoluta
+$$
+DoA_i = \frac{\sum_{j=1}^{n_i} g_j}{A} = \frac{G_i}{A}
+$$
+
+### Dominância relativa
+$$
+DoR_i = \frac{DoA_i}{\sum_{i=1}^{S} (DoA_i)}*100=\frac{G_i}{G_T}*100
+$$
+
+### Frequência Absoluta
+$$
+FA_i = \frac{U_i}{U_T}*100
+$$
+
+### Frequência Relativa
+$$
+FR_i = \frac{FA_i}{\sum_{i=1}^{S}(FA_i)}*100
+$$
+
+### Valor de Cobertura
+$$
+VC_i = DR_i + DoR_i
+$$
+
+### Porcentagem de Cobertura
+$$
+PC_i = \frac{DR_i + DoR_i}{2}
+$$
+
+### Valor de Importância
+$$
+VC_i = DR_i + DoR_i + FR_i
+$$
+
+### Porcentagem de Importância
+$$
+PC_i = \frac{DR_i + DoR_i + FR_i}{3}
+$$
+
+### Índice de Shannom
+$$
+H' = -\sum_{i=1}^S p_i \ln(p_i)
+$$
+
+### Índice de Morisita
+$$
+I_\delta = \frac{n \sum_{i=1}^S n_i (n_i - 1)}{N (N - 1)}
+$$
