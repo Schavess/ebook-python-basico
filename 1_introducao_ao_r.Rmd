@@ -1,7 +1,5 @@
 # Introdução ao R
 
-O livro *R for Data Science* é excelente[^1].
-
 Como mostrado em [@r4ds], o R facilita a análise de dados.
 
 
@@ -122,5 +120,3 @@ print(DT)
 ```
 
 ## Manipulação de dados
-
-[^1]: Wickham, H., & Grolemund, G. (2016). *R for Data Science*. O'Reilly Media.

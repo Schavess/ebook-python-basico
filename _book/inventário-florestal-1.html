@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xml:lang="pt-BR">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Inventário florestal | Inventário Florestal</title>
+  <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Inventário florestal | Inventário Florestal" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+  <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Inventário florestal | Inventário Florestal" />
+  
+  <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+
+<meta name="author" content="Arthur Guilherme Schirmbeck Chaves" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="teste-2.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<div class="toc-header">
+    <div class="image-container">
+        <img src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa do Livro">
+        <div class="text-overlay-title">
+            <h5>Entre Florestas e Dados</h5>
+        </div>
+        <div class="text-overlay-author">
+            <p style="font-size: 10px; text-align: center; padding: 5px">Arthur Guilherme Schirmbeck Chaves</p>
+        </div>
+    </div>
+</div>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#por-que-este-livro"><i class="fa fa-check"></i>Por que este livro?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#autor"><i class="fa fa-check"></i>Autor</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html"><i class="fa fa-check"></i><b>1</b> Introdução ao R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1</b> Instalação do R</a></li>
+<li class="chapter" data-level="1.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#fundamentos-da-linguagem"><i class="fa fa-check"></i><b>1.3</b> Fundamentos da linguagem</a></li>
+<li class="chapter" data-level="1.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.4</b> Gerenciamento de pacotes</a></li>
+<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-da-dados"><i class="fa fa-check"></i><b>1.5</b> Importação e exportação da dados</a></li>
+<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.6</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.6.1</b> O que é o <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.6.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.7</b> data.table</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.7.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.7.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#manipulação-de-dados"><i class="fa fa-check"></i><b>1.8</b> Manipulação de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>2</b> Dendrometria</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>2.1</b> Diâmetros</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>2.1.1</b> Histogramas de distribuição diamétrica</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dendrometria.html"><a href="dendrometria.html#alturas"><i class="fa fa-check"></i><b>2.2</b> Alturas</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="dendrometria.html"><a href="dendrometria.html#altura-dominante"><i class="fa fa-check"></i><b>2.2.1</b> Altura Dominante</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>3</b> Inventário florestal</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-teoria"><i class="fa fa-check"></i><b>3.1</b> Fitossociologia (Teoria)</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-horizontal"><i class="fa fa-check"></i><b>3.1.1</b> Estrutura horizontal</a></li>
+<li class="chapter" data-level="3.1.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#diversidade"><i class="fa fa-check"></i><b>3.1.2</b> Diversidade</a></li>
+<li class="chapter" data-level="3.1.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#agregação"><i class="fa fa-check"></i><b>3.1.3</b> Agregação</a></li>
+<li class="chapter" data-level="3.1.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-vertical"><i class="fa fa-check"></i><b>3.1.4</b> Estrutura vertical</a></li>
+<li class="chapter" data-level="3.1.5" data-path="inventário-florestal.html"><a href="inventário-florestal.html#regeneração"><i class="fa fa-check"></i><b>3.1.5</b> Regeneração</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-aplicação"><i class="fa fa-check"></i><b>3.2</b> Fitossociologia (Aplicação)</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#consistência-dos-dados"><i class="fa fa-check"></i><b>3.2.1</b> Consistência dos dados</a></li>
+<li class="chapter" data-level="3.2.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-diamétrica-geral"><i class="fa fa-check"></i><b>3.2.2</b> Distribuição diamétrica geral</a></li>
+<li class="chapter" data-level="3.2.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-por-espécies-boxplots"><i class="fa fa-check"></i><b>3.2.3</b> Distribuição por espécies (boxplots)</a></li>
+<li class="chapter" data-level="3.2.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>3.2.4</b> Parâmetros Fitossociológicos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="teste-2.html"><a href="teste-2.html"><i class="fa fa-check"></i><b>4</b> Teste 2</a></li>
+<li class="chapter" data-level="5" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html"><i class="fa fa-check"></i><b>5</b> Inventário florestal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#fitossociologia-teoria-1"><i class="fa fa-check"></i><b>5.1</b> Fitossociologia (Teoria)</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#estrutura-horizontal-2"><i class="fa fa-check"></i><b>5.1.1</b> Estrutura horizontal</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#diversidade-1"><i class="fa fa-check"></i><b>5.1.2</b> Diversidade</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#agregação-1"><i class="fa fa-check"></i><b>5.1.3</b> Agregação</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#estrutura-vertical-1"><i class="fa fa-check"></i><b>5.1.4</b> Estrutura vertical</a></li>
+<li class="chapter" data-level="5.1.5" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#regeneração-1"><i class="fa fa-check"></i><b>5.1.5</b> Regeneração</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#fitossociologia-aplicação-1"><i class="fa fa-check"></i><b>5.2</b> Fitossociologia (Aplicação)</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#consistência-dos-dados-1"><i class="fa fa-check"></i><b>5.2.1</b> Consistência dos dados</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#distribuição-diamétrica-geral-1"><i class="fa fa-check"></i><b>5.2.2</b> Distribuição diamétrica geral</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#distribuição-por-espécies-boxplots-1"><i class="fa fa-check"></i><b>5.2.3</b> Distribuição por espécies (boxplots)</a></li>
+<li class="chapter" data-level="5.2.4" data-path="inventário-florestal-1.html"><a href="inventário-florestal-1.html#parâmetros-fitossociológicos-1"><i class="fa fa-check"></i><b>5.2.4</b> Parâmetros Fitossociológicos</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Inventário Florestal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inventário-florestal-1" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Inventário florestal<a href="inventário-florestal-1.html#inventário-florestal-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="fitossociologia-teoria-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Fitossociologia (Teoria)<a href="inventário-florestal-1.html#fitossociologia-teoria-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Os engenheiros florestais realizam estudos de fitossociologia para compreender a composição, a estrutura e as interações das comunidades vegetais em um determinado ecossistema. Esses estudos permitem identificar espécies dominantes, associadas e raras, além de avaliar a biodiversidade e as dinâmicas ecológicas do ambiente. Essas informações são essenciais para planejar o manejo sustentável, recuperar áreas degradadas e conservar ecossistemas naturais.</p>
+<p>Os engenheiros florestais realizam estudos de fitossociologia para determinar tipologias vegetais e fitofisionomias, aspectos fundamentais em processos como a Autorização para Exploração Vegetal (AUTEX) e os Programas de Recuperação Ambiental (PRA).</p>
+<div id="estrutura-horizontal-2" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Estrutura horizontal<a href="inventário-florestal-1.html#estrutura-horizontal-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="densidade-absoluta-1" class="section level4 hasAnchor" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> Densidade absoluta<a href="inventário-florestal-1.html#densidade-absoluta-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Refere-se ao número de indivíduos de uma espécie <span class="math inline">\(i\)</span> (<span class="math inline">\(n_i\)</span>) por unidade de área (<span class="math inline">\(A\)</span>), expressando a abundância total da espécie na comunidade.</p>
+<p><span class="math display">\[
+DA_i = \frac{n_i}{A}
+\]</span></p>
+</div>
+<div id="densidade-relativa-1" class="section level4 hasAnchor" number="5.1.1.2">
+<h4><span class="header-section-number">5.1.1.2</span> Densidade relativa<a href="inventário-florestal-1.html#densidade-relativa-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a proporção da densidade absoluta de uma espécie (<span class="math inline">\(DA_i\)</span>) em relação à soma das densidades absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie em termos de abundância.</p>
+<p><span class="math display">\[
+DR_i = \frac{DA_i}{\sum_{i=1}^s (DA_i)}
+\]</span></p>
+</div>
+<div id="dominância-absoluta-1" class="section level4 hasAnchor" number="5.1.1.3">
+<h4><span class="header-section-number">5.1.1.3</span> Dominância absoluta<a href="inventário-florestal-1.html#dominância-absoluta-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Calcula a área basal total (<span class="math inline">\(G_i\)</span>) de todos os indivíduos de uma espécie por unidade de área (<span class="math inline">\(A\)</span>). Mede o espaço físico ocupado por uma espécie no ambiente.</p>
+<p><span class="math display">\[
+DoA_i = \frac{\sum_{j=1}^{n_i} g_j}{A} = \frac{G_i}{A}
+\]</span></p>
+</div>
+<div id="dominância-relativa-1" class="section level4 hasAnchor" number="5.1.1.4">
+<h4><span class="header-section-number">5.1.1.4</span> Dominância relativa<a href="inventário-florestal-1.html#dominância-relativa-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Representa a proporção da dominância absoluta de uma espécie (<span class="math inline">\(DoA_i\)</span>) em relação à dominância total (<span class="math inline">\(G_T\)</span>) de todas as espécies, expressa em porcentagem. Indica a importância relativa em termos de área ocupada.</p>
+<p><span class="math display">\[
+DoR_i = \frac{DoA_i}{\sum_{i=1}^{S} (DoA_i)}*100=\frac{G_i}{G_T}*100
+\]</span></p>
+</div>
+<div id="frequência-absoluta-1" class="section level4 hasAnchor" number="5.1.1.5">
+<h4><span class="header-section-number">5.1.1.5</span> Frequência Absoluta<a href="inventário-florestal-1.html#frequência-absoluta-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a relação entre o número de unidades amostrais onde a espécie está presente (<span class="math inline">\(U_i\)</span>) e o total de unidades amostrais (<span class="math inline">\(U_T\)</span>), expressa em porcentagem. Mede a distribuição da espécie no espaço amostrado.</p>
+<p><span class="math display">\[
+FA_i = \frac{U_i}{U_T}*100
+\]</span></p>
+</div>
+<div id="frequência-relativa-1" class="section level4 hasAnchor" number="5.1.1.6">
+<h4><span class="header-section-number">5.1.1.6</span> Frequência Relativa<a href="inventário-florestal-1.html#frequência-relativa-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Corresponde à frequência absoluta de uma espécie (<span class="math inline">\(FA_i\)</span>) em relação à soma das frequências absolutas de todas as espécies, expressa em porcentagem. Avalia a importância espacial relativa da espécie.</p>
+<p><span class="math display">\[
+FR_i = \frac{FA_i}{\sum_{i=1}^{S}(FA_i)}*100
+\]</span></p>
+</div>
+<div id="valor-de-cobertura-1" class="section level4 hasAnchor" number="5.1.1.7">
+<h4><span class="header-section-number">5.1.1.7</span> Valor de Cobertura<a href="inventário-florestal-1.html#valor-de-cobertura-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a soma da densidade relativa (<span class="math inline">\(DR_i\)</span>), da dominância relativa (<span class="math inline">\(DoR_i\)</span>) e, em alguns casos, da frequência relativa (<span class="math inline">\(FR_i\)</span>), dependendo da metodologia. Reflete a contribuição total de uma espécie na comunidade.
+<span class="math display">\[
+VC_i = DR_i + DoR_i + FR_i
+\]</span></p>
+</div>
+<div id="porcentagem-de-cobertura-horizontal-1" class="section level4 hasAnchor" number="5.1.1.8">
+<h4><span class="header-section-number">5.1.1.8</span> Porcentagem de Cobertura (Horizontal)<a href="inventário-florestal-1.html#porcentagem-de-cobertura-horizontal-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a média ponderada de densidade relativa, dominância relativa e, opcionalmente, frequência relativa. A interpretação pode variar entre o cálculo bidimensional (<span class="math inline">\(DR + DoR\)</span>) ou tridimensional (<span class="math inline">\(DR + DoR + FR\)</span>), dependendo do objetivo.
+<span class="math display">\[
+PC_i = \frac{DR_i + DoR_i + FR_i}{3}
+\]</span></p>
+</div>
+</div>
+<div id="diversidade-1" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Diversidade<a href="inventário-florestal-1.html#diversidade-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="índice-de-shannom-1" class="section level4 hasAnchor" number="5.1.2.1">
+<h4><span class="header-section-number">5.1.2.1</span> Índice de Shannom<a href="inventário-florestal-1.html#índice-de-shannom-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Quantifica a diversidade da comunidade, considerando tanto a abundância (<span class="math inline">\(p_i\)</span>) quanto a equitabilidade das espécies. Valores maiores indicam maior diversidade e distribuição equitativa entre as espécies.</p>
+<p><span class="math display">\[
+H&#39; = -\sum_{i=1}^S p_i \ln(p_i)
+\]</span></p>
+</div>
+</div>
+<div id="agregação-1" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Agregação<a href="inventário-florestal-1.html#agregação-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="índice-de-morisita-1" class="section level4 hasAnchor" number="5.1.3.1">
+<h4><span class="header-section-number">5.1.3.1</span> Índice de Morisita<a href="inventário-florestal-1.html#índice-de-morisita-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Mede o padrão de distribuição espacial das espécies. Valores <span class="math inline">\(I_\delta &gt; 1\)</span> indicam agregação, <span class="math inline">\(I_\delta = 1\)</span> distribuição ao acaso, e <span class="math inline">\(I_\delta &lt; 1\)</span> distribuição uniforme.</p>
+<p><span class="math display">\[
+I_\delta = \frac{n \sum_{i=1}^S n_i (n_i - 1)}{N (N - 1)}
+\]</span></p>
+</div>
+</div>
+<div id="estrutura-vertical-1" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Estrutura vertical<a href="inventário-florestal-1.html#estrutura-vertical-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="posição-sociológica-absoluta-1" class="section level4 hasAnchor" number="5.1.4.1">
+<h4><span class="header-section-number">5.1.4.1</span> Posição Sociológica Absoluta<a href="inventário-florestal-1.html#posição-sociológica-absoluta-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Representa a distribuição vertical de uma espécie na comunidade, considerando a contribuição proporcional das classes de altura.
+<span class="math display">\[
+PSA_i = \sum_{j=1}^{J}\left(\frac{N_j}{N} \cdot N_{ij}\right)
+\]</span></p>
+</div>
+<div id="posição-sociológica-relativa-1" class="section level4 hasAnchor" number="5.1.4.2">
+<h4><span class="header-section-number">5.1.4.2</span> Posição Sociológica Relativa<a href="inventário-florestal-1.html#posição-sociológica-relativa-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a proporção da posição sociológica absoluta de uma espécie (<span class="math inline">\(PSA_i\)</span>) em relação à soma das posições sociológicas absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie na estrutura vertical.
+<span class="math display">\[
+PSR_i = \frac{PSA_i}{\sum_{i=1}^{S} PSA_i} \cdot 100
+\]</span></p>
+</div>
+<div id="valor-de-importância-absoluta-horizontal-vertical-1" class="section level4 hasAnchor" number="5.1.4.3">
+<h4><span class="header-section-number">5.1.4.3</span> Valor de Importância Absoluta (Horizontal + Vertical)<a href="inventário-florestal-1.html#valor-de-importância-absoluta-horizontal-vertical-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Combina os índices horizontais (densidade relativa, dominância relativa e frequência relativa) com a posição sociológica absoluta para refletir a contribuição global de uma espécie na comunidade.
+<span class="math display">\[
+VI_a = DR_i + DoR_i + FR_i + PSA_i
+\]</span></p>
+</div>
+<div id="valor-de-importância-relativa-horizontal-vertical-1" class="section level4 hasAnchor" number="5.1.4.4">
+<h4><span class="header-section-number">5.1.4.4</span> Valor de Importância Relativa (Horizontal + Vertical)<a href="inventário-florestal-1.html#valor-de-importância-relativa-horizontal-vertical-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>É a média ponderada dos índices horizontais e verticais. Indica a importância relativa de uma espécie considerando a estrutura horizontal e vertical.
+<span class="math display">\[
+VI_r = \frac{DR_i + DoR_i + FR_i + PSA_i}{4}
+\]</span></p>
+</div>
+</div>
+<div id="regeneração-1" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Regeneração<a href="inventário-florestal-1.html#regeneração-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Pode-se usar os mesmos índices anteriores de estrutura horizontal, vertical, etc. O resultado final será o Indicador de Regeneração Natural que poderá ser usado para calcular o <strong>Valor de Importância Ampliado</strong>:
+<span class="math display">\[
+VIA_r = \frac{DR_i + DoR_i + FR_i + PSA_i + RN_i}{5}
+\]</span></p>
+</div>
+</div>
+<div id="fitossociologia-aplicação-1" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Fitossociologia (Aplicação)<a href="inventário-florestal-1.html#fitossociologia-aplicação-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>De acordo com o estudo realizado por Verly et al. (2020), a caracterização florística defina para a Reserva Legal do IFMT foi de um fragmento Cerradão em estado de conservação adequada.
+De acordo com <span class="citation">(<a href="#ref-verly2020">al. 2020</a>)</span>, a caracterização florística…</p>
+<p>Dados exemplo:
+<a href="data/Dados_Reserva_Exemplo.xlsx">Baixar dados</a></p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ef082435d5edebfed517" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ef082435d5edebfed517">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","424","425","426","427","428"],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58,57,56,55,54,53,52,51,50,49,48,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,448,308,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,440,409,410,411,445,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,446,447],["Myracrodruon urundeuva Allemão","SP","Tabebuia roseoalba (Ridl.) Sandwith","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Magonia pubescens A.St.-Hil.","Morta","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Platypodium elegans Vogel","Aspidosperma cylindrocarpon Müll.Arg.","Callisthene fasciculata Mart.","Tabebuia roseoalba (Ridl.) Sandwith","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma subincanum Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Anadenanthera colubrina (Vell.) Brenan","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Astronium fraxinifolium Schott","Simarouba Aubl.","Morta","Astronium fraxinifolium Schott","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Platypodium elegans Vogel","Machaerium acutifolium Vogel","Platypodium elegans Vogel","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Senegalia polyphylla (DC.) Britton &amp; Rose","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Qualea Aubl.","Qualea Aubl.","Callisthene fasciculata Mart.","Callisthene fasciculata Mart.","Myracrodruon urundeuva Allemão","Dipteryx alata Vogel","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Callisthene fasciculata Mart.","Aspidosperma subincanum Mart.","Callisthene fasciculata Mart.","Anadenanthera colubrina (Vell.) Brenan","Qualea Aubl.","Platypodium elegans Vogel","Dipteryx alata Vogel","Platypodium elegans Vogel","Qualea Aubl.","Dipteryx alata Vogel","Aspidosperma cylindrocarpon Müll.Arg.","Morta","Simarouba Aubl.","Senegalia polyphylla (DC.) Britton &amp; Rose","Guapira Aubl.","Callisthene fasciculata Mart.","Peltogyne confertiflora (Mart. ex Hayne) Benth.","Aspidosperma cylindrocarpon Müll.Arg.","Magonia pubescens A.St.-Hil.","Aspidosperma subincanum Mart.","Morfoespécie 3","Aspidosperma cylindrocarpon Müll.Arg.","Myrciaria tenella (DC.) O.Berg","Roupala montana Aubl.","Platypodium elegans Vogel","Qualea Aubl.","Callisthene fasciculata Mart.","Platypodium elegans Vogel","Myracrodruon urundeuva Allemão","Aspidosperma cylindrocarpon Müll.Arg.","Astronium fraxinifolium Schott","Myracrodruon urundeuva Allemão","Platypodium elegans Vogel","Diptychandra aurantiaca Tul.","Platypodium elegans Vogel","Anadenanthera colubrina (Vell.) Brenan","Platypodium elegans Vogel","Astronium fraxinifolium Schott","Eugenia dysenterica (Mart.) DC.","Platypodium elegans Vogel","Tabebuia roseoalba (Ridl.) Sandwith","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Morta","Aspidosperma cylindrocarpon Müll.Arg.","Astronium fraxinifolium Schott","Qualea Aubl.","Simarouba Aubl.","Guapira Aubl.","Vatairea macrocarpa (Benth.) Ducke","PP","PP","PP","Platypodium elegans Vogel","Myracrodruon urundeuva Allemão","PP","Platypodium elegans Vogel","Platypodium elegans Vogel","Curatella americana L.","Astronium fraxinifolium Schott","Protium heptaphyllum (Aubl.) Marchand","Tabebuia roseoalba (Ridl.) Sandwith","Tabebuia aurea (Silva Manso) Benth. &amp; Hook.f. ex S.Moore","Aspidosperma cylindrocarpon Müll.Arg.","Callisthene fasciculata Mart.","Vatairea macrocarpa (Benth.) Ducke","Aspidosperma cylindrocarpon Müll.Arg.","Qualea Aubl.","Dipteryx alata Vogel","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","PP","Eugenia dysenterica (Mart.) DC.","Bowdichia virgilioides Kunth","Eugenia dysenterica (Mart.) DC.","Morta","PP","Tabebuia roseoalba (Ridl.) Sandwith","Morta","Magonia pubescens A.St.-Hil.","Magonia pubescens A.St.-Hil.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Vatairea macrocarpa (Benth.) Ducke","Magonia pubescens A.St.-Hil.","Morta","Qualea Aubl.","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma subincanum Mart.","Tabebuia roseoalba (Ridl.) Sandwith","Qualea Aubl.","Eugenia dysenterica (Mart.) DC.","Simarouba Aubl.","Magonia pubescens A.St.-Hil.","Platypodium elegans Vogel","Tabebuia roseoalba (Ridl.) Sandwith","Hymenaea stigonocarpa Mart. ex Hayne","Protium heptaphyllum (Aubl.) Marchand","Tabebuia roseoalba (Ridl.) Sandwith","Magonia pubescens A.St.-Hil.","Callisthene fasciculata Mart.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Callisthene fasciculata Mart.","Myracrodruon urundeuva Allemão","Astronium fraxinifolium Schott","Callisthene fasciculata Mart.","Dipteryx alata Vogel","Dipteryx alata Vogel","Myracrodruon urundeuva Allemão","Diptychandra aurantiaca Tul.","Callisthene fasciculata Mart.","Eugenia dysenterica (Mart.) DC.","Roupala montana Aubl.","Bowdichia virgilioides Kunth","Physocalymma scaberrimum Pohl","Myracrodruon urundeuva Allemão","Callisthene fasciculata Mart.","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Dipteryx alata Vogel","Dipteryx alata Vogel","Vatairea macrocarpa (Benth.) Ducke","PS","Handroanthus chrysotrichus (Mart. ex DC.) Mattos","Repetida","Dipteryx alata Vogel","Myracrodruon urundeuva Allemão","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Myracrodruon urundeuva Allemão","Diptychandra aurantiaca Tul.","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Anadenanthera colubrina (Vell.) Brenan","Protium heptaphyllum (Aubl.) Marchand","Protium heptaphyllum (Aubl.) Marchand","Roupala montana Aubl.","Protium heptaphyllum (Aubl.) Marchand","Protium heptaphyllum (Aubl.) Marchand","Roupala montana Aubl.","Tabebuia aurea (Silva Manso) Benth. &amp; Hook.f. ex S.Moore","Diptychandra aurantiaca Tul.","Diptychandra aurantiaca Tul.","Anadenanthera colubrina (Vell.) Brenan","Diptychandra aurantiaca Tul.","Anadenanthera colubrina (Vell.) Brenan","Platypodium elegans Vogel","Morfoespécie 7","Anadenanthera colubrina (Vell.) Brenan","Diptychandra aurantiaca Tul.","Anadenanthera colubrina (Vell.) Brenan","Terminalia argentea Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Callisthene fasciculata Mart.","Platypodium elegans Vogel","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Platypodium elegans Vogel","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Platypodium elegans Vogel","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Diptychandra aurantiaca Tul.","Aspidosperma cylindrocarpon Müll.Arg.","Guapira Aubl.","Tabebuia roseoalba (Ridl.) Sandwith","Diptychandra aurantiaca Tul.","Tabebuia roseoalba (Ridl.) Sandwith","Callisthene fasciculata Mart.","Aspidosperma subincanum Mart.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Tabebuia roseoalba (Ridl.) Sandwith","Qualea Aubl.","Eugenia dysenterica (Mart.) DC.","Astronium fraxinifolium Schott","Magonia pubescens A.St.-Hil.","Agonandra brasiliensis Miers ex Benth. &amp; Hook.f.","Bowdichia virgilioides Kunth","Myracrodruon urundeuva Allemão","Protium heptaphyllum (Aubl.) Marchand","Callisthene fasciculata Mart.","Protium heptaphyllum (Aubl.) Marchand","Protium heptaphyllum (Aubl.) Marchand","Aspidosperma subincanum Mart.","Protium heptaphyllum (Aubl.) Marchand","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Protium heptaphyllum (Aubl.) Marchand","Myracrodruon urundeuva Allemão","Dipteryx alata Vogel","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Vatairea macrocarpa (Benth.) Ducke","Anadenanthera colubrina (Vell.) Brenan","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Aspidosperma subincanum Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Curatella americana L.","Tabebuia aurea (Silva Manso) Benth. &amp; Hook.f. ex S.Moore","Protium heptaphyllum (Aubl.) Marchand","Protium heptaphyllum (Aubl.) Marchand","Hymenaea stigonocarpa Mart. ex Hayne","Aspidosperma subincanum Mart.","Callisthene fasciculata Mart.","Roupala montana Aubl.","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Vatairea macrocarpa (Benth.) Ducke","Anadenanthera colubrina (Vell.) Brenan","Vatairea macrocarpa (Benth.) Ducke","Aspidosperma subincanum Mart.","Guapira Aubl.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Guettarda viburnoides Cham. &amp; Schltdl.","Terminalia argentea Mart.","Vatairea macrocarpa (Benth.) Ducke","Aspidosperma cylindrocarpon Müll.Arg.","Guettarda viburnoides Cham. &amp; Schltdl.","Callisthene fasciculata Mart.","Tabebuia roseoalba (Ridl.) Sandwith","Protium heptaphyllum (Aubl.) Marchand","Astronium fraxinifolium Schott","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma subincanum Mart.","Dipteryx alata Vogel","Morfoespécie 8","Protium heptaphyllum (Aubl.) Marchand","Callisthene fasciculata Mart.","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Astronium fraxinifolium Schott","Vatairea macrocarpa (Benth.) Ducke","Aspidosperma cylindrocarpon Müll.Arg.","Myrciaria tenella (DC.) O.Berg","Tabebuia roseoalba (Ridl.) Sandwith","Aspidosperma subincanum Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Myrciaria tenella (DC.) O.Berg","Astronium fraxinifolium Schott","Lafoensia pacari A.St.-Hil.","Guapira Aubl.","Anadenanthera colubrina (Vell.) Brenan","Myracrodruon urundeuva Allemão","Rhamnidium elaeocarpum Reissek","Platypodium elegans Vogel","Astronium fraxinifolium Schott","Aspidosperma cylindrocarpon Müll.Arg.","Tabebuia roseoalba (Ridl.) Sandwith","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Terminalia argentea Mart.","Guapira Aubl.","Myracrodruon urundeuva Allemão","Protium heptaphyllum (Aubl.) Marchand","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Aspidosperma cylindrocarpon Müll.Arg.","Anadenanthera colubrina (Vell.) Brenan","Guettarda viburnoides Cham. &amp; Schltdl.","Protium heptaphyllum (Aubl.) Marchand","Repitida","Vatairea macrocarpa (Benth.) Ducke","Protium heptaphyllum (Aubl.) Marchand","Callisthene fasciculata Mart.","Guapira Aubl.","Aspidosperma cylindrocarpon Müll.Arg.","Terminalia argentea Mart.","Dilodendron bipinnatum Radlk.","Aspidosperma cylindrocarpon Müll.Arg.","Callisthene fasciculata Mart.","Aspidosperma subincanum Mart.","Aspidosperma subincanum Mart.","Protium heptaphyllum (Aubl.) Marchand","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Callisthene fasciculata Mart.","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Aspidosperma cylindrocarpon Müll.Arg.","Vatairea macrocarpa (Benth.) Ducke","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Myracrodruon urundeuva Allemão","Astronium fraxinifolium Schott","Maytenus Molina","Callisthene fasciculata Mart.","Magonia pubescens A.St.-Hil.","Vatairea macrocarpa (Benth.) Ducke","Myracrodruon urundeuva Allemão","Callisthene fasciculata Mart.","Pouteria torta (Mart.) Radlk.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Aspidosperma cylindrocarpon Müll.Arg.","Tabebuia roseoalba (Ridl.) Sandwith","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Anadenanthera colubrina (Vell.) Brenan","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Guapira Aubl.","Rhamnidium elaeocarpum Reissek","Myracrodruon urundeuva Allemão","Aspidosperma cylindrocarpon Müll.Arg.","Anadenanthera colubrina (Vell.) Brenan","Vatairea macrocarpa (Benth.) Ducke","Aspidosperma cylindrocarpon Müll.Arg.","Dilodendron bipinnatum Radlk.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Guettarda viburnoides Cham. &amp; Schltdl.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Fabaceae 1","Protium heptaphyllum (Aubl.) Marchand","Callisthene fasciculata Mart.","Anadenanthera colubrina (Vell.) Brenan","Aspidosperma cylindrocarpon Müll.Arg.","Tabebuia roseoalba (Ridl.) Sandwith","Magonia pubescens A.St.-Hil.","Magonia pubescens A.St.-Hil.","Aspidosperma cylindrocarpon Müll.Arg.","Myracrodruon urundeuva Allemão","Astronium fraxinifolium Schott","Magonia pubescens A.St.-Hil.","Protium heptaphyllum (Aubl.) Marchand","Platypodium elegans Vogel","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma subincanum Mart.","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Callisthene fasciculata Mart.","Fabaceae 1","Aspidosperma subincanum Mart.","Platypodium elegans Vogel","Tabebuia roseoalba (Ridl.) Sandwith","Protium heptaphyllum (Aubl.) Marchand","Tabebuia roseoalba (Ridl.) Sandwith","Qualea Aubl.","Dilodendron bipinnatum Radlk.","Callisthene fasciculata Mart.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Diptychandra aurantiaca Tul.","Tabebuia roseoalba (Ridl.) Sandwith","Guazuma ulmifolia Lam.","Aspidosperma cylindrocarpon Müll.Arg.","Callisthene fasciculata Mart.","Anadenanthera colubrina (Vell.) Brenan","Myrciaria tenella (DC.) O.Berg","Tabebuia roseoalba (Ridl.) Sandwith","Aspidosperma subincanum Mart.","Dilodendron bipinnatum Radlk.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma cylindrocarpon Müll.Arg.","Guapira Aubl.","Astronium fraxinifolium Schott","Qualea Aubl.","Platypodium elegans Vogel","Tabebuia roseoalba (Ridl.) Sandwith","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Diptychandra aurantiaca Tul.","Tabebuia roseoalba (Ridl.) Sandwith","Protium heptaphyllum (Aubl.) Marchand","Aspidosperma cylindrocarpon Müll.Arg.","Anadenanthera colubrina (Vell.) Brenan","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Tabebuia roseoalba (Ridl.) Sandwith","Aspidosperma cylindrocarpon Müll.Arg.","Terminalia argentea Mart.","Diptychandra aurantiaca Tul.","Callisthene fasciculata Mart.","Aspidosperma cylindrocarpon Müll.Arg.","Platypodium elegans Vogel","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Platypodium elegans Vogel","Aspidosperma cylindrocarpon Müll.Arg.","Roupala montana Aubl."],["Anacardiaceae R.Br.","-","Bignoniaceae Juss.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Sapindaceae Juss.","-","Malvaceae Juss.","Fabaceae Lindl.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Apocynaceae Juss.","Fabaceae Lindl.","Anacardiaceae R.Br.","Simaroubaceae DC.","-","Anacardiaceae R.Br.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Bignoniaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Bignoniaceae Juss.","Fabaceae Lindl.","Apocynaceae Juss.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Anacardiaceae R.Br.","Fabaceae Lindl.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","-","Simaroubaceae DC.","Fabaceae Lindl.","Nyctaginaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","Sapindaceae Juss.","Apocynaceae Juss.",null,"Apocynaceae Juss.","Myrtaceae Juss.","Proteaceae Juss.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Anacardiaceae R.Br.","Apocynaceae Juss.","Anacardiaceae R.Br.","Anacardiaceae R.Br.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Anacardiaceae R.Br.","Myrtaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","-","Apocynaceae Juss.","Anacardiaceae R.Br.","Vochysiaceae A.St.-Hil.","Simaroubaceae DC.","Nyctaginaceae Juss.","Fabaceae Lindl.","-","-","-","Fabaceae Lindl.","Anacardiaceae R.Br.","-","Fabaceae Lindl.","Fabaceae Lindl.","Dilleniaceae  Salisb.","Anacardiaceae R.Br.","Burseraceae Kunth","Bignoniaceae Juss.","Bignoniaceae Juss.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","Apocynaceae Juss.","-","Myrtaceae Juss.","Fabaceae Lindl.","Myrtaceae Juss.","-","-","Bignoniaceae Juss.","-","Sapindaceae Juss.","Sapindaceae Juss.","Malvaceae Juss.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Apocynaceae Juss.","Arecaceae Schultz Sch.","Fabaceae Lindl.","Sapindaceae Juss.","-","Vochysiaceae A.St.-Hil.","Arecaceae Schultz Sch.","Apocynaceae Juss.","Apocynaceae Juss.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Myrtaceae Juss.","Simaroubaceae DC.","Sapindaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Fabaceae Lindl.","Burseraceae Kunth","Bignoniaceae Juss.","Sapindaceae Juss.","Vochysiaceae A.St.-Hil.","Malvaceae Juss.","Vochysiaceae A.St.-Hil.","Anacardiaceae R.Br.","Anacardiaceae R.Br.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Fabaceae Lindl.","Anacardiaceae R.Br.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Myrtaceae Juss.","Proteaceae Juss.","Fabaceae Lindl.","Lythraceae J.St.-Hil.","Anacardiaceae R.Br.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","-","Bignoniaceae Juss.","-","Fabaceae Lindl.","Anacardiaceae R.Br.","Malvaceae Juss.","Anacardiaceae R.Br.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Fabaceae Lindl.","Burseraceae Kunth","Burseraceae Kunth","Proteaceae Juss.","Burseraceae Kunth","Burseraceae Kunth","Proteaceae Juss.","Bignoniaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.",null,"Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Combretaceae R.Br.","Apocynaceae Juss.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Arecaceae Schultz Sch.","Fabaceae Lindl.","Malvaceae Juss.","Fabaceae Lindl.","Malvaceae Juss.","Fabaceae Lindl.","Apocynaceae Juss.","Nyctaginaceae Juss.","Bignoniaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Malvaceae Juss.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Myrtaceae Juss.","Anacardiaceae R.Br.","Sapindaceae Juss.","Opiliaceae Valeton","Fabaceae Lindl.","Anacardiaceae R.Br.","Burseraceae Kunth","Vochysiaceae A.St.-Hil.","Burseraceae Kunth","Burseraceae Kunth","Apocynaceae Juss.","Burseraceae Kunth","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Burseraceae Kunth","Anacardiaceae R.Br.","Fabaceae Lindl.","Bignoniaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Malvaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Dilleniaceae  Salisb.","Bignoniaceae Juss.","Burseraceae Kunth","Burseraceae Kunth","Fabaceae Lindl.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Proteaceae Juss.","Arecaceae Schultz Sch.","Apocynaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Fabaceae Lindl.","Apocynaceae Juss.","Nyctaginaceae Juss.","Malvaceae Juss.","Rubiaceae Juss.","Combretaceae R.Br.","Fabaceae Lindl.","Apocynaceae Juss.","Rubiaceae Juss.","Vochysiaceae A.St.-Hil.","Bignoniaceae Juss.","Burseraceae Kunth","Anacardiaceae R.Br.","Apocynaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.",null,"Burseraceae Kunth","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Bignoniaceae Juss.","Anacardiaceae R.Br.","Fabaceae Lindl.","Apocynaceae Juss.","Myrtaceae Juss.","Bignoniaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Myrtaceae Juss.","Anacardiaceae R.Br.","Lythraceae J.St.-Hil.","Nyctaginaceae Juss.","Fabaceae Lindl.","Anacardiaceae R.Br.","Rhamnaceae Juss.","Fabaceae Lindl.","Anacardiaceae R.Br.","Apocynaceae Juss.","Bignoniaceae Juss.","Malvaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Malvaceae Juss.","Combretaceae R.Br.","Nyctaginaceae Juss.","Anacardiaceae R.Br.","Burseraceae Kunth","Malvaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Rubiaceae Juss.","Burseraceae Kunth","-","Fabaceae Lindl.","Burseraceae Kunth","Vochysiaceae A.St.-Hil.","Nyctaginaceae Juss.","Apocynaceae Juss.","Combretaceae R.Br.","Sapindaceae Juss.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Apocynaceae Juss.","Burseraceae Kunth","Malvaceae Juss.","Vochysiaceae A.St.-Hil.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Malvaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Anacardiaceae R.Br.","Anacardiaceae R.Br.","Celastraceae R.Br.","Vochysiaceae A.St.-Hil.","Sapindaceae Juss.","Fabaceae Lindl.","Anacardiaceae R.Br.","Vochysiaceae A.St.-Hil.","Sapotaceae Juss.","Bignoniaceae Juss.","Apocynaceae Juss.","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Nyctaginaceae Juss.","Rhamnaceae Juss.","Anacardiaceae R.Br.","Apocynaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Apocynaceae Juss.","Sapindaceae Juss.","Bignoniaceae Juss.","Rubiaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Burseraceae Kunth","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","Bignoniaceae Juss.","Sapindaceae Juss.","Sapindaceae Juss.","Apocynaceae Juss.","Anacardiaceae R.Br.","Anacardiaceae R.Br.","Sapindaceae Juss.","Burseraceae Kunth","Fabaceae Lindl.","Apocynaceae Juss.","Apocynaceae Juss.","Arecaceae Schultz Sch.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Apocynaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Burseraceae Kunth","Bignoniaceae Juss.","Vochysiaceae A.St.-Hil.","Sapindaceae Juss.","Vochysiaceae A.St.-Hil.","Malvaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Malvaceae Juss.","Apocynaceae Juss.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Myrtaceae Juss.","Bignoniaceae Juss.","Apocynaceae Juss.","Sapindaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Apocynaceae Juss.","Nyctaginaceae Juss.","Anacardiaceae R.Br.","Vochysiaceae A.St.-Hil.","Fabaceae Lindl.","Bignoniaceae Juss.","Bignoniaceae Juss.","Apocynaceae Juss.","Fabaceae Lindl.","Fabaceae Lindl.","Bignoniaceae Juss.","Burseraceae Kunth","Apocynaceae Juss.","Fabaceae Lindl.","Arecaceae Schultz Sch.","Bignoniaceae Juss.","Apocynaceae Juss.","Combretaceae R.Br.","Fabaceae Lindl.","Vochysiaceae A.St.-Hil.","Apocynaceae Juss.","Fabaceae Lindl.","Bignoniaceae Juss.","Arecaceae Schultz Sch.","Fabaceae Lindl.","Apocynaceae Juss.","Proteaceae Juss."],["11.5","-","10.5","11.5","8.5","11.5","-","11","10.5","8","8.5","8","10","7.5","12","12","11","13","15","7.5","9.5","9.5","-","10","11.5","11","11","11.5","10.5","10","11","11.5","9","9","9.5","10.5","10","10.5","12","13","13.5","12","11","10","13.5","11.5","13.5","10.5","11","12.5","9","10","13","7","-","8.5","10.5","10","11.5","10","11","10","10.5","10","10","8.5","7","7.5","10","10","8","12.5","10.5","12.5","8","11","12","10","11","11","15","11","10.5","9.5","9.5","10.5","-","7","11","9.5","8.5","7","12","-","-","-","11.5","9","-","9","11","13","13","11","12","10","10","11","11.5","9","11","11","10.5","11.5","-","8","12","7","-","-","8","-","13","12.5","11","10.5","10","8","13","11","11","-","11","11.5","11","12.5","11.5","10.5","8.5","17","13","11.5","10.5","13","6","8.5","12.5","13.5","10","11.5","12","10","7.5","10.5","12.5","13.5","13.5","13.5","10.5","8.5","14","11","13.5","10.5","10","15","11","10.5","10.5","-","9.5","-","11.5","12","7.5","10","8","7","7.5","12","9.5","9.5","9","8","9","11","8.5","14","11","15.5","13.5","16","10.5","13","16","13","18","15.5","14","13","10.5","11.5","13.5","14","10","10","8","14","10","8.5","11.5","12","9.5","12","11","11","10","8.5","7.5","11","12","9.5","15.5","12.2","11","11.5","12","12","15","14.5","10","10","10","10","11.5","13.5","10.5","11","8","9.5","9.5","9.5","10","10","10","9.5","8","8","9","7","8","7.5","8.5","9","8.5","8.5","9.5","6.5","8.5","9","10","9.5","8.5","8.5","8","9.5","10.5","11","11","8.5","8.5","10","10","10","11","10.5","12","10","11.5","10","10.5","9.5","10.5","10","10","11","12","7.5","7.5","10","9.5","10","11.5","13","10.5","12","7.5","10.5","13","9","11","13","7.5","10","8","10","10","13.5","8.5","8","-","11","10.5","9.5","8","12","11.5","10","10","11.5","7","11","10","9","10","12.5","12.5","11.5","12.5","10.5","12.5","12","10.5","11","13","9.5","9.5","11","10.5","11.5","11","9","15","10.5","10","10.5","9.5","11","12","10.5","10.5","11","10.5","12","8.5","11.5","9","10.5","10","9.5","11","11.5","10.5","9.5","9.5","10.5","9","11","8.5","10","11","12","8.5","11","11","10.5","10.5","10.5","9.5","8","10.5","12.5","9","10.5","11.5","11.5","8.5","10","12.5","13","11","12.5","10","12","12","9.5","12","10","10","10","10.5","11.5","7.5","10.5","10.5","10.5","9.5","10","15","11.5","11.5","10","9.5","12.5","12.5","13","10.5","12","12","10","9","9","13","13","13","14","10.5","13.5"],["6","-","5","8.5","4.5","8","-","6","6.5","6","6","6","7","4","4","5.5","8.5","9.5","9","2.5","7.5","7","-","9","5.5","5.5","6","8","6.5","7","8","9","5.5","7.5","6","6","6","4.5","7","6.5","3.5","8.5","7","7","8.5","7","10","7.5","7.5","8","7","7.5","6","4.5","-","7","6.5","7","7","7.5","7","4.5","8.5","5","7","4","4.5","6","4.5","5.5","4","6","6.5","6","4","7","6","6","7.5","7","9.5","8","7.5","7.5","7.5","8.5","-","2.5","3","7","7","5","7","-","-","-","7.5","4.5","-","7","8","5","7","5.5","7.5","4","4","4.5","8.5","4","9","7","8","8","-","6","9","4","-","-","3","-","2","8","3.5","7.5","3","3.5","11","9","7","-","5","10","6.5","6","5","6","6","12","7","9","6.5","7","5.5","5","10","10","4.5","8","10","7.5","4","6","8.5","7.5","10","5","7.5","7","9","7.5","7.5","7","6.5","9","8","7.5","8","-","6.5","-","9","8.5","6","7","6","4","4.5","9","6","5.5","7.5","6","6","7.5","7","8","4","4.5","5","9","4","9.5","10.5","7","12","9","6","9","7.5","7","12","3","3","7","2","9","7.5","2","6","7","4","5","6.5","3.5","4","4","2.5","6","8.5","6","8","5.5","7.5","7","5","6","4","8","8","4","4","6","7","5","8","9","3","6.5","6.5","5.5","8","3.5","5","5.5","6","5","6","5","6","5.5","6","5.5","5","5.5","5.5","2","6.5","6.5","6","6","5.5","3","4.5","4","7","7","8.5","4.5","4.5","6","5","3.5","7","4","6","6.5","7.5","6","4","3","7","7","6","5","8","3.5","3","8","5","6","7","8.5","7","8","3","5","6","6","2","8","4","6","6","2","7","9","5","5","-","7.5","6","5","5","5","7.5","7","6","5","5","5","7","7","4","9","8","1.5","6.5","6","6.5","6","7","7.5","7.5","5","5.5","7","8","6","5.5","4","3.5","7.5","6","5","6.5","6","8.5","4","6.5","6","7","7.5","6","7.5","7","6","6.5","7","6.5","9","6.5","6.5","6","6","4.5","8","4","8","7","6","4","5","7.5","7.5","8.5","7.5","6.5","5","7.5","8","6","4","7.5","7.5","7.5","5","6.5","9","6.5","8.5","6.5","6","7","5.5","6","6","7","5.5","7","6.5","2","9","8","4.5","5","7","5","6","8","6","6","8","8","11","7","6","8.5","7.5","5","6","7.5","7.5","11","11","6","7.5"],["84.5","-","54","57.6","37.700000000000003","94.7","-","108.5","56","36.4","37.799999999999997","41.5","44","31.6","79","55.6","32.5","58.8","106","32","37.299999999999997","43.5","-","42.6","50","88.7","70.400000000000006","52.5","38.4","31.5","77.5","33.5","38.700000000000003","34.5","45.4","66.3","55.4","55.5","79","106.7","96.6","92.5","62","42.5","70.099999999999994","65.5","62.6","61.1","37.5","73.400000000000006","32.799999999999997","40","118.1","38.1","-","31.4","36.700000000000003","44.6","66.099999999999994","46.2","44.3","64.099999999999994","46.7","32.700000000000003","37.9","33.6","32.4","34","54.8","64.900000000000006","35.9","101.1","50","54.6","53.7","48.6","60.5","37.5","56.8","56","110","80","33.5","38.5","33.9","36","-","32.9","82.5","54.4","34.1","37","72.5","-","-","-","54","36.5","-","38.5","50.5","108.6","59","39.299999999999997","40","61","51.5","75.5","50","31.4","41.4","67.5","36","55.2","-","35.4","45.2","31.5","-","-","38.5",null,"55.5","48","123","34.9","53","31.5","43","46","47.5","-","48.5","50","32.5","49.3","45.7","44.6","58.9","59.8","65.5","46.7","61.4","97","32.9","35.799999999999997","63.2","105.1","84.8","76.599999999999994","69.099999999999994","41.6","93.3","53.5","57","76.2","74.5","96","62.6","32","71.099999999999994","54.9","89.3","52.8","57.7","107","78.2","71.2","39.200000000000003","-","50.2","-","59.8","62.7","62.6","56.9","39.4","71.3","34.9","85.4","37.700000000000003","34.4","32.5","32","40.700000000000003","44.5","52.8","87","37.4","81","110.7","46.7","31.4","40.4","74.8","68.7","90.3","87.2","124.8","39.200000000000003","34.200000000000003","55.8","42","77","98","42","75.8","59.4","34.9","55","50.7","40.299999999999997","32.9","77.7","37.299999999999997","134.1","35","36.299999999999997","59.8","36.200000000000003","54.8","53.2","83.7","96.6","31.9","45.1","46.8","37.299999999999997","111.2","56","31.5","36.5","63.4","39.5","75.099999999999994","85.1","39.200000000000003","47.5","70.099999999999994","35.5","40.9","52.6","64","81","68.2","41.7","33.299999999999997","45.4","44.4","39.6","31.6","36.799999999999997","37.6","45.7","35.1","37.200000000000003","35.4","33.299999999999997","35.200000000000003","36.6","34.4","43","34.9","42.8","37.799999999999997","68.3","45.7","61.7","44","34.200000000000003","38.799999999999997","39.9","62.4","63.2","34","63.2","59.8","38.799999999999997","43.7","34.200000000000003","31.5","31.4","43.7","34.700000000000003","42.1","42","63.3","39","40","35.799999999999997","44","38","46.1","65.5","34.1","51.7","65.900000000000006","49.9","67.900000000000006","43.1","88.4","63.5","36.4","43.5","36.299999999999997","87.5","41","63.8","32.5","40.1","-","58.1","58.2","44.9","33.200000000000003","44.1","54","60.6","46.4","62.3","53.4","58.1","34.6","53.8","37.9","56.4","44.8","107.5","56.3","50.3","77.3","47","50.1","43.9","76","60.2","53.5","41.7","39.4","67.2","58.1","36.4","98.6","43.8","52.5","41.3","32.299999999999997","65.5","40.5","42.7","35","43.4","41.6","75.7","34.700000000000003","49.2","32.9","42.1","46.1","39","56.4","63.9","50.2","38.4","40.5","45.3","48","54","35.9","40.5","50.1","69.2","41.4","57.6","33.799999999999997","32.5","35.6","31.5","44.4","51","45.8","62.3","34","44.9","37.9","61.5","36.4","76.400000000000006","89.5","53","56.8","53.4","35","113","67.900000000000006","34.1","55.7","31.5","31.5","39","33","55.8","47.2","47","65.2","57.9","43.2","35.299999999999997","171.4","43.6","56.8","31.8","32.4","58.7","39.1","52.7","44.1","43.3","36.299999999999997","38","32","34.5","64.5","51.9","42","47.5","39.6","73.2"],["26.897185382530314","-","17.188733853924695","18.334649444186343","12.000282709128909","30.143946221604978","-","34.53662265094129","17.82535362629228","11.58647985708998","12.032113697747286","13.209860276627314","14.00563499208679","10.058592403407786","25.146481008519466","17.698029671818762","10.345071300973197","18.716621307606893","33.74084793548181","10.185916357881302","11.872958754655391","13.846480048994895","-","13.560001151429484","15.915494309189533","28.234086904502234","22.409015987338865","16.71126902464901","12.223099629457561","10.026761414789407","24.669016179243776","10.663381187156988","12.318592595312701","10.981691073340778","14.451268832744097","21.103945453985322","17.634367694582004","17.666198683200381","25.146481008519466","33.963664855810464","30.748735005354177","29.443664472000638","19.735212943395023","13.528170162811104","22.313523021483725","20.84929754503829","19.926198875105296","19.44873404582961","11.93662073189215","23.363945645890237","10.440564266828334","12.732395447351628","37.592397558305677","12.127606663602425","-","9.9949304261710274","11.681972822945118","14.196620923797065","21.040283476748563","14.70591674169113","14.101127957941927","20.403663704380982","14.865071684783025","10.408733278209956","12.063944686365666","10.695212175775367","10.313240312354818","10.822536130248883","17.443381762871727","20.658311613328017","11.427324913998085","32.181129493181238","15.915494309189533","17.379719785634972","17.093240888069559","15.469860468532227","19.257748114119337","11.93662073189215","18.080001535239308","17.82535362629228","35.014087480216972","25.464790894703256","10.663381187156988","12.254930618075941","10.790705141630504","11.459155902616464","-","10.472395255446713","26.260565610162732","17.316057808398213","10.854367118867263","11.777465788800255","23.077466748324824","-","-","-","17.188733853924695","11.618310845708359","-","12.254930618075941","16.074649252281429","34.568453639559664","18.780283284843652","12.509578527022972","12.732395447351628","19.416903057211233","16.392959138465219","24.032396406876195","15.915494309189533","9.9949304261710274","13.178029288008934","21.485917317405871","11.459155902616464","17.570705717345248","-","11.26816997090619","14.38760685550734","10.026761414789407","-","-","12.254930618075941","-","17.666198683200381","15.278874536821952","39.152116000606256","11.109015027814294","16.870423967740905","10.026761414789407","13.687325105903","14.642254764454371","15.119719593730057","-","15.438029479913848","15.915494309189533","10.345071300973197","15.692677388860879","14.546761798599235","14.196620923797065","18.74845229622527","19.034931193790683","20.84929754503829","14.865071684783025","19.544227011684747","30.876058959827695","10.472395255446713","11.395493925379705","20.117184806815573","33.4543690379164","26.99267834838545","24.382537281678363","21.995213135299934","13.241691265245693","29.698312380947669","17.0295789108328","18.143663512476071","24.255213327204849","23.714086520692405","30.557749073643905","19.926198875105296","10.185916357881302","22.631832907667516","17.475212751490108","28.425072836212507","16.806761990504146","18.366480432804725","34.0591578216656","24.891833099572434","22.663663896285897","12.477747538404596","-","15.979156286426294","-","19.034931193790683","19.958029863723677","19.926198875105296","18.111832523857689","12.541409515641352","22.695494884904274","11.109015027814294","27.183664280095726","12.000282709128909","10.949860084722399","10.345071300973197","10.185916357881302","12.955212367680282","14.164789935178685","16.806761990504146","27.69296009798979","11.904789743273771","25.783100780887047","35.236904400545633","14.865071684783025","9.9949304261710274","12.859719401825144","23.809579486547541","21.86788918082642","28.743382722396298","27.756622075226549","39.725073795737075","12.477747538404596","10.886198107485642","17.761691649055518","13.369015219719209","24.509861236151881","31.194368846011486","13.369015219719209","24.127889372731332","18.907607239317166","11.109015027814294","17.507043740108486","16.138311229518187","12.827888413206765","10.472395255446713","24.732678156480539","11.872958754655391","42.685355737246326","11.140846016432674","11.554648868471601","19.034931193790683","11.522817879853223","17.443381762871727","16.934085944977664","26.642537473583282","30.748735005354177","10.154085369262923","14.35577586688896","14.896902673401403","11.872958754655391","35.396059343637525","17.82535362629228","10.026761414789407","11.618310845708359","20.180846784052328","12.573240504259733","23.905072452402678","27.088171314240586","12.477747538404596","15.119719593730057","22.313523021483725","11.300000959524569","13.018874344917039","16.743100013267391","20.371832715762604","25.783100780887047","21.708734237734525","13.273522253864073","10.599719209920229","14.451268832744097","14.132958946560306","12.605071492878112","10.058592403407786","11.713803811563496","11.968451720510529","14.546761798599235","11.172677005051053","11.841127766037014","11.26816997090619","10.599719209920229","11.204507993669433","11.650141834326739","10.949860084722399","13.687325105903","11.109015027814294","13.623663128666241","12.032113697747286","21.740565226352903","14.546761798599235","19.639719977539887","14.00563499208679","10.886198107485642","12.350423583931077","12.700564458733249","19.862536897868537","20.117184806815573","10.822536130248883","20.117184806815573","19.034931193790683","12.350423583931077","13.910142026231654","10.886198107485642","10.026761414789407","9.9949304261710274","13.910142026231654","11.045353050577537","13.400846208337589","13.369015219719209","20.14901579543395","12.414085561167836","12.732395447351628","11.395493925379705","14.00563499208679","12.095775674984045","14.674085753072751","20.84929754503829","10.854367118867263","16.456621115701978","20.976621499511808","15.883663320571154","21.613241271879389","13.719156094521379","28.138593938647098","20.212677772670709","11.58647985708998","13.846480048994895","11.554648868471601","27.852115041081685","13.050705333535419","20.308170738525845","10.345071300973197","12.764226435970008","-","18.493804387278239","18.52563537589662","14.292113889652201","10.567888221301851","14.03746598070517","17.188733853924695","19.289579102737715","14.769578718927887","19.83070590925016","16.997747922214423","18.493804387278239","11.013522061959158","17.125071876687937","12.063944686365666","17.952677580765794","14.260282901033822","34.218312764757499","17.920846592147413","16.01098727504467","24.605354202007018","14.960564650638162","15.947325297807915","13.973804003468411","24.191551349968091","19.162255148264201","17.0295789108328","13.273522253864073","12.541409515641352","21.390424351550735","18.493804387278239","11.58647985708998","31.385354777721759","13.941973014850031","16.71126902464901","13.146198299390555","10.281409323736439","20.84929754503829","12.891550390443523","13.591832140047863","11.140846016432674","13.814649060376516","13.241691265245693","24.096058384112954","11.045353050577537","15.660846400242503","10.472395255446713","13.400846208337589","14.674085753072751","12.414085561167836","17.952677580765794","20.340001727144223","15.979156286426294","12.223099629457561","12.891550390443523","14.419437844125717","15.278874536821952","17.188733853924695","11.427324913998085","12.891550390443523","15.947325297807915","22.027044123918316","13.178029288008934","18.334649444186343","10.758874153012124","10.345071300973197","11.331831948142948","10.026761414789407","14.132958946560306","16.233804195373324","14.578592787217612","19.83070590925016","10.822536130248883","14.292113889652201","12.063944686365666","19.576058000303128","11.58647985708998","24.318875304441612","28.488734813449266","16.870423967740905","18.080001535239308","16.997747922214423","11.140846016432674","35.969017138768351","21.613241271879389","10.854367118867263","17.729860660437144","10.026761414789407","10.026761414789407","12.414085561167836","10.504226244065093","17.761691649055518","15.024226627874921","14.960564650638162","20.753804579183154","18.43014241004148","13.750987083139758","11.23633898228781","54.558314491901726","13.878311037613274","18.080001535239308","10.122254380644543","10.313240312354818","18.684790318988515","12.445916549786217","16.774931001885768","14.03746598070517","13.782818071758136","11.554648868471601","12.095775674984045","10.185916357881302","10.981691073340778","20.5309876588545","16.520283092938737","13.369015219719209","15.119719593730057","12.605071492878112","23.300283668653478"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Parc<\/th>\n      <th>Subparc<\/th>\n      <th>Id<\/th>\n      <th>Nome Científico<\/th>\n      <th>Família<\/th>\n      <th>H T<\/th>\n      <th>HC<\/th>\n      <th>CAP<\/th>\n      <th>DAP<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"orderable":false,"targets":"_all"},{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Parc","targets":1},{"name":"Subparc","targets":2},{"name":"Id","targets":3},{"name":"Nome Científico","targets":4},{"name":"Família","targets":5},{"name":"H T","targets":6},{"name":"HC","targets":7},{"name":"CAP","targets":8},{"name":"DAP","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<div id="consistência-dos-dados-1" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Consistência dos dados<a href="inventário-florestal-1.html#consistência-dos-dados-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Antes de qualquer análise, é fundamental verificar a consistência dos dados coletados. Isso envolve identificar e corrigir possíveis erros ou inconsistências, garantindo a qualidade e a confiabilidade das informações para as análises subsequentes.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="inventário-florestal-1.html#cb21-1" tabindex="-1"></a>items_excluir <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SP&quot;</span>, <span class="st">&quot;Morta&quot;</span>, <span class="st">&quot;PP&quot;</span>, <span class="st">&quot;PS&quot;</span>, <span class="st">&quot;Repetida&quot;</span>, <span class="st">&quot;Repitida&quot;</span>, <span class="st">&quot;Morfoespécie 7&quot;</span>, <span class="st">&quot;Morfoespécie 8&quot;</span>)</span>
+<span id="cb21-2"><a href="inventário-florestal-1.html#cb21-2" tabindex="-1"></a>BD_ <span class="ot">&lt;-</span> BD[<span class="sc">!</span>BD<span class="sc">$</span><span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span> <span class="sc">%in%</span> items_excluir, ]</span>
+<span id="cb21-3"><a href="inventário-florestal-1.html#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="inventário-florestal-1.html#cb21-4" tabindex="-1"></a>BD_<span class="sc">$</span>DAP <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(BD_<span class="sc">$</span>DAP)</span>
+<span id="cb21-5"><a href="inventário-florestal-1.html#cb21-5" tabindex="-1"></a>BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span>)</span></code></pre></div>
+</div>
+<div id="distribuição-diamétrica-geral-1" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Distribuição diamétrica geral<a href="inventário-florestal-1.html#distribuição-diamétrica-geral-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A análise da distribuição dos diâmetros das árvores fornece insights sobre a estrutura etária e o desenvolvimento da floresta. Uma distribuição equilibrada indica uma regeneração contínua, enquanto a predominância de árvores em determinadas classes diamétricas pode sugerir distúrbios ou práticas de manejo específicas.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="inventário-florestal-1.html#cb22-1" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb22-2"><a href="inventário-florestal-1.html#cb22-2" tabindex="-1"></a>min_d <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">min</span>(BD_<span class="sc">$</span>DAP, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-3"><a href="inventário-florestal-1.html#cb22-3" tabindex="-1"></a>max_d <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(BD_<span class="sc">$</span>DAP, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb22-4"><a href="inventário-florestal-1.html#cb22-4" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, max_d <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)</span>
+<span id="cb22-5"><a href="inventário-florestal-1.html#cb22-5" tabindex="-1"></a><span class="fu">hist</span>(BD_<span class="sc">$</span>DAP, <span class="at">breaks =</span> intervalos, <span class="at">main =</span> <span class="cn">NULL</span>, <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>)</span></code></pre></div>
+<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+<br></p>
+</div>
+<div id="distribuição-por-espécies-boxplots-1" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Distribuição por espécies (boxplots)<a href="inventário-florestal-1.html#distribuição-por-espécies-boxplots-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Os boxplots permitem visualizar a variação dos diâmetros por espécie, destacando tendências e identificando outliers. Essa análise auxilia na compreensão do crescimento e do desenvolvimento de cada espécie, bem como na identificação de espécies que possam necessitar de atenção especial no manejo.</p>
+<div id="boxplot-dos-daps-1" class="section level4 hasAnchor" number="5.2.3.1">
+<h4><span class="header-section-number">5.2.3.1</span> Boxplot dos DAPs<a href="inventário-florestal-1.html#boxplot-dos-daps-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="inventário-florestal-1.html#cb23-1" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb23-2"><a href="inventário-florestal-1.html#cb23-2" tabindex="-1"></a>especies <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>)</span>
+<span id="cb23-3"><a href="inventário-florestal-1.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="inventário-florestal-1.html#cb23-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(BD_, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>, DAP, median), <span class="at">y =</span> DAP, <span class="at">fill =</span> <span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb23-5"><a href="inventário-florestal-1.html#cb23-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span>  <span class="co"># Boxplot sem os outliers</span></span>
+<span id="cb23-6"><a href="inventário-florestal-1.html#cb23-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb23-7"><a href="inventário-florestal-1.html#cb23-7" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb23-8"><a href="inventário-florestal-1.html#cb23-8" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">6</span>),</span>
+<span id="cb23-9"><a href="inventário-florestal-1.html#cb23-9" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>  <span class="co"># Remover legenda, se preferir</span></span>
+<span id="cb23-10"><a href="inventário-florestal-1.html#cb23-10" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb23-11"><a href="inventário-florestal-1.html#cb23-11" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribuição dos DAPs por Espécie&quot;</span>, </span>
+<span id="cb23-12"><a href="inventário-florestal-1.html#cb23-12" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Espécies&quot;</span>, <span class="at">y =</span> <span class="st">&quot;DAP (cm)&quot;</span>)</span>
+<span id="cb23-13"><a href="inventário-florestal-1.html#cb23-13" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="inventário-florestal-1.html#cb23-14" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+<div id="boxplot-das-alturas-totais-1" class="section level4 hasAnchor" number="5.2.3.2">
+<h4><span class="header-section-number">5.2.3.2</span> boxplot das alturas totais<a href="inventário-florestal-1.html#boxplot-das-alturas-totais-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="inventário-florestal-1.html#cb24-1" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(BD_, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(<span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>, <span class="st">`</span><span class="at">H T</span><span class="st">`</span>, median), <span class="at">y =</span> <span class="st">`</span><span class="at">H T</span><span class="st">`</span>, <span class="at">fill =</span> <span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="inventário-florestal-1.html#cb24-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span>  <span class="co"># Boxplot sem os outliers</span></span>
+<span id="cb24-3"><a href="inventário-florestal-1.html#cb24-3" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="inventário-florestal-1.html#cb24-4" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-5"><a href="inventário-florestal-1.html#cb24-5" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">6</span>),</span>
+<span id="cb24-6"><a href="inventário-florestal-1.html#cb24-6" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>  <span class="co"># Remover legenda, se preferir</span></span>
+<span id="cb24-7"><a href="inventário-florestal-1.html#cb24-7" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="inventário-florestal-1.html#cb24-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribuição das HTs por Espécie&quot;</span>, </span>
+<span id="cb24-9"><a href="inventário-florestal-1.html#cb24-9" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Espécies&quot;</span>, <span class="at">y =</span> <span class="st">&quot;HT (m)&quot;</span>)</span>
+<span id="cb24-10"><a href="inventário-florestal-1.html#cb24-10" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="inventário-florestal-1.html#cb24-11" tabindex="-1"></a><span class="fu">print</span>(p)</span></code></pre></div>
+<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+<br></p>
+</div>
+</div>
+<div id="parâmetros-fitossociológicos-1" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Parâmetros Fitossociológicos<a href="inventário-florestal-1.html#parâmetros-fitossociológicos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A aplicação prática dos parâmetros fitossociológicos, como densidade, dominância e frequência, fornece uma visão detalhada da composição e da estrutura da comunidade vegetal. Esses indicadores são essenciais para o planejamento de ações de manejo, conservação e recuperação de áreas florestais.</p>
+<div id="estrutura-horizontal-3" class="section level4 hasAnchor" number="5.2.4.1">
+<h4><span class="header-section-number">5.2.4.1</span> Estrutura horizontal<a href="inventário-florestal-1.html#estrutura-horizontal-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="inventário-florestal-1.html#cb25-1" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="cf">function</span>(species, sample, d, A) {</span>
+<span id="cb25-2"><a href="inventário-florestal-1.html#cb25-2" tabindex="-1"></a>    DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">species =</span> species, <span class="at">sample =</span> sample, <span class="at">d =</span> d)</span>
+<span id="cb25-3"><a href="inventário-florestal-1.html#cb25-3" tabindex="-1"></a>    DT <span class="ot">&lt;-</span> DT[, <span class="st">`</span><span class="at">:=</span><span class="st">`</span>(<span class="at">gi =</span> pi <span class="sc">*</span> d<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">40000</span>)]</span>
+<span id="cb25-4"><a href="inventário-florestal-1.html#cb25-4" tabindex="-1"></a>    Ui <span class="ot">&lt;-</span> <span class="fu">unique</span>(DT, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;sample&quot;</span>))[, .(<span class="at">Ui =</span> .N), by <span class="ot">=</span> <span class="st">&quot;species&quot;</span>]</span>
+<span id="cb25-5"><a href="inventário-florestal-1.html#cb25-5" tabindex="-1"></a>    ni <span class="ot">&lt;-</span> DT[, .(<span class="at">ni =</span> .N, <span class="at">Gi =</span> <span class="fu">sum</span>(gi)), by <span class="ot">=</span> <span class="st">&quot;species&quot;</span>]</span>
+<span id="cb25-6"><a href="inventário-florestal-1.html#cb25-6" tabindex="-1"></a>    ni <span class="ot">&lt;-</span> ni[Ui, on <span class="ot">=</span> <span class="st">&quot;species&quot;</span>]</span>
+<span id="cb25-7"><a href="inventário-florestal-1.html#cb25-7" tabindex="-1"></a>    ni[, DAi <span class="sc">:=</span> ni <span class="sc">/</span> A][, DRi <span class="sc">:=</span> (DAi <span class="sc">/</span> <span class="fu">sum</span>(DAi)) <span class="sc">*</span> <span class="dv">100</span>]</span>
+<span id="cb25-8"><a href="inventário-florestal-1.html#cb25-8" tabindex="-1"></a>    ni[, DoAi <span class="sc">:=</span> Gi <span class="sc">/</span> A][, DoRi <span class="sc">:=</span> (DoAi <span class="sc">/</span> <span class="fu">sum</span>(DoAi)) <span class="sc">*</span> <span class="dv">100</span>]</span>
+<span id="cb25-9"><a href="inventário-florestal-1.html#cb25-9" tabindex="-1"></a>    ni[, FAi <span class="sc">:=</span> (Ui <span class="sc">/</span> <span class="fu">length</span>(<span class="fu">unique</span>(DT<span class="sc">$</span>sample))) <span class="sc">*</span> <span class="dv">100</span>][, FRi <span class="sc">:=</span> (FAi <span class="sc">/</span> <span class="fu">sum</span>(FAi)) <span class="sc">*</span> <span class="dv">100</span>]</span>
+<span id="cb25-10"><a href="inventário-florestal-1.html#cb25-10" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="inventário-florestal-1.html#cb25-11" tabindex="-1"></a>    num_cols <span class="ot">&lt;-</span> <span class="fu">names</span>(ni)[<span class="fu">sapply</span>(ni, is.numeric)]</span>
+<span id="cb25-12"><a href="inventário-florestal-1.html#cb25-12" tabindex="-1"></a>    ni[, (num_cols) <span class="sc">:=</span> <span class="fu">lapply</span>(.SD, round, <span class="dv">4</span>), .SDcols <span class="ot">=</span> num_cols]</span>
+<span id="cb25-13"><a href="inventário-florestal-1.html#cb25-13" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="inventário-florestal-1.html#cb25-14" tabindex="-1"></a>    <span class="fu">setnames</span>(ni, <span class="at">old =</span> <span class="st">&quot;species&quot;</span>, <span class="at">new =</span> <span class="st">&quot;Espécies&quot;</span>)</span>
+<span id="cb25-15"><a href="inventário-florestal-1.html#cb25-15" tabindex="-1"></a></span>
+<span id="cb25-16"><a href="inventário-florestal-1.html#cb25-16" tabindex="-1"></a>    <span class="fu">return</span>(ni)</span>
+<span id="cb25-17"><a href="inventário-florestal-1.html#cb25-17" tabindex="-1"></a>}</span>
+<span id="cb25-18"><a href="inventário-florestal-1.html#cb25-18" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="inventário-florestal-1.html#cb25-19" tabindex="-1"></a>EH_result <span class="ot">&lt;-</span> <span class="fu">EH</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>, BD_<span class="sc">$</span>Parc, BD_<span class="sc">$</span>DAP, <span class="at">A =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p>Resultados:</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0d9d6cbd736e27ecde76" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0d9d6cbd736e27ecde76">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],["Myracrodruon urundeuva Allemão","Tabebuia roseoalba (Ridl.) Sandwith","Platypodium elegans Vogel","Callisthene fasciculata Mart.","Magonia pubescens A.St.-Hil.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Aspidosperma cylindrocarpon Müll.Arg.","Aspidosperma subincanum Mart.","Anadenanthera colubrina (Vell.) Brenan","Astronium fraxinifolium Schott","Simarouba Aubl.","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Machaerium acutifolium Vogel","Senegalia polyphylla (DC.) Britton &amp; Rose","Qualea Aubl.","Dipteryx alata Vogel","Guapira Aubl.","Peltogyne confertiflora (Mart. ex Hayne) Benth.","Morfoespécie 3","Myrciaria tenella (DC.) O.Berg","Roupala montana Aubl.","Diptychandra aurantiaca Tul.","Eugenia dysenterica (Mart.) DC.","Vatairea macrocarpa (Benth.) Ducke","Curatella americana L.","Protium heptaphyllum (Aubl.) Marchand","Tabebuia aurea (Silva Manso) Benth. &amp; Hook.f. ex S.Moore","Eugenia dysenterica (Mart.) DC.","Bowdichia virgilioides Kunth","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Hymenaea stigonocarpa Mart. ex Hayne","Physocalymma scaberrimum Pohl","Handroanthus chrysotrichus (Mart. ex DC.) Mattos","Terminalia argentea Mart.","Agonandra brasiliensis Miers ex Benth. &amp; Hook.f.","Guettarda viburnoides Cham. &amp; Schltdl.","Lafoensia pacari A.St.-Hil.","Rhamnidium elaeocarpum Reissek","Dilodendron bipinnatum Radlk.","Maytenus Molina","Pouteria torta (Mart.) Radlk.","Fabaceae 1","Guazuma ulmifolia Lam."],[18,23,35,41,12,15,60,16,17,15,4,11,1,2,12,11,9,1,1,4,6,12,1,13,2,23,3,5,3,7,2,1,1,5,1,4,1,2,4,1,1,2,1],[0.6704,0.359,0.6419,1.2693,0.3156,0.9521,1.3732,0.3735,0.5402,0.4479,0.0606,0.369,0.0117,0.0196,0.2719,0.4873,0.1251,0.017,0.0085,0.0402,0.099,0.3926,0.0509,0.2176,0.1159,0.4445,0.0844,0.1051,0.1122,0.1052,0.0887,0.024,0.0201,0.1369,0.0225,0.0449,0.0121,0.0212,0.0563,0.0288,0.0105,0.0532,0.0227],[2,2,2,2,2,2,2,2,2,2,1,2,1,1,2,2,2,1,1,2,2,2,1,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1],[22.5,28.75,43.75,51.25,15,18.75,75,20,21.25,18.75,5,13.75,1.25,2.5,15,13.75,11.25,1.25,1.25,5,7.5,15,1.25,16.25,2.5,28.75,3.75,6.25,3.75,8.75,2.5,1.25,1.25,6.25,1.25,5,1.25,2.5,5,1.25,1.25,2.5,1.25],[4.401,5.6235,8.5575,10.0244,2.934,3.6675,14.6699,3.912,4.1565,3.6675,0.978,2.6895,0.2445,0.489,2.934,2.6895,2.2005,0.2445,0.2445,0.978,1.467,2.934,0.2445,3.1785,0.489,5.6235,0.7335,1.2225,0.7335,1.7115,0.489,0.2445,0.2445,1.2225,0.2445,0.978,0.2445,0.489,0.978,0.2445,0.2445,0.489,0.2445],[0.838,0.4487,0.8024,1.5866,0.3945,1.1901,1.7165,0.4669,0.6753,0.5598,0.0758,0.4612,0.0147,0.0246,0.3399,0.6092,0.1563,0.0212,0.0106,0.0502,0.1237,0.4908,0.0637,0.272,0.1448,0.5556,0.1055,0.1314,0.1403,0.1314,0.1109,0.03,0.0251,0.1712,0.0282,0.0561,0.0151,0.0265,0.0703,0.036,0.0132,0.0665,0.0284],[6.3106,3.3793,6.0427,11.9479,2.9711,8.9621,12.926,3.5162,5.0851,4.2159,0.5706,3.4733,0.1105,0.185,2.5594,4.5874,1.1772,0.1599,0.0801,0.3781,0.9318,3.6957,0.4794,2.0485,1.0907,4.1837,0.7944,0.9895,1.0565,0.9899,0.8351,0.2258,0.1888,1.2891,0.212,0.4224,0.1139,0.1999,0.5298,0.2715,0.0993,0.5007,0.2136],[100,100,100,100,100,100,100,100,100,100,50,100,50,50,100,100,100,50,50,100,100,100,50,100,100,100,100,100,100,100,100,50,50,50,50,50,50,50,50,50,50,50,50],[2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,1.4706,2.9412,1.4706,1.4706,2.9412,2.9412,2.9412,1.4706,1.4706,2.9412,2.9412,2.9412,1.4706,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Espécies<\/th>\n      <th>ni<\/th>\n      <th>Gi<\/th>\n      <th>Ui<\/th>\n      <th>DAi<\/th>\n      <th>DRi<\/th>\n      <th>DoAi<\/th>\n      <th>DoRi<\/th>\n      <th>FAi<\/th>\n      <th>FRi<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"orderable":false,"targets":"_all"},{"className":"dt-center","targets":"_all"},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Espécies","targets":1},{"name":"ni","targets":2},{"name":"Gi","targets":3},{"name":"Ui","targets":4},{"name":"DAi","targets":5},{"name":"DRi","targets":6},{"name":"DoAi","targets":7},{"name":"DoRi","targets":8},{"name":"FAi","targets":9},{"name":"FRi","targets":10}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+</div>
+<div id="índice-de-shannon-diversidade-1" class="section level4 hasAnchor" number="5.2.4.2">
+<h4><span class="header-section-number">5.2.4.2</span> Índice de Shannon (Diversidade)<a href="inventário-florestal-1.html#índice-de-shannon-diversidade-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Na aplicação, o cálculo do índice de Shannon avalia a diversidade alfa da comunidade vegetal. Um valor alto reflete maior diversidade e distribuição equitativa entre as espécies no local estudado.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="inventário-florestal-1.html#cb26-1" tabindex="-1"></a>shannon <span class="ot">&lt;-</span> <span class="cf">function</span>(species_counts) {</span>
+<span id="cb26-2"><a href="inventário-florestal-1.html#cb26-2" tabindex="-1"></a>  pi <span class="ot">&lt;-</span> species_counts <span class="sc">/</span> <span class="fu">sum</span>(species_counts)</span>
+<span id="cb26-3"><a href="inventário-florestal-1.html#cb26-3" tabindex="-1"></a>  <span class="sc">-</span><span class="fu">sum</span>(pi <span class="sc">*</span> <span class="fu">log</span>(pi), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-4"><a href="inventário-florestal-1.html#cb26-4" tabindex="-1"></a>}</span>
+<span id="cb26-5"><a href="inventário-florestal-1.html#cb26-5" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="inventário-florestal-1.html#cb26-6" tabindex="-1"></a>H <span class="ot">&lt;-</span> <span class="fu">shannon</span>(EH_result<span class="sc">$</span>ni)</span>
+<span id="cb26-7"><a href="inventário-florestal-1.html#cb26-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Índice de Shannon:&quot;</span>, H, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Índice de Shannon: 3.16804</code></pre>
+</div>
+<div id="índice-de-morisita-agregação-1" class="section level4 hasAnchor" number="5.2.4.3">
+<h4><span class="header-section-number">5.2.4.3</span> Índice de Morisita (Agregação)<a href="inventário-florestal-1.html#índice-de-morisita-agregação-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Mede o padrão de distribuição espacial das espécies. Valores <span class="math inline">\(I_\delta &gt; 1\)</span> indicam agregação.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="inventário-florestal-1.html#cb28-1" tabindex="-1"></a>morisita <span class="ot">&lt;-</span> <span class="cf">function</span>(species_counts, parcelas) {</span>
+<span id="cb28-2"><a href="inventário-florestal-1.html#cb28-2" tabindex="-1"></a>  <span class="co"># Agregar os indivíduos por parcela</span></span>
+<span id="cb28-3"><a href="inventário-florestal-1.html#cb28-3" tabindex="-1"></a>  counts <span class="ot">&lt;-</span> <span class="fu">tapply</span>(species_counts, parcelas, sum)</span>
+<span id="cb28-4"><a href="inventário-florestal-1.html#cb28-4" tabindex="-1"></a>  </span>
+<span id="cb28-5"><a href="inventário-florestal-1.html#cb28-5" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">sum</span>(counts)       <span class="co"># Total de indivíduos em todas as parcelas</span></span>
+<span id="cb28-6"><a href="inventário-florestal-1.html#cb28-6" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(counts)    <span class="co"># Número de parcelas</span></span>
+<span id="cb28-7"><a href="inventário-florestal-1.html#cb28-7" tabindex="-1"></a>  numerator <span class="ot">&lt;-</span> n <span class="sc">*</span> <span class="fu">sum</span>(counts <span class="sc">*</span> (counts <span class="sc">-</span> <span class="dv">1</span>))  <span class="co"># Soma dos xi(xi - 1) por parcela</span></span>
+<span id="cb28-8"><a href="inventário-florestal-1.html#cb28-8" tabindex="-1"></a>  denominator <span class="ot">&lt;-</span> N <span class="sc">*</span> (N <span class="sc">-</span> <span class="dv">1</span>)                   <span class="co"># Total de combinações possíveis</span></span>
+<span id="cb28-9"><a href="inventário-florestal-1.html#cb28-9" tabindex="-1"></a>  I_M <span class="ot">&lt;-</span> numerator <span class="sc">/</span> denominator</span>
+<span id="cb28-10"><a href="inventário-florestal-1.html#cb28-10" tabindex="-1"></a>  <span class="fu">return</span>(I_M)</span>
+<span id="cb28-11"><a href="inventário-florestal-1.html#cb28-11" tabindex="-1"></a>}</span>
+<span id="cb28-12"><a href="inventário-florestal-1.html#cb28-12" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="inventário-florestal-1.html#cb28-13" tabindex="-1"></a><span class="co"># Exemplo de aplicação:</span></span>
+<span id="cb28-14"><a href="inventário-florestal-1.html#cb28-14" tabindex="-1"></a><span class="co"># Substituir species_counts e parcelas pelos dados reais</span></span>
+<span id="cb28-15"><a href="inventário-florestal-1.html#cb28-15" tabindex="-1"></a>species_counts <span class="ot">&lt;-</span> BD_<span class="sc">$</span>DAP[<span class="sc">!</span><span class="fu">is.na</span>(BD_<span class="sc">$</span>DAP)]  <span class="co"># DAP como proxy de presença/indivíduo</span></span>
+<span id="cb28-16"><a href="inventário-florestal-1.html#cb28-16" tabindex="-1"></a>parcelas <span class="ot">&lt;-</span> BD_<span class="sc">$</span>Parc                       <span class="co"># Número da parcela correspondente</span></span>
+<span id="cb28-17"><a href="inventário-florestal-1.html#cb28-17" tabindex="-1"></a>I_delta <span class="ot">&lt;-</span> <span class="fu">morisita</span>(species_counts, parcelas)</span>
+<span id="cb28-18"><a href="inventário-florestal-1.html#cb28-18" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Índice de Morisita corrigido:&quot;</span>, I_delta, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<pre><code>## Índice de Morisita corrigido: 1.022617</code></pre>
+</div>
+<div id="estrutura-vertical-e-classificação-em-estratos-1" class="section level4 hasAnchor" number="5.2.4.4">
+<h4><span class="header-section-number">5.2.4.4</span> Estrutura vertical e classificação em estratos<a href="inventário-florestal-1.html#estrutura-vertical-e-classificação-em-estratos-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A inclusão da dimensão vertical nos parâmetros fitossociológicos agrega uma visão tridimensional da comunidade florestal, indo além da análise convencional baseada apenas na densidade e dominância (horizontal).</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="inventário-florestal-1.html#cb30-1" tabindex="-1"></a>BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span>)</span>
+<span id="cb30-2"><a href="inventário-florestal-1.html#cb30-2" tabindex="-1"></a>meanH <span class="ot">&lt;-</span> <span class="fu">mean</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-3"><a href="inventário-florestal-1.html#cb30-3" tabindex="-1"></a>sdH <span class="ot">&lt;-</span> <span class="fu">sd</span>(BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-4"><a href="inventário-florestal-1.html#cb30-4" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="inventário-florestal-1.html#cb30-5" tabindex="-1"></a><span class="co"># Calcular estrato</span></span>
+<span id="cb30-6"><a href="inventário-florestal-1.html#cb30-6" tabindex="-1"></a>BD_<span class="sc">$</span>estrato <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb30-7"><a href="inventário-florestal-1.html#cb30-7" tabindex="-1"></a>  BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="sc">&lt;</span> (meanH <span class="sc">-</span> sdH) <span class="sc">~</span> <span class="st">&quot;Inferior&quot;</span>,</span>
+<span id="cb30-8"><a href="inventário-florestal-1.html#cb30-8" tabindex="-1"></a>  BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="sc">&gt;=</span> (meanH <span class="sc">-</span> sdH) <span class="sc">&amp;</span> BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="sc">&lt;=</span> (meanH <span class="sc">+</span> sdH) <span class="sc">~</span> <span class="st">&quot;Médio&quot;</span>,</span>
+<span id="cb30-9"><a href="inventário-florestal-1.html#cb30-9" tabindex="-1"></a>  BD_<span class="sc">$</span><span class="st">`</span><span class="at">H T</span><span class="st">`</span> <span class="sc">&gt;</span> (meanH <span class="sc">+</span> sdH) <span class="sc">~</span> <span class="st">&quot;Superior&quot;</span></span>
+<span id="cb30-10"><a href="inventário-florestal-1.html#cb30-10" tabindex="-1"></a>)</span>
+<span id="cb30-11"><a href="inventário-florestal-1.html#cb30-11" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="inventário-florestal-1.html#cb30-12" tabindex="-1"></a><span class="co"># Calcular PSAi e PSRi</span></span>
+<span id="cb30-13"><a href="inventário-florestal-1.html#cb30-13" tabindex="-1"></a>resultados <span class="ot">&lt;-</span> BD_ <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="inventário-florestal-1.html#cb30-14" tabindex="-1"></a>  <span class="fu">group_by</span>(estrato) <span class="sc">%&gt;%</span></span>
+<span id="cb30-15"><a href="inventário-florestal-1.html#cb30-15" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-16"><a href="inventário-florestal-1.html#cb30-16" tabindex="-1"></a>    <span class="at">Nj =</span> <span class="fu">n</span>(),                     <span class="co"># Total de indivíduos no estrato</span></span>
+<span id="cb30-17"><a href="inventário-florestal-1.html#cb30-17" tabindex="-1"></a>    <span class="at">N =</span> <span class="fu">nrow</span>(BD_),                <span class="co"># Total de indivíduos na floresta</span></span>
+<span id="cb30-18"><a href="inventário-florestal-1.html#cb30-18" tabindex="-1"></a>    <span class="at">Pj =</span> Nj <span class="sc">/</span> N                   <span class="co"># Peso do estrato no total</span></span>
+<span id="cb30-19"><a href="inventário-florestal-1.html#cb30-19" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb30-20"><a href="inventário-florestal-1.html#cb30-20" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>, estrato) <span class="sc">%&gt;%</span></span>
+<span id="cb30-21"><a href="inventário-florestal-1.html#cb30-21" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-22"><a href="inventário-florestal-1.html#cb30-22" tabindex="-1"></a>    <span class="at">Nji =</span> <span class="fu">n</span>(),                    <span class="co"># Número de indivíduos da espécie no estrato</span></span>
+<span id="cb30-23"><a href="inventário-florestal-1.html#cb30-23" tabindex="-1"></a>    <span class="at">Nj =</span> <span class="fu">first</span>(Nj),               <span class="co"># Total de indivíduos no estrato</span></span>
+<span id="cb30-24"><a href="inventário-florestal-1.html#cb30-24" tabindex="-1"></a>    <span class="at">Pj =</span> <span class="fu">first</span>(Pj),               <span class="co"># Peso do estrato</span></span>
+<span id="cb30-25"><a href="inventário-florestal-1.html#cb30-25" tabindex="-1"></a>    <span class="at">PSAi_partial =</span> (Nji <span class="sc">/</span> Nj) <span class="sc">*</span> Pj, <span class="co"># Contribuição parcial para PSAi</span></span>
+<span id="cb30-26"><a href="inventário-florestal-1.html#cb30-26" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb30-27"><a href="inventário-florestal-1.html#cb30-27" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb30-28"><a href="inventário-florestal-1.html#cb30-28" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Nome Científico</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-29"><a href="inventário-florestal-1.html#cb30-29" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb30-30"><a href="inventário-florestal-1.html#cb30-30" tabindex="-1"></a>    <span class="at">PSAi =</span> <span class="fu">sum</span>(PSAi_partial, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)        <span class="co"># Soma das contribuições parciais para PSAi</span></span>
+<span id="cb30-31"><a href="inventário-florestal-1.html#cb30-31" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb30-32"><a href="inventário-florestal-1.html#cb30-32" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-33"><a href="inventário-florestal-1.html#cb30-33" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-34"><a href="inventário-florestal-1.html#cb30-34" tabindex="-1"></a>    <span class="at">PSRi =</span> (PSAi <span class="sc">/</span> <span class="fu">sum</span>(PSAi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">*</span> <span class="dv">100</span> <span class="co"># PSRi como porcentagem global</span></span>
+<span id="cb30-35"><a href="inventário-florestal-1.html#cb30-35" tabindex="-1"></a>  )</span>
+<span id="cb30-36"><a href="inventário-florestal-1.html#cb30-36" tabindex="-1"></a></span>
+<span id="cb30-37"><a href="inventário-florestal-1.html#cb30-37" tabindex="-1"></a><span class="co"># Fusão das tabelas com left_join</span></span>
+<span id="cb30-38"><a href="inventário-florestal-1.html#cb30-38" tabindex="-1"></a>EH_result <span class="ot">&lt;-</span> EH_result <span class="sc">%&gt;%</span></span>
+<span id="cb30-39"><a href="inventário-florestal-1.html#cb30-39" tabindex="-1"></a>  <span class="fu">left_join</span>(resultados, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;Espécies&quot;</span> <span class="ot">=</span> <span class="st">&quot;Nome Científico&quot;</span>))</span>
+<span id="cb30-40"><a href="inventário-florestal-1.html#cb30-40" tabindex="-1"></a></span>
+<span id="cb30-41"><a href="inventário-florestal-1.html#cb30-41" tabindex="-1"></a><span class="co"># Adicionando o Valor de Importância Ampliado (VIA)</span></span>
+<span id="cb30-42"><a href="inventário-florestal-1.html#cb30-42" tabindex="-1"></a>required_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;DAi&quot;</span>, <span class="st">&quot;DoAi&quot;</span>, <span class="st">&quot;FAi&quot;</span>, <span class="st">&quot;PSAi&quot;</span>, <span class="st">&quot;DRi&quot;</span>, <span class="st">&quot;DoRi&quot;</span>, <span class="st">&quot;FRi&quot;</span>, <span class="st">&quot;PSRi&quot;</span>)</span>
+<span id="cb30-43"><a href="inventário-florestal-1.html#cb30-43" tabindex="-1"></a>missing_cols <span class="ot">&lt;-</span> required_cols[<span class="sc">!</span>required_cols <span class="sc">%in%</span> <span class="fu">names</span>(EH_result)]</span>
+<span id="cb30-44"><a href="inventário-florestal-1.html#cb30-44" tabindex="-1"></a></span>
+<span id="cb30-45"><a href="inventário-florestal-1.html#cb30-45" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">length</span>(missing_cols) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb30-46"><a href="inventário-florestal-1.html#cb30-46" tabindex="-1"></a>  <span class="fu">stop</span>(<span class="fu">paste</span>(<span class="st">&quot;Colunas ausentes em `EH_result`: &quot;</span>, <span class="fu">paste</span>(missing_cols, <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span>)))</span>
+<span id="cb30-47"><a href="inventário-florestal-1.html#cb30-47" tabindex="-1"></a>}</span>
+<span id="cb30-48"><a href="inventário-florestal-1.html#cb30-48" tabindex="-1"></a></span>
+<span id="cb30-49"><a href="inventário-florestal-1.html#cb30-49" tabindex="-1"></a>EH_result <span class="ot">&lt;-</span> EH_result <span class="sc">%&gt;%</span></span>
+<span id="cb30-50"><a href="inventário-florestal-1.html#cb30-50" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb30-51"><a href="inventário-florestal-1.html#cb30-51" tabindex="-1"></a>    <span class="at">VIAa =</span> (DAi <span class="sc">+</span> DoAi <span class="sc">+</span> FAi <span class="sc">+</span> PSAi) <span class="sc">/</span> <span class="dv">4</span>,  <span class="co"># Cálculo do VIA absoluto</span></span>
+<span id="cb30-52"><a href="inventário-florestal-1.html#cb30-52" tabindex="-1"></a>  )</span>
+<span id="cb30-53"><a href="inventário-florestal-1.html#cb30-53" tabindex="-1"></a></span>
+<span id="cb30-54"><a href="inventário-florestal-1.html#cb30-54" tabindex="-1"></a><span class="co"># Visualizar os resultados finais com arredondamento</span></span>
+<span id="cb30-55"><a href="inventário-florestal-1.html#cb30-55" tabindex="-1"></a>resultado_final <span class="ot">&lt;-</span> EH_result <span class="sc">%&gt;%</span></span>
+<span id="cb30-56"><a href="inventário-florestal-1.html#cb30-56" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(VIAa)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-57"><a href="inventário-florestal-1.html#cb30-57" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), round, <span class="dv">4</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a6e447ee0daf4096192d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a6e447ee0daf4096192d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43"],["Aspidosperma cylindrocarpon Müll.Arg.","Callisthene fasciculata Mart.","Platypodium elegans Vogel","Protium heptaphyllum (Aubl.) Marchand","Tabebuia roseoalba (Ridl.) Sandwith","Myracrodruon urundeuva Allemão","Anadenanthera colubrina (Vell.) Brenan","Aspidosperma subincanum Mart.","Pseudobombax tomentosum (Mart. &amp; Zucc.) A.Robyns","Astronium fraxinifolium Schott","Vatairea macrocarpa (Benth.) Ducke","Diptychandra aurantiaca Tul.","Magonia pubescens A.St.-Hil.","Qualea Aubl.","Dipteryx alata Vogel","Handroanthus impetiginosus (Mart. ex DC.) Mattos","Guapira Aubl.","Acrocomia aculeata (Jacq.) Lodd. ex Mart","Roupala montana Aubl.","Eugenia dysenterica (Mart.) DC.","Myrciaria tenella (DC.) O.Berg","Bowdichia virgilioides Kunth","Tabebuia aurea (Silva Manso) Benth. &amp; Hook.f. ex S.Moore","Curatella americana L.","Hymenaea stigonocarpa Mart. ex Hayne","Terminalia argentea Mart.","Simarouba Aubl.","Dilodendron bipinnatum Radlk.","Guettarda viburnoides Cham. &amp; Schltdl.","Fabaceae 1","Rhamnidium elaeocarpum Reissek","Senegalia polyphylla (DC.) Britton &amp; Rose","Eugenia dysenterica (Mart.) DC.","Maytenus Molina","Physocalymma scaberrimum Pohl","Guazuma ulmifolia Lam.","Agonandra brasiliensis Miers ex Benth. &amp; Hook.f.","Handroanthus chrysotrichus (Mart. ex DC.) Mattos","Peltogyne confertiflora (Mart. ex Hayne) Benth.","Lafoensia pacari A.St.-Hil.","Machaerium acutifolium Vogel","Pouteria torta (Mart.) Radlk.","Morfoespécie 3"],[60,41,35,23,23,18,17,16,15,15,13,12,12,12,11,11,9,7,6,5,4,3,3,2,2,5,4,4,4,2,2,2,1,1,1,1,1,1,1,1,1,1,1],[1.3732,1.2693,0.6419,0.4445,0.359,0.6704,0.5402,0.3735,0.9521,0.4479,0.2176,0.3926,0.3156,0.2719,0.4873,0.369,0.1251,0.1052,0.099,0.1051,0.0402,0.1122,0.0844,0.1159,0.0887,0.1369,0.0606,0.0563,0.0449,0.0532,0.0212,0.0196,0.0509,0.0288,0.024,0.0227,0.0225,0.0201,0.017,0.0121,0.0117,0.0105,0.0085],[2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[75,51.25,43.75,28.75,28.75,22.5,21.25,20,18.75,18.75,16.25,15,15,15,13.75,13.75,11.25,8.75,7.5,6.25,5,3.75,3.75,2.5,2.5,6.25,5,5,5,2.5,2.5,2.5,1.25,1.25,1.25,1.25,1.25,1.25,1.25,1.25,1.25,1.25,1.25],[14.6699,10.0244,8.5575,5.6235,5.6235,4.401,4.1565,3.912,3.6675,3.6675,3.1785,2.934,2.934,2.934,2.6895,2.6895,2.2005,1.7115,1.467,1.2225,0.978,0.7335,0.7335,0.489,0.489,1.2225,0.978,0.978,0.978,0.489,0.489,0.489,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445],[1.7165,1.5866,0.8024,0.5556,0.4487,0.838,0.6753,0.4669,1.1901,0.5598,0.272,0.4908,0.3945,0.3399,0.6092,0.4612,0.1563,0.1314,0.1237,0.1314,0.0502,0.1403,0.1055,0.1448,0.1109,0.1712,0.0758,0.0703,0.0561,0.0665,0.0265,0.0246,0.0637,0.036,0.03,0.0284,0.0282,0.0251,0.0212,0.0151,0.0147,0.0132,0.0106],[12.926,11.9479,6.0427,4.1837,3.3793,6.3106,5.0851,3.5162,8.9621,4.2159,2.0485,3.6957,2.9711,2.5594,4.5874,3.4733,1.1772,0.9899,0.9318,0.9895,0.3781,1.0565,0.7944,1.0907,0.8351,1.2891,0.5706,0.5298,0.4224,0.5007,0.1999,0.185,0.4794,0.2715,0.2258,0.2136,0.212,0.1888,0.1599,0.1139,0.1105,0.0993,0.0801],[100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],[2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,2.9412,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706,1.4706],[0.1467,0.1002,0.0856,0.0562,0.0562,0.044,0.0416,0.0391,0.0367,0.0367,0.0318,0.0293,0.0293,0.0293,0.0269,0.0269,0.022,0.0171,0.0147,0.0122,0.0098,0.0073,0.0073,0.0049,0.0049,0.0122,0.0098,0.0098,0.0098,0.0049,0.0049,0.0049,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024,0.0024],[14.6699,10.0244,8.5575,5.6235,5.6235,4.401,4.1565,3.912,3.6675,3.6675,3.1785,2.934,2.934,2.934,2.6895,2.6895,2.2005,1.7115,1.467,1.2225,0.978,0.7335,0.7335,0.489,0.489,1.2225,0.978,0.978,0.978,0.489,0.489,0.489,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445,0.2445],[44.2158,38.2342,36.1595,32.3405,32.3137,30.8455,30.4917,30.1265,29.9942,29.8366,29.1384,28.88,28.856,28.8423,28.5965,28.5595,27.8571,27.2246,26.9096,26.5984,26.265,25.9744,25.9657,25.6624,25.6539,14.1084,13.7714,13.77,13.7665,13.1428,13.1328,13.1324,12.829,12.8221,12.8206,12.8202,12.8202,12.8194,12.8184,12.8169,12.8168,12.8164,12.8158]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Espécies<\/th>\n      <th>ni<\/th>\n      <th>Gi<\/th>\n      <th>Ui<\/th>\n      <th>DAi<\/th>\n      <th>DRi<\/th>\n      <th>DoAi<\/th>\n      <th>DoRi<\/th>\n      <th>FAi<\/th>\n      <th>FRi<\/th>\n      <th>PSAi<\/th>\n      <th>PSRi<\/th>\n      <th>VIAa<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"orderable":false,"targets":"_all"},{"className":"dt-center","targets":"_all"},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Espécies","targets":1},{"name":"ni","targets":2},{"name":"Gi","targets":3},{"name":"Ui","targets":4},{"name":"DAi","targets":5},{"name":"DRi","targets":6},{"name":"DoAi","targets":7},{"name":"DoRi","targets":8},{"name":"FAi","targets":9},{"name":"FRi","targets":10},{"name":"PSAi","targets":11},{"name":"PSRi","targets":12},{"name":"VIAa","targets":13}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><br>
+Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.</p>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+al., Otávio Miranda Verly et. 2020. <span>“Caracterização florística e fitossociologia de um fragmento de Cerradão em Cáceres, Mato Grosso”</span>. <em>Pesquisa Florestal Brasileira</em> 40: e201801742.
+</div>
+<div class="csl-entry">
+Wickham, Hadley, e Garrett Grolemund. 2016. <em>R for Data Science</em>. Sebastopol, CA: O’Reilly Media. <a href="https://r4ds.had.co.nz/">https://r4ds.had.co.nz/</a>.
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-verly2020" class="csl-entry">
+al., Otávio Miranda Verly et. 2020. <span>“Caracterização florística e fitossociologia de um fragmento de Cerradão em Cáceres, Mato Grosso”</span>. <em>Pesquisa Florestal Brasileira</em> 40: e201801742.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="teste-2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/teste_3.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"language": {
+"chapter_title": "",
+"search_placeholder": "Procurar no livro...",
+"toc_title": "Índice"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,3 +1,8 @@
+---
+title: "Inventário Florestal"
+---
+
+
 # Inventário florestal
 
 ## Fitossociologia (Teoria)
@@ -112,7 +117,7 @@ $$
 ## Fitossociologia (Aplicação)
 
 De acordo com o estudo realizado por Verly et al. (2020), a caracterização florística defina para a Reserva Legal do IFMT foi de um fragmento Cerradão em estado de conservação adequada.
-Veja [@verly2020cerradao]
+De acordo com [@verly2020], a caracterização florística...
 
 
 Dados exemplo:

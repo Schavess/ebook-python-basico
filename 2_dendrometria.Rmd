@@ -1,5 +1,7 @@
 # Dendrometria
 
+Como mostrado em [@verly2020], o R facilita a análise de dados.
+
 ## Diâmetros
 
 ### Histogramas de distribuição diamétrica

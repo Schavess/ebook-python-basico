@@ -51,3 +51,4 @@ estrutura-horizontal-1
 índice-de-shannon-diversidade
 índice-de-morisita-agregação
 estrutura-vertical-e-classificação-em-estratos
+será

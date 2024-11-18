@@ -2,7 +2,9 @@ bookdown::gitbook:
   highlight: "zenburn"
   css: style.css
   split_by: chapter
+  pandoc_args: ["--metadata", "nocite: ''"]
   config:
+    title: "Entre Florestas e Dados"
     toc:
       collapse: section
       before: |
@@ -24,7 +26,6 @@ bookdown::gitbook:
       chapter_title: ""  #"Capítulo "
       search_placeholder: "Procurar no livro..."
       toc_title: "Índice"
-
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

@@ -5,17 +5,14 @@ language:
     fig: "Figura "
     tab: "Tabela "
 split_by: subsection
-bibliography: book.bib
-split_bib: false
+bibliography: [book.bib]
+split_bib: true
 toc_depth: 3
 rmd_files:
   - index.Rmd
-  - introducao_ao_r.Rmd
-  - dendrometria.Rmd
-  - inventario.Rmd
-  # - 02-cross-refs.Rmd
-  # - 03-parts.Rmd
-  # - 04-citations.Rmd
-  # - 05-blocks.Rmd
-  # - 06-share.Rmd
-  # - 07-references.Rmd
+  - 1_introducao_ao_r.Rmd
+  - 2_dendrometria.Rmd
+  - 3_inventario_page.Rmd
+  - 4_manejo_plantadas.Rmd
+  - appendix.Rmd
+  
