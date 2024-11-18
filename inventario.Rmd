@@ -102,11 +102,14 @@ Dados exemplo:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl)
+library(kableExtra)
+library(dplyr)
+library(data.table)
+library(DT)
 
 BD <- read_excel("data/Dados_Reserva_Exemplo.xlsx")
 
 
-library(kableExtra)
 
 if (knitr::is_html_output()) {
   datatable(BD, options = list(columnDefs = list(list(orderable = FALSE, targets = "_all"))))
@@ -185,8 +188,6 @@ print(p)
 #### Estrutura horizontal
 
 ```{r}
-library(dplyr)
-library(data.table)
 
 EH <- function(species, sample, d, A) {
     DT <- data.table(species = species, sample = sample, d = d)
@@ -211,7 +212,6 @@ EH_result <- EH(BD_$`Nome Científico`, BD_$Parc, BD_$DAP, A = 0.8)
 Resultados:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(DT)
 
 # Para HTML: Tabela interativa
 if (knitr::is_html_output()) {
@@ -254,16 +254,25 @@ cat("Índice de Shannon:", H, "\n")
 #### Índice de Morisita (Agregação)
 
 ```{r}
-morisita <- function(species_counts) {
-  N <- sum(species_counts)
-  n <- length(species_counts)
-  num <- n * sum(species_counts * (species_counts - 1))
-  den <- N * (N - 1)
-  num / den
+morisita <- function(species_counts, parcelas) {
+  # Agregar os indivíduos por parcela
+  counts <- tapply(species_counts, parcelas, sum)
+  
+  N <- sum(counts)       # Total de indivíduos em todas as parcelas
+  n <- length(counts)    # Número de parcelas
+  numerator <- n * sum(counts * (counts - 1))  # Soma dos xi(xi - 1) por parcela
+  denominator <- N * (N - 1)                   # Total de combinações possíveis
+  I_M <- numerator / denominator
+  return(I_M)
 }
 
-I_delta <- morisita(EH_result$ni)
-cat("Índice de Morisita:", I_delta, "\n")
+# Exemplo de aplicação:
+# Substituir species_counts e parcelas pelos dados reais
+species_counts <- BD_$DAP[!is.na(BD_$DAP)]  # DAP como proxy de presença/indivíduo
+parcelas <- BD_$Parc                       # Número da parcela correspondente
+I_delta <- morisita(species_counts, parcelas)
+cat("Índice de Morisita corrigido:", I_delta, "\n")
+
 
 ```
 #### Estrutura vertical e classificação em estratos
@@ -331,7 +340,6 @@ resultado_final <- EH_result %>%
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(DT)
 
 # Para HTML: Tabela interativa
 if (knitr::is_html_output()) {
