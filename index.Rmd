@@ -11,7 +11,7 @@ documentclass: book
 github-repo: "rstudio/bookdown-demo"
 css: "custom.css"
 number_sections: true
-bibliography: book.bib
+bibliography: [book.bib]
 link-citations: yes
 output: 
   bookdown::html_book

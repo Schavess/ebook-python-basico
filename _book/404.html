@@ -51,8 +51,73 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -116,31 +181,45 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html"><i class="fa fa-check"></i><b>1</b> Introdução ao R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1</b> Instalação do R</a></li>
-<li class="chapter" data-level="1.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#fundamentos-da-linguagem"><i class="fa fa-check"></i><b>1.3</b> Fundamentos da linguagem</a></li>
-<li class="chapter" data-level="1.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.4</b> Gerenciamento de pacotes</a></li>
-<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-da-dados"><i class="fa fa-check"></i><b>1.5</b> Importação e exportação da dados</a></li>
-<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.6</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
+<li class="chapter" data-level="1.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do RStudio</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.6.1</b> O que é o <code>%&gt;%</code>?</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.6.2</b> Exemplos de Uso</a></li>
+<li class="chapter" data-level="1.2.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#windows"><i class="fa fa-check"></i><b>1.2.1</b> Windows:</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#macos"><i class="fa fa-check"></i><b>1.2.2</b> macOS:</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#linux"><i class="fa fa-check"></i><b>1.2.3</b> Linux:</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.7</b> data.table</a>
+<li class="chapter" data-level="1.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#sobre-o-r"><i class="fa fa-check"></i><b>1.3</b> Sobre o R</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.7.1</b> O que é o <code>:=</code>?</a></li>
-<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.7.2</b> Exemplos de Uso</a></li>
+<li class="chapter" data-level="1.3.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-são-algoritmos"><i class="fa fa-check"></i><b>1.3.1</b> O que são algoritmos?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-uma-linguagem-de-programação"><i class="fa fa-check"></i><b>1.3.2</b> O que é uma linguagem de programação?</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#r"><i class="fa fa-check"></i><b>1.3.3</b> R 📊</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#manipulação-de-dados"><i class="fa fa-check"></i><b>1.8</b> Manipulação de dados</a></li>
+<li class="chapter" data-level="1.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#fundamentos-da-linguagem"><i class="fa fa-check"></i><b>1.4</b> Fundamentos da linguagem</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#boas-práticas-de-codar"><i class="fa fa-check"></i><b>1.4.1</b> Boas práticas de codaR</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dúvidas"><i class="fa fa-check"></i><b>1.4.2</b> ?Dúvidas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#tipos-de-dados"><i class="fa fa-check"></i><b>1.4.3</b> Tipos de dados</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#operadores"><i class="fa fa-check"></i><b>1.4.4</b> Operadores</a></li>
+<li class="chapter" data-level="1.4.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conversão-de-tipos"><i class="fa fa-check"></i><b>1.4.5</b> Conversão de tipos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.5</b> Gerenciamento de pacotes</a></li>
+<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-da-dados"><i class="fa fa-check"></i><b>1.6</b> Importação e exportação da dados</a></li>
+<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.7</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.7.1</b> O que é o <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.7.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.8</b> data.table</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.8.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="1.8.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.8.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#manipulação-de-dados"><i class="fa fa-check"></i><b>1.9</b> Manipulação de dados</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>2</b> Dendrometria</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>2.1</b> Diâmetros</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>2.1.1</b> Histogramas de distribuição diamétrica</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="dendrometria.html"><a href="dendrometria.html#alturas"><i class="fa fa-check"></i><b>2.2</b> Alturas</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="dendrometria.html"><a href="dendrometria.html#altura-dominante"><i class="fa fa-check"></i><b>2.2.1</b> Altura Dominante</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>3</b> Inventário florestal</a>
@@ -161,7 +240,13 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>3.2.4</b> Parâmetros Fitossociológicos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="será.html"><a href="será.html"><i class="fa fa-check"></i><b>4</b> Será?</a></li>
+<li class="chapter" data-level="4" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html"><i class="fa fa-check"></i><b>4</b> Manejo de Florestas Plantadas</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#altura-dominante"><i class="fa fa-check"></i><b>4.1</b> Altura Dominante</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>4.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
+</ul></li>
+</ul></li>
 <li><a href="section.html#section" id="toc-section"></a></li>
 </ul>
 
