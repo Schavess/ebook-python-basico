@@ -20,7 +20,7 @@ alturas
 altura-dominante
 calculando-altura-dominante-por-parcela-assman
 inventário-florestal
-levantamento-fitossociológico
+fitossociologia-teoria
 estrutura-horizontal
 densidade-absoluta
 densidade-relativa
@@ -42,7 +42,7 @@ posição-sociológica-relativa
 valor-de-importância-absoluta-horizontal-vertical
 valor-de-importância-relativa-horizontal-vertical
 regeneração
-aplicação
+fitossociologia-aplicação
 consistência-dos-dados
 distribuição-diamétrica-geral
 distribuição-por-espécies-boxplots

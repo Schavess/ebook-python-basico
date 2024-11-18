@@ -1,55 +1,62 @@
 # Inventário florestal
 
-## Levantamento Fitossociológico
+## Fitossociologia (Teoria)
+Os engenheiros florestais realizam estudos de fitossociologia para compreender a composição, a estrutura e as interações das comunidades vegetais em um determinado ecossistema. Esses estudos permitem identificar espécies dominantes, associadas e raras, além de avaliar a biodiversidade e as dinâmicas ecológicas do ambiente. Essas informações são essenciais para planejar o manejo sustentável, recuperar áreas degradadas e conservar ecossistemas naturais.
+
+Os engenheiros florestais realizam estudos de fitossociologia para determinar tipologias vegetais e fitofisionomias, aspectos fundamentais em processos como a Autorização para Exploração Vegetal (AUTEX) e os Programas de Recuperação Ambiental (PRA).
 
 ### Estrutura horizontal
 
 #### Densidade absoluta
+Refere-se ao número de indivíduos de uma espécie \(i\) (\(n_i\)) por unidade de área (\(A\)), expressando a abundância total da espécie na comunidade.
+
 $$
 DA_i = \frac{n_i}{A}
 $$
 
 #### Densidade relativa
+É a proporção da densidade absoluta de uma espécie (\(DA_i\)) em relação à soma das densidades absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie em termos de abundância.
+
 $$
 DR_i = \frac{DA_i}{\sum_{i=1}^s (DA_i)}
 $$
 
 #### Dominância absoluta
+Calcula a área basal total (\(G_i\)) de todos os indivíduos de uma espécie por unidade de área (\(A\)). Mede o espaço físico ocupado por uma espécie no ambiente.
+
 $$
 DoA_i = \frac{\sum_{j=1}^{n_i} g_j}{A} = \frac{G_i}{A}
 $$
 
 #### Dominância relativa
+Representa a proporção da dominância absoluta de uma espécie (\(DoA_i\)) em relação à dominância total (\(G_T\)) de todas as espécies, expressa em porcentagem. Indica a importância relativa em termos de área ocupada.
+
 $$
 DoR_i = \frac{DoA_i}{\sum_{i=1}^{S} (DoA_i)}*100=\frac{G_i}{G_T}*100
 $$
 
 #### Frequência Absoluta
+É a relação entre o número de unidades amostrais onde a espécie está presente (\(U_i\)) e o total de unidades amostrais (\(U_T\)), expressa em porcentagem. Mede a distribuição da espécie no espaço amostrado.
+
 $$
 FA_i = \frac{U_i}{U_T}*100
 $$
 
 #### Frequência Relativa
+Corresponde à frequência absoluta de uma espécie (\(FA_i\)) em relação à soma das frequências absolutas de todas as espécies, expressa em porcentagem. Avalia a importância espacial relativa da espécie.
+
 $$
 FR_i = \frac{FA_i}{\sum_{i=1}^{S}(FA_i)}*100
 $$
 
 #### Valor de Cobertura
-$$
-VC_i = DR_i + DoR_i
-$$
-
-#### Porcentagem de Cobertura
-$$
-PC_i = \frac{DR_i + DoR_i}{2}
-$$
-
-#### Valor de Cobertura
+É a soma da densidade relativa (\(DR_i\)), da dominância relativa (\(DoR_i\)) e, em alguns casos, da frequência relativa (\(FR_i\)), dependendo da metodologia. Reflete a contribuição total de uma espécie na comunidade.
 $$
 VC_i = DR_i + DoR_i + FR_i
 $$
 
 #### Porcentagem de Cobertura (Horizontal)
+É a média ponderada de densidade relativa, dominância relativa e, opcionalmente, frequência relativa. A interpretação pode variar entre o cálculo bidimensional (\(DR + DoR\)) ou tridimensional (\(DR + DoR + FR\)), dependendo do objetivo.
 $$
 PC_i = \frac{DR_i + DoR_i + FR_i}{3}
 $$
@@ -57,33 +64,41 @@ $$
 ### Diversidade
 
 #### Índice de Shannom
+Quantifica a diversidade da comunidade, considerando tanto a abundância (\(p_i\)) quanto a equitabilidade das espécies. Valores maiores indicam maior diversidade e distribuição equitativa entre as espécies.
+
 $$
 H' = -\sum_{i=1}^S p_i \ln(p_i)
 $$
 
 ### Agregação
 #### Índice de Morisita
+Mede o padrão de distribuição espacial das espécies. Valores \(I_\delta > 1\) indicam agregação, \(I_\delta = 1\) distribuição ao acaso, e \(I_\delta < 1\) distribuição uniforme.
+
 $$
 I_\delta = \frac{n \sum_{i=1}^S n_i (n_i - 1)}{N (N - 1)}
 $$
 
 ### Estrutura vertical
 #### Posição Sociológica Absoluta
+Representa a distribuição vertical de uma espécie na comunidade, considerando a contribuição proporcional das classes de altura.
 $$
 PSA_i = \sum_{j=1}^{J}\left(\frac{N_j}{N} \cdot N_{ij}\right)
 $$
 
 #### Posição Sociológica Relativa
+É a proporção da posição sociológica absoluta de uma espécie (\(PSA_i\)) em relação à soma das posições sociológicas absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie na estrutura vertical.
 $$
 PSR_i = \frac{PSA_i}{\sum_{i=1}^{S} PSA_i} \cdot 100
 $$
 
 #### Valor de Importância Absoluta (Horizontal + Vertical)
+Combina os índices horizontais (densidade relativa, dominância relativa e frequência relativa) com a posição sociológica absoluta para refletir a contribuição global de uma espécie na comunidade.
 $$
 VI_a = DR_i + DoR_i + FR_i + PSA_i
 $$
 
 #### Valor de Importância Relativa (Horizontal + Vertical)
+É a média ponderada dos índices horizontais e verticais. Indica a importância relativa de uma espécie considerando a estrutura horizontal e vertical.
 $$
 VI_r = \frac{DR_i + DoR_i + FR_i + PSA_i}{4}
 $$
@@ -94,7 +109,7 @@ $$
 VIA_r = \frac{DR_i + DoR_i + FR_i + PSA_i + RN_i}{5}
 $$
 
-## Aplicação
+## Fitossociologia (Aplicação)
 
 
 Dados exemplo:
