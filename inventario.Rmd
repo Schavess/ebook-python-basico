@@ -2,62 +2,392 @@
 
 ## Levantamento Fitossociológico
 
-### Densidade absoluta
+### Estrutura horizontal
+
+#### Densidade absoluta
 $$
 DA_i = \frac{n_i}{A}
 $$
 
-### Densidade relativa
+#### Densidade relativa
 $$
 DR_i = \frac{DA_i}{\sum_{i=1}^s (DA_i)}
 $$
 
-### Dominância absoluta
+#### Dominância absoluta
 $$
 DoA_i = \frac{\sum_{j=1}^{n_i} g_j}{A} = \frac{G_i}{A}
 $$
 
-### Dominância relativa
+#### Dominância relativa
 $$
 DoR_i = \frac{DoA_i}{\sum_{i=1}^{S} (DoA_i)}*100=\frac{G_i}{G_T}*100
 $$
 
-### Frequência Absoluta
+#### Frequência Absoluta
 $$
 FA_i = \frac{U_i}{U_T}*100
 $$
 
-### Frequência Relativa
+#### Frequência Relativa
 $$
 FR_i = \frac{FA_i}{\sum_{i=1}^{S}(FA_i)}*100
 $$
 
-### Valor de Cobertura
+#### Valor de Cobertura
 $$
 VC_i = DR_i + DoR_i
 $$
 
-### Porcentagem de Cobertura
+#### Porcentagem de Cobertura
 $$
 PC_i = \frac{DR_i + DoR_i}{2}
 $$
 
-### Valor de Importância
+#### Valor de Cobertura
 $$
 VC_i = DR_i + DoR_i + FR_i
 $$
 
-### Porcentagem de Importância
+#### Porcentagem de Cobertura (Horizontal)
 $$
 PC_i = \frac{DR_i + DoR_i + FR_i}{3}
 $$
 
-### Índice de Shannom
+### Diversidade
+
+#### Índice de Shannom
 $$
 H' = -\sum_{i=1}^S p_i \ln(p_i)
 $$
 
-### Índice de Morisita
+### Agregação
+#### Índice de Morisita
 $$
 I_\delta = \frac{n \sum_{i=1}^S n_i (n_i - 1)}{N (N - 1)}
 $$
+
+### Estrutura vertical
+#### Posição Sociológica Absoluta
+$$
+PSA_i = \sum_{j=1}^{J}\left(\frac{N_j}{N} \cdot N_{ij}\right)
+$$
+
+#### Posição Sociológica Relativa
+$$
+PSR_i = \frac{PSA_i}{\sum_{i=1}^{S} PSA_i} \cdot 100
+$$
+
+#### Valor de Importância Absoluta (Horizontal + Vertical)
+$$
+VI_a = DR_i + DoR_i + FR_i + PSA_i
+$$
+
+#### Valor de Importância Relativa (Horizontal + Vertical)
+$$
+VI_r = \frac{DR_i + DoR_i + FR_i + PSA_i}{4}
+$$
+
+### Regeneração
+Pode-se usar os mesmos índices anteriores de estrutura horizontal, vertical, etc. O resultado final será o Indicador de Regeneração Natural que poderá ser usado para calcular o **Valor de Importância Ampliado**:
+$$
+VIA_r = \frac{DR_i + DoR_i + FR_i + PSA_i + RN_i}{5}
+$$
+
+## Aplicação
+
+
+Dados exemplo:
+[Baixar dados](data/Dados_Reserva_Exemplo.xlsx)
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+
+BD <- read_excel("data/Dados_Reserva_Exemplo.xlsx")
+
+
+library(kableExtra)
+
+# Exibir o data.frame com formatação extra
+library(DT)
+datatable(BD, options = list(columnDefs = list(list(orderable = FALSE, targets = "_all"))))
+```
+<br>
+
+### Consistência dos dados
+```{r}
+items_excluir <- c("SP", "Morta", "PP", "PS", "Repetida", "Repitida", "Morfoespécie 7", "Morfoespécie 8")
+BD_ <- BD[!BD$`Nome Científico` %in% items_excluir, ]
+
+BD_$DAP <- as.numeric(BD_$DAP)
+BD_$`H T` <- as.numeric(BD_$`H T`)
+```
+
+### Distribuição diamétrica geral
+```{r}
+intervalo <- 5
+min_d <- floor(min(BD_$DAP, na.rm = TRUE))
+max_d <- ceiling(max(BD_$DAP, na.rm = TRUE))
+intervalos <- seq(0, max_d + intervalo, by = intervalo)
+hist(BD_$DAP, breaks = intervalos, main = NULL, xlab = "Diâmetro (cm)", ylab = "Frequência")
+```
+<br>
+
+### Distribuição por espécies (boxplots)
+#### Boxplot dos DAPs
+```{r}
+require(ggplot2)
+especies <- unique(BD_$`Nome Científico`)
+
+p <- ggplot(BD_, aes(x = reorder(`Nome Científico`, DAP, median), y = DAP, fill = `Nome Científico`)) +
+  geom_boxplot(outlier.shape = NA) +  # Boxplot sem os outliers
+  theme_minimal(base_size = 10) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+    legend.position = "none"  # Remover legenda, se preferir
+  ) +
+  labs(title = "Distribuição dos DAPs por Espécie", 
+       x = "Espécies", y = "DAP (cm)")
+
+print(p)
+```
+
+#### boxplot das alturas totais
+
+```{r}
+
+p <- ggplot(BD_, aes(x = reorder(`Nome Científico`, `H T`, median), y = `H T`, fill = `Nome Científico`)) +
+  geom_boxplot(outlier.shape = NA) +  # Boxplot sem os outliers
+  theme_minimal(base_size = 10) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 6),
+    legend.position = "none"  # Remover legenda, se preferir
+  ) +
+  labs(title = "Distribuição das HTs por Espécie", 
+       x = "Espécies", y = "HT (m)")
+
+print(p)
+```
+<br>
+
+### Parâmetros Fitossociológicos
+
+#### Estrutura horizontal
+
+```{r}
+library(dplyr)
+library(data.table)
+
+EH <- function(species, sample, d, A) {
+    DT <- data.table(species = species, sample = sample, d = d)
+    DT <- DT[, `:=`(gi = pi * d^2 / 40000)]
+    Ui <- unique(DT, by = c("species", "sample"))[, .(Ui = .N), by = "species"]
+    ni <- DT[, .(ni = .N, Gi = sum(gi)), by = "species"]
+    ni <- ni[Ui, on = "species"]
+    ni[, DAi := ni / A][, DRi := (DAi / sum(DAi)) * 100]
+    ni[, DoAi := Gi / A][, DoRi := (DoAi / sum(DoAi)) * 100]
+    ni[, FAi := (Ui / length(unique(DT$sample))) * 100][, FRi := (FAi / sum(FAi)) * 100]
+
+    num_cols <- names(ni)[sapply(ni, is.numeric)]
+    ni[, (num_cols) := lapply(.SD, round, 4), .SDcols = num_cols]
+
+    setnames(ni, old = "species", new = "Espécies")
+
+    return(ni)
+}
+
+EH_result <- EH(BD_$`Nome Científico`, BD_$Parc, BD_$DAP, A = 0.8)
+```
+Resultados:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DT)
+
+datatable(
+  EH_result, 
+  options = list(
+    scrollX = TRUE,                             # Ativar scroll horizontal
+    columnDefs = list(
+      list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
+      list(className = "dt-center", targets = "_all") # Centralizar conteúdo
+    ),
+    pageLength = 10                             # Exibir 50 linhas por página (opcional)
+  ),
+)
+```
+<br>
+
+#### Índice de Shannon (Diversidade)
+
+```{r}
+shannon <- function(species_counts) {
+  pi <- species_counts / sum(species_counts)
+  -sum(pi * log(pi), na.rm = TRUE)
+}
+
+H <- shannon(EH_result$ni)
+cat("Índice de Shannon:", H, "\n")
+
+```
+#### Índice de Morisita (Agregação)
+
+```{r}
+morisita <- function(species_counts) {
+  N <- sum(species_counts)
+  n <- length(species_counts)
+  num <- n * sum(species_counts * (species_counts - 1))
+  den <- N * (N - 1)
+  num / den
+}
+
+I_delta <- morisita(EH_result$ni)
+cat("Índice de Morisita:", I_delta, "\n")
+
+```
+#### Estrutura vertical e classificação em estratos
+
+```{r}
+BD_$`H T` <- as.numeric(BD_$`H T`)
+meanH <- mean(BD_$`H T`, na.rm = TRUE)
+sdH <- sd(BD_$`H T`, na.rm = TRUE)
+
+# Calcular estrato
+BD_$estrato <- case_when(
+  BD_$`H T` < (meanH - sdH) ~ "Inferior",
+  BD_$`H T` >= (meanH - sdH) & BD_$`H T` <= (meanH + sdH) ~ "Médio",
+  BD_$`H T` > (meanH + sdH) ~ "Superior"
+)
+
+# Calcular PSAi e PSRi
+resultados <- BD_ %>%
+  group_by(estrato) %>%
+  mutate(
+    Nj = n(),                     # Total de indivíduos no estrato
+    N = nrow(BD_),                # Total de indivíduos na floresta
+    Pj = Nj / N                   # Peso do estrato no total
+  ) %>%
+  group_by(`Nome Científico`, estrato) %>%
+  summarise(
+    Nji = n(),                    # Número de indivíduos da espécie no estrato
+    Nj = first(Nj),               # Total de indivíduos no estrato
+    Pj = first(Pj),               # Peso do estrato
+    PSAi_partial = (Nji / Nj) * Pj, # Contribuição parcial para PSAi
+    .groups = "drop"
+  ) %>%
+  group_by(`Nome Científico`) %>%
+  summarise(
+    PSAi = sum(PSAi_partial, na.rm = TRUE)        # Soma das contribuições parciais para PSAi
+  ) %>%
+  ungroup() %>%
+  mutate(
+    PSRi = (PSAi / sum(PSAi, na.rm = TRUE)) * 100 # PSRi como porcentagem global
+  )
+
+# Fusão das tabelas com left_join
+EH_result <- EH_result %>%
+  left_join(resultados, by = c("Espécies" = "Nome Científico"))
+
+# Adicionando o Valor de Importância Ampliado (VIA)
+required_cols <- c("DAi", "DoAi", "FAi", "PSAi", "DRi", "DoRi", "FRi", "PSRi")
+missing_cols <- required_cols[!required_cols %in% names(EH_result)]
+
+if (length(missing_cols) > 0) {
+  stop(paste("Colunas ausentes em `EH_result`: ", paste(missing_cols, collapse = ", ")))
+}
+
+EH_result <- EH_result %>%
+  mutate(
+    VIAa = (DAi + DoAi + FAi + PSAi) / 4,  # Cálculo do VIA absoluto
+  )
+
+# Visualizar os resultados finais com arredondamento
+resultado_final <- EH_result %>%
+  arrange(desc(VIAa)) %>%
+  mutate(across(where(is.numeric), round, 4))
+
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DT)
+
+datatable(
+  resultado_final, 
+  options = list(
+    scrollX = TRUE,                             # Ativar scroll horizontal
+    columnDefs = list(
+      list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
+      list(className = "dt-center", targets = "_all") # Centralizar conteúdo
+    ),
+    pageLength = 10                             # Exibir 50 linhas por página (opcional)
+  ),
+)
+```
+<!-- 
+## Processo de Amostragem em Conglomerados
+
+A amostragem em conglomerados consiste em dividir a população em grupos heterogêneos chamados de **conglomerados** e selecionar uma amostra de conglomerados em vez de indivíduos. Abaixo estão as principais fórmulas associadas ao processo:
+
+### Tamanho da Amostra de Conglomerados
+
+Para determinar o tamanho da amostra de conglomerados (\(n_c\)):
+$$
+n_c = \frac{N \cdot S^2}{n \cdot \bar{S_c}^2}
+$$
+
+Onde:
+- \(N\): Número total de indivíduos na população.
+- \(n\): Tamanho da amostra no nível individual.
+- \(S^2\): Variância da população.
+- \(\bar{S_c}^2\): Variância média dentro dos conglomerados.
+
+---
+
+### Estimativa da Média Populacional
+
+A média populacional (\(\bar{y}\)) é estimada como:
+$$
+\bar{y} = \frac{1}{n_c} \sum_{c=1}^{n_c} \bar{y}_c
+$$
+
+Onde:
+- \(n_c\): Número de conglomerados amostrados.
+- \(\bar{y}_c\): Média da variável de interesse no conglomerado \(c\).
+
+---
+
+### Variância da Estimativa da Média
+
+A variância da média populacional (\(V(\bar{y})\)) é calculada como:
+$$
+V(\bar{y}) = \frac{1}{n_c(n_c - 1)} \sum_{c=1}^{n_c} (\bar{y}_c - \bar{y})^2
+$$
+
+---
+
+### Proporção Populacional
+
+A proporção populacional (\(\hat{P}\)) pode ser estimada como:
+$$
+\hat{P} = \frac{1}{N} \sum_{c=1}^{n_c} \sum_{i=1}^{n_c} y_{ci}
+$$
+
+Onde:
+- \(y_{ci}\): Valor binário (0 ou 1) do indivíduo \(i\) no conglomerado \(c\).
+- \(N\): Tamanho total da população.
+
+---
+
+### Intervalo de Confiança
+
+O intervalo de confiança para a média é dado por:
+$$
+IC = \bar{y} \pm Z \cdot \sqrt{V(\bar{y})}
+$$
+
+Onde:
+- \(Z\): Valor crítico da distribuição normal (ex.: \(Z = 1.96\) para 95% de confiança).
+- \(V(\bar{y})\): Variância da média populacional.
+
+
+## Aplicação -->

@@ -1,10 +1,10 @@
 bookdown::gitbook:
   highlight: "zenburn"
   css: style.css
-  split_by: chapter+number
+  split_by: chapter
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <div class="toc-header">
             <div class="image-container">

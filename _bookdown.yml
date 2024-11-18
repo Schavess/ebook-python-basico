@@ -1,4 +1,5 @@
 book_filename: "Entre_Florestas_e_Dados"
+delete_merged_file: true
 language:
   label:
     fig: "Figura "
