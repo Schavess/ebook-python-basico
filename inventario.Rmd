@@ -1,3 +1,10 @@
+---
+nocite: |
+  @verly2020cerradao
+split_bib: false
+---
+
+
 # Inventário florestal
 
 ## Fitossociologia (Teoria)
@@ -110,6 +117,8 @@ VIA_r = \frac{DR_i + DoR_i + FR_i + PSA_i + RN_i}{5}
 $$
 
 ## Fitossociologia (Aplicação)
+
+De acordo com o estudo realizado por Verly et al. (2020), a caracterização florística defina para a Reserva Legal do IFMT foi de um fragmento Cerradão em estado de conservação adequada.
 
 
 Dados exemplo:
@@ -392,71 +401,5 @@ if (knitr::is_latex_output()) {
 <br>
 Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.
 
-<!-- 
-## Processo de Amostragem em Conglomerados
-
-A amostragem em conglomerados consiste em dividir a população em grupos heterogêneos chamados de **conglomerados** e selecionar uma amostra de conglomerados em vez de indivíduos. Abaixo estão as principais fórmulas associadas ao processo:
-
-### Tamanho da Amostra de Conglomerados
-
-Para determinar o tamanho da amostra de conglomerados (\(n_c\)):
-$$
-n_c = \frac{N \cdot S^2}{n \cdot \bar{S_c}^2}
-$$
-
-Onde:
-- \(N\): Número total de indivíduos na população.
-- \(n\): Tamanho da amostra no nível individual.
-- \(S^2\): Variância da população.
-- \(\bar{S_c}^2\): Variância média dentro dos conglomerados.
-
----
-
-### Estimativa da Média Populacional
-
-A média populacional (\(\bar{y}\)) é estimada como:
-$$
-\bar{y} = \frac{1}{n_c} \sum_{c=1}^{n_c} \bar{y}_c
-$$
-
-Onde:
-- \(n_c\): Número de conglomerados amostrados.
-- \(\bar{y}_c\): Média da variável de interesse no conglomerado \(c\).
-
----
-
-### Variância da Estimativa da Média
-
-A variância da média populacional (\(V(\bar{y})\)) é calculada como:
-$$
-V(\bar{y}) = \frac{1}{n_c(n_c - 1)} \sum_{c=1}^{n_c} (\bar{y}_c - \bar{y})^2
-$$
-
----
-
-### Proporção Populacional
-
-A proporção populacional (\(\hat{P}\)) pode ser estimada como:
-$$
-\hat{P} = \frac{1}{N} \sum_{c=1}^{n_c} \sum_{i=1}^{n_c} y_{ci}
-$$
-
-Onde:
-- \(y_{ci}\): Valor binário (0 ou 1) do indivíduo \(i\) no conglomerado \(c\).
-- \(N\): Tamanho total da população.
-
----
-
-### Intervalo de Confiança
-
-O intervalo de confiança para a média é dado por:
-$$
-IC = \bar{y} \pm Z \cdot \sqrt{V(\bar{y})}
-$$
-
-Onde:
-- \(Z\): Valor crítico da distribuição normal (ex.: \(Z = 1.96\) para 95% de confiança).
-- \(V(\bar{y})\): Variância da média populacional.
-
-
-## Aplicação -->
+**Referências**
+<br>

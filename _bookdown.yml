@@ -4,9 +4,10 @@ language:
   label:
     fig: "Figura "
     tab: "Tabela "
-split_by: section
+split_by: subsection
+bibliography: book.bib
+split_bib: false
 toc_depth: 3
-split_bib: true
 rmd_files:
   - index.Rmd
   - introducao_ao_r.Rmd

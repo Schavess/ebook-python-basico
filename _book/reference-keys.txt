@@ -29,8 +29,6 @@ dominância-relativa
 frequência-absoluta
 frequência-relativa
 valor-de-cobertura
-porcentagem-de-cobertura
-valor-de-cobertura-1
 porcentagem-de-cobertura-horizontal
 diversidade
 índice-de-shannom

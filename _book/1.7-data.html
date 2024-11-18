@@ -5,7 +5,7 @@
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="3 Inventário florestal | Entre Florestas e Dados" />
+<meta property="og:title" content="1.7 data.table | Entre Florestas e Dados" />
 <meta property="og:type" content="book" />
 <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
 <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
@@ -23,7 +23,7 @@ MathJax.Hub.Config({
 
 <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R.">
 
-<title>3 Inventário florestal | Entre Florestas e Dados</title>
+<title>1.7 data.table | Entre Florestas e Dados</title>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -243,12 +243,54 @@ details > summary {
 </div>
 <div class="row">
 <div class="col-sm-12">
-<div id="inventário-florestal" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Inventário florestal</h1>
+<div id="data.table" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> data.table</h2>
+<div id="o-que-é-o-1" class="section level3" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> O que é o <code>:=</code>?</h3>
+<p>O operador <code>:=</code> é chamado de operador de atribuição por referência.
+Ele pertence ao pacote data.table e é usado para adicionar ou modificar colunas em um data.table.
+O <code>:=</code> é mais eficiente do que usar <code>&lt;-</code> em um data.table, pois faz as modificações “por referência”, o que significa que não cria cópias desnecessárias dos dados, sendo muito mais rápido e eficiente em termos de memória.</p>
+</div>
+<div id="exemplos-de-uso-1" class="section level3" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> Exemplos de Uso</h3>
+<p>Vamos usar o pacote data.table para entender como o <code>:=</code>
+funciona.</p>
+<p>Primeiro, vamos criar um data.table com alguns dados fictícios:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="1.7-data.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb3-2"><a href="1.7-data.html#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="1.7-data.html#cb3-3" tabindex="-1"></a><span class="co"># Criação de um data.table</span></span>
+<span id="cb3-4"><a href="1.7-data.html#cb3-4" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb3-5"><a href="1.7-data.html#cb3-5" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb3-6"><a href="1.7-data.html#cb3-6" tabindex="-1"></a>  <span class="at">valor =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
+<span id="cb3-7"><a href="1.7-data.html#cb3-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Adicionando uma Nova Coluna com <code>:=</code></p>
+<p>Podemos adicionar uma nova coluna chamada valor_2 que seja o dobro do valor existente na coluna valor:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="1.7-data.html#cb4-1" tabindex="-1"></a>DT[, valor_2 <span class="sc">:=</span> valor <span class="sc">*</span> <span class="dv">2</span>]</span>
+<span id="cb4-2"><a href="1.7-data.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="1.7-data.html#cb4-3" tabindex="-1"></a><span class="fu">print</span>(DT)</span></code></pre></div>
+<pre><code>##    id valor valor_2
+## 1:  1    10      20
+## 2:  2    15      30
+## 3:  3    20      40
+## 4:  4    25      50
+## 5:  5    30      60</code></pre>
+<p><br></p>
+<p>Modificando uma Coluna Existente com <code>:=</code></p>
+<p>Podemos também modificar uma coluna existente. Vamos modificar a coluna valor_2 para ser o triplo do valor da coluna valor:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="1.7-data.html#cb6-1" tabindex="-1"></a>DT[, valor_2 <span class="sc">:=</span> valor <span class="sc">*</span> <span class="dv">3</span>]</span>
+<span id="cb6-2"><a href="1.7-data.html#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="1.7-data.html#cb6-3" tabindex="-1"></a><span class="fu">print</span>(DT)</span></code></pre></div>
+<pre><code>##    id valor valor_2
+## 1:  1    10      30
+## 2:  2    15      45
+## 3:  3    20      60
+## 4:  4    25      75
+## 5:  5    30      90</code></pre>
+</div>
 </div>
 <p style="text-align: center;">
-<a href="2.2-alturas.html"><button class="btn btn-default">Previous</button></a>
-<a href="3.1-fitossociologia-teoria.html"><button class="btn btn-default">Next</button></a>
+<a href="1.6-pipe-do-dplyr.html"><button class="btn btn-default">Previous</button></a>
+<a href="1.8-manipulação-de-dados.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>
