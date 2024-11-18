@@ -108,9 +108,19 @@ BD <- read_excel("data/Dados_Reserva_Exemplo.xlsx")
 
 library(kableExtra)
 
-# Exibir o data.frame com formatação extra
-library(DT)
-datatable(BD, options = list(columnDefs = list(list(orderable = FALSE, targets = "_all"))))
+if (knitr::is_html_output()) {
+  datatable(BD, options = list(columnDefs = list(list(orderable = FALSE, targets = "_all"))))
+}
+
+# Exibir tabela estática formatada para PDF
+if (knitr::is_latex_output()) {
+  knitr::kable(BD, format = "latex", booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    column_spec(1, width = "3cm") %>%
+    column_spec(2, width = "5cm") %>%
+    landscape()
+
+}
 ```
 <br>
 
@@ -203,17 +213,29 @@ Resultados:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DT)
 
-datatable(
-  EH_result, 
-  options = list(
-    scrollX = TRUE,                             # Ativar scroll horizontal
-    columnDefs = list(
-      list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
-      list(className = "dt-center", targets = "_all") # Centralizar conteúdo
-    ),
-    pageLength = 10                             # Exibir 50 linhas por página (opcional)
-  ),
-)
+# Para HTML: Tabela interativa
+if (knitr::is_html_output()) {
+  datatable(
+    EH_result, 
+    options = list(
+      scrollX = TRUE,                             # Ativar scroll horizontal
+      columnDefs = list(
+        list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
+        list(className = "dt-center", targets = "_all") # Centralizar conteúdo
+      ),
+      pageLength = 10                             # Exibir 10 linhas por página
+    )
+  )
+}
+
+# Para PDF: Tabela estática formatada
+if (knitr::is_latex_output()) {
+  knitr::kable(EH_result, format = "latex", booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "scale_down")) %>%
+    column_spec(1, width = "3cm") %>%
+    column_spec(2, width = "5cm") %>%
+    landscape()
+}
 ```
 <br>
 
@@ -311,17 +333,30 @@ resultado_final <- EH_result %>%
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DT)
 
-datatable(
-  resultado_final, 
-  options = list(
-    scrollX = TRUE,                             # Ativar scroll horizontal
-    columnDefs = list(
-      list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
-      list(className = "dt-center", targets = "_all") # Centralizar conteúdo
-    ),
-    pageLength = 10                             # Exibir 50 linhas por página (opcional)
-  ),
-)
+# Para HTML: Tabela interativa
+if (knitr::is_html_output()) {
+  datatable(
+    resultado_final, 
+    options = list(
+      scrollX = TRUE,                             # Ativar scroll horizontal
+      columnDefs = list(
+        list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
+        list(className = "dt-center", targets = "_all") # Centralizar conteúdo
+      ),
+      pageLength = 10                             # Exibir 10 linhas por página
+    )
+  )
+}
+
+# Para PDF: Tabela estática formatada
+if (knitr::is_latex_output()) {
+  knitr::kable(resultado_final, format = "latex", booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "scale_down")) %>%
+  column_spec(1, width = "3cm") %>%
+  column_spec(2, width = "5cm") %>%
+  landscape()
+
+}
 ```
 <!-- 
 ## Processo de Amostragem em Conglomerados
