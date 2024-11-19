@@ -4,6 +4,7 @@ bookdown::gitbook:
   split_by: chapter
   pandoc_args: ["--metadata", "nocite: ''"]
   config:
+    favicon: "images/FaviconEntreFlorestasEDados.ico"
     title: "Entre Florestas e Dados"
     toc:
       collapse: section

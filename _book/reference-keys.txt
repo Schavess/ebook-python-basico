@@ -1,9 +1,12 @@
 introdução-ao-r
 instalação-do-r
-instalação-do-rstudio
 windows
 macos
 linux
+instalação-do-rstudio
+windows-1
+macos-1
+linux-1
 sobre-o-r
 o-que-são-algoritmos
 o-que-é-uma-linguagem-de-programação
@@ -15,7 +18,6 @@ tipos-de-dados
 operadores
 conversão-de-tipos
 estruturas-de-controle
-estruturas-de-controle-1
 gerenciamento-de-pacotes
 o-que-são-pacotes
 instalando-pacotes
@@ -34,7 +36,6 @@ listando-todos-os-pacotes
 verificando-se-um-pacote-está-instalado
 repositórios
 ferramentas-avançadas-para-gerenciamento
-conclusão
 importação-e-exportação-de-dados
 importando-dados
 arquivos-csv
@@ -47,7 +48,6 @@ exportando-para-csv
 exportando-para-excel
 exportando-para-outros-formatos
 dicas-e-boas-práticas
-conclusão-1
 funções-da-família-apply-no-r
 apply
 lapply
@@ -56,7 +56,6 @@ vapply
 mapply
 tapply
 by
-conclusão-2
 pipe-do-dplyr
 o-que-é-o
 exemplos-de-uso
@@ -103,7 +102,3 @@ estrutura-vertical-e-classificação-em-estratos
 manejo-de-florestas-plantadas
 altura-dominante
 calculando-altura-dominante-por-parcela-assman
-windows-1
-macos-1
-linux-1
-section
