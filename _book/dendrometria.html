@@ -51,6 +51,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -121,6 +131,29 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -156,21 +189,68 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html"><i class="fa fa-check"></i><b>1</b> Introdução ao R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1</b> Instalação do R</a></li>
-<li class="chapter" data-level="1.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#fundamentos-da-linguagem"><i class="fa fa-check"></i><b>1.3</b> Fundamentos da linguagem</a></li>
-<li class="chapter" data-level="1.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.4</b> Gerenciamento de pacotes</a></li>
-<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-da-dados"><i class="fa fa-check"></i><b>1.5</b> Importação e exportação da dados</a></li>
-<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.6</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
+<li class="chapter" data-level="1.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.2</b> Instalação do RStudio</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.6.1</b> O que é o <code>%&gt;%</code>?</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.6.2</b> Exemplos de Uso</a></li>
+<li class="chapter" data-level="1.2.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#windows"><i class="fa fa-check"></i><b>1.2.1</b> Windows:</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#macos"><i class="fa fa-check"></i><b>1.2.2</b> macOS:</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#linux"><i class="fa fa-check"></i><b>1.2.3</b> Linux:</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.7</b> data.table</a>
+<li class="chapter" data-level="1.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#sobre-o-r"><i class="fa fa-check"></i><b>1.3</b> Sobre o R</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.7.1</b> O que é o <code>:=</code>?</a></li>
-<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.7.2</b> Exemplos de Uso</a></li>
+<li class="chapter" data-level="1.3.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-são-algoritmos"><i class="fa fa-check"></i><b>1.3.1</b> O que são algoritmos?</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-uma-linguagem-de-programação"><i class="fa fa-check"></i><b>1.3.2</b> O que é uma linguagem de programação?</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#r"><i class="fa fa-check"></i><b>1.3.3</b> R 📊</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#manipulação-de-dados"><i class="fa fa-check"></i><b>1.8</b> Manipulação de dados</a></li>
+<li class="chapter" data-level="1.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#fundamentos-da-linguagem"><i class="fa fa-check"></i><b>1.4</b> Fundamentos da linguagem</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#boas-práticas-de-codar"><i class="fa fa-check"></i><b>1.4.1</b> Boas práticas de codaR</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dúvidas"><i class="fa fa-check"></i><b>1.4.2</b> ?Dúvidas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#tipos-de-dados"><i class="fa fa-check"></i><b>1.4.3</b> Tipos de dados</a></li>
+<li class="chapter" data-level="1.4.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#operadores"><i class="fa fa-check"></i><b>1.4.4</b> Operadores</a></li>
+<li class="chapter" data-level="1.4.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conversão-de-tipos"><i class="fa fa-check"></i><b>1.4.5</b> Conversão de tipos</a></li>
+<li class="chapter" data-level="1.4.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#estruturas-de-controle"><i class="fa fa-check"></i><b>1.4.6</b> Estruturas de controle</a></li>
+<li class="chapter" data-level="1.4.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#estruturas-de-controle-1"><i class="fa fa-check"></i><b>1.4.7</b> Estruturas de Controle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.5</b> Gerenciamento de Pacotes 📦</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-são-pacotes"><i class="fa fa-check"></i><b>1.5.1</b> O que são pacotes?</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalando-pacotes"><i class="fa fa-check"></i><b>1.5.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.5.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#atualizando-pacotes"><i class="fa fa-check"></i><b>1.5.4</b> Atualizando pacotes</a></li>
+<li class="chapter" data-level="1.5.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#removendo-pacotes"><i class="fa fa-check"></i><b>1.5.5</b> Removendo pacotes</a></li>
+<li class="chapter" data-level="1.5.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#verificando-pacotes-instalados"><i class="fa fa-check"></i><b>1.5.6</b> Verificando pacotes instalados</a></li>
+<li class="chapter" data-level="1.5.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#repositórios"><i class="fa fa-check"></i><b>1.5.7</b> Repositórios</a></li>
+<li class="chapter" data-level="1.5.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#ferramentas-avançadas-para-gerenciamento"><i class="fa fa-check"></i><b>1.5.8</b> Ferramentas avançadas para gerenciamento</a></li>
+<li class="chapter" data-level="1.5.9" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conclusão"><i class="fa fa-check"></i><b>1.5.9</b> Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-de-dados"><i class="fa fa-check"></i><b>1.6</b> Importação e Exportação de Dados 📂</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importando-dados"><i class="fa fa-check"></i><b>1.6.1</b> Importando dados</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exportando-dados"><i class="fa fa-check"></i><b>1.6.2</b> Exportando dados</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dicas-e-boas-práticas"><i class="fa fa-check"></i><b>1.6.3</b> Dicas e boas práticas</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conclusão-1"><i class="fa fa-check"></i><b>1.6.4</b> Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#funções-da-família-apply-no-r"><i class="fa fa-check"></i><b>1.7</b> Funções da família <code>apply()</code> no R</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#apply"><i class="fa fa-check"></i><b>1.7.1</b> <strong>1. <code>apply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#lapply"><i class="fa fa-check"></i><b>1.7.2</b> <strong>2. <code>lapply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#sapply"><i class="fa fa-check"></i><b>1.7.3</b> <strong>3. <code>sapply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#vapply"><i class="fa fa-check"></i><b>1.7.4</b> <strong>4. <code>vapply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#mapply"><i class="fa fa-check"></i><b>1.7.5</b> <strong>5. <code>mapply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#tapply"><i class="fa fa-check"></i><b>1.7.6</b> <strong>6. <code>tapply()</code></strong></a></li>
+<li class="chapter" data-level="1.7.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#by"><i class="fa fa-check"></i><b>1.7.7</b> <strong>7. <code>by()</code></strong></a></li>
+<li class="chapter" data-level="1.7.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conclusão-2"><i class="fa fa-check"></i><b>1.7.8</b> Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.8</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.8.1</b> O que é o <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="1.8.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.8.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="1.9" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.9</b> data.table</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.9.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="1.9.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.9.2</b> Exemplos de Uso</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>2</b> Dendrometria</a>
 <ul>
@@ -204,7 +284,7 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="4.1.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>4.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
 </ul></li>
 </ul></li>
-<li><a href="section.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
 </ul>
 
       </nav>
@@ -232,51 +312,51 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 <p>Os engenheiros florestais geralmente estabelecem classes diamétricas em intervalos fixos de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.</p>
 <div id="criando-dados-para-demonstração" class="section level4 hasAnchor" number="2.1.1.1">
 <h4><span class="header-section-number">2.1.1.1</span> Criando dados para demonstração<a href="dendrometria.html#criando-dados-para-demonstração" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dendrometria.html#cb1-1" tabindex="-1"></a><span class="co"># Definir número de árvores por parcela</span></span>
-<span id="cb1-2"><a href="dendrometria.html#cb1-2" tabindex="-1"></a>n_arvores <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-3"><a href="dendrometria.html#cb1-3" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="dendrometria.html#cb1-4" tabindex="-1"></a><span class="co"># Gerar dados de 3 parcelas com diâmetros distribuídos normalmente</span></span>
-<span id="cb1-5"><a href="dendrometria.html#cb1-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para garantir reprodutibilidade</span></span>
-<span id="cb1-6"><a href="dendrometria.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="dendrometria.html#cb1-7" tabindex="-1"></a>parcela1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">5</span>)  <span class="co"># Parcela 1 com média 25 cm e desvio padrão 5 cm</span></span>
-<span id="cb1-8"><a href="dendrometria.html#cb1-8" tabindex="-1"></a>parcela2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">7</span>)  <span class="co"># Parcela 2 com média 30 cm e desvio padrão 7 cm</span></span>
-<span id="cb1-9"><a href="dendrometria.html#cb1-9" tabindex="-1"></a>parcela3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">6</span>)  <span class="co"># Parcela 3 com média 35 cm e desvio padrão 6 cm</span></span>
-<span id="cb1-10"><a href="dendrometria.html#cb1-10" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="dendrometria.html#cb1-11" tabindex="-1"></a><span class="co"># Criar um data frame com os dados das parcelas</span></span>
-<span id="cb1-12"><a href="dendrometria.html#cb1-12" tabindex="-1"></a>dados_inventario <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-13"><a href="dendrometria.html#cb1-13" tabindex="-1"></a>  <span class="at">Parcela =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>), <span class="at">each =</span> n_arvores),</span>
-<span id="cb1-14"><a href="dendrometria.html#cb1-14" tabindex="-1"></a>  <span class="at">Diametro =</span> <span class="fu">c</span>(parcela1, parcela2, parcela3)</span>
-<span id="cb1-15"><a href="dendrometria.html#cb1-15" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dendrometria.html#cb37-1" tabindex="-1"></a><span class="co"># Definir número de árvores por parcela</span></span>
+<span id="cb37-2"><a href="dendrometria.html#cb37-2" tabindex="-1"></a>n_arvores <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb37-3"><a href="dendrometria.html#cb37-3" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="dendrometria.html#cb37-4" tabindex="-1"></a><span class="co"># Gerar dados de 3 parcelas com diâmetros distribuídos normalmente</span></span>
+<span id="cb37-5"><a href="dendrometria.html#cb37-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para garantir reprodutibilidade</span></span>
+<span id="cb37-6"><a href="dendrometria.html#cb37-6" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="dendrometria.html#cb37-7" tabindex="-1"></a>parcela1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">5</span>)  <span class="co"># Parcela 1 com média 25 cm e desvio padrão 5 cm</span></span>
+<span id="cb37-8"><a href="dendrometria.html#cb37-8" tabindex="-1"></a>parcela2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">7</span>)  <span class="co"># Parcela 2 com média 30 cm e desvio padrão 7 cm</span></span>
+<span id="cb37-9"><a href="dendrometria.html#cb37-9" tabindex="-1"></a>parcela3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">6</span>)  <span class="co"># Parcela 3 com média 35 cm e desvio padrão 6 cm</span></span>
+<span id="cb37-10"><a href="dendrometria.html#cb37-10" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="dendrometria.html#cb37-11" tabindex="-1"></a><span class="co"># Criar um data frame com os dados das parcelas</span></span>
+<span id="cb37-12"><a href="dendrometria.html#cb37-12" tabindex="-1"></a>dados_inventario <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-13"><a href="dendrometria.html#cb37-13" tabindex="-1"></a>  <span class="at">Parcela =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>), <span class="at">each =</span> n_arvores),</span>
+<span id="cb37-14"><a href="dendrometria.html#cb37-14" tabindex="-1"></a>  <span class="at">Diametro =</span> <span class="fu">c</span>(parcela1, parcela2, parcela3)</span>
+<span id="cb37-15"><a href="dendrometria.html#cb37-15" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="construindo-os-histogramas" class="section level4 hasAnchor" number="2.1.1.2">
 <h4><span class="header-section-number">2.1.1.2</span> Construindo os histogramas<a href="dendrometria.html#construindo-os-histogramas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dendrometria.html#cb2-1" tabindex="-1"></a><span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
-<span id="cb2-2"><a href="dendrometria.html#cb2-2" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb2-3"><a href="dendrometria.html#cb2-3" tabindex="-1"></a>min_diametro <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">min</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor mínimo de diâmetro arredondado para baixo</span></span>
-<span id="cb2-4"><a href="dendrometria.html#cb2-4" tabindex="-1"></a>max_diametro <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor máximo de diâmetro arredondado para cima</span></span>
-<span id="cb2-5"><a href="dendrometria.html#cb2-5" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)  <span class="co"># Definir as classes com intervalo de 2 cm</span></span>
-<span id="cb2-6"><a href="dendrometria.html#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="dendrometria.html#cb2-7" tabindex="-1"></a><span class="co"># Criar layout para os gráficos</span></span>
-<span id="cb2-8"><a href="dendrometria.html#cb2-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
-<span id="cb2-9"><a href="dendrometria.html#cb2-9" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="dendrometria.html#cb2-10" tabindex="-1"></a><span class="co"># Definir lista de parcelas</span></span>
-<span id="cb2-11"><a href="dendrometria.html#cb2-11" tabindex="-1"></a>parcelas <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_inventario<span class="sc">$</span>Parcela)</span>
-<span id="cb2-12"><a href="dendrometria.html#cb2-12" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="dendrometria.html#cb2-13" tabindex="-1"></a><span class="co"># Loop para plotar histogramas de cada parcela</span></span>
-<span id="cb2-14"><a href="dendrometria.html#cb2-14" tabindex="-1"></a><span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
-<span id="cb2-15"><a href="dendrometria.html#cb2-15" tabindex="-1"></a>  <span class="co"># Selecionar os dados da parcela atual</span></span>
-<span id="cb2-16"><a href="dendrometria.html#cb2-16" tabindex="-1"></a>  dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
-<span id="cb2-17"><a href="dendrometria.html#cb2-17" tabindex="-1"></a>  <span class="co"># Plotar o histograma</span></span>
-<span id="cb2-18"><a href="dendrometria.html#cb2-18" tabindex="-1"></a>  <span class="fu">hist</span>(dados_parcela,</span>
-<span id="cb2-19"><a href="dendrometria.html#cb2-19" tabindex="-1"></a>       <span class="at">breaks =</span> intervalos,</span>
-<span id="cb2-20"><a href="dendrometria.html#cb2-20" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
-<span id="cb2-21"><a href="dendrometria.html#cb2-21" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
-<span id="cb2-22"><a href="dendrometria.html#cb2-22" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
-<span id="cb2-23"><a href="dendrometria.html#cb2-23" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb2-24"><a href="dendrometria.html#cb2-24" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>,</span>
-<span id="cb2-25"><a href="dendrometria.html#cb2-25" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb2-26"><a href="dendrometria.html#cb2-26" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="dendrometria.html#cb38-1" tabindex="-1"></a><span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
+<span id="cb38-2"><a href="dendrometria.html#cb38-2" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb38-3"><a href="dendrometria.html#cb38-3" tabindex="-1"></a>min_diametro <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">min</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor mínimo de diâmetro arredondado para baixo</span></span>
+<span id="cb38-4"><a href="dendrometria.html#cb38-4" tabindex="-1"></a>max_diametro <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor máximo de diâmetro arredondado para cima</span></span>
+<span id="cb38-5"><a href="dendrometria.html#cb38-5" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)  <span class="co"># Definir as classes com intervalo de 2 cm</span></span>
+<span id="cb38-6"><a href="dendrometria.html#cb38-6" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="dendrometria.html#cb38-7" tabindex="-1"></a><span class="co"># Criar layout para os gráficos</span></span>
+<span id="cb38-8"><a href="dendrometria.html#cb38-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
+<span id="cb38-9"><a href="dendrometria.html#cb38-9" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="dendrometria.html#cb38-10" tabindex="-1"></a><span class="co"># Definir lista de parcelas</span></span>
+<span id="cb38-11"><a href="dendrometria.html#cb38-11" tabindex="-1"></a>parcelas <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_inventario<span class="sc">$</span>Parcela)</span>
+<span id="cb38-12"><a href="dendrometria.html#cb38-12" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="dendrometria.html#cb38-13" tabindex="-1"></a><span class="co"># Loop para plotar histogramas de cada parcela</span></span>
+<span id="cb38-14"><a href="dendrometria.html#cb38-14" tabindex="-1"></a><span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
+<span id="cb38-15"><a href="dendrometria.html#cb38-15" tabindex="-1"></a>  <span class="co"># Selecionar os dados da parcela atual</span></span>
+<span id="cb38-16"><a href="dendrometria.html#cb38-16" tabindex="-1"></a>  dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
+<span id="cb38-17"><a href="dendrometria.html#cb38-17" tabindex="-1"></a>  <span class="co"># Plotar o histograma</span></span>
+<span id="cb38-18"><a href="dendrometria.html#cb38-18" tabindex="-1"></a>  <span class="fu">hist</span>(dados_parcela,</span>
+<span id="cb38-19"><a href="dendrometria.html#cb38-19" tabindex="-1"></a>       <span class="at">breaks =</span> intervalos,</span>
+<span id="cb38-20"><a href="dendrometria.html#cb38-20" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
+<span id="cb38-21"><a href="dendrometria.html#cb38-21" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
+<span id="cb38-22"><a href="dendrometria.html#cb38-22" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
+<span id="cb38-23"><a href="dendrometria.html#cb38-23" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb38-24"><a href="dendrometria.html#cb38-24" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>,</span>
+<span id="cb38-25"><a href="dendrometria.html#cb38-25" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb38-26"><a href="dendrometria.html#cb38-26" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -348,6 +428,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

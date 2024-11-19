@@ -3,6 +3,4 @@ title: "Entre Florestas e Dados"
 output: false
 ---
 
-# {-}
-Elimina os erros com referências duplicadas (Chanfris)
-E o título do menu superior (gambiarra)
+# Referências {-}

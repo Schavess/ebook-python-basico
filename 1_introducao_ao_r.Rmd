@@ -1,10 +1,13 @@
 # Introdução ao R
 
-Como mostrado em [@r4ds], o R facilita a análise de dados.
+O R é provavelmente a mais importante ferramenta para a análise de dados florestais.
 
+---
 
 ## Instalação do R
 A instalação padrão do R é feita a partir do CRAN, uma rede de servidores espalhada pelo mundo que armazena versões idênticas e atualizadas de códigos e documentações para o R.
+
+### Windows
 
 Para instalar o R no Windows, siga os seguintes passos:
 
@@ -21,6 +24,12 @@ Para instalar o R no Windows, siga os seguintes passos:
 6. Na nova página, clique em Download R x.x.x for Windows, sendo x.x.x o número da versão que será baixada. Se você teve algum problema com o download, tente escolher outro servidor no passo 3.
 
 7. Feito o download, clique duas vezes no arquivo baixado e siga as instruções para instalação.
+
+### macOS
+
+### Linux
+
+---
 
 ## Instalação do RStudio
 
@@ -40,18 +49,20 @@ Baixe o instalador adequado:
 Na seção "All Installers", selecione o instalador correspondente ao seu sistema operacional.
 Instale o RStudio:
 
-### Windows:
+### Windows
 Execute o arquivo .exe baixado e siga as instruções do assistente de instalação.
 
-### macOS:
+### macOS
 Abra o arquivo .dmg baixado, arraste o ícone do RStudio para a pasta "Aplicativos" e, em seguida, ejete a imagem de disco.
 
-### Linux:
+### Linux
 Baixe o pacote apropriado (.deb ou .rpm) e instale-o usando as ferramentas de gerenciamento de pacotes do seu sistema.
 Inicie o RStudio:
 
 Após a instalação, abra o RStudio para começar a utilizá-lo.
 Lembre-se de que o RStudio requer o R instalado previamente. Certifique-se de ter o R instalado antes de prosseguir com a instalação do RStudio.
+
+---
 
 ## Sobre o R
 
@@ -109,6 +120,8 @@ R é reconhecida por sua capacidade de criar gráficos e visualizações de dado
 **Tipagem Dinâmica e Flexibilidade:**  
 R utiliza tipagem dinâmica, onde o tipo das variáveis é determinado em tempo de execução. Isso oferece flexibilidade para manipular diferentes tipos de dados, mas requer atenção para evitar inconsistências. Além disso, sua sintaxe foi projetada para facilitar operações vetoriais e manipulação de dados em larga escala, tornando-a eficiente em tarefas analíticas.  
 
+---
+
 ## Fundamentos da linguagem
 
 ### Boas práticas de codaR 
@@ -126,6 +139,9 @@ help(mean)
 ```
 
 ### Tipos de dados
+Conhecer os tipos de dados usados pela linguagem é fundamental para manipulação e análise dos mesmos. A seguir os principais tipos de dados:
+
+
 | Tipo         | Descrição                           | Exemplo                        |
 | ------------ | ----------------------------------- | ------------------------------ |
 | `numeric`    | Números, incluindo inteiros e reais | `10`, `10.5`                   |
@@ -142,6 +158,8 @@ help(mean)
 | `NA`         | Valor ausente ou indefinido         | `NA`                           |
 
 ### Operadores
+Existem inúmeras operações passíveis de serem realizadas com os dados e na lógicada programação. A seguir os principais operadores:
+
 | Categoria     | Operador       | Descrição                    | Exemplo                  |
 | ------------- | -------------- | ---------------------------- | ------------------------ |
 | Aritmético    | `+`            | Adição                       | `x + y`                  |
@@ -174,6 +192,8 @@ help(mean)
 |               | `bitwShiftR()` | Deslocamento à direita       | `bitwShiftR(x, n)`       |
 
 ### Conversão de tipos
+Por ser de tipagem dinâmica, podemos converter os tipos de dados:
+
 | Função            | Descrição                               | Exemplo                              | Resultado           |
 | ----------------- | --------------------------------------- | ------------------------------------ | ------------------- |
 | `as.numeric()`    | Converte para tipo numérico             | `as.numeric("10.5")`                 | `10.5` (numeric)    |
@@ -195,8 +215,8 @@ help(mean)
 | `is.logical()`    | Testa se é lógico                       | `is.logical(TRUE)`                   | `TRUE`              |
 | `is.factor()`     | Testa se é fator                        | `is.factor(as.factor("A"))`          | `TRUE`              |
 
-### Estruturas de controle
-### Estruturas de Controle  
+### Estruturas de Controle
+A lógica da programação e a construção de algoritmos precisa das estruturas de controles:  
 
 | Estrutura        | Descrição                                                          | Exemplo                                                       |
 | ---------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- |
@@ -214,11 +234,13 @@ help(mean)
 | `tryCatch`       | Captura e lida com erros e mensagens                               | `tryCatch(log("a"), error = function(e) print("Erro"))`       |
 
 
+<br>
+
+---
+
 ## Gerenciamento de Pacotes 📦  
 
 O R é uma linguagem poderosa, ampliada pelo uso de pacotes. Com pacotes, é possível adicionar novas funcionalidades e acessar ferramentas específicas para diversas tarefas, como visualização de dados, manipulação e modelagem estatística.  
-
----
 
 ### O que são pacotes?  
 
@@ -226,8 +248,6 @@ Pacotes no R são coleções de funções, conjuntos de dados e documentações.
 
 - Os pacotes podem ser obtidos do **CRAN** (repositório oficial), **GitHub** ou outras fontes.  
 - Pacotes populares incluem `ggplot2` (gráficos), `dplyr` (manipulação de dados) e `shiny` (aplicações interativas).  
-
----
 
 ### Instalando pacotes  
 
@@ -254,8 +274,6 @@ install.packages("remotes")
 remotes::install_github("tidyverse/ggplot2")
 ```
 
----
-
 ### Carregando pacotes  
 
 Depois de instalados, os pacotes precisam ser carregados para uso. Isso é feito com a função `library()`.
@@ -272,8 +290,6 @@ Se você não quiser carregar o pacote inteiro, pode usar o operador `::` para c
 ggplot2::ggplot(data = mtcars, aes(x = mpg, y = hp))
 ```
 
----
-
 ### Atualizando pacotes  
 
 Pacotes instalados podem ser atualizados para suas versões mais recentes.  
@@ -289,8 +305,6 @@ Reinstale o pacote desejado:
 install.packages("dplyr")
 ```
 
----
-
 ### Removendo pacotes  
 
 Se um pacote não for mais necessário, você pode removê-lo com a função `remove.packages()`.
@@ -299,8 +313,6 @@ Se um pacote não for mais necessário, você pode removê-lo com a função `re
 ```{r, eval=FALSE}
 remove.packages("stringr")
 ```
-
----
 
 ### Verificando pacotes instalados  
 
@@ -316,8 +328,6 @@ installed.packages()
 "ggplot2" %in% rownames(installed.packages())
 ```
 
----
-
 ### Repositórios  
 
 O R utiliza o **CRAN** como repositório padrão para instalação de pacotes. No entanto, você pode configurar o repositório manualmente, por exemplo, escolhendo um mirror mais rápido:  
@@ -325,8 +335,6 @@ O R utiliza o **CRAN** como repositório padrão para instalação de pacotes. N
 # Configurando um repositório brasileiro
 options(repos = c(CRAN = "https://cran.rstudio.com/"))
 ```
-
----
 
 ### Ferramentas avançadas para gerenciamento  
 
@@ -344,15 +352,9 @@ Para projetos complexos, você pode usar ferramentas para gerenciar versões de 
 
 ---
 
-### Conclusão  
-
-Gerenciar pacotes é uma habilidade essencial para qualquer usuário de R. Com a prática, você poderá instalar, atualizar, remover e gerenciar pacotes com eficiência, garantindo que suas análises sejam sempre baseadas em ferramentas atualizadas e confiáveis.
-
 ## Importação e Exportação de Dados 📂  
 
 O R oferece diversas ferramentas para **importar** e **exportar dados** em diferentes formatos, permitindo que você trabalhe com arquivos como CSV, Excel, bancos de dados, arquivos de texto e muito mais.
-
----
 
 ### Importando dados  
 
@@ -415,8 +417,6 @@ install.packages("jsonlite")
 dados <- jsonlite::fromJSON("caminho/para/seu/arquivo.json")
 ```
 
----
-
 ### Exportando dados  
 
 #### **1. Exportando para CSV**  
@@ -450,8 +450,6 @@ O R permite salvar dados em diversos formatos com as funções correspondentes:
 jsonlite::toJSON(dados, pretty = TRUE, file = "caminho/para/saida.json")
 ```
 
----
-
 ### Dicas e boas práticas  
 - Sempre verifique os tipos de dados importados com `str()` ou `glimpse()`.  
 - Para grandes volumes de dados, considere pacotes otimizados como `data.table` ou `vroom`.  
@@ -462,16 +460,9 @@ jsonlite::toJSON(dados, pretty = TRUE, file = "caminho/para/saida.json")
 
 ---
 
-### Conclusão  
-
-Importar e exportar dados são passos essenciais em qualquer análise. O R oferece uma ampla gama de ferramentas para lidar com diversos formatos, garantindo flexibilidade e eficiência no seu fluxo de trabalho. Escolha o método mais adequado às suas necessidades e explore as possibilidades!
-
-
 ## Funções da família `apply()` no R
 
 As funções da família `apply()` são usadas para realizar operações repetitivas em vetores, listas, matrizes e data frames de forma eficiente e vetorizada, substituindo muitos loops explícitos (`for`).
-
----
 
 ### **1. `apply()`**
 Aplica uma função ao longo de uma **margem** de uma matriz ou array (linhas ou colunas).
@@ -496,8 +487,6 @@ apply(mat, 1, mean)
 # Resultado: [1] 2 5 8
 ```
 
----
-
 ### **2. `lapply()`**
 Aplica uma função a cada elemento de uma **lista** ou **vetor** e retorna uma **lista** como resultado.
 
@@ -516,8 +505,6 @@ lst <- list(a = 1:3, b = 4:6)
 lapply(lst, sum)
 # Resultado: $a 6, $b 15
 ```
-
----
 
 ### **3. `sapply()`**
 Uma versão simplificada de `lapply()` que retorna um **vetor** ou **matriz** (se possível) em vez de uma lista.
@@ -538,8 +525,6 @@ sapply(lst, sum)
 # Resultado: [1] 6 15
 ```
 
----
-
 ### **4. `vapply()`**
 Semelhante a `sapply()`, mas requer que você **especifique o tipo de retorno esperado** (mais seguro).
 
@@ -554,8 +539,6 @@ lst <- list(a = 1:3, b = 4:6)
 vapply(lst, sum, numeric(1))
 # Resultado: [1]  6 15
 ```
-
----
 
 ### **5. `mapply()`**
 Aplica uma função a múltiplos argumentos/vetores **simultaneamente** (como um `map` em Python).
@@ -576,8 +559,6 @@ mapply(rep, 1:3, 3:1)
 # Resultado: [[1]] 1, [[2]] 2 2, [[3]] 3 3 3
 ```
 
----
-
 ### **6. `tapply()`**
 Aplica uma função a subconjuntos de um vetor, definidos por um **fator** ou grupos.
 
@@ -594,8 +575,6 @@ grp <- factor(c("A", "A", "B", "B", "C", "C"))
 tapply(vec, grp, mean)
 # Resultado: $A 1.5, $B 3.5, $C 5.5
 ```
-
----
 
 ### **7. `by()`**
 Semelhante a `tapply()`, mas retorna resultados organizados por **subgrupos** e funciona com data frames.
@@ -614,17 +593,14 @@ by(df$value, df$group, sum)
 # C: 11
 ```
 
----
-
-### Conclusão
+### Conclusão {-}
 As funções da família `apply()` tornam o R extremamente poderoso e eficiente para manipulação de dados. Use:
 - **`apply()`** para matrizes/arrays.
 - **`lapply()`** e **`sapply()`** para listas/vetores.
 - **`mapply()`** para múltiplos vetores.
 - **`tapply()`** e **`by()`** para agrupamentos.
 
-Escolha a função mais adequada com base na estrutura dos dados e no resultado desejado! 🚀
-
+---
 
 ## Pipe (`%>%`) do dplyr
 
@@ -672,6 +648,8 @@ head(selected_data) %>%
 ```
 <br>
 Note como o código com `%>%` é mais legível e direto. Ele segue uma lógica sequencial que permite facilmente entender o que está sendo feito em cada etapa.
+
+---
 
 ## data.table
 

@@ -44,6 +44,5 @@ e monitoramento ambiental.
 
 Olá! Meu nome é Arthur Guilherme Schirmbeck Chaves. Sou professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
 analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
-estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados que aplico em minhas
-atividades profissionais e didáticas. Meu objetivo é capacitar profissionais e estudantes a compreender e implementar
-análises de dados na área florestal de forma eficaz, precisa e diretamente aplicável às demandas do setor.
+estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados para os engenheiros florestais empregarem em suas
+atividades profissionais e didáticas.
