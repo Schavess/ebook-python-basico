@@ -141,9 +141,19 @@ R utiliza tipagem dinâmica, onde o tipo das variáveis é determinado em tempo 
 
 ### Boas práticas de codaR 
 
-O manual de referências de boas práticas: [@tidyverse_style_guide]
+#### O Básico
+Acesse no menu superior `tools` > `Global Options...` > `code` > `Display` e defina os padrões de identação e estilização que deseja. E Salve.
 
-Construir...
+Agora basta selecionar o trecho de código e usar o atalho `Ctrl + shift + A`(Windows).
+
+#### Avançado
+
+Para um estudo profundo verificar:
+
+O manual de referências de boas práticas [@tidyverse_style_guide]
+
+
+
 
 ### ?Dúvidas
 
@@ -154,7 +164,7 @@ help(mean)
 ```
 
 ### Tipos de dados
-Conhecer os tipos de dados usados pela linguagem é fundamental para manipulação e análise dos mesmos. A seguir os principais tipos de dados:
+Conhecer os tipos de dados utilizados pela linguagem é essencial para sua manipulação e análise. A seguir, estão os principais tipos de dados:
 
 
 | Tipo         | Descrição                           | Exemplo                        |
@@ -173,7 +183,7 @@ Conhecer os tipos de dados usados pela linguagem é fundamental para manipulaç�
 | `NA`         | Valor ausente ou indefinido         | `NA`                           |
 
 ### Operadores
-Existem inúmeras operações passíveis de serem realizadas com os dados e na lógicada programação. A seguir os principais operadores:
+Há inúmeras operações que podem ser realizadas com os dados dentro da lógica da programação. A seguir, estão os principais operadores:
 
 | Categoria     | Operador       | Descrição                    | Exemplo                  |
 | ------------- | -------------- | ---------------------------- | ------------------------ |
@@ -207,7 +217,7 @@ Existem inúmeras operações passíveis de serem realizadas com os dados e na l
 |               | `bitwShiftR()` | Deslocamento à direita       | `bitwShiftR(x, n)`       |
 
 ### Conversão de tipos
-Por ser de tipagem dinâmica, podemos converter os tipos de dados:
+Por se tratar de uma linguagem de tipagem dinâmica, é possível converter os tipos de dados:
 
 | Função            | Descrição                               | Exemplo                              | Resultado           |
 | ----------------- | --------------------------------------- | ------------------------------------ | ------------------- |
@@ -231,7 +241,7 @@ Por ser de tipagem dinâmica, podemos converter os tipos de dados:
 | `is.factor()`     | Testa se é fator                        | `is.factor(as.factor("A"))`          | `TRUE`              |
 
 ### Estruturas de Controle
-A lógica da programação e a construção de algoritmos precisa das estruturas de controles:  
+A lógica da programação e a construção de algoritmos dependem das estruturas de controle:
 
 | Estrutura        | Descrição                                                          | Exemplo                                                       |
 | ---------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- |
