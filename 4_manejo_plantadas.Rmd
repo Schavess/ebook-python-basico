@@ -70,6 +70,7 @@ Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árv
 
   <h4>Solução do problema sem o pipe</h4>
 
+
   ```{r}
   
   BD <- read.csv2("data/DesafioCalcHdom.csv")

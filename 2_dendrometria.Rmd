@@ -65,7 +65,7 @@ Faça o mesmo gráfico com intervalos de 1,5 cm e mude a cor das barras para ver
 <button class="toggle-btn">Ver solução</button>
 <div class="toggle-content" style="display: none;">
 
-  <h2>Solução do problema</h2>
+  <h3>Solução do problema</h3>
 
   ```{r}
 
