@@ -4,8 +4,8 @@ bookdown::gitbook:
   split_by: chapter
   pandoc_args: ["--metadata", "nocite: ''"]
   config:
-    favicon: "images/FaviconEntreFlorestasEDados.ico"
     title: "Entre Florestas e Dados"
+    favicon: "images/favico.ico"
     toc:
       collapse: section
       before: |
@@ -29,7 +29,9 @@ bookdown::gitbook:
       toc_title: "Índice"
 bookdown::pdf_book:
   includes:
-    in_header: preamble.tex
+    in_header:
+    - preamble.tex
+    - includes/header.html
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
