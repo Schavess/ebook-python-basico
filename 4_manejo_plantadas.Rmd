@@ -50,8 +50,10 @@ BD2 <- as.data.frame(cbind(Parc, Hdom_assman))
 BD <- merge(BD, BD2)
 
 ```
+
 <br>
 Resultado:
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(kableExtra)
 
@@ -59,9 +61,10 @@ library(kableExtra)
 BD2 %>%
   knitr::kable() %>%
   kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+
 ```
 
-### Exercício
+#### Exercício
 
 Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árvores mais altas por hectare.
 
