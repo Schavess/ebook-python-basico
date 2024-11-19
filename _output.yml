@@ -1,7 +1,11 @@
 bookdown::gitbook:
-  highlight: "zenburn"
   css: style.css
+  includes:
+    in_header: 
+      - includes/header.html
+      - includes/toggle-script.html
   split_by: chapter
+  highlight: "zenburn"
   pandoc_args: ["--metadata", "nocite: ''"]
   config:
     title: "Entre Florestas e Dados"
@@ -20,7 +24,6 @@ bookdown::gitbook:
                 </div>
             </div>
         </div>
-
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: []
     language:
@@ -31,7 +34,6 @@ bookdown::pdf_book:
   includes:
     in_header:
     - preamble.tex
-    - includes/header.html
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
