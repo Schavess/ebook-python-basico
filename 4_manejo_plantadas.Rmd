@@ -68,7 +68,7 @@ Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árv
 <button class="toggle-btn">Ver solução</button>
 <div class="toggle-content" style="display: none;">
 
-  <h4>Solução do problema sem o pipe</h4>
+  Solução do problema sem o pipe
 
 
   ```{r}
@@ -106,7 +106,7 @@ Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árv
     kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
   ```
 
-  <h4>Solução com pipe</h4>
+  Solução com pipe
 
   ```{r}
   library(dplyr)
