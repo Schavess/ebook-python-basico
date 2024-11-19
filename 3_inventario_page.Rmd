@@ -164,7 +164,6 @@ BD_$`H T` <- as.numeric(BD_$`H T`)
 A análise da distribuição dos diâmetros das árvores fornece insights sobre a estrutura etária e o desenvolvimento da floresta. Uma distribuição equilibrada indica uma regeneração contínua, enquanto a predominância de árvores em determinadas classes diamétricas pode sugerir distúrbios ou práticas de manejo específicas.
 ```{r}
 intervalo <- 5
-min_d <- floor(min(BD_$DAP, na.rm = TRUE))
 max_d <- ceiling(max(BD_$DAP, na.rm = TRUE))
 intervalos <- seq(0, max_d + intervalo, by = intervalo)
 hist(BD_$DAP, breaks = intervalos, main = NULL, xlab = "Diâmetro (cm)", ylab = "Frequência")

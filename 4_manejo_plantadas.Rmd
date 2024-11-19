@@ -28,27 +28,26 @@ head(BD) %>%
 
 ### Calculando altura dominante por parcela (Assman)
 ```{r}
+
 BD <- read.csv2("data/DesafioCalcHdom.csv")
 colnames(BD)[1] = c("areaParc")
 BD <- BD[, 1:5]
-BD <- BD[order(BD$Parc, BD$Ht, decreasing = TRUE),]
+BD <- BD[order(BD$Parc, BD$DAP, decreasing = TRUE),]
 row.names(BD) <- NULL
 
 Parc <- unique(BD$Parc)
-Hdom <- unique(BD$Parc)
+Hdom_assman <- unique(BD$Parc)
 
 j <- 1
 for (i in Parc) {
-  a <- round(mean(BD[which(BD$Parc==i),1])*100/10000, 0)
+  a <- ceiling(mean(BD[which(BD$Parc==i),1])*100/10000)
   H <- BD[which(BD$Parc==i),5]
-  Hdom[j] <- round(mean(H[1:a]), 2)
+  Hdom_assman[j] <- round(mean(H[1:a]), 2)
   j <- j+1
 }
 
-BD2 <- as.data.frame(cbind(Parc, Hdom))
+BD2 <- as.data.frame(cbind(Parc, Hdom_assman))
 BD <- merge(BD, BD2)
-
-rm(a, H, Hdom, i, j, Parc)
 
 ```
 <br>
@@ -61,3 +60,81 @@ BD2 %>%
   knitr::kable() %>%
   kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
 ```
+
+### Exercício
+
+Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árvores mais altas por hectare.
+
+<button class="toggle-btn">Ver solução</button>
+<div class="toggle-content" style="display: none;">
+
+  <h2>Solução do problema sem o pipe</h2>
+
+  ```{r}
+  
+  BD <- read.csv2("data/DesafioCalcHdom.csv")
+  colnames(BD)[1] = c("areaParc")
+  BD <- BD[, 1:5]
+  BD <- BD[order(BD$Parc, BD$Ht, decreasing = TRUE),]
+  row.names(BD) <- NULL
+
+  Parc <- unique(BD$Parc)
+  Hdom_hart <- unique(BD$Parc)
+
+  j <- 1
+  for (i in Parc) {
+    a <- ceiling(mean(BD[which(BD$Parc==i),1])*100/10000)
+    H <- BD[which(BD$Parc==i),5]
+    Hdom_hart[j] <- round(mean(H[1:a]), 2)
+    j <- j+1
+  }
+
+  BD2 <- as.data.frame(cbind(Parc, Hdom_hart))
+  BD <- merge(BD, BD2)
+
+
+  ```
+
+  Resultado:
+  ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+  library(kableExtra)
+
+  # Exibir o data.frame com formatação extra
+  BD2 %>%
+    knitr::kable() %>%
+    kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+  ```
+
+  <h2>Solução com pipe</h2>
+
+  ```{r}
+  library(dplyr)
+
+  BD <- BD %>%
+    arrange(Parc, desc(Ht))  # Garantir a ordem correta
+
+  BD_Hart <- BD %>%
+    group_by(Parc) %>%
+    mutate(
+      num_top = ceiling(mean(areaParc) * 100 / 10000)
+    ) %>%
+    slice(1:first(num_top)) %>%
+    summarise(
+      Hdom_Hart2 = round(mean(Ht, na.rm = TRUE), 2)
+    ) %>%
+    ungroup()
+
+  BD_HDOM <- merge(BD2, BD_Hart, by = "Parc")
+
+  ```
+
+  Resultado:
+  ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+  library(kableExtra)
+
+  # Exibir o data.frame com formatação extra
+  BD_HDOM %>%
+    knitr::kable() %>%
+    kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
+  ```
+</div>
