@@ -27,7 +27,22 @@ Para instalar o R no Windows, siga os seguintes passos:
 
 ### macOS
 
+Abra o terminal: `Command + Espaço` "terminal" e `Enter`
+
+```{bash, eval=FALSE}
+brew install --cask r
+```
+
+
 ### Linux
+
+Abra o terminal Linux: `ctrl + alt + t`
+
+```{bash, eval=FALSE}
+sudo apt update
+sudo apt upgrade
+sudo apt install -y r-base
+```
 
 ---
 
