@@ -68,8 +68,7 @@ BD2 %>%
 
 Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árvores mais altas por hectare.
 
-<details>
-  <summary><strong>Mostrar solução</strong></summary>
+<br>
   Solução do problema sem o pipe
 
 
@@ -140,4 +139,3 @@ Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árv
     knitr::kable() %>%
     kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
   ```
-</details>
