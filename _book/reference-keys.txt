@@ -110,3 +110,6 @@ manejo-de-florestas-plantadas
 altura-dominante
 calculando-altura-dominante-por-parcela-assman
 exercício-1
+pqp
+pqp-222
+será-denovo
