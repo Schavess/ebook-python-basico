@@ -64,6 +64,10 @@ Faça o mesmo gráfico com intervalos de 1,5 cm e mude a cor das barras para ver
 
 <br>
 
+<details>
+  <summary>Ver a Solução</summary>
+
+
   Solução do problema
 
   ```{r}
@@ -88,5 +92,6 @@ Faça o mesmo gráfico com intervalos de 1,5 cm e mude a cor das barras para ver
         col = "red",
         border = "black")
   }
-  
+
   ```
+</details>
