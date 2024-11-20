@@ -11,7 +11,7 @@ toc_depth: 3
 rmd_files:
   - index.Rmd
   - 1_introducao_ao_r.Rmd
-  - 2_dendrom.Rmd
   - 3_inventario_page.Rmd
+  - 5_testedenovo.Rmd
   - appendix.Rmd
   

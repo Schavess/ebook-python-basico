@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Entre Florestas e Dados</title>
+  <title>1.7 Funções da família apply() no R | Entre Florestas e Dados</title>
   <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Entre Florestas e Dados" />
+  <meta property="og:title" content="1.7 Funções da família apply() no R | Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
   <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Entre Florestas e Dados" />
+  <meta name="twitter:title" content="1.7 Funções da família apply() no R | Entre Florestas e Dados" />
   
   <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="importação-e-exportação-de-dados.html"/>
+<link rel="next" href="pipe-do-dplyr.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -305,19 +305,165 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="funções-da-família-apply-no-r" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Funções da família <code>apply()</code> no R<a href="funções-da-família-apply-no-r.html#funções-da-família-apply-no-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As funções da família <code>apply()</code> são usadas para realizar operações repetitivas em vetores, listas, matrizes e data frames de forma eficiente e vetorizada, substituindo muitos loops explícitos (<code>for</code>).</p>
+<div id="apply" class="section level3 hasAnchor" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> <strong>1. <code>apply()</code></strong><a href="funções-da-família-apply-no-r.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aplica uma função ao longo de uma <strong>margem</strong> de uma matriz ou array (linhas ou colunas).</p>
+<ul>
+<li><strong>Uso:</strong> Para matrizes e arrays.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>apply(X, MARGIN, FUN, ...)</code>
+<ul>
+<li><code>X</code>: Matriz ou array.<br />
+</li>
+<li><code>MARGIN</code>: Margem a operar:
+<ul>
+<li><code>1</code> para linhas.</li>
+<li><code>2</code> para colunas.<br />
+</li>
+</ul></li>
+<li><code>FUN</code>: Função a ser aplicada.</li>
+</ul></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="funções-da-família-apply-no-r.html#cb25-1" tabindex="-1"></a><span class="co"># Soma das colunas de uma matriz</span></span>
+<span id="cb25-2"><a href="funções-da-família-apply-no-r.html#cb25-2" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb25-3"><a href="funções-da-família-apply-no-r.html#cb25-3" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">2</span>, sum)</span>
+<span id="cb25-4"><a href="funções-da-família-apply-no-r.html#cb25-4" tabindex="-1"></a><span class="co"># Resultado: [1] 12 15 18</span></span>
+<span id="cb25-5"><a href="funções-da-família-apply-no-r.html#cb25-5" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="funções-da-família-apply-no-r.html#cb25-6" tabindex="-1"></a><span class="co"># Média das linhas</span></span>
+<span id="cb25-7"><a href="funções-da-família-apply-no-r.html#cb25-7" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">1</span>, mean)</span>
+<span id="cb25-8"><a href="funções-da-família-apply-no-r.html#cb25-8" tabindex="-1"></a><span class="co"># Resultado: [1] 2 5 8</span></span></code></pre></div>
+</div>
+<div id="lapply" class="section level3 hasAnchor" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> <strong>2. <code>lapply()</code></strong><a href="funções-da-família-apply-no-r.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aplica uma função a cada elemento de uma <strong>lista</strong> ou <strong>vetor</strong> e retorna uma <strong>lista</strong> como resultado.</p>
+<ul>
+<li><strong>Uso:</strong> Para listas e vetores.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>lapply(X, FUN, ...)</code></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="funções-da-família-apply-no-r.html#cb26-1" tabindex="-1"></a><span class="co"># Quadrado de cada elemento de um vetor</span></span>
+<span id="cb26-2"><a href="funções-da-família-apply-no-r.html#cb26-2" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb26-3"><a href="funções-da-família-apply-no-r.html#cb26-3" tabindex="-1"></a><span class="fu">lapply</span>(vec, <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb26-4"><a href="funções-da-família-apply-no-r.html#cb26-4" tabindex="-1"></a><span class="co"># Resultado: [[1]] 1, [[2]] 4, [[3]] 9, [[4]] 16, [[5]] 25</span></span>
+<span id="cb26-5"><a href="funções-da-família-apply-no-r.html#cb26-5" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="funções-da-família-apply-no-r.html#cb26-6" tabindex="-1"></a><span class="co"># Aplicação em uma lista</span></span>
+<span id="cb26-7"><a href="funções-da-família-apply-no-r.html#cb26-7" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb26-8"><a href="funções-da-família-apply-no-r.html#cb26-8" tabindex="-1"></a><span class="fu">lapply</span>(lst, sum)</span>
+<span id="cb26-9"><a href="funções-da-família-apply-no-r.html#cb26-9" tabindex="-1"></a><span class="co"># Resultado: $a 6, $b 15</span></span></code></pre></div>
+</div>
+<div id="sapply" class="section level3 hasAnchor" number="1.7.3">
+<h3><span class="header-section-number">1.7.3</span> <strong>3. <code>sapply()</code></strong><a href="funções-da-família-apply-no-r.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uma versão simplificada de <code>lapply()</code> que retorna um <strong>vetor</strong> ou <strong>matriz</strong> (se possível) em vez de uma lista.</p>
+<ul>
+<li><strong>Uso:</strong> Para listas e vetores.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>sapply(X, FUN, ...)</code></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="funções-da-família-apply-no-r.html#cb27-1" tabindex="-1"></a><span class="co"># Quadrado de cada elemento</span></span>
+<span id="cb27-2"><a href="funções-da-família-apply-no-r.html#cb27-2" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb27-3"><a href="funções-da-família-apply-no-r.html#cb27-3" tabindex="-1"></a><span class="fu">sapply</span>(vec, <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb27-4"><a href="funções-da-família-apply-no-r.html#cb27-4" tabindex="-1"></a><span class="co"># Resultado: [1] 1 4 9 16 25</span></span>
+<span id="cb27-5"><a href="funções-da-família-apply-no-r.html#cb27-5" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="funções-da-família-apply-no-r.html#cb27-6" tabindex="-1"></a><span class="co"># Soma dos elementos em uma lista</span></span>
+<span id="cb27-7"><a href="funções-da-família-apply-no-r.html#cb27-7" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb27-8"><a href="funções-da-família-apply-no-r.html#cb27-8" tabindex="-1"></a><span class="fu">sapply</span>(lst, sum)</span>
+<span id="cb27-9"><a href="funções-da-família-apply-no-r.html#cb27-9" tabindex="-1"></a><span class="co"># Resultado: [1] 6 15</span></span></code></pre></div>
+</div>
+<div id="vapply" class="section level3 hasAnchor" number="1.7.4">
+<h3><span class="header-section-number">1.7.4</span> <strong>4. <code>vapply()</code></strong><a href="funções-da-família-apply-no-r.html#vapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Semelhante a <code>sapply()</code>, mas requer que você <strong>especifique o tipo de retorno esperado</strong> (mais seguro).</p>
+<ul>
+<li><strong>Uso:</strong> Para listas e vetores.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>vapply(X, FUN, FUN.VALUE, ...)</code>
+<ul>
+<li><code>FUN.VALUE</code>: Define o tipo e formato esperado do retorno.</li>
+</ul></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="funções-da-família-apply-no-r.html#cb28-1" tabindex="-1"></a><span class="co"># Soma dos elementos em uma lista com tipo esperado (numeric)</span></span>
+<span id="cb28-2"><a href="funções-da-família-apply-no-r.html#cb28-2" tabindex="-1"></a>lst <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb28-3"><a href="funções-da-família-apply-no-r.html#cb28-3" tabindex="-1"></a><span class="fu">vapply</span>(lst, sum, <span class="fu">numeric</span>(<span class="dv">1</span>))</span>
+<span id="cb28-4"><a href="funções-da-família-apply-no-r.html#cb28-4" tabindex="-1"></a><span class="co"># Resultado: [1]  6 15</span></span></code></pre></div>
+</div>
+<div id="mapply" class="section level3 hasAnchor" number="1.7.5">
+<h3><span class="header-section-number">1.7.5</span> <strong>5. <code>mapply()</code></strong><a href="funções-da-família-apply-no-r.html#mapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aplica uma função a múltiplos argumentos/vetores <strong>simultaneamente</strong> (como um <code>map</code> em Python).</p>
+<ul>
+<li><strong>Uso:</strong> Para múltiplos vetores ou listas.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>mapply(FUN, ..., MoreArgs = NULL)</code></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="funções-da-família-apply-no-r.html#cb29-1" tabindex="-1"></a><span class="co"># Soma de dois vetores</span></span>
+<span id="cb29-2"><a href="funções-da-família-apply-no-r.html#cb29-2" tabindex="-1"></a>vec1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb29-3"><a href="funções-da-família-apply-no-r.html#cb29-3" tabindex="-1"></a>vec2 <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb29-4"><a href="funções-da-família-apply-no-r.html#cb29-4" tabindex="-1"></a><span class="fu">mapply</span>(sum, vec1, vec2)</span>
+<span id="cb29-5"><a href="funções-da-família-apply-no-r.html#cb29-5" tabindex="-1"></a><span class="co"># Resultado: [1]  7  9 11 13 15</span></span>
+<span id="cb29-6"><a href="funções-da-família-apply-no-r.html#cb29-6" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="funções-da-família-apply-no-r.html#cb29-7" tabindex="-1"></a><span class="co"># Repetição customizada</span></span>
+<span id="cb29-8"><a href="funções-da-família-apply-no-r.html#cb29-8" tabindex="-1"></a><span class="fu">mapply</span>(rep, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">1</span>)</span>
+<span id="cb29-9"><a href="funções-da-família-apply-no-r.html#cb29-9" tabindex="-1"></a><span class="co"># Resultado: [[1]] 1, [[2]] 2 2, [[3]] 3 3 3</span></span></code></pre></div>
+</div>
+<div id="tapply" class="section level3 hasAnchor" number="1.7.6">
+<h3><span class="header-section-number">1.7.6</span> <strong>6. <code>tapply()</code></strong><a href="funções-da-família-apply-no-r.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aplica uma função a subconjuntos de um vetor, definidos por um <strong>fator</strong> ou grupos.</p>
+<ul>
+<li><strong>Uso:</strong> Para agrupamento.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>tapply(X, INDEX, FUN, ...)</code>
+<ul>
+<li><code>X</code>: Vetor numérico.</li>
+<li><code>INDEX</code>: Fator ou lista de fatores para agrupar.</li>
+</ul></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="funções-da-família-apply-no-r.html#cb30-1" tabindex="-1"></a><span class="co"># Média por grupo</span></span>
+<span id="cb30-2"><a href="funções-da-família-apply-no-r.html#cb30-2" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb30-3"><a href="funções-da-família-apply-no-r.html#cb30-3" tabindex="-1"></a>grp <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb30-4"><a href="funções-da-família-apply-no-r.html#cb30-4" tabindex="-1"></a><span class="fu">tapply</span>(vec, grp, mean)</span>
+<span id="cb30-5"><a href="funções-da-família-apply-no-r.html#cb30-5" tabindex="-1"></a><span class="co"># Resultado: $A 1.5, $B 3.5, $C 5.5</span></span></code></pre></div>
+</div>
+<div id="by" class="section level3 hasAnchor" number="1.7.7">
+<h3><span class="header-section-number">1.7.7</span> <strong>7. <code>by()</code></strong><a href="funções-da-família-apply-no-r.html#by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Semelhante a <code>tapply()</code>, mas retorna resultados organizados por <strong>subgrupos</strong> e funciona com data frames.</p>
+<ul>
+<li><strong>Uso:</strong> Para data frames.<br />
+</li>
+<li><strong>Sintaxe:</strong> <code>by(data, INDICES, FUN, ...)</code></li>
+</ul>
+<p><strong>Exemplo:</strong></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="funções-da-família-apply-no-r.html#cb31-1" tabindex="-1"></a><span class="co"># Soma dos valores por grupo em um data frame</span></span>
+<span id="cb31-2"><a href="funções-da-família-apply-no-r.html#cb31-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">value =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">group =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>))</span>
+<span id="cb31-3"><a href="funções-da-família-apply-no-r.html#cb31-3" tabindex="-1"></a><span class="fu">by</span>(df<span class="sc">$</span>value, df<span class="sc">$</span>group, sum)</span>
+<span id="cb31-4"><a href="funções-da-família-apply-no-r.html#cb31-4" tabindex="-1"></a><span class="co"># Resultado:</span></span>
+<span id="cb31-5"><a href="funções-da-família-apply-no-r.html#cb31-5" tabindex="-1"></a><span class="co"># A: 3</span></span>
+<span id="cb31-6"><a href="funções-da-família-apply-no-r.html#cb31-6" tabindex="-1"></a><span class="co"># B: 7</span></span>
+<span id="cb31-7"><a href="funções-da-família-apply-no-r.html#cb31-7" tabindex="-1"></a><span class="co"># C: 11</span></span></code></pre></div>
+</div>
+<div id="conclusão" class="section level3 unnumbered hasAnchor">
+<h3>Conclusão<a href="funções-da-família-apply-no-r.html#conclusão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As funções da família <code>apply()</code> tornam o R extremamente poderoso e eficiente para manipulação de dados. Use:
+- <strong><code>apply()</code></strong> para matrizes/arrays.
+- <strong><code>lapply()</code></strong> e <strong><code>sapply()</code></strong> para listas/vetores.
+- <strong><code>mapply()</code></strong> para múltiplos vetores.
+- <strong><code>tapply()</code></strong> e <strong><code>by()</code></strong> para agrupamentos.</p>
+<hr />
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="importação-e-exportação-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pipe-do-dplyr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -348,7 +494,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1_introducao_ao_r.Rmd",
 "text": "Edit"
 },
 "history": {

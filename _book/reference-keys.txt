@@ -64,13 +64,6 @@ exemplos-de-uso
 data.table
 o-que-é-o-1
 exemplos-de-uso-1
-teste
-section
-pqp
-pqp-222
-section-1
-será
-será-denovo
 inventário-florestal
 fitossociologia-teoria
 estrutura-horizontal
@@ -103,3 +96,10 @@ estrutura-horizontal-1
 índice-de-shannon-diversidade
 índice-de-morisita-agregação
 estrutura-vertical-e-classificação-em-estratos
+odfhoasdhf
+section
+asdfasdfg
+asdfasdf
+asdfasdfasdf
+asefasdfgasdfasdf
+será-denovo

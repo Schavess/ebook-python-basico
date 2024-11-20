@@ -3,14 +3,13 @@ bookdown::gitbook:
   includes:
     in_header: 
       - includes/header.html
-  split_by: chapter
+  split_by: section
   highlight: "zenburn"
-  pandoc_args: ["--metadata", "nocite: ''"]
   config:
     title: "Entre Florestas e Dados"
     favicon: "images/favico.ico"
     toc:
-      collapse: section
+      collapse: subsection
       before: |
         <div class="toc-header">
             <div class="image-container">

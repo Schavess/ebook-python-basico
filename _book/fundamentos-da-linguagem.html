@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Entre Florestas e Dados</title>
+  <title>1.4 Fundamentos da linguagem | Entre Florestas e Dados</title>
   <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Entre Florestas e Dados" />
+  <meta property="og:title" content="1.4 Fundamentos da linguagem | Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
   <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Entre Florestas e Dados" />
+  <meta name="twitter:title" content="1.4 Fundamentos da linguagem | Entre Florestas e Dados" />
   
   <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="sobre-o-r.html"/>
+<link rel="next" href="gerenciamento-de-pacotes.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -305,19 +305,523 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="fundamentos-da-linguagem" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Fundamentos da linguagem<a href="fundamentos-da-linguagem.html#fundamentos-da-linguagem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="boas-práticas-de-codar" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Boas práticas de codaR<a href="fundamentos-da-linguagem.html#boas-práticas-de-codar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="o-básico" class="section level4 hasAnchor" number="1.4.1.1">
+<h4><span class="header-section-number">1.4.1.1</span> O Básico<a href="fundamentos-da-linguagem.html#o-básico" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Acesse no menu superior <code>tools</code> &gt; <code>Global Options...</code> &gt; <code>code</code> &gt; <code>Display</code> e defina os padrões de identação e estilização que deseja. E Salve.</p>
+<p>Agora basta selecionar o trecho de código e usar o atalho <code>Ctrl + shift + A</code>(Windows).</p>
+</div>
+<div id="avançado" class="section level4 hasAnchor" number="1.4.1.2">
+<h4><span class="header-section-number">1.4.1.2</span> Avançado<a href="fundamentos-da-linguagem.html#avançado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para um estudo profundo verificar:</p>
+<p>O manual de referências de boas práticas <span class="citation">(<a href="#ref-tidyverse_style_guide">Wickham e contributors 2021</a>)</span></p>
+</div>
+</div>
+<div id="dúvidas" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> ?Dúvidas<a href="fundamentos-da-linguagem.html#dúvidas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fundamentos-da-linguagem.html#cb3-1" tabindex="-1"></a>?mean</span>
+<span id="cb3-2"><a href="fundamentos-da-linguagem.html#cb3-2" tabindex="-1"></a><span class="co"># ou</span></span>
+<span id="cb3-3"><a href="fundamentos-da-linguagem.html#cb3-3" tabindex="-1"></a><span class="fu">help</span>(mean)</span></code></pre></div>
+</div>
+<div id="tipos-de-dados" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Tipos de dados<a href="fundamentos-da-linguagem.html#tipos-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Conhecer os tipos de dados utilizados pela linguagem é essencial para sua manipulação e análise. A seguir, estão os principais tipos de dados:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="45%" />
+<col width="38%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>numeric</code></td>
+<td>Números, incluindo inteiros e reais</td>
+<td><code>10</code>, <code>10.5</code></td>
+</tr>
+<tr class="even">
+<td><code>integer</code></td>
+<td>Números inteiros</td>
+<td><code>as.integer(10)</code></td>
+</tr>
+<tr class="odd">
+<td><code>character</code></td>
+<td>Cadeias de caracteres (texto)</td>
+<td><code>"Olá"</code></td>
+</tr>
+<tr class="even">
+<td><code>logical</code></td>
+<td>Valores booleanos</td>
+<td><code>TRUE</code>, <code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td><code>complex</code></td>
+<td>Números complexos</td>
+<td><code>1+2i</code></td>
+</tr>
+<tr class="even">
+<td><code>factor</code></td>
+<td>Variáveis categóricas</td>
+<td><code>factor(c("A", "B", "A"))</code></td>
+</tr>
+<tr class="odd">
+<td><code>list</code></td>
+<td>Lista de elementos heterogêneos</td>
+<td><code>list(1, "a", TRUE)</code></td>
+</tr>
+<tr class="even">
+<td><code>data.frame</code></td>
+<td>Tabela de dados estruturados</td>
+<td><code>data.frame(x = 1:3, y = 4:6)</code></td>
+</tr>
+<tr class="odd">
+<td><code>matrix</code></td>
+<td>Tabela de dados bidimensional</td>
+<td><code>matrix(1:6, nrow = 2)</code></td>
+</tr>
+<tr class="even">
+<td><code>array</code></td>
+<td>Dados com mais de duas dimensões</td>
+<td><code>array(1:8, dim = c(2, 2, 2))</code></td>
+</tr>
+<tr class="odd">
+<td><code>NULL</code></td>
+<td>Representa a ausência de valor</td>
+<td><code>NULL</code></td>
+</tr>
+<tr class="even">
+<td><code>NA</code></td>
+<td>Valor ausente ou indefinido</td>
+<td><code>NA</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="operadores" class="section level3 hasAnchor" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Operadores<a href="fundamentos-da-linguagem.html#operadores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Há inúmeras operações que podem ser realizadas com os dados dentro da lógica da programação. A seguir, estão os principais operadores:</p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="17%" />
+<col width="35%" />
+<col width="30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Categoria</th>
+<th>Operador</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aritmético</td>
+<td><code>+</code></td>
+<td>Adição</td>
+<td><code>x + y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>-</code></td>
+<td>Subtração</td>
+<td><code>x - y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>*</code></td>
+<td>Multiplicação</td>
+<td><code>x * y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>/</code></td>
+<td>Divisão</td>
+<td><code>x / y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>^</code></td>
+<td>Exponenciação</td>
+<td><code>x ^ y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>%%</code></td>
+<td>Módulo (resto da divisão)</td>
+<td><code>x %% y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>%/%</code></td>
+<td>Divisão inteira</td>
+<td><code>x %/% y</code></td>
+</tr>
+<tr class="even">
+<td>Comparação</td>
+<td><code>==</code></td>
+<td>Igual a</td>
+<td><code>x == y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>!=</code></td>
+<td>Diferente de</td>
+<td><code>x != y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>&gt;</code></td>
+<td>Maior que</td>
+<td><code>x &gt; y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>&lt;</code></td>
+<td>Menor que</td>
+<td><code>x &lt; y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>&gt;=</code></td>
+<td>Maior ou igual a</td>
+<td><code>x &gt;= y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>&lt;=</code></td>
+<td>Menor ou igual a</td>
+<td><code>x &lt;= y</code></td>
+</tr>
+<tr class="even">
+<td>Lógico</td>
+<td><code>&amp;</code></td>
+<td>AND elemento por elemento</td>
+<td><code>x &amp; y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>|</code></td>
+<td>OR elemento por elemento</td>
+<td><code>x                          | y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>&amp;&amp;</code></td>
+<td>AND para o primeiro elemento</td>
+<td><code>x &amp;&amp; y</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>|                              |</code></td>
+<td>OR para o primeiro elemento</td>
+<td><code>x |  | y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>!</code></td>
+<td>NOT lógico</td>
+<td><code>!x</code></td>
+</tr>
+<tr class="odd">
+<td>Atribuição</td>
+<td><code>&lt;-</code></td>
+<td>Atribui um valor</td>
+<td><code>x &lt;- y</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>-&gt;</code></td>
+<td>Atribui um valor</td>
+<td><code>y -&gt; x</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>=</code></td>
+<td>Atribui um valor</td>
+<td><code>x = y</code></td>
+</tr>
+<tr class="even">
+<td>Pertencimento</td>
+<td><code>%in%</code></td>
+<td>Pertencimento (contém)</td>
+<td><code>x %in% y</code></td>
+</tr>
+<tr class="odd">
+<td>Bit a bit</td>
+<td><code>bitwAnd()</code></td>
+<td>AND bit a bit</td>
+<td><code>bitwAnd(x, y)</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>bitwOr()</code></td>
+<td>OR bit a bit</td>
+<td><code>bitwOr(x, y)</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>bitwXor()</code></td>
+<td>XOR bit a bit</td>
+<td><code>bitwXor(x, y)</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>bitwNot()</code></td>
+<td>NOT bit a bit</td>
+<td><code>bitwNot(x)</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>bitwShiftL()</code></td>
+<td>Deslocamento à esquerda</td>
+<td><code>bitwShiftL(x, n)</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>bitwShiftR()</code></td>
+<td>Deslocamento à direita</td>
+<td><code>bitwShiftR(x, n)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="conversão-de-tipos" class="section level3 hasAnchor" number="1.4.5">
+<h3><span class="header-section-number">1.4.5</span> Conversão de tipos<a href="fundamentos-da-linguagem.html#conversão-de-tipos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Por se tratar de uma linguagem de tipagem dinâmica, é possível converter os tipos de dados:</p>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="35%" />
+<col width="32%" />
+<col width="17%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Função</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>as.numeric()</code></td>
+<td>Converte para tipo numérico</td>
+<td><code>as.numeric("10.5")</code></td>
+<td><code>10.5</code> (numeric)</td>
+</tr>
+<tr class="even">
+<td><code>as.integer()</code></td>
+<td>Converte para inteiro</td>
+<td><code>as.integer(10.5)</code></td>
+<td><code>10</code> (integer)</td>
+</tr>
+<tr class="odd">
+<td><code>as.character()</code></td>
+<td>Converte para texto (character)</td>
+<td><code>as.character(10)</code></td>
+<td><code>"10"</code> (character)</td>
+</tr>
+<tr class="even">
+<td><code>as.logical()</code></td>
+<td>Converte para lógico (booleano)</td>
+<td><code>as.logical(1)</code></td>
+<td><code>TRUE</code> (logical)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><code>as.logical(0)</code></td>
+<td><code>FALSE</code> (logical)</td>
+</tr>
+<tr class="even">
+<td><code>as.complex()</code></td>
+<td>Converte para número complexo</td>
+<td><code>as.complex(10)</code></td>
+<td><code>10+0i</code> (complex)</td>
+</tr>
+<tr class="odd">
+<td><code>as.factor()</code></td>
+<td>Converte para fator (categorias)</td>
+<td><code>as.factor(c("A", "B"))</code></td>
+<td><code>Factor</code> com níveis</td>
+</tr>
+<tr class="even">
+<td><code>as.list()</code></td>
+<td>Converte para lista</td>
+<td><code>as.list(c(1, 2, 3))</code></td>
+<td><code>list(1, 2, 3)</code></td>
+</tr>
+<tr class="odd">
+<td><code>as.matrix()</code></td>
+<td>Converte para matriz</td>
+<td><code>as.matrix(c(1, 2, 3))</code></td>
+<td><code>matrix</code> (2D)</td>
+</tr>
+<tr class="even">
+<td><code>as.data.frame()</code></td>
+<td>Converte para data frame</td>
+<td><code>as.data.frame(matrix(1:4, ncol=2))</code></td>
+<td><code>data.frame</code></td>
+</tr>
+<tr class="odd">
+<td><code>as.Date()</code></td>
+<td>Converte para data (classe Date)</td>
+<td><code>as.Date("2024-11-18")</code></td>
+<td><code>2024-11-18</code> (Date)</td>
+</tr>
+<tr class="even">
+<td><code>as.POSIXct()</code></td>
+<td>Converte para data/hora</td>
+<td><code>as.POSIXct("2024-11-18 10:00:00")</code></td>
+<td>Data/hora (POSIXct)</td>
+</tr>
+<tr class="odd">
+<td><code>as.vector()</code></td>
+<td>Converte para vetor</td>
+<td><code>as.vector(matrix(1:4, nrow=2))</code></td>
+<td><code>c(1, 2, 3, 4)</code></td>
+</tr>
+<tr class="even">
+<td><code>as.array()</code></td>
+<td>Converte para array (multi-dimensional)</td>
+<td><code>as.array(1:8)</code></td>
+<td><code>array</code></td>
+</tr>
+<tr class="odd">
+<td><code>is.numeric()</code></td>
+<td>Testa se é numérico</td>
+<td><code>is.numeric(10.5)</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>is.character()</code></td>
+<td>Testa se é texto</td>
+<td><code>is.character("text")</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td><code>is.logical()</code></td>
+<td>Testa se é lógico</td>
+<td><code>is.logical(TRUE)</code></td>
+<td><code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td><code>is.factor()</code></td>
+<td>Testa se é fator</td>
+<td><code>is.factor(as.factor("A"))</code></td>
+<td><code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="estruturas-de-controle" class="section level3 hasAnchor" number="1.4.6">
+<h3><span class="header-section-number">1.4.6</span> Estruturas de Controle<a href="fundamentos-da-linguagem.html#estruturas-de-controle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A lógica da programação e a construção de algoritmos dependem das estruturas de controle:</p>
+<table>
+<colgroup>
+<col width="11%" />
+<col width="46%" />
+<col width="42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estrutura</th>
+<th>Descrição</th>
+<th>Exemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>if</code></td>
+<td>Executa um bloco de código se a condição for verdadeira</td>
+<td><code>if (x &gt; 0) { print("Positivo") }</code></td>
+</tr>
+<tr class="even">
+<td><code>if-else</code></td>
+<td>Executa um bloco se a condição for verdadeira e outro se for falsa</td>
+<td><code>if (x &gt; 0) { print("Positivo") } else { print("Negativo") }</code></td>
+</tr>
+<tr class="odd">
+<td><code>ifelse</code></td>
+<td>Avaliação vetorizada para condicional</td>
+<td><code>result &lt;- ifelse(x &gt; 0, "Positivo", "Negativo")</code></td>
+</tr>
+<tr class="even">
+<td><code>for</code></td>
+<td>Itera sobre elementos de um vetor ou lista</td>
+<td><code>for (i in 1:5) { print(i) }</code></td>
+</tr>
+<tr class="odd">
+<td><code>while</code></td>
+<td>Executa um bloco enquanto a condição for verdadeira</td>
+<td><code>while (x &lt; 5) { print(x); x &lt;- x + 1 }</code></td>
+</tr>
+<tr class="even">
+<td><code>repeat</code></td>
+<td>Executa um bloco até encontrar um <code>break</code></td>
+<td><code>repeat { if (x &gt; 5) break; print(x); x &lt;- x + 1 }</code></td>
+</tr>
+<tr class="odd">
+<td><code>break</code></td>
+<td>Interrompe a execução de um laço</td>
+<td><code>for (i in 1:5) { if (i == 3) break; print(i) }</code></td>
+</tr>
+<tr class="even">
+<td><code>next</code></td>
+<td>Pula para a próxima iteração de um laço</td>
+<td><code>for (i in 1:5) { if (i == 3) next; print(i) }</code></td>
+</tr>
+<tr class="odd">
+<td><code>switch</code></td>
+<td>Seleciona uma opção com base em uma expressão</td>
+<td><code>switch(x, "a" = "Opção A", "b" = "Opção B")</code></td>
+</tr>
+<tr class="even">
+<td>Funções anônimas</td>
+<td>Executa expressões diretamente em chamadas</td>
+<td><code>sapply(1:5, function(x) x^2)</code></td>
+</tr>
+<tr class="odd">
+<td><code>try</code></td>
+<td>Captura erros em blocos de código</td>
+<td><code>try({ log("a") })</code></td>
+</tr>
+<tr class="even">
+<td><code>tryCatch</code></td>
+<td>Captura e lida com erros e mensagens</td>
+<td><code>tryCatch(log("a"), error = function(e) print("Erro"))</code></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+</div>
+</div>
+<h3>Referências<a href="referências.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-tidyverse_style_guide" class="csl-entry">
+Wickham, Hadley, e contributors. 2021. <em>Tidyverse Style Guide</em>. RStudio, PBC. <a href="https://style.tidyverse.org/">https://style.tidyverse.org/</a>.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="sobre-o-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gerenciamento-de-pacotes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -348,7 +852,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1_introducao_ao_r.Rmd",
 "text": "Edit"
 },
 "history": {

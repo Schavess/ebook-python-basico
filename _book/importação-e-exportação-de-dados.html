@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Entre Florestas e Dados</title>
+  <title>1.6 Importação e Exportação de Dados 📂 | Entre Florestas e Dados</title>
   <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Entre Florestas e Dados" />
+  <meta property="og:title" content="1.6 Importação e Exportação de Dados 📂 | Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
   <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Entre Florestas e Dados" />
+  <meta name="twitter:title" content="1.6 Importação e Exportação de Dados 📂 | Entre Florestas e Dados" />
   
   <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="gerenciamento-de-pacotes.html"/>
+<link rel="next" href="funções-da-família-apply-no-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -305,19 +305,113 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="importação-e-exportação-de-dados" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Importação e Exportação de Dados 📂<a href="#importação-e-exportação-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O R oferece diversas ferramentas para <strong>importar</strong> e <strong>exportar dados</strong> em diferentes formatos, permitindo que você trabalhe com arquivos como CSV, Excel, bancos de dados, arquivos de texto e muito mais.</p>
+<div id="importando-dados" class="section level3 hasAnchor" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Importando dados<a href="importação-e-exportação-de-dados.html#importando-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="arquivos-csv" class="section level4 hasAnchor" number="1.6.1.1">
+<h4><span class="header-section-number">1.6.1.1</span> <strong>1. Arquivos CSV</strong><a href="importação-e-exportação-de-dados.html#arquivos-csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O formato CSV é amplamente utilizado e facilmente manipulável no R com a função <code>read.csv()</code> ou a função mais moderna <code>readr::read_csv()</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="importação-e-exportação-de-dados.html#cb16-1" tabindex="-1"></a><span class="co"># Usando a função base</span></span>
+<span id="cb16-2"><a href="importação-e-exportação-de-dados.html#cb16-2" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;caminho/para/seu/arquivo.csv&quot;</span>)</span>
+<span id="cb16-3"><a href="importação-e-exportação-de-dados.html#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="importação-e-exportação-de-dados.html#cb16-4" tabindex="-1"></a><span class="co"># Usando o pacote readr (do Tidyverse)</span></span>
+<span id="cb16-5"><a href="importação-e-exportação-de-dados.html#cb16-5" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;caminho/para/seu/arquivo.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="arquivos-excel" class="section level4 hasAnchor" number="1.6.1.2">
+<h4><span class="header-section-number">1.6.1.2</span> <strong>2. Arquivos Excel</strong><a href="importação-e-exportação-de-dados.html#arquivos-excel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para importar dados de planilhas Excel, você pode usar pacotes como <code>readxl</code> ou <code>openxlsx</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="importação-e-exportação-de-dados.html#cb17-1" tabindex="-1"></a><span class="co"># Instale o pacote readxl, se necessário</span></span>
+<span id="cb17-2"><a href="importação-e-exportação-de-dados.html#cb17-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span>
+<span id="cb17-3"><a href="importação-e-exportação-de-dados.html#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="importação-e-exportação-de-dados.html#cb17-4" tabindex="-1"></a><span class="co"># Lendo uma planilha Excel</span></span>
+<span id="cb17-5"><a href="importação-e-exportação-de-dados.html#cb17-5" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb17-6"><a href="importação-e-exportação-de-dados.html#cb17-6" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;caminho/para/seu/arquivo.xlsx&quot;</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="arquivos-de-texto" class="section level4 hasAnchor" number="1.6.1.3">
+<h4><span class="header-section-number">1.6.1.3</span> <strong>3. Arquivos de texto</strong><a href="importação-e-exportação-de-dados.html#arquivos-de-texto" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para arquivos de texto delimitados (como TSV), use <code>read.delim()</code> ou <code>readr::read_tsv()</code>.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="importação-e-exportação-de-dados.html#cb18-1" tabindex="-1"></a><span class="co"># Arquivo delimitado por tabulação</span></span>
+<span id="cb18-2"><a href="importação-e-exportação-de-dados.html#cb18-2" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;caminho/para/seu/arquivo.txt&quot;</span>)</span>
+<span id="cb18-3"><a href="importação-e-exportação-de-dados.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="importação-e-exportação-de-dados.html#cb18-4" tabindex="-1"></a><span class="co"># Com readr</span></span>
+<span id="cb18-5"><a href="importação-e-exportação-de-dados.html#cb18-5" tabindex="-1"></a>dados <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(<span class="st">&quot;caminho/para/seu/arquivo.txt&quot;</span>)</span></code></pre></div>
+</div>
+<div id="bancos-de-dados" class="section level4 hasAnchor" number="1.6.1.4">
+<h4><span class="header-section-number">1.6.1.4</span> <strong>4. Bancos de Dados</strong><a href="importação-e-exportação-de-dados.html#bancos-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para se conectar a bancos de dados, use pacotes como <code>DBI</code> e <code>RSQLite</code>.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="importação-e-exportação-de-dados.html#cb19-1" tabindex="-1"></a><span class="co"># Exemplo com SQLite</span></span>
+<span id="cb19-2"><a href="importação-e-exportação-de-dados.html#cb19-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;DBI&quot;</span>)</span>
+<span id="cb19-3"><a href="importação-e-exportação-de-dados.html#cb19-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;RSQLite&quot;</span>)</span>
+<span id="cb19-4"><a href="importação-e-exportação-de-dados.html#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="importação-e-exportação-de-dados.html#cb19-5" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb19-6"><a href="importação-e-exportação-de-dados.html#cb19-6" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;caminho/para/seu/banco.sqlite&quot;</span>)</span>
+<span id="cb19-7"><a href="importação-e-exportação-de-dados.html#cb19-7" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">&quot;nome_da_tabela&quot;</span>)</span>
+<span id="cb19-8"><a href="importação-e-exportação-de-dados.html#cb19-8" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+</div>
+<div id="outros-formatos-populares" class="section level4 hasAnchor" number="1.6.1.5">
+<h4><span class="header-section-number">1.6.1.5</span> <strong>5. Outros formatos populares</strong><a href="importação-e-exportação-de-dados.html#outros-formatos-populares" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>JSON: Use o pacote <code>jsonlite</code>.<br />
+</li>
+<li>XML: Use o pacote <code>xml2</code>.<br />
+</li>
+<li>Arquivos SPSS, Stata e SAS: Use o pacote <code>haven</code>.</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="importação-e-exportação-de-dados.html#cb20-1" tabindex="-1"></a><span class="co"># Exemplo de JSON</span></span>
+<span id="cb20-2"><a href="importação-e-exportação-de-dados.html#cb20-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
+<span id="cb20-3"><a href="importação-e-exportação-de-dados.html#cb20-3" tabindex="-1"></a>dados <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&quot;caminho/para/seu/arquivo.json&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="exportando-dados" class="section level3 hasAnchor" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> Exportando dados<a href="importação-e-exportação-de-dados.html#exportando-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="exportando-para-csv" class="section level4 hasAnchor" number="1.6.2.1">
+<h4><span class="header-section-number">1.6.2.1</span> <strong>1. Exportando para CSV</strong><a href="importação-e-exportação-de-dados.html#exportando-para-csv" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>A função <code>write.csv()</code> é usada para salvar dados em formato CSV.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="importação-e-exportação-de-dados.html#cb21-1" tabindex="-1"></a><span class="co"># Salvando um data frame como CSV</span></span>
+<span id="cb21-2"><a href="importação-e-exportação-de-dados.html#cb21-2" tabindex="-1"></a><span class="fu">write.csv</span>(dados, <span class="st">&quot;caminho/para/saida.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+<div id="exportando-para-excel" class="section level4 hasAnchor" number="1.6.2.2">
+<h4><span class="header-section-number">1.6.2.2</span> <strong>2. Exportando para Excel</strong><a href="importação-e-exportação-de-dados.html#exportando-para-excel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Para salvar dados em Excel, use o pacote <code>openxlsx</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="importação-e-exportação-de-dados.html#cb22-1" tabindex="-1"></a><span class="co"># Instale o pacote openxlsx, se necessário</span></span>
+<span id="cb22-2"><a href="importação-e-exportação-de-dados.html#cb22-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;openxlsx&quot;</span>)</span>
+<span id="cb22-3"><a href="importação-e-exportação-de-dados.html#cb22-3" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="importação-e-exportação-de-dados.html#cb22-4" tabindex="-1"></a><span class="co"># Escrevendo dados em uma planilha Excel</span></span>
+<span id="cb22-5"><a href="importação-e-exportação-de-dados.html#cb22-5" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb22-6"><a href="importação-e-exportação-de-dados.html#cb22-6" tabindex="-1"></a><span class="fu">write.xlsx</span>(dados, <span class="st">&quot;caminho/para/saida.xlsx&quot;</span>)</span></code></pre></div>
+</div>
+<div id="exportando-para-outros-formatos" class="section level4 hasAnchor" number="1.6.2.3">
+<h4><span class="header-section-number">1.6.2.3</span> <strong>3. Exportando para outros formatos</strong><a href="importação-e-exportação-de-dados.html#exportando-para-outros-formatos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O R permite salvar dados em diversos formatos com as funções correspondentes:
+- Texto (<code>write.table()</code>)
+- JSON (<code>jsonlite::toJSON()</code>)
+- Bancos de dados (<code>dbWriteTable()</code>).</p>
+<p><strong>Exemplo com JSON:</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="importação-e-exportação-de-dados.html#cb23-1" tabindex="-1"></a>jsonlite<span class="sc">::</span><span class="fu">toJSON</span>(dados, <span class="at">pretty =</span> <span class="cn">TRUE</span>, <span class="at">file =</span> <span class="st">&quot;caminho/para/saida.json&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="dicas-e-boas-práticas" class="section level3 hasAnchor" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> Dicas e boas práticas<a href="importação-e-exportação-de-dados.html#dicas-e-boas-práticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>Sempre verifique os tipos de dados importados com <code>str()</code> ou <code>glimpse()</code>.<br />
+</p></li>
+<li><p>Para grandes volumes de dados, considere pacotes otimizados como <code>data.table</code> ou <code>vroom</code>.<br />
+</p></li>
+<li><p>Configure o diretório de trabalho corretamente para evitar erros de caminho:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="importação-e-exportação-de-dados.html#cb24-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;caminho/para/seu/diretorio&quot;</span>)</span></code></pre></div></li>
+</ul>
+<hr />
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="gerenciamento-de-pacotes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="funções-da-família-apply-no-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -348,7 +442,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/%s",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1_introducao_ao_r.Rmd",
 "text": "Edit"
 },
 "history": {

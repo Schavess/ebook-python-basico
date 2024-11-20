@@ -1,0 +1,48 @@
+# odfhoasdhf
+
+## 123
+pisaudhfukasdfuki
+
+### asdfasdfg
+
+```{r}
+print(2 + 2)
+print(2 + 3)
+print(2 + 4)
+```
+### asdfasdf
+
+```{r}
+print(2 + 2)
+print(2 + 3)
+print(2 + 4)
+```
+
+## asdfasdfasdf
+apsoiudfhoupiasjdfoikauiospdf
+<br>
+<br>asoidfjoashjdf
+<br>
+sodfhasduasd
+<br>
+spifjiasjdfoijsdfa
+<br>
+
+### asefasdfgasdfasdf
+
+sfasdasdfasd
+<br>
+```{r}
+print(2 + 2)
+print(2 + 3)
+print(2 + 4)
+```
+### Será denovo
+
+sfasdasdfasd
+<br>
+```{r}
+print(2 + 2)
+print(2 + 3)
+print(2 + 4)
+```
