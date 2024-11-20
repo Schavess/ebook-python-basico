@@ -64,6 +64,12 @@ exemplos-de-uso
 data.table
 o-que-é-o-1
 exemplos-de-uso-1
+dendrometria
+diâmetros
+histogramas-de-distribuição-diamétrica
+criando-dados-para-demonstração
+construindo-os-histogramas
+exercício
 inventário-florestal
 fitossociologia-teoria
 estrutura-horizontal
@@ -96,10 +102,7 @@ estrutura-horizontal-1
 índice-de-shannon-diversidade
 índice-de-morisita-agregação
 estrutura-vertical-e-classificação-em-estratos
-odfhoasdhf
-section
-asdfasdfg
-asdfasdf
-asdfasdfasdf
-asefasdfgasdfasdf
-será-denovo
+manejo-de-florestas-plantadas
+altura-dominante
+calculando-altura-dominante-por-parcela-assman
+exercício-1
