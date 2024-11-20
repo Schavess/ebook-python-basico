@@ -3,7 +3,6 @@ bookdown::gitbook:
   includes:
     in_header: 
       - includes/header.html
-      - includes/toggle-script.html
   split_by: chapter
   highlight: "zenburn"
   pandoc_args: ["--metadata", "nocite: ''"]

@@ -63,21 +63,6 @@
 <link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link rel="shortcut icon" href="images/FaviconEntreFlorestasEDados.png" type="image/x-icon" />
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll(".custom-toggle-btn");
-        buttons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                const content = this.nextElementSibling;
-                if (content.style.display === "none" || content.style.display === "") {
-                    content.style.display = "block";
-                } else {
-                    content.style.display = "none";
-                }
-            });
-        });
-    });
-</script>
 
 
 <style type="text/css">

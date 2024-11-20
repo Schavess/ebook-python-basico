@@ -53,22 +53,16 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link rel="shortcut icon" href="images/FaviconEntreFlorestasEDados.png" type="image/x-icon" />
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const buttons = document.querySelectorAll(".custom-toggle-btn");
-        buttons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                const content = this.nextElementSibling;
-                if (content.style.display === "none" || content.style.display === "") {
-                    content.style.display = "block";
-                } else {
-                    content.style.display = "none";
-                }
-            });
-        });
-    });
-</script>
 
 
 <style type="text/css">
@@ -138,6 +132,29 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 <style type="text/css">
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -445,25 +462,25 @@ NA
 </table>
 <div id="calculando-altura-dominante-por-parcela-assman" class="section level3 hasAnchor" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Calculando altura dominante por parcela (Assman)<a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="manejo-de-florestas-plantadas.html#cb1-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
-<span id="cb1-2"><a href="manejo-de-florestas-plantadas.html#cb1-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
-<span id="cb1-3"><a href="manejo-de-florestas-plantadas.html#cb1-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb1-4"><a href="manejo-de-florestas-plantadas.html#cb1-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>DAP, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
-<span id="cb1-5"><a href="manejo-de-florestas-plantadas.html#cb1-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb1-6"><a href="manejo-de-florestas-plantadas.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="manejo-de-florestas-plantadas.html#cb1-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb1-8"><a href="manejo-de-florestas-plantadas.html#cb1-8" tabindex="-1"></a>Hdom_assman <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb1-9"><a href="manejo-de-florestas-plantadas.html#cb1-9" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="manejo-de-florestas-plantadas.html#cb1-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-11"><a href="manejo-de-florestas-plantadas.html#cb1-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
-<span id="cb1-12"><a href="manejo-de-florestas-plantadas.html#cb1-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
-<span id="cb1-13"><a href="manejo-de-florestas-plantadas.html#cb1-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
-<span id="cb1-14"><a href="manejo-de-florestas-plantadas.html#cb1-14" tabindex="-1"></a>  Hdom_assman[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
-<span id="cb1-15"><a href="manejo-de-florestas-plantadas.html#cb1-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb1-16"><a href="manejo-de-florestas-plantadas.html#cb1-16" tabindex="-1"></a>}</span>
-<span id="cb1-17"><a href="manejo-de-florestas-plantadas.html#cb1-17" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="manejo-de-florestas-plantadas.html#cb1-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_assman))</span>
-<span id="cb1-19"><a href="manejo-de-florestas-plantadas.html#cb1-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="manejo-de-florestas-plantadas.html#cb52-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
+<span id="cb52-2"><a href="manejo-de-florestas-plantadas.html#cb52-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
+<span id="cb52-3"><a href="manejo-de-florestas-plantadas.html#cb52-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb52-4"><a href="manejo-de-florestas-plantadas.html#cb52-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>DAP, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb52-5"><a href="manejo-de-florestas-plantadas.html#cb52-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb52-6"><a href="manejo-de-florestas-plantadas.html#cb52-6" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="manejo-de-florestas-plantadas.html#cb52-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb52-8"><a href="manejo-de-florestas-plantadas.html#cb52-8" tabindex="-1"></a>Hdom_assman <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb52-9"><a href="manejo-de-florestas-plantadas.html#cb52-9" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="manejo-de-florestas-plantadas.html#cb52-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb52-11"><a href="manejo-de-florestas-plantadas.html#cb52-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
+<span id="cb52-12"><a href="manejo-de-florestas-plantadas.html#cb52-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
+<span id="cb52-13"><a href="manejo-de-florestas-plantadas.html#cb52-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
+<span id="cb52-14"><a href="manejo-de-florestas-plantadas.html#cb52-14" tabindex="-1"></a>  Hdom_assman[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
+<span id="cb52-15"><a href="manejo-de-florestas-plantadas.html#cb52-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb52-16"><a href="manejo-de-florestas-plantadas.html#cb52-16" tabindex="-1"></a>}</span>
+<span id="cb52-17"><a href="manejo-de-florestas-plantadas.html#cb52-17" tabindex="-1"></a></span>
+<span id="cb52-18"><a href="manejo-de-florestas-plantadas.html#cb52-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_assman))</span>
+<span id="cb52-19"><a href="manejo-de-florestas-plantadas.html#cb52-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
 <p><br>
 Resultado:</p>
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -645,25 +662,25 @@ Hdom_assman
 <p>Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árvores mais altas por hectare.</p>
 <p><br>
 Solução do problema sem o pipe</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="manejo-de-florestas-plantadas.html#cb2-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="manejo-de-florestas-plantadas.html#cb2-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
-<span id="cb2-3"><a href="manejo-de-florestas-plantadas.html#cb2-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb2-4"><a href="manejo-de-florestas-plantadas.html#cb2-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>Ht, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
-<span id="cb2-5"><a href="manejo-de-florestas-plantadas.html#cb2-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb2-6"><a href="manejo-de-florestas-plantadas.html#cb2-6" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="manejo-de-florestas-plantadas.html#cb2-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb2-8"><a href="manejo-de-florestas-plantadas.html#cb2-8" tabindex="-1"></a>Hdom_hart <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb2-9"><a href="manejo-de-florestas-plantadas.html#cb2-9" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="manejo-de-florestas-plantadas.html#cb2-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb2-11"><a href="manejo-de-florestas-plantadas.html#cb2-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
-<span id="cb2-12"><a href="manejo-de-florestas-plantadas.html#cb2-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
-<span id="cb2-13"><a href="manejo-de-florestas-plantadas.html#cb2-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
-<span id="cb2-14"><a href="manejo-de-florestas-plantadas.html#cb2-14" tabindex="-1"></a>  Hdom_hart[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
-<span id="cb2-15"><a href="manejo-de-florestas-plantadas.html#cb2-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb2-16"><a href="manejo-de-florestas-plantadas.html#cb2-16" tabindex="-1"></a>}</span>
-<span id="cb2-17"><a href="manejo-de-florestas-plantadas.html#cb2-17" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="manejo-de-florestas-plantadas.html#cb2-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_hart))</span>
-<span id="cb2-19"><a href="manejo-de-florestas-plantadas.html#cb2-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="manejo-de-florestas-plantadas.html#cb53-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
+<span id="cb53-2"><a href="manejo-de-florestas-plantadas.html#cb53-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
+<span id="cb53-3"><a href="manejo-de-florestas-plantadas.html#cb53-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb53-4"><a href="manejo-de-florestas-plantadas.html#cb53-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>Ht, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb53-5"><a href="manejo-de-florestas-plantadas.html#cb53-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb53-6"><a href="manejo-de-florestas-plantadas.html#cb53-6" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="manejo-de-florestas-plantadas.html#cb53-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb53-8"><a href="manejo-de-florestas-plantadas.html#cb53-8" tabindex="-1"></a>Hdom_hart <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb53-9"><a href="manejo-de-florestas-plantadas.html#cb53-9" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="manejo-de-florestas-plantadas.html#cb53-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb53-11"><a href="manejo-de-florestas-plantadas.html#cb53-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
+<span id="cb53-12"><a href="manejo-de-florestas-plantadas.html#cb53-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
+<span id="cb53-13"><a href="manejo-de-florestas-plantadas.html#cb53-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
+<span id="cb53-14"><a href="manejo-de-florestas-plantadas.html#cb53-14" tabindex="-1"></a>  Hdom_hart[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
+<span id="cb53-15"><a href="manejo-de-florestas-plantadas.html#cb53-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb53-16"><a href="manejo-de-florestas-plantadas.html#cb53-16" tabindex="-1"></a>}</span>
+<span id="cb53-17"><a href="manejo-de-florestas-plantadas.html#cb53-17" tabindex="-1"></a></span>
+<span id="cb53-18"><a href="manejo-de-florestas-plantadas.html#cb53-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_hart))</span>
+<span id="cb53-19"><a href="manejo-de-florestas-plantadas.html#cb53-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
 Resultado:
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -840,23 +857,23 @@ Hdom_hart
 </tbody>
 </table>
 <p>Solução com pipe</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="manejo-de-florestas-plantadas.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="manejo-de-florestas-plantadas.html#cb3-2" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="manejo-de-florestas-plantadas.html#cb3-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="manejo-de-florestas-plantadas.html#cb3-4" tabindex="-1"></a>  <span class="fu">arrange</span>(Parc, <span class="fu">desc</span>(Ht))  <span class="co"># Garantir a ordem correta</span></span>
-<span id="cb3-5"><a href="manejo-de-florestas-plantadas.html#cb3-5" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="manejo-de-florestas-plantadas.html#cb3-6" tabindex="-1"></a>BD_Hart <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="manejo-de-florestas-plantadas.html#cb3-7" tabindex="-1"></a>  <span class="fu">group_by</span>(Parc) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="manejo-de-florestas-plantadas.html#cb3-8" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-9"><a href="manejo-de-florestas-plantadas.html#cb3-9" tabindex="-1"></a>    <span class="at">num_top =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(areaParc) <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">10000</span>)</span>
-<span id="cb3-10"><a href="manejo-de-florestas-plantadas.html#cb3-10" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="manejo-de-florestas-plantadas.html#cb3-11" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">first</span>(num_top)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="manejo-de-florestas-plantadas.html#cb3-12" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb3-13"><a href="manejo-de-florestas-plantadas.html#cb3-13" tabindex="-1"></a>    <span class="at">Hdom_Hart2 =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>)</span>
-<span id="cb3-14"><a href="manejo-de-florestas-plantadas.html#cb3-14" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-15"><a href="manejo-de-florestas-plantadas.html#cb3-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb3-16"><a href="manejo-de-florestas-plantadas.html#cb3-16" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="manejo-de-florestas-plantadas.html#cb3-17" tabindex="-1"></a>BD_HDOM <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD2, BD_Hart, <span class="at">by =</span> <span class="st">&quot;Parc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="manejo-de-florestas-plantadas.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb54-2"><a href="manejo-de-florestas-plantadas.html#cb54-2" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="manejo-de-florestas-plantadas.html#cb54-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
+<span id="cb54-4"><a href="manejo-de-florestas-plantadas.html#cb54-4" tabindex="-1"></a>  <span class="fu">arrange</span>(Parc, <span class="fu">desc</span>(Ht))  <span class="co"># Garantir a ordem correta</span></span>
+<span id="cb54-5"><a href="manejo-de-florestas-plantadas.html#cb54-5" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="manejo-de-florestas-plantadas.html#cb54-6" tabindex="-1"></a>BD_Hart <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
+<span id="cb54-7"><a href="manejo-de-florestas-plantadas.html#cb54-7" tabindex="-1"></a>  <span class="fu">group_by</span>(Parc) <span class="sc">%&gt;%</span></span>
+<span id="cb54-8"><a href="manejo-de-florestas-plantadas.html#cb54-8" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb54-9"><a href="manejo-de-florestas-plantadas.html#cb54-9" tabindex="-1"></a>    <span class="at">num_top =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(areaParc) <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">10000</span>)</span>
+<span id="cb54-10"><a href="manejo-de-florestas-plantadas.html#cb54-10" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb54-11"><a href="manejo-de-florestas-plantadas.html#cb54-11" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">first</span>(num_top)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-12"><a href="manejo-de-florestas-plantadas.html#cb54-12" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb54-13"><a href="manejo-de-florestas-plantadas.html#cb54-13" tabindex="-1"></a>    <span class="at">Hdom_Hart2 =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>)</span>
+<span id="cb54-14"><a href="manejo-de-florestas-plantadas.html#cb54-14" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb54-15"><a href="manejo-de-florestas-plantadas.html#cb54-15" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb54-16"><a href="manejo-de-florestas-plantadas.html#cb54-16" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="manejo-de-florestas-plantadas.html#cb54-17" tabindex="-1"></a>BD_HDOM <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD2, BD_Hart, <span class="at">by =</span> <span class="st">&quot;Parc&quot;</span>)</span></code></pre></div>
 Resultado:
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1167,6 +1184,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
