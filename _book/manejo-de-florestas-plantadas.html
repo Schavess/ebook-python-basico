@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Manejo de Florestas Plantadas | Entre Florestas e Dados</title>
+  <title>5 Manejo de Florestas Plantadas | Entre Florestas e Dados</title>
   <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Manejo de Florestas Plantadas | Entre Florestas e Dados" />
+  <meta property="og:title" content="5 Manejo de Florestas Plantadas | Entre Florestas e Dados" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
   <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Manejo de Florestas Plantadas | Entre Florestas e Dados" />
+  <meta name="twitter:title" content="5 Manejo de Florestas Plantadas | Entre Florestas e Dados" />
   
   <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
   <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
@@ -53,6 +53,15 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link rel="shortcut icon" href="images/FaviconEntreFlorestasEDados.png" type="image/x-icon" />
 
 
@@ -124,6 +133,29 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -185,75 +217,90 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
 <li class="chapter" data-level="1.4.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conversão-de-tipos"><i class="fa fa-check"></i><b>1.4.5</b> Conversão de tipos</a></li>
 <li class="chapter" data-level="1.4.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#estruturas-de-controle"><i class="fa fa-check"></i><b>1.4.6</b> Estruturas de Controle</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.5</b> Gerenciamento de Pacotes 📦</a>
+<li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#arrays-e-dataframes"><i class="fa fa-check"></i><b>1.5</b> Arrays e Dataframes</a>
 <ul>
-<li class="chapter" data-level="1.5.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-são-pacotes"><i class="fa fa-check"></i><b>1.5.1</b> O que são pacotes?</a></li>
-<li class="chapter" data-level="1.5.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalando-pacotes"><i class="fa fa-check"></i><b>1.5.2</b> Instalando pacotes</a></li>
-<li class="chapter" data-level="1.5.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.5.3</b> Carregando pacotes</a></li>
-<li class="chapter" data-level="1.5.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#atualizando-pacotes"><i class="fa fa-check"></i><b>1.5.4</b> Atualizando pacotes</a></li>
-<li class="chapter" data-level="1.5.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#removendo-pacotes"><i class="fa fa-check"></i><b>1.5.5</b> Removendo pacotes</a></li>
-<li class="chapter" data-level="1.5.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#verificando-pacotes-instalados"><i class="fa fa-check"></i><b>1.5.6</b> Verificando pacotes instalados</a></li>
-<li class="chapter" data-level="1.5.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#repositórios"><i class="fa fa-check"></i><b>1.5.7</b> Repositórios</a></li>
-<li class="chapter" data-level="1.5.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#ferramentas-avançadas-para-gerenciamento"><i class="fa fa-check"></i><b>1.5.8</b> Ferramentas avançadas para gerenciamento</a></li>
+<li class="chapter" data-level="1.5.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#arrays"><i class="fa fa-check"></i><b>1.5.1</b> Arrays</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dataframes"><i class="fa fa-check"></i><b>1.5.2</b> Dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-de-dados"><i class="fa fa-check"></i><b>1.6</b> Importação e Exportação de Dados 📂</a>
+<li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.6</b> Gerenciamento de Pacotes 📦</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importando-dados"><i class="fa fa-check"></i><b>1.6.1</b> Importando dados</a></li>
-<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exportando-dados"><i class="fa fa-check"></i><b>1.6.2</b> Exportando dados</a></li>
-<li class="chapter" data-level="1.6.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dicas-e-boas-práticas"><i class="fa fa-check"></i><b>1.6.3</b> Dicas e boas práticas</a></li>
+<li class="chapter" data-level="1.6.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-são-pacotes"><i class="fa fa-check"></i><b>1.6.1</b> O que são pacotes?</a></li>
+<li class="chapter" data-level="1.6.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#instalando-pacotes"><i class="fa fa-check"></i><b>1.6.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.6.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="1.6.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#atualizando-pacotes"><i class="fa fa-check"></i><b>1.6.4</b> Atualizando pacotes</a></li>
+<li class="chapter" data-level="1.6.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#removendo-pacotes"><i class="fa fa-check"></i><b>1.6.5</b> Removendo pacotes</a></li>
+<li class="chapter" data-level="1.6.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#verificando-pacotes-instalados"><i class="fa fa-check"></i><b>1.6.6</b> Verificando pacotes instalados</a></li>
+<li class="chapter" data-level="1.6.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#repositórios"><i class="fa fa-check"></i><b>1.6.7</b> Repositórios</a></li>
+<li class="chapter" data-level="1.6.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#ferramentas-avançadas-para-gerenciamento"><i class="fa fa-check"></i><b>1.6.8</b> Ferramentas avançadas para gerenciamento</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#funções-da-família-apply-no-r"><i class="fa fa-check"></i><b>1.7</b> Funções da família <code>apply()</code> no R</a>
+<li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importação-e-exportação-de-dados"><i class="fa fa-check"></i><b>1.7</b> Importação e Exportação de Dados 📂</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#apply"><i class="fa fa-check"></i><b>1.7.1</b> <strong>1. <code>apply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#lapply"><i class="fa fa-check"></i><b>1.7.2</b> <strong>2. <code>lapply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#sapply"><i class="fa fa-check"></i><b>1.7.3</b> <strong>3. <code>sapply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#vapply"><i class="fa fa-check"></i><b>1.7.4</b> <strong>4. <code>vapply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#mapply"><i class="fa fa-check"></i><b>1.7.5</b> <strong>5. <code>mapply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#tapply"><i class="fa fa-check"></i><b>1.7.6</b> <strong>6. <code>tapply()</code></strong></a></li>
-<li class="chapter" data-level="1.7.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#by"><i class="fa fa-check"></i><b>1.7.7</b> <strong>7. <code>by()</code></strong></a></li>
-<li class="chapter" data-level="" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#conclusão"><i class="fa fa-check"></i>Conclusão</a></li>
-</ul></li>
-<li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#pipe-do-dplyr"><i class="fa fa-check"></i><b>1.8</b> Pipe (<code>%&gt;%</code>) do dplyr</a>
-<ul>
-<li class="chapter" data-level="1.8.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o"><i class="fa fa-check"></i><b>1.8.1</b> O que é o <code>%&gt;%</code>?</a></li>
-<li class="chapter" data-level="1.8.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso"><i class="fa fa-check"></i><b>1.8.2</b> Exemplos de Uso</a></li>
-</ul></li>
-<li class="chapter" data-level="1.9" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#data.table"><i class="fa fa-check"></i><b>1.9</b> data.table</a>
-<ul>
-<li class="chapter" data-level="1.9.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#o-que-é-o-1"><i class="fa fa-check"></i><b>1.9.1</b> O que é o <code>:=</code>?</a></li>
-<li class="chapter" data-level="1.9.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>1.9.2</b> Exemplos de Uso</a></li>
+<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#importando-dados"><i class="fa fa-check"></i><b>1.7.1</b> Importando dados</a></li>
+<li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#exportando-dados"><i class="fa fa-check"></i><b>1.7.2</b> Exportando dados</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dicas-e-boas-práticas"><i class="fa fa-check"></i><b>1.7.3</b> Dicas e boas práticas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>2</b> Dendrometria</a>
+<li class="chapter" data-level="2" data-path="r-intermediário.html"><a href="r-intermediário.html"><i class="fa fa-check"></i><b>2</b> R Intermediário</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>2.1</b> Diâmetros</a>
+<li class="chapter" data-level="2.1" data-path="r-intermediário.html"><a href="r-intermediário.html#funções-da-família-apply-no-r"><i class="fa fa-check"></i><b>2.1</b> Funções da família <code>apply()</code> no R</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>2.1.1</b> Histogramas de distribuição diamétrica</a></li>
+<li class="chapter" data-level="2.1.1" data-path="r-intermediário.html"><a href="r-intermediário.html#apply"><i class="fa fa-check"></i><b>2.1.1</b> <strong>1. <code>apply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="r-intermediário.html"><a href="r-intermediário.html#lapply"><i class="fa fa-check"></i><b>2.1.2</b> <strong>2. <code>lapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="r-intermediário.html"><a href="r-intermediário.html#sapply"><i class="fa fa-check"></i><b>2.1.3</b> <strong>3. <code>sapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="r-intermediário.html"><a href="r-intermediário.html#vapply"><i class="fa fa-check"></i><b>2.1.4</b> <strong>4. <code>vapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="r-intermediário.html"><a href="r-intermediário.html#mapply"><i class="fa fa-check"></i><b>2.1.5</b> <strong>5. <code>mapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.6" data-path="r-intermediário.html"><a href="r-intermediário.html#tapply"><i class="fa fa-check"></i><b>2.1.6</b> <strong>6. <code>tapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.7" data-path="r-intermediário.html"><a href="r-intermediário.html#by"><i class="fa fa-check"></i><b>2.1.7</b> <strong>7. <code>by()</code></strong></a></li>
+<li class="chapter" data-level="" data-path="r-intermediário.html"><a href="r-intermediário.html#conclusão"><i class="fa fa-check"></i>Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="r-intermediário.html"><a href="r-intermediário.html#dplyr"><i class="fa fa-check"></i><b>2.2</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="r-intermediário.html"><a href="r-intermediário.html#o-que-é-o-pipe"><i class="fa fa-check"></i><b>2.2.1</b> O que é o Pipe <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="r-intermediário.html"><a href="r-intermediário.html#tibbles"><i class="fa fa-check"></i><b>2.2.2</b> Tibbles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="r-intermediário.html"><a href="r-intermediário.html#filter"><i class="fa fa-check"></i><b>2.2.3</b> filter()</a></li>
+<li class="chapter" data-level="2.2.4" data-path="r-intermediário.html"><a href="r-intermediário.html#select"><i class="fa fa-check"></i><b>2.2.4</b> select()</a></li>
+<li class="chapter" data-level="2.2.5" data-path="r-intermediário.html"><a href="r-intermediário.html#mutate"><i class="fa fa-check"></i><b>2.2.5</b> mutate()</a></li>
+<li class="chapter" data-level="2.2.6" data-path="r-intermediário.html"><a href="r-intermediário.html#arrange"><i class="fa fa-check"></i><b>2.2.6</b> arrange()</a></li>
+<li class="chapter" data-level="2.2.7" data-path="r-intermediário.html"><a href="r-intermediário.html#summarise-e-group_by"><i class="fa fa-check"></i><b>2.2.7</b> summarise() e group_by()</a></li>
+<li class="chapter" data-level="2.2.8" data-path="r-intermediário.html"><a href="r-intermediário.html#ungroup"><i class="fa fa-check"></i><b>2.2.8</b> ungroup()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="r-intermediário.html"><a href="r-intermediário.html#data.table"><i class="fa fa-check"></i><b>2.3</b> data.table</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="r-intermediário.html"><a href="r-intermediário.html#o-que-é-o"><i class="fa fa-check"></i><b>2.3.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="r-intermediário.html"><a href="r-intermediário.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>2.3.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="r-intermediário.html"><a href="r-intermediário.html#manipulando-dados-com-dplyr"><i class="fa fa-check"></i><b>2.4</b> Manipulando dados com dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>3</b> Dendrometria</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dendrometria.html"><a href="dendrometria.html#diâmetros"><i class="fa fa-check"></i><b>3.1</b> Diâmetros</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="dendrometria.html"><a href="dendrometria.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>3.1.1</b> Histogramas de distribuição diamétrica</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>3</b> Inventário florestal</a>
+<li class="chapter" data-level="4" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>4</b> Inventário florestal</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-teoria"><i class="fa fa-check"></i><b>3.1</b> Fitossociologia (Teoria)</a>
+<li class="chapter" data-level="4.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-teoria"><i class="fa fa-check"></i><b>4.1</b> Fitossociologia (Teoria)</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-horizontal"><i class="fa fa-check"></i><b>3.1.1</b> Estrutura horizontal</a></li>
-<li class="chapter" data-level="3.1.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#diversidade"><i class="fa fa-check"></i><b>3.1.2</b> Diversidade</a></li>
-<li class="chapter" data-level="3.1.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#agregação"><i class="fa fa-check"></i><b>3.1.3</b> Agregação</a></li>
-<li class="chapter" data-level="3.1.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-vertical"><i class="fa fa-check"></i><b>3.1.4</b> Estrutura vertical</a></li>
-<li class="chapter" data-level="3.1.5" data-path="inventário-florestal.html"><a href="inventário-florestal.html#regeneração"><i class="fa fa-check"></i><b>3.1.5</b> Regeneração</a></li>
+<li class="chapter" data-level="4.1.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-horizontal"><i class="fa fa-check"></i><b>4.1.1</b> Estrutura horizontal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#diversidade"><i class="fa fa-check"></i><b>4.1.2</b> Diversidade</a></li>
+<li class="chapter" data-level="4.1.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#agregação"><i class="fa fa-check"></i><b>4.1.3</b> Agregação</a></li>
+<li class="chapter" data-level="4.1.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#estrutura-vertical"><i class="fa fa-check"></i><b>4.1.4</b> Estrutura vertical</a></li>
+<li class="chapter" data-level="4.1.5" data-path="inventário-florestal.html"><a href="inventário-florestal.html#regeneração"><i class="fa fa-check"></i><b>4.1.5</b> Regeneração</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-aplicação"><i class="fa fa-check"></i><b>3.2</b> Fitossociologia (Aplicação)</a>
+<li class="chapter" data-level="4.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#fitossociologia-aplicação"><i class="fa fa-check"></i><b>4.2</b> Fitossociologia (Aplicação)</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#consistência-dos-dados"><i class="fa fa-check"></i><b>3.2.1</b> Consistência dos dados</a></li>
-<li class="chapter" data-level="3.2.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-diamétrica-geral"><i class="fa fa-check"></i><b>3.2.2</b> Distribuição diamétrica geral</a></li>
-<li class="chapter" data-level="3.2.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-por-espécies-boxplots"><i class="fa fa-check"></i><b>3.2.3</b> Distribuição por espécies (boxplots)</a></li>
-<li class="chapter" data-level="3.2.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>3.2.4</b> Parâmetros Fitossociológicos</a></li>
+<li class="chapter" data-level="4.2.1" data-path="inventário-florestal.html"><a href="inventário-florestal.html#consistência-dos-dados"><i class="fa fa-check"></i><b>4.2.1</b> Consistência dos dados</a></li>
+<li class="chapter" data-level="4.2.2" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-diamétrica-geral"><i class="fa fa-check"></i><b>4.2.2</b> Distribuição diamétrica geral</a></li>
+<li class="chapter" data-level="4.2.3" data-path="inventário-florestal.html"><a href="inventário-florestal.html#distribuição-por-espécies-boxplots"><i class="fa fa-check"></i><b>4.2.3</b> Distribuição por espécies (boxplots)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="inventário-florestal.html"><a href="inventário-florestal.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>4.2.4</b> Parâmetros Fitossociológicos</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html"><i class="fa fa-check"></i><b>4</b> Manejo de Florestas Plantadas</a>
+<li class="chapter" data-level="5" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html"><i class="fa fa-check"></i><b>5</b> Manejo de Florestas Plantadas</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#altura-dominante"><i class="fa fa-check"></i><b>4.1</b> Altura Dominante</a>
+<li class="chapter" data-level="5.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#altura-dominante"><i class="fa fa-check"></i><b>5.1</b> Altura Dominante</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>4.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
+<li class="chapter" data-level="5.1.1" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>5.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
@@ -274,10 +321,10 @@ code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="manejo-de-florestas-plantadas" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Manejo de Florestas Plantadas<a href="manejo-de-florestas-plantadas.html#manejo-de-florestas-plantadas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="altura-dominante" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Altura Dominante<a href="manejo-de-florestas-plantadas.html#altura-dominante" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="manejo-de-florestas-plantadas" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Manejo de Florestas Plantadas<a href="manejo-de-florestas-plantadas.html#manejo-de-florestas-plantadas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="altura-dominante" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Altura Dominante<a href="manejo-de-florestas-plantadas.html#altura-dominante" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A altura dominante, que representa a média das alturas das árvores mais altas e/ou mais grossas de um determinado número de árvores por hectare, é menos influenciada por variações de densidade e competições locais entre árvores menores, tornando-a uma medida confiável da qualidade do sítio. Com ela, é possível estimar o potencial de crescimento da floresta, modelar curvas de crescimento e projetar a produção futura, auxiliando no planejamento sustentável e na tomada de decisões estratégicas no manejo florestal.</p>
 <p><br></p>
 <p>Dados exemplo:
@@ -428,27 +475,27 @@ NA
 </tr>
 </tbody>
 </table>
-<div id="calculando-altura-dominante-por-parcela-assman" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Calculando altura dominante por parcela (Assman)<a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="manejo-de-florestas-plantadas.html#cb1-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
-<span id="cb1-2"><a href="manejo-de-florestas-plantadas.html#cb1-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
-<span id="cb1-3"><a href="manejo-de-florestas-plantadas.html#cb1-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb1-4"><a href="manejo-de-florestas-plantadas.html#cb1-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>DAP, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
-<span id="cb1-5"><a href="manejo-de-florestas-plantadas.html#cb1-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb1-6"><a href="manejo-de-florestas-plantadas.html#cb1-6" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="manejo-de-florestas-plantadas.html#cb1-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb1-8"><a href="manejo-de-florestas-plantadas.html#cb1-8" tabindex="-1"></a>Hdom_assman <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb1-9"><a href="manejo-de-florestas-plantadas.html#cb1-9" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="manejo-de-florestas-plantadas.html#cb1-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb1-11"><a href="manejo-de-florestas-plantadas.html#cb1-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
-<span id="cb1-12"><a href="manejo-de-florestas-plantadas.html#cb1-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
-<span id="cb1-13"><a href="manejo-de-florestas-plantadas.html#cb1-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
-<span id="cb1-14"><a href="manejo-de-florestas-plantadas.html#cb1-14" tabindex="-1"></a>  Hdom_assman[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
-<span id="cb1-15"><a href="manejo-de-florestas-plantadas.html#cb1-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb1-16"><a href="manejo-de-florestas-plantadas.html#cb1-16" tabindex="-1"></a>}</span>
-<span id="cb1-17"><a href="manejo-de-florestas-plantadas.html#cb1-17" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="manejo-de-florestas-plantadas.html#cb1-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_assman))</span>
-<span id="cb1-19"><a href="manejo-de-florestas-plantadas.html#cb1-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
+<div id="calculando-altura-dominante-por-parcela-assman" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Calculando altura dominante por parcela (Assman)<a href="manejo-de-florestas-plantadas.html#calculando-altura-dominante-por-parcela-assman" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="manejo-de-florestas-plantadas.html#cb85-1" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
+<span id="cb85-2"><a href="manejo-de-florestas-plantadas.html#cb85-2" tabindex="-1"></a><span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
+<span id="cb85-3"><a href="manejo-de-florestas-plantadas.html#cb85-3" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb85-4"><a href="manejo-de-florestas-plantadas.html#cb85-4" tabindex="-1"></a>BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>DAP, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb85-5"><a href="manejo-de-florestas-plantadas.html#cb85-5" tabindex="-1"></a><span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb85-6"><a href="manejo-de-florestas-plantadas.html#cb85-6" tabindex="-1"></a></span>
+<span id="cb85-7"><a href="manejo-de-florestas-plantadas.html#cb85-7" tabindex="-1"></a>Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb85-8"><a href="manejo-de-florestas-plantadas.html#cb85-8" tabindex="-1"></a>Hdom_assman <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb85-9"><a href="manejo-de-florestas-plantadas.html#cb85-9" tabindex="-1"></a></span>
+<span id="cb85-10"><a href="manejo-de-florestas-plantadas.html#cb85-10" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb85-11"><a href="manejo-de-florestas-plantadas.html#cb85-11" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
+<span id="cb85-12"><a href="manejo-de-florestas-plantadas.html#cb85-12" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
+<span id="cb85-13"><a href="manejo-de-florestas-plantadas.html#cb85-13" tabindex="-1"></a>  H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
+<span id="cb85-14"><a href="manejo-de-florestas-plantadas.html#cb85-14" tabindex="-1"></a>  Hdom_assman[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
+<span id="cb85-15"><a href="manejo-de-florestas-plantadas.html#cb85-15" tabindex="-1"></a>  j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb85-16"><a href="manejo-de-florestas-plantadas.html#cb85-16" tabindex="-1"></a>}</span>
+<span id="cb85-17"><a href="manejo-de-florestas-plantadas.html#cb85-17" tabindex="-1"></a></span>
+<span id="cb85-18"><a href="manejo-de-florestas-plantadas.html#cb85-18" tabindex="-1"></a>BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_assman))</span>
+<span id="cb85-19"><a href="manejo-de-florestas-plantadas.html#cb85-19" tabindex="-1"></a>BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
 <p><br>
 Resultado:</p>
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -625,8 +672,8 @@ Hdom_assman
 </tr>
 </tbody>
 </table>
-<div id="exercício-1" class="section level4 hasAnchor" number="4.1.1.1">
-<h4><span class="header-section-number">4.1.1.1</span> Exercício<a href="manejo-de-florestas-plantadas.html#exercício-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="exercício-1" class="section level4 hasAnchor" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> Exercício<a href="manejo-de-florestas-plantadas.html#exercício-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Faça o cálculo da altura dominante agora seguindo o conceito de Hart: 100 árvores mais altas por hectare. Tente usar o pipe para resolver o problema.</p>
 <details>
 <summary>
@@ -634,25 +681,25 @@ Ver a Solução
 </summary>
 <p><br>
 Solução do problema sem o pipe</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="manejo-de-florestas-plantadas.html#cb2-1" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="manejo-de-florestas-plantadas.html#cb2-2" tabindex="-1"></a>  <span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
-<span id="cb2-3"><a href="manejo-de-florestas-plantadas.html#cb2-3" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb2-4"><a href="manejo-de-florestas-plantadas.html#cb2-4" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>Ht, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
-<span id="cb2-5"><a href="manejo-de-florestas-plantadas.html#cb2-5" tabindex="-1"></a>  <span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb2-6"><a href="manejo-de-florestas-plantadas.html#cb2-6" tabindex="-1"></a>  </span>
-<span id="cb2-7"><a href="manejo-de-florestas-plantadas.html#cb2-7" tabindex="-1"></a>  Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb2-8"><a href="manejo-de-florestas-plantadas.html#cb2-8" tabindex="-1"></a>  Hdom_hart <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
-<span id="cb2-9"><a href="manejo-de-florestas-plantadas.html#cb2-9" tabindex="-1"></a>  </span>
-<span id="cb2-10"><a href="manejo-de-florestas-plantadas.html#cb2-10" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb2-11"><a href="manejo-de-florestas-plantadas.html#cb2-11" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
-<span id="cb2-12"><a href="manejo-de-florestas-plantadas.html#cb2-12" tabindex="-1"></a>    a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
-<span id="cb2-13"><a href="manejo-de-florestas-plantadas.html#cb2-13" tabindex="-1"></a>    H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
-<span id="cb2-14"><a href="manejo-de-florestas-plantadas.html#cb2-14" tabindex="-1"></a>    Hdom_hart[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
-<span id="cb2-15"><a href="manejo-de-florestas-plantadas.html#cb2-15" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb2-16"><a href="manejo-de-florestas-plantadas.html#cb2-16" tabindex="-1"></a>  }</span>
-<span id="cb2-17"><a href="manejo-de-florestas-plantadas.html#cb2-17" tabindex="-1"></a>  </span>
-<span id="cb2-18"><a href="manejo-de-florestas-plantadas.html#cb2-18" tabindex="-1"></a>  BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_hart))</span>
-<span id="cb2-19"><a href="manejo-de-florestas-plantadas.html#cb2-19" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="manejo-de-florestas-plantadas.html#cb86-1" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;data/DesafioCalcHdom.csv&quot;</span>)</span>
+<span id="cb86-2"><a href="manejo-de-florestas-plantadas.html#cb86-2" tabindex="-1"></a>  <span class="fu">colnames</span>(BD)[<span class="dv">1</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;areaParc&quot;</span>)</span>
+<span id="cb86-3"><a href="manejo-de-florestas-plantadas.html#cb86-3" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD[, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb86-4"><a href="manejo-de-florestas-plantadas.html#cb86-4" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD[<span class="fu">order</span>(BD<span class="sc">$</span>Parc, BD<span class="sc">$</span>Ht, <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb86-5"><a href="manejo-de-florestas-plantadas.html#cb86-5" tabindex="-1"></a>  <span class="fu">row.names</span>(BD) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb86-6"><a href="manejo-de-florestas-plantadas.html#cb86-6" tabindex="-1"></a>  </span>
+<span id="cb86-7"><a href="manejo-de-florestas-plantadas.html#cb86-7" tabindex="-1"></a>  Parc <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb86-8"><a href="manejo-de-florestas-plantadas.html#cb86-8" tabindex="-1"></a>  Hdom_hart <span class="ot">&lt;-</span> <span class="fu">unique</span>(BD<span class="sc">$</span>Parc)</span>
+<span id="cb86-9"><a href="manejo-de-florestas-plantadas.html#cb86-9" tabindex="-1"></a>  </span>
+<span id="cb86-10"><a href="manejo-de-florestas-plantadas.html#cb86-10" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb86-11"><a href="manejo-de-florestas-plantadas.html#cb86-11" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> Parc) {</span>
+<span id="cb86-12"><a href="manejo-de-florestas-plantadas.html#cb86-12" tabindex="-1"></a>    a <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">1</span>])<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span><span class="dv">10000</span>)</span>
+<span id="cb86-13"><a href="manejo-de-florestas-plantadas.html#cb86-13" tabindex="-1"></a>    H <span class="ot">&lt;-</span> BD[<span class="fu">which</span>(BD<span class="sc">$</span>Parc<span class="sc">==</span>i),<span class="dv">5</span>]</span>
+<span id="cb86-14"><a href="manejo-de-florestas-plantadas.html#cb86-14" tabindex="-1"></a>    Hdom_hart[j] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(H[<span class="dv">1</span><span class="sc">:</span>a]), <span class="dv">2</span>)</span>
+<span id="cb86-15"><a href="manejo-de-florestas-plantadas.html#cb86-15" tabindex="-1"></a>    j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb86-16"><a href="manejo-de-florestas-plantadas.html#cb86-16" tabindex="-1"></a>  }</span>
+<span id="cb86-17"><a href="manejo-de-florestas-plantadas.html#cb86-17" tabindex="-1"></a>  </span>
+<span id="cb86-18"><a href="manejo-de-florestas-plantadas.html#cb86-18" tabindex="-1"></a>  BD2 <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(Parc, Hdom_hart))</span>
+<span id="cb86-19"><a href="manejo-de-florestas-plantadas.html#cb86-19" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD, BD2)</span></code></pre></div>
 Resultado:
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -829,23 +876,23 @@ Hdom_hart
 </tbody>
 </table>
 <p>Solução com pipe</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="manejo-de-florestas-plantadas.html#cb3-1" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="manejo-de-florestas-plantadas.html#cb3-2" tabindex="-1"></a>  </span>
-<span id="cb3-3"><a href="manejo-de-florestas-plantadas.html#cb3-3" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="manejo-de-florestas-plantadas.html#cb3-4" tabindex="-1"></a>    <span class="fu">arrange</span>(Parc, <span class="fu">desc</span>(Ht))  <span class="co"># Garantir a ordem correta</span></span>
-<span id="cb3-5"><a href="manejo-de-florestas-plantadas.html#cb3-5" tabindex="-1"></a>  </span>
-<span id="cb3-6"><a href="manejo-de-florestas-plantadas.html#cb3-6" tabindex="-1"></a>  BD_Hart <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="manejo-de-florestas-plantadas.html#cb3-7" tabindex="-1"></a>    <span class="fu">group_by</span>(Parc) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="manejo-de-florestas-plantadas.html#cb3-8" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
-<span id="cb3-9"><a href="manejo-de-florestas-plantadas.html#cb3-9" tabindex="-1"></a>      <span class="at">num_top =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(areaParc) <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">10000</span>)</span>
-<span id="cb3-10"><a href="manejo-de-florestas-plantadas.html#cb3-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="manejo-de-florestas-plantadas.html#cb3-11" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">first</span>(num_top)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="manejo-de-florestas-plantadas.html#cb3-12" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb3-13"><a href="manejo-de-florestas-plantadas.html#cb3-13" tabindex="-1"></a>      <span class="at">Hdom_Hart2 =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>)</span>
-<span id="cb3-14"><a href="manejo-de-florestas-plantadas.html#cb3-14" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-15"><a href="manejo-de-florestas-plantadas.html#cb3-15" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
-<span id="cb3-16"><a href="manejo-de-florestas-plantadas.html#cb3-16" tabindex="-1"></a>  </span>
-<span id="cb3-17"><a href="manejo-de-florestas-plantadas.html#cb3-17" tabindex="-1"></a>  BD_HDOM <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD2, BD_Hart, <span class="at">by =</span> <span class="st">&quot;Parc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="manejo-de-florestas-plantadas.html#cb87-1" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
+<span id="cb87-2"><a href="manejo-de-florestas-plantadas.html#cb87-2" tabindex="-1"></a>  </span>
+<span id="cb87-3"><a href="manejo-de-florestas-plantadas.html#cb87-3" tabindex="-1"></a>  BD <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
+<span id="cb87-4"><a href="manejo-de-florestas-plantadas.html#cb87-4" tabindex="-1"></a>    <span class="fu">arrange</span>(Parc, <span class="fu">desc</span>(Ht))  <span class="co"># Garantir a ordem correta</span></span>
+<span id="cb87-5"><a href="manejo-de-florestas-plantadas.html#cb87-5" tabindex="-1"></a>  </span>
+<span id="cb87-6"><a href="manejo-de-florestas-plantadas.html#cb87-6" tabindex="-1"></a>  BD_Hart <span class="ot">&lt;-</span> BD <span class="sc">%&gt;%</span></span>
+<span id="cb87-7"><a href="manejo-de-florestas-plantadas.html#cb87-7" tabindex="-1"></a>    <span class="fu">group_by</span>(Parc) <span class="sc">%&gt;%</span></span>
+<span id="cb87-8"><a href="manejo-de-florestas-plantadas.html#cb87-8" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb87-9"><a href="manejo-de-florestas-plantadas.html#cb87-9" tabindex="-1"></a>      <span class="at">num_top =</span> <span class="fu">ceiling</span>(<span class="fu">mean</span>(areaParc) <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> <span class="dv">10000</span>)</span>
+<span id="cb87-10"><a href="manejo-de-florestas-plantadas.html#cb87-10" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb87-11"><a href="manejo-de-florestas-plantadas.html#cb87-11" tabindex="-1"></a>    <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">first</span>(num_top)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-12"><a href="manejo-de-florestas-plantadas.html#cb87-12" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb87-13"><a href="manejo-de-florestas-plantadas.html#cb87-13" tabindex="-1"></a>      <span class="at">Hdom_Hart2 =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Ht, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>)</span>
+<span id="cb87-14"><a href="manejo-de-florestas-plantadas.html#cb87-14" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb87-15"><a href="manejo-de-florestas-plantadas.html#cb87-15" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span>
+<span id="cb87-16"><a href="manejo-de-florestas-plantadas.html#cb87-16" tabindex="-1"></a>  </span>
+<span id="cb87-17"><a href="manejo-de-florestas-plantadas.html#cb87-17" tabindex="-1"></a>  BD_HDOM <span class="ot">&lt;-</span> <span class="fu">merge</span>(BD2, BD_Hart, <span class="at">by =</span> <span class="st">&quot;Parc&quot;</span>)</span></code></pre></div>
 Resultado:
 <table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1157,6 +1204,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

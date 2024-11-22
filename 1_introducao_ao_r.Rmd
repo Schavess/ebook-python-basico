@@ -263,6 +263,140 @@ A lógica da programação e a construção de algoritmos dependem das estrutura
 
 ---
 
+## Arrays e Dataframes
+
+### Vetor
+Um vetor é a estrutura mais básica no R. Ele representa um array unidimensional que armazena elementos do mesmo tipo (numérico, lógico, caractere, etc.).
+
+Podemos criar vetores usando a função c().
+```{r}
+# Criando vetores de diferentes tipos
+vetor_numerico <- c(1, 2, 3, 4, 5)
+vetor_caractere <- c("Maçã", "Banana", "Laranja")
+vetor_logico <- c(TRUE, FALSE, TRUE)
+
+# Visualizando os vetores
+print(vetor_numerico)
+print(vetor_caractere)
+print(vetor_logico)
+
+```
+
+### Arrays
+
+Um array em R é uma estrutura de dados multidimensional que pode armazenar elementos de um único tipo (númerico, caractere, etc.). Ele é como uma extensão de vetores, podendo ter duas ou mais dimensões.
+
+#### Criando Arrays
+Para criar um array, usamos a função array().
+```{r}
+# Criando um array 3x3x2
+meu_array <- array(data = 1:18, dim = c(3, 3, 2))
+
+# Visualizando o array
+print(meu_array)
+```
+O exemplo acima cria um array com 3 linhas, 3 colunas e 2 "camadas".
+
+#### Acessando elementos
+Os elementos em arrays podem ser acessados usando índices.
+```{r}
+# Acessar o elemento na posição [1, 2, 1]
+meu_array[1, 2, 1]
+
+# Acessar a segunda camada inteira
+meu_array[, , 2]
+
+```
+### Dataframes
+Os dataframes são a estrutura de dados mais comum no R para manipular tabelas de dados. Eles permitem armazenar diferentes tipos de variáveis (numéricas, categóricas, etc.) em colunas.
+
+#### Criando Dataframes
+```{r}
+# Criando um dataframe
+meu_dataframe <- data.frame(
+  Nome = c("João", "Ana", "Carlos"),
+  Idade = c(25, 30, 22),
+  Altura = c(1.75, 1.68, 1.80)
+)
+
+# Visualizando o dataframe
+print(meu_dataframe)
+
+```
+
+#### Acessando elementos
+Você pode acessar linhas, colunas ou células específicas de um dataframe.
+
+```{r}
+# Acessar a coluna "Idade"
+meu_dataframe$Idade
+
+# Acessar a primeira linha
+meu_dataframe[1, ]
+
+# Acessar um elemento específico (linha 2, coluna 3)
+meu_dataframe[2, 3]
+
+```
+
+#### Criando ou Removendo uma coluna
+```{r}
+# Adicionar uma nova coluna
+meu_dataframe$Peso <- c(70, 60, 80)
+
+print(meu_dataframe)
+
+# Remover a coluna "Peso"
+meu_dataframe$Peso <- NULL
+
+print(meu_dataframe)
+
+
+```
+---
+
+## Listas
+
+As listas são estruturas mais flexíveis do que vetores ou dataframes. Uma lista pode armazenar diferentes tipos de objetos, incluindo vetores, dataframes, e até outras listas.
+
+### Criando listas
+```{r}
+# Criando uma lista
+minha_lista <- list(
+  numeros = c(1, 2, 3),
+  nomes = c("Alice", "Bob", "Carol"),
+  dataframe = meu_dataframe
+)
+
+# Visualizando a lista
+print(minha_lista)
+
+```
+### Acessando Elementos de Listas
+Os elementos de uma lista podem ser acessados por índices ou nomes.
+```{r}
+# Acessar o primeiro elemento
+minha_lista[[1]]
+
+# Acessar pelo nome
+minha_lista$numeros
+
+# Acessar elementos dentro de um dataframe armazenado
+minha_lista$dataframe$Idade
+
+```
+
+### Dataframe vs. Lista
+Embora um dataframe seja tecnicamente uma lista, ele é estruturado de maneira que todas as colunas tenham o mesmo número de elementos e seja mais simples de trabalhar com dados tabulares. Já as listas são muito mais flexíveis.
+
+| **Característica** | **Dataframe**                      | **Lista**                                                            |
+| ------------------ | ---------------------------------- | -------------------------------------------------------------------- |
+| **Estrutura**      | Tabela (linhas e colunas)          | Estrutura hierárquica                                                |
+| **Tipos de dados** | Colunas podem ter tipos diferentes | Elementos podem ser de qualquer tipo, incluindo listas ou dataframes |
+| **Indexação**      | Por linhas e colunas               | Por índices ou nomes                                                 |
+| **Uso típico**     | Dados tabulares                    | Agrupamento de objetos heterogêneos                                  |
+
+
 ## Gerenciamento de Pacotes 📦  
 
 O R é uma linguagem poderosa, ampliada pelo uso de pacotes. Com pacotes, é possível adicionar novas funcionalidades e acessar ferramentas específicas para diversas tarefas, como visualização de dados, manipulação e modelagem estatística.  
@@ -484,236 +618,3 @@ jsonlite::toJSON(dados, pretty = TRUE, file = "caminho/para/saida.json")
   ```
 
 ---
-
-## Funções da família `apply()` no R
-
-As funções da família `apply()` são usadas para realizar operações repetitivas em vetores, listas, matrizes e data frames de forma eficiente e vetorizada, substituindo muitos loops explícitos (`for`).
-
-### **1. `apply()`**
-Aplica uma função ao longo de uma **margem** de uma matriz ou array (linhas ou colunas).
-
-- **Uso:** Para matrizes e arrays.  
-- **Sintaxe:** `apply(X, MARGIN, FUN, ...)`
-  - `X`: Matriz ou array.  
-  - `MARGIN`: Margem a operar:
-    - `1` para linhas.
-    - `2` para colunas.  
-  - `FUN`: Função a ser aplicada.
-
-**Exemplo:**
-```r
-# Soma das colunas de uma matriz
-mat <- matrix(1:9, nrow = 3)
-apply(mat, 2, sum)
-# Resultado: [1] 12 15 18
-
-# Média das linhas
-apply(mat, 1, mean)
-# Resultado: [1] 2 5 8
-```
-
-### **2. `lapply()`**
-Aplica uma função a cada elemento de uma **lista** ou **vetor** e retorna uma **lista** como resultado.
-
-- **Uso:** Para listas e vetores.  
-- **Sintaxe:** `lapply(X, FUN, ...)`
-
-**Exemplo:**
-```r
-# Quadrado de cada elemento de um vetor
-vec <- 1:5
-lapply(vec, function(x) x^2)
-# Resultado: [[1]] 1, [[2]] 4, [[3]] 9, [[4]] 16, [[5]] 25
-
-# Aplicação em uma lista
-lst <- list(a = 1:3, b = 4:6)
-lapply(lst, sum)
-# Resultado: $a 6, $b 15
-```
-
-### **3. `sapply()`**
-Uma versão simplificada de `lapply()` que retorna um **vetor** ou **matriz** (se possível) em vez de uma lista.
-
-- **Uso:** Para listas e vetores.  
-- **Sintaxe:** `sapply(X, FUN, ...)`
-
-**Exemplo:**
-```r
-# Quadrado de cada elemento
-vec <- 1:5
-sapply(vec, function(x) x^2)
-# Resultado: [1] 1 4 9 16 25
-
-# Soma dos elementos em uma lista
-lst <- list(a = 1:3, b = 4:6)
-sapply(lst, sum)
-# Resultado: [1] 6 15
-```
-
-### **4. `vapply()`**
-Semelhante a `sapply()`, mas requer que você **especifique o tipo de retorno esperado** (mais seguro).
-
-- **Uso:** Para listas e vetores.  
-- **Sintaxe:** `vapply(X, FUN, FUN.VALUE, ...)`
-  - `FUN.VALUE`: Define o tipo e formato esperado do retorno.
-
-**Exemplo:**
-```r
-# Soma dos elementos em uma lista com tipo esperado (numeric)
-lst <- list(a = 1:3, b = 4:6)
-vapply(lst, sum, numeric(1))
-# Resultado: [1]  6 15
-```
-
-### **5. `mapply()`**
-Aplica uma função a múltiplos argumentos/vetores **simultaneamente** (como um `map` em Python).
-
-- **Uso:** Para múltiplos vetores ou listas.  
-- **Sintaxe:** `mapply(FUN, ..., MoreArgs = NULL)`
-
-**Exemplo:**
-```r
-# Soma de dois vetores
-vec1 <- 1:5
-vec2 <- 6:10
-mapply(sum, vec1, vec2)
-# Resultado: [1]  7  9 11 13 15
-
-# Repetição customizada
-mapply(rep, 1:3, 3:1)
-# Resultado: [[1]] 1, [[2]] 2 2, [[3]] 3 3 3
-```
-
-### **6. `tapply()`**
-Aplica uma função a subconjuntos de um vetor, definidos por um **fator** ou grupos.
-
-- **Uso:** Para agrupamento.  
-- **Sintaxe:** `tapply(X, INDEX, FUN, ...)`
-  - `X`: Vetor numérico.
-  - `INDEX`: Fator ou lista de fatores para agrupar.
-
-**Exemplo:**
-```r
-# Média por grupo
-vec <- c(1, 2, 3, 4, 5, 6)
-grp <- factor(c("A", "A", "B", "B", "C", "C"))
-tapply(vec, grp, mean)
-# Resultado: $A 1.5, $B 3.5, $C 5.5
-```
-
-### **7. `by()`**
-Semelhante a `tapply()`, mas retorna resultados organizados por **subgrupos** e funciona com data frames.
-
-- **Uso:** Para data frames.  
-- **Sintaxe:** `by(data, INDICES, FUN, ...)`
-
-**Exemplo:**
-```r
-# Soma dos valores por grupo em um data frame
-df <- data.frame(value = 1:6, group = c("A", "A", "B", "B", "C", "C"))
-by(df$value, df$group, sum)
-# Resultado:
-# A: 3
-# B: 7
-# C: 11
-```
-
-### Conclusão {-}
-As funções da família `apply()` tornam o R extremamente poderoso e eficiente para manipulação de dados. Use:
-- **`apply()`** para matrizes/arrays.
-- **`lapply()`** e **`sapply()`** para listas/vetores.
-- **`mapply()`** para múltiplos vetores.
-- **`tapply()`** e **`by()`** para agrupamentos.
-
----
-
-## Pipe (`%>%`) do dplyr
-
-### O que é o `%>%`?
-O operador `%>%` é chamado de pipe.
-Ele permite encadear funções de maneira a facilitar a leitura e compreensão do código.
-Ao invés de ficar atribuindo valores intermediários ou aninhando várias funções, você simplesmente passa o resultado de uma função como entrada para a próxima.
-
-### Exemplos de Uso
-Vamos usar o conjunto de dados mtcars para entender como o pipe facilita a manipulação de dados:
-
-Sem `%>%` (Sem Pipe)
-Imagine que queremos fazer as seguintes operações no dataset mtcars:
-
-Filtrar apenas os carros que têm mais de 20 milhas por galão (mpg > 20).
-Selecionar apenas as colunas mpg, cyl, e hp.
-Sem o operador `%>%`, o código ficaria assim:
-
-```{r}
-library(dplyr)
-
-# Sem pipe
-filtered_data <- filter(mtcars, mpg > 20)
-selected_data <- select(filtered_data, mpg, cyl, hp)
-```
-<br>
-Com `%>%` (Com Pipe)
-Podemos simplificar isso usando o pipe:
-
-```{r}
-library(dplyr)
-
-# Usando pipe
-selected_data <- mtcars %>%
-  filter(mpg > 20) %>%
-  select(mpg, cyl, hp)
-```
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(kableExtra)
-
-head(selected_data) %>%
-  knitr::kable() %>%
-  kableExtra::kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover"))
-```
-<br>
-Note como o código com `%>%` é mais legível e direto. Ele segue uma lógica sequencial que permite facilmente entender o que está sendo feito em cada etapa.
-
----
-
-## data.table
-
-### O que é o `:=`?
-O operador `:=` é chamado de operador de atribuição por referência.
-Ele pertence ao pacote data.table e é usado para adicionar ou modificar colunas em um data.table.
-O `:=` é mais eficiente do que usar `<-` em um data.table, pois faz as modificações "por referência", o que significa que não cria cópias desnecessárias dos dados, sendo muito mais rápido e eficiente em termos de memória.
-
-### Exemplos de Uso
-Vamos usar o pacote data.table para entender como o `:=`
- funciona.
-
-Primeiro, vamos criar um data.table com alguns dados fictícios:
-```{r}
-library(data.table)
-
-# Criação de um data.table
-DT <- data.table(
-  id = 1:5,
-  valor = c(10, 15, 20, 25, 30)
-)
-
-```
-Adicionando uma Nova Coluna com `:=`
-
-Podemos adicionar uma nova coluna chamada valor_2 que seja o dobro do valor existente na coluna valor:
-```{r}
-DT[, valor_2 := valor * 2]
-
-print(DT)
-
-```
-<br>
-
-Modificando uma Coluna Existente com `:=`
-
-Podemos também modificar uma coluna existente. Vamos modificar a coluna valor_2 para ser o triplo do valor da coluna valor:
-```{r}
-DT[, valor_2 := valor * 3]
-
-print(DT)
-```

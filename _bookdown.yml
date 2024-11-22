@@ -11,6 +11,7 @@ toc_depth: 3
 rmd_files:
   - index.Rmd
   - 1_introducao_ao_r.Rmd
+  - 1_r_intermediario.Rmd
   - 2_dendrometria.Rmd
   - 3_inventario_page.Rmd
   - 4_manejo_plantadas.Rmd
