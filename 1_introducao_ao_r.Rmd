@@ -397,6 +397,89 @@ Embora um dataframe seja tecnicamente uma lista, ele é estruturado de maneira q
 | **Uso típico**     | Dados tabulares                    | Agrupamento de objetos heterogêneos                                  |
 
 
+## Funções
+
+Uma função é um bloco de código que realiza uma tarefa específica. Ela recebe entradas (argumentos), processa os dados e retorna um resultado.
+
+Exemplo de Função
+```{r}
+# Função simples para calcular a soma de dois números
+soma <- function(x, y) {
+  resultado <- x + y
+  return(resultado)
+}
+
+# Usando a função
+soma(2, 3)  # Resultado: 5
+
+```
+
+### Usando funçÕes
+O R oferece várias funções embutidas para realizar tarefas comuns. Aqui estão alguns exemplos:
+
+Funções matemáticas
+```{r}
+# Funções básicas
+sqrt(16)      # Raiz quadrada: 4
+log(10)       # Logaritmo natural
+round(3.1415, 2)  # Arredondar para 2 casas decimais: 3.14
+
+```
+Funções estatísticas
+```{r}
+# Conjunto de dados
+dados <- c(1, 2, 3, 4, 5)
+
+# Estatísticas básicas
+mean(dados)   # Média: 3
+median(dados) # Mediana: 3
+sd(dados)     # Desvio padrão
+
+```
+Funções de manipulação de strings
+```{r}
+# Manipulando texto
+texto <- "Programar no R é divertido!"
+nchar(texto)       # Número de caracteres: 27
+toupper(texto)     # Tudo maiúsculo
+tolower(texto)     # Tudo minúsculo
+
+```
+### Criando funções
+
+Estrutura:
+```{r, eval=FALSE}
+nome_da_funcao <- function(argumento1, argumento2, ...) {
+  # Corpo da função (o que será feito)
+  resultado <- argumento1 + argumento2  # Exemplo
+  return(resultado)  # O que será retornado
+}
+
+```
+Exemplos:
+```{r}
+# Função quadrado
+quadrado <- function(x) {
+  return(x^2)
+}
+
+quadrado(4)
+
+# Calcula o volume de um cilindro
+volume_cilindro <- function(raio, altura) {
+  volume <- pi * raio^2 * altura
+  return(volume)
+}
+
+# Usando a função
+volume_cilindro(raio = 3, altura = 5)  # Resultado: 141.37
+
+# ou
+volume_cilindro(3, 5)  # Resultado: 141.37
+
+
+```
+
 ## Gerenciamento de Pacotes 📦  
 
 O R é uma linguagem poderosa, ampliada pelo uso de pacotes. Com pacotes, é possível adicionar novas funcionalidades e acessar ferramentas específicas para diversas tarefas, como visualização de dados, manipulação e modelagem estatística.  
