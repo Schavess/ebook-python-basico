@@ -516,16 +516,16 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 50 × 5
 ##    parcela especie     dap_cm altura_m volume_m3
 ##      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-##  1       1 Angelim       45.1     27.5    0.0974
-##  2       1 Jatobá        46.4     16.2    0.0590
-##  3       1 Ipê           59.3     15.8    0.0736
-##  4       1 Ipê           43.4     15.4    0.0525
-##  5       1 Jatobá        30.6     12.9    0.0310
-##  6       1 Castanheira   47.5      8.5    0.0317
-##  7       1 Cedro         51.2     24.8    0.0997
-##  8       1 Castanheira   56.2     26      0.115 
-##  9       1 Cedro         76.9      9.8    0.0592
-## 10       1 Jatobá        29       16.4    0.0374
+##  1       1 Cedro         19.4     14.8    0.0226
+##  2       1 Castanheira   23.3     10.3    0.0188
+##  3       1 Ipê           25.1     23.8    0.0469
+##  4       1 Cedro         75.4     16.1    0.0953
+##  5       1 Angelim       79.2     16.3    0.101 
+##  6       1 Cedro         31.7      7.1    0.0177
+##  7       1 Castanheira   19.6     14.1    0.0217
+##  8       1 Ipê           56.3     27.4    0.121 
+##  9       1 Castanheira   50.9     18.6    0.0744
+## 10       1 Cedro         34.1      5.8    0.0155
 ## # ℹ 40 more rows</code></pre>
 <hr />
 </div>
@@ -540,12 +540,12 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 6 × 5
 ##   parcela especie     dap_cm altura_m volume_m3
 ##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1       1 Ipê           59.3     15.8    0.0736
-## 2       1 Cedro         51.2     24.8    0.0997
-## 3       1 Castanheira   56.2     26      0.115 
-## 4       1 Cedro         76.9      9.8    0.0592
-## 5       2 Ipê           53.7     29.9    0.126 
-## 6       3 Ipê           58.3      5.9    0.0270</code></pre>
+## 1       1 Cedro         75.4     16.1    0.0953
+## 2       1 Angelim       79.2     16.3    0.101 
+## 3       1 Ipê           56.3     27.4    0.121 
+## 4       1 Castanheira   50.9     18.6    0.0744
+## 5       2 Castanheira   67       14.7    0.0774
+## 6       2 Cedro         69.2     11.9    0.0647</code></pre>
 </div>
 <div id="select" class="section level3 hasAnchor" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> select()<a href="dplyr.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -558,12 +558,12 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 6 × 3
 ##   especie     dap_cm altura_m
 ##   &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;
-## 1 Angelim       45.1     27.5
-## 2 Jatobá        46.4     16.2
-## 3 Ipê           59.3     15.8
-## 4 Ipê           43.4     15.4
-## 5 Jatobá        30.6     12.9
-## 6 Castanheira   47.5      8.5</code></pre>
+## 1 Cedro         19.4     14.8
+## 2 Castanheira   23.3     10.3
+## 3 Ipê           25.1     23.8
+## 4 Cedro         75.4     16.1
+## 5 Angelim       79.2     16.3
+## 6 Cedro         31.7      7.1</code></pre>
 </div>
 <div id="mutate" class="section level3 hasAnchor" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> mutate()<a href="dplyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -576,12 +576,12 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 6 × 6
 ##   parcela especie     dap_cm altura_m volume_m3
 ##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1       1 Angelim       45.1     27.5    0.0974
-## 2       1 Jatobá        46.4     16.2    0.0590
-## 3       1 Ipê           59.3     15.8    0.0736
-## 4       1 Ipê           43.4     15.4    0.0525
-## 5       1 Jatobá        30.6     12.9    0.0310
-## 6       1 Castanheira   47.5      8.5    0.0317
+## 1       1 Cedro         19.4     14.8    0.0226
+## 2       1 Castanheira   23.3     10.3    0.0188
+## 3       1 Ipê           25.1     23.8    0.0469
+## 4       1 Cedro         75.4     16.1    0.0953
+## 5       1 Angelim       79.2     16.3    0.101 
+## 6       1 Cedro         31.7      7.1    0.0177
 ## # ℹ 1 more variable: indice_esbeltez &lt;dbl&gt;</code></pre>
 </div>
 <div id="arrange" class="section level3 hasAnchor" number="2.2.6">
@@ -593,14 +593,14 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <span id="cb129-4"><a href="dplyr.html#cb129-4" tabindex="-1"></a></span>
 <span id="cb129-5"><a href="dplyr.html#cb129-5" tabindex="-1"></a><span class="fu">head</span>(dados_ordenados)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
-##   parcela especie     dap_cm altura_m volume_m3
-##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1       3 Angelim       78       20.3    0.124 
-## 2       1 Cedro         76.9      9.8    0.0592
-## 3       5 Angelim       73.2     24.9    0.143 
-## 4       4 Castanheira   72.6     18.9    0.108 
-## 5       5 Cedro         72.3     28.5    0.162 
-## 6       4 Cedro         70.8     16.3    0.0906
+##   parcela especie dap_cm altura_m volume_m3
+##     &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1       1 Angelim   79.2     16.3    0.101 
+## 2       3 Jatobá    78.8     29      0.179 
+## 3       5 Jatobá    76.7     21.1    0.127 
+## 4       5 Jatobá    76.5     22.3    0.134 
+## 5       2 Ipê       76        9.3    0.0555
+## 6       1 Cedro     75.4     16.1    0.0953
 ## # ℹ 1 more variable: indice_esbeltez &lt;dbl&gt;</code></pre>
 </div>
 <div id="summarise-e-group_by" class="section level3 hasAnchor" number="2.2.7">
@@ -618,11 +618,11 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 5 × 3
 ##   especie     dap_medio volume_total
 ##   &lt;chr&gt;           &lt;dbl&gt;        &lt;dbl&gt;
-## 1 Angelim          50.2        0.682
-## 2 Castanheira      48.2        0.603
-## 3 Cedro            53.5        0.732
-## 4 Ipê              36.9        0.490
-## 5 Jatobá           34.9        0.387</code></pre>
+## 1 Angelim          48.3        0.462
+## 2 Castanheira      37.2        0.605
+## 3 Cedro            51.6        0.755
+## 4 Ipê              47.5        0.868
+## 5 Jatobá           53.6        0.845</code></pre>
 </div>
 <div id="ungroup" class="section level3 hasAnchor" number="2.2.8">
 <h3><span class="header-section-number">2.2.8</span> ungroup()<a href="dplyr.html#ungroup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -642,7 +642,7 @@ Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue
 <pre><code>## # A tibble: 1 × 1
 ##   dap_medio_geral
 ##             &lt;dbl&gt;
-## 1            44.7</code></pre>
+## 1            47.7</code></pre>
 </div>
 </div>
             </section>
@@ -699,7 +699,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "section"
+"collapse": "chapter"
 },
 "title": "Entre Florestas e Dados",
 "favicon": "images/favico.ico",
