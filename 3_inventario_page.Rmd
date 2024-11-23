@@ -398,3 +398,59 @@ if (knitr::is_latex_output()) {
 ```
 <br>
 Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.
+
+## Processo em Conglomerados (Teoria)
+
+### Média da população
+$$\bar{x} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} \right)}{n \cdot m}$$
+
+### Média por subunidadae
+$$\bar{x}_i = \frac{\sum_{j=1}^m x_{ij}}{m}$$
+
+### Variância total
+$$S_x^2 = S_e^2 + S_d^2$$
+
+### Variância dentro do conglomerado
+$$S_d^2 = QM_{dentro} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} - \bar{x}_i \right)^2}{n \cdot (m - 1)}$$
+
+### Variância entre conglomerados
+$$QM_{entre} = \frac{\sum_{i=1}^n m \cdot \left( \bar{x}_i - \bar{x} \right)^2}{n - 1}$$
+
+### Variância entre e dentro
+$$S_e^2 = \frac{QM_{entre} - QM_{dentro}}{m}$$
+
+### Coeficiente de correlação intraconglomerado
+$$\rho = r = \frac{S_e^2}{S_e^2 + S_d^2}$$
+
+### Intensidade amostral requerida
+$$n = \frac{t^2 \cdot S_x^2}{E^2 \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]$$
+
+### Variância total
+$$S_x^2 = S_e^2 + S_d^2$$
+
+### Variância da média
+$$S_{\bar{x}}^2 = \frac{N - n}{N} \cdot \frac{S_e^2}{n} + \frac{M - m}{M} \cdot \frac{S_d^2}{n \cdot m}$$
+
+ou
+
+$$S_{\bar{x}}^2 = \frac{S_x^2}{n \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]$$
+
+
+### Erro padrão
+$$S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}$$
+
+### Erro da amostragem absoluto
+$$S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}$$
+
+### Erro de amostragem relativo
+$$E_r = \pm \frac{t \cdot S_{\bar{x}}}{\bar{x}} \cdot 100$$
+
+### Intervalo de confiança para Média
+$$IC\left[\bar{x} - (E_a) \leq \bar{x} \leq \bar{x} + (E_a)\right] = P$$
+
+### Estimativa Total
+$$\hat{X} = N \cdot M \cdot \bar{x}$$
+
+### Intervalo de confiança total
+$$IC\left[\hat{X} - N \cdot M \cdot (E_a) \leq \hat{X} \leq \hat{X} + N \cdot M \cdot (E_a)\right] = P$$
+

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xml:lang="pt-BR">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.3 Processo em Conglomerados (Teoria) | Entre Florestas e Dados</title>
+  <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.3 Processo em Conglomerados (Teoria) | Entre Florestas e Dados" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+  <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.3 Processo em Conglomerados (Teoria) | Entre Florestas e Dados" />
+  
+  <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+
+<meta name="author" content="Arthur Guilherme Schirmbeck Chaves" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fitossociologia-aplicação.html"/>
+<link rel="next" href="manejo-de-florestas-plantadas.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link rel="shortcut icon" href="images/FaviconEntreFlorestasEDados.png" type="image/x-icon" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<div class="toc-header">
+    <div class="image-container">
+        <img src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa do Livro">
+        <div class="text-overlay-title">
+            <h5>Entre Florestas e Dados</h5>
+        </div>
+        <div class="text-overlay-author">
+            <p style="font-size: 10px; text-align: center; padding: 5px">Arthur Guilherme Schirmbeck Chaves</p>
+        </div>
+    </div>
+</div>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre</a></li>
+<li class="chapter" data-level="1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html"><i class="fa fa-check"></i><b>1</b> Introdução ao R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>1.1</b> Instalação</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="instalação.html"><a href="instalação.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1.1</b> Instalação do R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="instalação.html"><a href="instalação.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Instalação do RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html"><i class="fa fa-check"></i><b>1.2</b> Fundamentos da linguagem</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#r"><i class="fa fa-check"></i><b>1.2.1</b> R 📊</a></li>
+<li class="chapter" data-level="1.2.2" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#boas-práticas-de-codar"><i class="fa fa-check"></i><b>1.2.2</b> Boas práticas de codaR</a></li>
+<li class="chapter" data-level="1.2.3" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#dúvidas"><i class="fa fa-check"></i><b>1.2.3</b> ?Dúvidas</a></li>
+<li class="chapter" data-level="1.2.4" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#tipos-de-dados"><i class="fa fa-check"></i><b>1.2.4</b> Tipos de dados</a></li>
+<li class="chapter" data-level="1.2.5" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#operadores"><i class="fa fa-check"></i><b>1.2.5</b> Operadores</a></li>
+<li class="chapter" data-level="1.2.6" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#conversão-de-tipos"><i class="fa fa-check"></i><b>1.2.6</b> Conversão de tipos</a></li>
+<li class="chapter" data-level="1.2.7" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#estruturas-de-controle"><i class="fa fa-check"></i><b>1.2.7</b> Estruturas de Controle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html"><i class="fa fa-check"></i><b>1.3</b> Arrays e Dataframes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#vetor"><i class="fa fa-check"></i><b>1.3.1</b> Vetor</a></li>
+<li class="chapter" data-level="1.3.2" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#matrix-array-2d"><i class="fa fa-check"></i><b>1.3.2</b> Matrix (Array 2D)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#arrays-multidimensionais"><i class="fa fa-check"></i><b>1.3.3</b> Arrays multidimensionais</a></li>
+<li class="chapter" data-level="1.3.4" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#dataframes"><i class="fa fa-check"></i><b>1.3.4</b> Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>1.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="listas.html"><a href="listas.html#criando-listas"><i class="fa fa-check"></i><b>1.4.1</b> Criando listas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="listas.html"><a href="listas.html#acessando-elementos-de-listas"><i class="fa fa-check"></i><b>1.4.2</b> Acessando Elementos de Listas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="listas.html"><a href="listas.html#dataframe-vs.-lista"><i class="fa fa-check"></i><b>1.4.3</b> Dataframe vs. Lista</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="funções.html"><a href="funções.html"><i class="fa fa-check"></i><b>1.5</b> Funções</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="funções.html"><a href="funções.html#usando-funções"><i class="fa fa-check"></i><b>1.5.1</b> Usando funções</a></li>
+<li class="chapter" data-level="1.5.2" data-path="funções.html"><a href="funções.html#criando-funções"><i class="fa fa-check"></i><b>1.5.2</b> Criando funções</a></li>
+<li class="chapter" data-level="1.5.3" data-path="funções.html"><a href="funções.html#argumentos-padrão-default"><i class="fa fa-check"></i><b>1.5.3</b> Argumentos padrão (default)</a></li>
+<li class="chapter" data-level="1.5.4" data-path="funções.html"><a href="funções.html#função-anônima"><i class="fa fa-check"></i><b>1.5.4</b> Função anônima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html"><i class="fa fa-check"></i><b>1.6</b> Gerenciamento de Pacotes 📦</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#o-que-são-pacotes"><i class="fa fa-check"></i><b>1.6.1</b> O que são pacotes?</a></li>
+<li class="chapter" data-level="1.6.2" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#instalando-pacotes"><i class="fa fa-check"></i><b>1.6.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.6.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="1.6.4" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#atualizando-pacotes"><i class="fa fa-check"></i><b>1.6.4</b> Atualizando pacotes</a></li>
+<li class="chapter" data-level="1.6.5" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#removendo-pacotes"><i class="fa fa-check"></i><b>1.6.5</b> Removendo pacotes</a></li>
+<li class="chapter" data-level="1.6.6" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#verificando-pacotes-instalados"><i class="fa fa-check"></i><b>1.6.6</b> Verificando pacotes instalados</a></li>
+<li class="chapter" data-level="1.6.7" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#repositórios"><i class="fa fa-check"></i><b>1.6.7</b> Repositórios</a></li>
+<li class="chapter" data-level="1.6.8" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#ferramentas-avançadas-para-gerenciamento"><i class="fa fa-check"></i><b>1.6.8</b> Ferramentas avançadas para gerenciamento</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html"><i class="fa fa-check"></i><b>1.7</b> Importação e Exportação de Dados 📂</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#importando-dados"><i class="fa fa-check"></i><b>1.7.1</b> Importando dados</a></li>
+<li class="chapter" data-level="1.7.2" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#exportando-dados"><i class="fa fa-check"></i><b>1.7.2</b> Exportando dados</a></li>
+<li class="chapter" data-level="1.7.3" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#dicas-e-boas-práticas"><i class="fa fa-check"></i><b>1.7.3</b> Dicas e boas práticas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html"><i class="fa fa-check"></i><b>1.8</b> Gráficos básicos</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>1.8.1</b> Gráficos de dispersão</a></li>
+<li class="chapter" data-level="1.8.2" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#histograma"><i class="fa fa-check"></i><b>1.8.2</b> Histograma</a></li>
+<li class="chapter" data-level="1.8.3" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#boxplot"><i class="fa fa-check"></i><b>1.8.3</b> Boxplot</a></li>
+<li class="chapter" data-level="1.8.4" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#gráficos-de-pizza"><i class="fa fa-check"></i><b>1.8.4</b> Gráficos de pizza</a></li>
+<li class="chapter" data-level="1.8.5" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#personalização-dos-gráficos"><i class="fa fa-check"></i><b>1.8.5</b> Personalização dos gráficos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-intermediário.html"><a href="r-intermediário.html"><i class="fa fa-check"></i><b>2</b> R Intermediário</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html"><i class="fa fa-check"></i><b>2.1</b> Funções da família <code>apply()</code> no R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#apply"><i class="fa fa-check"></i><b>2.1.1</b> <strong>1. <code>apply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#lapply"><i class="fa fa-check"></i><b>2.1.2</b> <strong>2. <code>lapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#sapply"><i class="fa fa-check"></i><b>2.1.3</b> <strong>3. <code>sapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#vapply"><i class="fa fa-check"></i><b>2.1.4</b> <strong>4. <code>vapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#mapply"><i class="fa fa-check"></i><b>2.1.5</b> <strong>5. <code>mapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.6" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#tapply"><i class="fa fa-check"></i><b>2.1.6</b> <strong>6. <code>tapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.7" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#by"><i class="fa fa-check"></i><b>2.1.7</b> <strong>7. <code>by()</code></strong></a></li>
+<li class="chapter" data-level="" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#conclusão"><i class="fa fa-check"></i>Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>2.2</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="dplyr.html"><a href="dplyr.html#o-que-é-o-pipe"><i class="fa fa-check"></i><b>2.2.1</b> O que é o Pipe <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>2.2.2</b> Tibbles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="dplyr.html"><a href="dplyr.html#filter"><i class="fa fa-check"></i><b>2.2.3</b> filter()</a></li>
+<li class="chapter" data-level="2.2.4" data-path="dplyr.html"><a href="dplyr.html#select"><i class="fa fa-check"></i><b>2.2.4</b> select()</a></li>
+<li class="chapter" data-level="2.2.5" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>2.2.5</b> mutate()</a></li>
+<li class="chapter" data-level="2.2.6" data-path="dplyr.html"><a href="dplyr.html#arrange"><i class="fa fa-check"></i><b>2.2.6</b> arrange()</a></li>
+<li class="chapter" data-level="2.2.7" data-path="dplyr.html"><a href="dplyr.html#summarise-e-group_by"><i class="fa fa-check"></i><b>2.2.7</b> summarise() e group_by()</a></li>
+<li class="chapter" data-level="2.2.8" data-path="dplyr.html"><a href="dplyr.html#ungroup"><i class="fa fa-check"></i><b>2.2.8</b> ungroup()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2.3</b> data.table</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data.html"><a href="data.html#o-que-é-o"><i class="fa fa-check"></i><b>2.3.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data.html"><a href="data.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>2.3.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="pacote-lattice.html"><a href="pacote-lattice.html"><i class="fa fa-check"></i><b>2.4</b> Pacote <code>lattice</code></a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="pacote-lattice.html"><a href="pacote-lattice.html#dispersão-condicional"><i class="fa fa-check"></i><b>2.4.1</b> Dispersão condicional</a></li>
+<li class="chapter" data-level="2.4.2" data-path="pacote-lattice.html"><a href="pacote-lattice.html#histograma-condicional"><i class="fa fa-check"></i><b>2.4.2</b> Histograma condicional</a></li>
+<li class="chapter" data-level="2.4.3" data-path="pacote-lattice.html"><a href="pacote-lattice.html#boxplot-comparativo"><i class="fa fa-check"></i><b>2.4.3</b> Boxplot comparativo</a></li>
+<li class="chapter" data-level="2.4.4" data-path="pacote-lattice.html"><a href="pacote-lattice.html#barras-por-classes"><i class="fa fa-check"></i><b>2.4.4</b> Barras por classes</a></li>
+<li class="chapter" data-level="2.4.5" data-path="pacote-lattice.html"><a href="pacote-lattice.html#gráficos-3d"><i class="fa fa-check"></i><b>2.4.5</b> Gráficos 3D</a></li>
+<li class="chapter" data-level="2.4.6" data-path="pacote-lattice.html"><a href="pacote-lattice.html#densidade-condicional"><i class="fa fa-check"></i><b>2.4.6</b> Densidade Condicional</a></li>
+<li class="chapter" data-level="2.4.7" data-path="pacote-lattice.html"><a href="pacote-lattice.html#matrix-de-dispersão-scatterplot-matrix"><i class="fa fa-check"></i><b>2.4.7</b> Matrix de dispersão (Scatterplot Matrix)</a></li>
+<li class="chapter" data-level="2.4.8" data-path="pacote-lattice.html"><a href="pacote-lattice.html#temporal-condicional"><i class="fa fa-check"></i><b>2.4.8</b> Temporal condicional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>3</b> Dendrometria</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="diâmetros.html"><a href="diâmetros.html"><i class="fa fa-check"></i><b>3.1</b> Diâmetros</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="diâmetros.html"><a href="diâmetros.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>3.1.1</b> Histogramas de distribuição diamétrica</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>4</b> Inventário florestal</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html"><i class="fa fa-check"></i><b>4.1</b> Fitossociologia (Teoria)</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#estrutura-horizontal"><i class="fa fa-check"></i><b>4.1.1</b> Estrutura horizontal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#diversidade"><i class="fa fa-check"></i><b>4.1.2</b> Diversidade</a></li>
+<li class="chapter" data-level="4.1.3" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#agregação"><i class="fa fa-check"></i><b>4.1.3</b> Agregação</a></li>
+<li class="chapter" data-level="4.1.4" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#estrutura-vertical"><i class="fa fa-check"></i><b>4.1.4</b> Estrutura vertical</a></li>
+<li class="chapter" data-level="4.1.5" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#regeneração"><i class="fa fa-check"></i><b>4.1.5</b> Regeneração</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html"><i class="fa fa-check"></i><b>4.2</b> Fitossociologia (Aplicação)</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#consistência-dos-dados"><i class="fa fa-check"></i><b>4.2.1</b> Consistência dos dados</a></li>
+<li class="chapter" data-level="4.2.2" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#distribuição-diamétrica-geral"><i class="fa fa-check"></i><b>4.2.2</b> Distribuição diamétrica geral</a></li>
+<li class="chapter" data-level="4.2.3" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#distribuição-por-espécies-boxplots"><i class="fa fa-check"></i><b>4.2.3</b> Distribuição por espécies (boxplots)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>4.2.4</b> Parâmetros Fitossociológicos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html"><i class="fa fa-check"></i><b>4.3</b> Processo em Conglomerados (Teoria)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#média-da-população"><i class="fa fa-check"></i><b>4.3.1</b> Média da população</a></li>
+<li class="chapter" data-level="4.3.2" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#média-por-subunidadae"><i class="fa fa-check"></i><b>4.3.2</b> Média por subunidadae</a></li>
+<li class="chapter" data-level="4.3.3" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-total"><i class="fa fa-check"></i><b>4.3.3</b> Variância total</a></li>
+<li class="chapter" data-level="4.3.4" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-dentro-do-conglomerado"><i class="fa fa-check"></i><b>4.3.4</b> Variância dentro do conglomerado</a></li>
+<li class="chapter" data-level="4.3.5" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-entre-conglomerados"><i class="fa fa-check"></i><b>4.3.5</b> Variância entre conglomerados</a></li>
+<li class="chapter" data-level="4.3.6" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-entre-e-dentro"><i class="fa fa-check"></i><b>4.3.6</b> Variância entre e dentro</a></li>
+<li class="chapter" data-level="4.3.7" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#coeficiente-de-correlação-intraconglomerado"><i class="fa fa-check"></i><b>4.3.7</b> Coeficiente de correlação intraconglomerado</a></li>
+<li class="chapter" data-level="4.3.8" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intensidade-amostral-requerida"><i class="fa fa-check"></i><b>4.3.8</b> Intensidade amostral requerida</a></li>
+<li class="chapter" data-level="4.3.9" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-total-1"><i class="fa fa-check"></i><b>4.3.9</b> Variância total</a></li>
+<li class="chapter" data-level="4.3.10" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-da-média"><i class="fa fa-check"></i><b>4.3.10</b> Variância da média</a></li>
+<li class="chapter" data-level="4.3.11" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-padrão"><i class="fa fa-check"></i><b>4.3.11</b> Erro padrão</a></li>
+<li class="chapter" data-level="4.3.12" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-da-amostragem-absoluto"><i class="fa fa-check"></i><b>4.3.12</b> Erro da amostragem absoluto</a></li>
+<li class="chapter" data-level="4.3.13" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-de-amostragem-relativo"><i class="fa fa-check"></i><b>4.3.13</b> Erro de amostragem relativo</a></li>
+<li class="chapter" data-level="4.3.14" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-para-média"><i class="fa fa-check"></i><b>4.3.14</b> Intervalo de confiança para Média</a></li>
+<li class="chapter" data-level="4.3.15" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#estimativa-total"><i class="fa fa-check"></i><b>4.3.15</b> Estimativa Total</a></li>
+<li class="chapter" data-level="4.3.16" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-total"><i class="fa fa-check"></i><b>4.3.16</b> Intervalo de confiança total</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html"><i class="fa fa-check"></i><b>5</b> Manejo de Florestas Plantadas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="altura-dominante.html"><a href="altura-dominante.html"><i class="fa fa-check"></i><b>5.1</b> Altura Dominante</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="altura-dominante.html"><a href="altura-dominante.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>5.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Entre Florestas e Dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="processo-em-conglomerados-teoria" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Processo em Conglomerados (Teoria)<a href="processo-em-conglomerados-teoria.html#processo-em-conglomerados-teoria" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="média-da-população" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Média da população<a href="processo-em-conglomerados-teoria.html#média-da-população" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} \right)}{n \cdot m}\]</span></p>
+</div>
+<div id="média-por-subunidadae" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Média por subunidadae<a href="processo-em-conglomerados-teoria.html#média-por-subunidadae" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\bar{x}_i = \frac{\sum_{j=1}^m x_{ij}}{m}\]</span></p>
+</div>
+<div id="variância-total" class="section level3 hasAnchor" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Variância total<a href="processo-em-conglomerados-teoria.html#variância-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_x^2 = S_e^2 + S_d^2\]</span></p>
+</div>
+<div id="variância-dentro-do-conglomerado" class="section level3 hasAnchor" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Variância dentro do conglomerado<a href="processo-em-conglomerados-teoria.html#variância-dentro-do-conglomerado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_d^2 = QM_{dentro} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} - \bar{x}_i \right)^2}{n \cdot (m - 1)}\]</span></p>
+</div>
+<div id="variância-entre-conglomerados" class="section level3 hasAnchor" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Variância entre conglomerados<a href="processo-em-conglomerados-teoria.html#variância-entre-conglomerados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[QM_{entre} = \frac{\sum_{i=1}^n m \cdot \left( \bar{x}_i - \bar{x} \right)^2}{n - 1}\]</span></p>
+</div>
+<div id="variância-entre-e-dentro" class="section level3 hasAnchor" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Variância entre e dentro<a href="processo-em-conglomerados-teoria.html#variância-entre-e-dentro" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_e^2 = \frac{QM_{entre} - QM_{dentro}}{m}\]</span></p>
+</div>
+<div id="coeficiente-de-correlação-intraconglomerado" class="section level3 hasAnchor" number="4.3.7">
+<h3><span class="header-section-number">4.3.7</span> Coeficiente de correlação intraconglomerado<a href="processo-em-conglomerados-teoria.html#coeficiente-de-correlação-intraconglomerado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\rho = r = \frac{S_e^2}{S_e^2 + S_d^2}\]</span></p>
+</div>
+<div id="intensidade-amostral-requerida" class="section level3 hasAnchor" number="4.3.8">
+<h3><span class="header-section-number">4.3.8</span> Intensidade amostral requerida<a href="processo-em-conglomerados-teoria.html#intensidade-amostral-requerida" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[n = \frac{t^2 \cdot S_x^2}{E^2 \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]\]</span></p>
+</div>
+<div id="variância-total-1" class="section level3 hasAnchor" number="4.3.9">
+<h3><span class="header-section-number">4.3.9</span> Variância total<a href="processo-em-conglomerados-teoria.html#variância-total-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_x^2 = S_e^2 + S_d^2\]</span></p>
+</div>
+<div id="variância-da-média" class="section level3 hasAnchor" number="4.3.10">
+<h3><span class="header-section-number">4.3.10</span> Variância da média<a href="processo-em-conglomerados-teoria.html#variância-da-média" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_{\bar{x}}^2 = \frac{N - n}{N} \cdot \frac{S_e^2}{n} + \frac{M - m}{M} \cdot \frac{S_d^2}{n \cdot m}\]</span></p>
+<p>ou</p>
+<p><span class="math display">\[S_{\bar{x}}^2 = \frac{S_x^2}{n \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]\]</span></p>
+</div>
+<div id="erro-padrão" class="section level3 hasAnchor" number="4.3.11">
+<h3><span class="header-section-number">4.3.11</span> Erro padrão<a href="processo-em-conglomerados-teoria.html#erro-padrão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}\]</span></p>
+</div>
+<div id="erro-da-amostragem-absoluto" class="section level3 hasAnchor" number="4.3.12">
+<h3><span class="header-section-number">4.3.12</span> Erro da amostragem absoluto<a href="processo-em-conglomerados-teoria.html#erro-da-amostragem-absoluto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}\]</span></p>
+</div>
+<div id="erro-de-amostragem-relativo" class="section level3 hasAnchor" number="4.3.13">
+<h3><span class="header-section-number">4.3.13</span> Erro de amostragem relativo<a href="processo-em-conglomerados-teoria.html#erro-de-amostragem-relativo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[E_r = \pm \frac{t \cdot S_{\bar{x}}}{\bar{x}} \cdot 100\]</span></p>
+</div>
+<div id="intervalo-de-confiança-para-média" class="section level3 hasAnchor" number="4.3.14">
+<h3><span class="header-section-number">4.3.14</span> Intervalo de confiança para Média<a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-para-média" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[IC\left[\bar{x} - (E_a) \leq \bar{x} \leq \bar{x} + (E_a)\right] = P\]</span></p>
+</div>
+<div id="estimativa-total" class="section level3 hasAnchor" number="4.3.15">
+<h3><span class="header-section-number">4.3.15</span> Estimativa Total<a href="processo-em-conglomerados-teoria.html#estimativa-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\hat{X} = N \cdot M \cdot \bar{x}\]</span></p>
+</div>
+<div id="intervalo-de-confiança-total" class="section level3 hasAnchor" number="4.3.16">
+<h3><span class="header-section-number">4.3.16</span> Intervalo de confiança total<a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-total" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[IC\left[\hat{X} - N \cdot M \cdot (E_a) \leq \hat{X} \leq \hat{X} + N \cdot M \cdot (E_a)\right] = P\]</span></p>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fitossociologia-aplicação.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="manejo-de-florestas-plantadas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/3_inventario_page.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"title": "Entre Florestas e Dados",
+"favicon": "images/favico.ico",
+"language": {
+"chapter_title": "",
+"search_placeholder": "Procurar no livro...",
+"toc_title": "Índice"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

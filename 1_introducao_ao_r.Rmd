@@ -1,13 +1,27 @@
 # Introdução ao R
 
-O R é provavelmente a mais importante ferramenta para a análise de dados florestais.
-
 ---
 
-## Instalação do R
+O R é provavelmente a mais importante ferramenta para a análise de dados florestais.
+
+Neste capítulo trataremos sobre:
+
+1. Instalação do R e do RStudio;
+2. Fundamentos da linguagem;
+3. Arrays e Dataframes;
+4. Listas;
+5. Funções;
+6. Gerenciamento de pacotes;
+7. Importação e exportação de dados.
+8. Gráficos básicos no R
+
+
+## Instalação
+
+### Instalação do R
 A instalação padrão do R é feita a partir do CRAN, uma rede de servidores espalhada pelo mundo que armazena versões idênticas e atualizadas de códigos e documentações para o R.
 
-### Windows
+#### Windows
 
 Para instalar o R no Windows, siga os seguintes passos:
 
@@ -25,7 +39,7 @@ Para instalar o R no Windows, siga os seguintes passos:
 
 7. Feito o download, clique duas vezes no arquivo baixado e siga as instruções para instalação.
 
-### macOS
+#### macOS
 
 Abra o terminal: `Command + Espaço` "terminal" e `Enter`
 
@@ -34,7 +48,7 @@ brew install --cask r
 ```
 
 
-### Linux
+#### Linux
 
 Abra o terminal Linux: `ctrl + alt + t`
 
@@ -46,7 +60,7 @@ sudo apt install -y r-base
 
 ---
 
-## Instalação do RStudio
+### Instalação do RStudio
 
 Para instalar o RStudio, siga os passos atualizados abaixo:
 
@@ -64,13 +78,13 @@ Baixe o instalador adequado:
 Na seção "All Installers", selecione o instalador correspondente ao seu sistema operacional.
 Instale o RStudio:
 
-### Windows
+#### Windows
 Execute o arquivo .exe baixado e siga as instruções do assistente de instalação.
 
-### macOS
+#### macOS
 Abra o arquivo .dmg baixado, arraste o ícone do RStudio para a pasta "Aplicativos" e, em seguida, ejete a imagem de disco.
 
-### Linux
+#### Linux
 Baixe o pacote apropriado (.deb ou .rpm) e instale-o usando as ferramentas de gerenciamento de pacotes do seu sistema.
 Inicie o RStudio:
 
@@ -79,38 +93,7 @@ Lembre-se de que o RStudio requer o R instalado previamente. Certifique-se de te
 
 ---
 
-## Sobre o R
-
-### O que são algoritmos?
-
-**Objetivo do Algoritmo**: Plantar uma árvore.
-
-**Entradas do Algoritmo**:
-
-* Uma muda de árvore.
-* Local de plantio escolhido.
-* Ferramentas para cavar (como uma pá).
-* Água para regar a muda.
-
-**Passos do Algoritmo**:
-
-1. Selecionar o Local: Escolher um local adequado para plantar a muda, considerando a exposição solar, o tipo de solo e o espaço necessário para o crescimento da árvore.
-
-2. Cavar um Buraco: Usar a pá para cavar um buraco no local escolhido. O buraco deve ter profundidade e largura suficientes para acomodar as raízes da muda.
-
-3. Preparar a Muda: Remover a muda do recipiente em que veio, com cuidado para não danificar as raízes.
-
-4. Plantar a Muda: Colocar a muda no buraco, ajustando a profundidade para que a base do tronco fique no nível do solo. Preencher o buraco com terra, firmemente, mas sem compactar excessivamente.
-
-5. Regar a Muda: Regar a muda generosamente para umedecer o solo e ajudar a estabelecer as raízes.
-
-6. Cuidados Posteriores: Incluir instruções básicas de cuidados posteriores, como rega regular, aplicação de mulch para manter a umidade, e proteção contra ervas daninhas.
-
-**Saída do Algoritmo**:
-
-Uma árvore plantada e pronta para crescer no local escolhido.
-
-### O que é uma linguagem de programação?
+## Fundamentos da linguagem
 
 Uma linguagem de programação é uma forma padronizada de comunicar instruções a um computador. É como uma língua que permite aos programadores escreverem códigos que são convertidos em ações executáveis pelo computador, permitindo a criação de software, aplicativos, websites, e muito mais. Cada linguagem de programação tem sua própria sintaxe e regras, assim como as línguas humanas têm gramática e vocabulário.
 
@@ -136,8 +119,6 @@ R é reconhecida por sua capacidade de criar gráficos e visualizações de dado
 R utiliza tipagem dinâmica, onde o tipo das variáveis é determinado em tempo de execução. Isso oferece flexibilidade para manipular diferentes tipos de dados, mas requer atenção para evitar inconsistências. Além disso, sua sintaxe foi projetada para facilitar operações vetoriais e manipulação de dados em larga escala, tornando-a eficiente em tarefas analíticas.  
 
 ---
-
-## Fundamentos da linguagem
 
 ### Boas práticas de codaR 
 
@@ -773,3 +754,76 @@ jsonlite::toJSON(dados, pretty = TRUE, file = "caminho/para/saida.json")
   ```
 
 ---
+
+## Gráficos básicos
+
+Os gráficos são ferramentas fundamentais para analisar e comunicar dados de forma eficiente. No R, a criação de gráficos padrão é extremamente acessível, permitindo a geração de visualizações informativas com poucos comandos. Esses gráficos servem como ponto de partida para análises exploratórias e também para apresentações mais refinadas.
+
+### Gráficos de dispersão
+
+Um dos gráficos mais utilizados para visualizar a relação entre duas variáveis.
+
+```{r}
+# Exemplo de gráfico de dispersão
+x <- rnorm(100)
+y <- x + rnorm(100, sd = 0.5)
+plot(x, y, main = "Gráfico de Dispersão", xlab = "Eixo X", ylab = "Eixo Y")
+
+```
+
+### Histograma
+
+Excelente para visualizar a distribuição de uma variável numérica.
+
+```{r}
+# Exemplo de histograma
+dados <- rnorm(1000)
+hist(dados, main = "Histograma", xlab = "Valores", col = "lightblue", border = "black")
+
+```
+
+### Boxplot
+
+Perfeito para comparar distribuições entre grupos.
+
+```{r}
+# Exemplo de boxplot
+grupo <- factor(rep(c("A", "B"), each = 50))
+valores <- c(rnorm(50, mean = 5), rnorm(50, mean = 7))
+boxplot(valores ~ grupo, main = "Boxplot por Grupo", col = c("orange", "lightgreen"))
+
+```
+
+### Gráficos de pizza
+
+Embora não seja o preferido para análise quantitativa, o gráfico de pizza é útil para exibir proporções.
+
+```{r}
+# Exemplo de gráfico de pizza
+valores <- c(40, 25, 20, 15)
+categorias <- c("Categoria A", "Categoria B", "Categoria C", "Categoria D")
+pie(valores, labels = categorias, 
+    main = "Gráfico de Pizza", 
+    col = c("red", "blue", "green", "yellow"))
+
+```
+
+### Personalização dos gráficos
+
+Os gráficos padrão do R podem ser ajustados para atender a diferentes necessidades. Entre os elementos que podem ser personalizados estão:
+- Títulos e rótulos: main, xlab, ylab.
+- Cores e estilos de linhas: col, lty, lwd.
+- Pontos e símbolos: pch, cex.
+
+Por exemplo, o gráfico de dispersão pode ser ajustado assim:
+
+```{r}
+plot(x, y, 
+     main = "Gráfico Personalizado",
+     xlab = "Variável X", 
+     ylab = "Variável Y", 
+     col = "blue", 
+     pch = 16, 
+     cex = 1.2)
+
+```

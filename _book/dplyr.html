@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xml:lang="pt-BR">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 dplyr | Entre Florestas e Dados</title>
+  <meta name="description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 dplyr | Entre Florestas e Dados" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+  <meta property="og:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 dplyr | Entre Florestas e Dados" />
+  
+  <meta name="twitter:description" content="“Entre Florestas e Dados” é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para análises de dados florestais utilizando a linguagem R." />
+  <meta name="twitter:image" content="/images/CapaEntreDadosEFlorestas.jpeg" />
+
+<meta name="author" content="Arthur Guilherme Schirmbeck Chaves" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="funções-da-família-apply-no-r.html"/>
+<link rel="next" href="data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.33/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link rel="shortcut icon" href="images/FaviconEntreFlorestasEDados.png" type="image/x-icon" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<div class="toc-header">
+    <div class="image-container">
+        <img src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa do Livro">
+        <div class="text-overlay-title">
+            <h5>Entre Florestas e Dados</h5>
+        </div>
+        <div class="text-overlay-author">
+            <p style="font-size: 10px; text-align: center; padding: 5px">Arthur Guilherme Schirmbeck Chaves</p>
+        </div>
+    </div>
+</div>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Sobre</a></li>
+<li class="chapter" data-level="1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html"><i class="fa fa-check"></i><b>1</b> Introdução ao R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>1.1</b> Instalação</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="instalação.html"><a href="instalação.html#instalação-do-r"><i class="fa fa-check"></i><b>1.1.1</b> Instalação do R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="instalação.html"><a href="instalação.html#instalação-do-rstudio"><i class="fa fa-check"></i><b>1.1.2</b> Instalação do RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html"><i class="fa fa-check"></i><b>1.2</b> Fundamentos da linguagem</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#r"><i class="fa fa-check"></i><b>1.2.1</b> R 📊</a></li>
+<li class="chapter" data-level="1.2.2" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#boas-práticas-de-codar"><i class="fa fa-check"></i><b>1.2.2</b> Boas práticas de codaR</a></li>
+<li class="chapter" data-level="1.2.3" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#dúvidas"><i class="fa fa-check"></i><b>1.2.3</b> ?Dúvidas</a></li>
+<li class="chapter" data-level="1.2.4" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#tipos-de-dados"><i class="fa fa-check"></i><b>1.2.4</b> Tipos de dados</a></li>
+<li class="chapter" data-level="1.2.5" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#operadores"><i class="fa fa-check"></i><b>1.2.5</b> Operadores</a></li>
+<li class="chapter" data-level="1.2.6" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#conversão-de-tipos"><i class="fa fa-check"></i><b>1.2.6</b> Conversão de tipos</a></li>
+<li class="chapter" data-level="1.2.7" data-path="fundamentos-da-linguagem.html"><a href="fundamentos-da-linguagem.html#estruturas-de-controle"><i class="fa fa-check"></i><b>1.2.7</b> Estruturas de Controle</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html"><i class="fa fa-check"></i><b>1.3</b> Arrays e Dataframes</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#vetor"><i class="fa fa-check"></i><b>1.3.1</b> Vetor</a></li>
+<li class="chapter" data-level="1.3.2" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#matrix-array-2d"><i class="fa fa-check"></i><b>1.3.2</b> Matrix (Array 2D)</a></li>
+<li class="chapter" data-level="1.3.3" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#arrays-multidimensionais"><i class="fa fa-check"></i><b>1.3.3</b> Arrays multidimensionais</a></li>
+<li class="chapter" data-level="1.3.4" data-path="arrays-e-dataframes.html"><a href="arrays-e-dataframes.html#dataframes"><i class="fa fa-check"></i><b>1.3.4</b> Dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="listas.html"><a href="listas.html"><i class="fa fa-check"></i><b>1.4</b> Listas</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="listas.html"><a href="listas.html#criando-listas"><i class="fa fa-check"></i><b>1.4.1</b> Criando listas</a></li>
+<li class="chapter" data-level="1.4.2" data-path="listas.html"><a href="listas.html#acessando-elementos-de-listas"><i class="fa fa-check"></i><b>1.4.2</b> Acessando Elementos de Listas</a></li>
+<li class="chapter" data-level="1.4.3" data-path="listas.html"><a href="listas.html#dataframe-vs.-lista"><i class="fa fa-check"></i><b>1.4.3</b> Dataframe vs. Lista</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="funções.html"><a href="funções.html"><i class="fa fa-check"></i><b>1.5</b> Funções</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="funções.html"><a href="funções.html#usando-funções"><i class="fa fa-check"></i><b>1.5.1</b> Usando funções</a></li>
+<li class="chapter" data-level="1.5.2" data-path="funções.html"><a href="funções.html#criando-funções"><i class="fa fa-check"></i><b>1.5.2</b> Criando funções</a></li>
+<li class="chapter" data-level="1.5.3" data-path="funções.html"><a href="funções.html#argumentos-padrão-default"><i class="fa fa-check"></i><b>1.5.3</b> Argumentos padrão (default)</a></li>
+<li class="chapter" data-level="1.5.4" data-path="funções.html"><a href="funções.html#função-anônima"><i class="fa fa-check"></i><b>1.5.4</b> Função anônima</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html"><i class="fa fa-check"></i><b>1.6</b> Gerenciamento de Pacotes 📦</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#o-que-são-pacotes"><i class="fa fa-check"></i><b>1.6.1</b> O que são pacotes?</a></li>
+<li class="chapter" data-level="1.6.2" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#instalando-pacotes"><i class="fa fa-check"></i><b>1.6.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="1.6.3" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#carregando-pacotes"><i class="fa fa-check"></i><b>1.6.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="1.6.4" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#atualizando-pacotes"><i class="fa fa-check"></i><b>1.6.4</b> Atualizando pacotes</a></li>
+<li class="chapter" data-level="1.6.5" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#removendo-pacotes"><i class="fa fa-check"></i><b>1.6.5</b> Removendo pacotes</a></li>
+<li class="chapter" data-level="1.6.6" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#verificando-pacotes-instalados"><i class="fa fa-check"></i><b>1.6.6</b> Verificando pacotes instalados</a></li>
+<li class="chapter" data-level="1.6.7" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#repositórios"><i class="fa fa-check"></i><b>1.6.7</b> Repositórios</a></li>
+<li class="chapter" data-level="1.6.8" data-path="gerenciamento-de-pacotes.html"><a href="gerenciamento-de-pacotes.html#ferramentas-avançadas-para-gerenciamento"><i class="fa fa-check"></i><b>1.6.8</b> Ferramentas avançadas para gerenciamento</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html"><i class="fa fa-check"></i><b>1.7</b> Importação e Exportação de Dados 📂</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#importando-dados"><i class="fa fa-check"></i><b>1.7.1</b> Importando dados</a></li>
+<li class="chapter" data-level="1.7.2" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#exportando-dados"><i class="fa fa-check"></i><b>1.7.2</b> Exportando dados</a></li>
+<li class="chapter" data-level="1.7.3" data-path="importação-e-exportação-de-dados.html"><a href="importação-e-exportação-de-dados.html#dicas-e-boas-práticas"><i class="fa fa-check"></i><b>1.7.3</b> Dicas e boas práticas</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html"><i class="fa fa-check"></i><b>1.8</b> Gráficos básicos</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#gráficos-de-dispersão"><i class="fa fa-check"></i><b>1.8.1</b> Gráficos de dispersão</a></li>
+<li class="chapter" data-level="1.8.2" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#histograma"><i class="fa fa-check"></i><b>1.8.2</b> Histograma</a></li>
+<li class="chapter" data-level="1.8.3" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#boxplot"><i class="fa fa-check"></i><b>1.8.3</b> Boxplot</a></li>
+<li class="chapter" data-level="1.8.4" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#gráficos-de-pizza"><i class="fa fa-check"></i><b>1.8.4</b> Gráficos de pizza</a></li>
+<li class="chapter" data-level="1.8.5" data-path="gráficos-básicos.html"><a href="gráficos-básicos.html#personalização-dos-gráficos"><i class="fa fa-check"></i><b>1.8.5</b> Personalização dos gráficos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="r-intermediário.html"><a href="r-intermediário.html"><i class="fa fa-check"></i><b>2</b> R Intermediário</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html"><i class="fa fa-check"></i><b>2.1</b> Funções da família <code>apply()</code> no R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#apply"><i class="fa fa-check"></i><b>2.1.1</b> <strong>1. <code>apply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.2" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#lapply"><i class="fa fa-check"></i><b>2.1.2</b> <strong>2. <code>lapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.3" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#sapply"><i class="fa fa-check"></i><b>2.1.3</b> <strong>3. <code>sapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.4" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#vapply"><i class="fa fa-check"></i><b>2.1.4</b> <strong>4. <code>vapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.5" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#mapply"><i class="fa fa-check"></i><b>2.1.5</b> <strong>5. <code>mapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.6" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#tapply"><i class="fa fa-check"></i><b>2.1.6</b> <strong>6. <code>tapply()</code></strong></a></li>
+<li class="chapter" data-level="2.1.7" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#by"><i class="fa fa-check"></i><b>2.1.7</b> <strong>7. <code>by()</code></strong></a></li>
+<li class="chapter" data-level="" data-path="funções-da-família-apply-no-r.html"><a href="funções-da-família-apply-no-r.html#conclusão"><i class="fa fa-check"></i>Conclusão</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>2.2</b> dplyr</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="dplyr.html"><a href="dplyr.html#o-que-é-o-pipe"><i class="fa fa-check"></i><b>2.2.1</b> O que é o Pipe <code>%&gt;%</code>?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="dplyr.html"><a href="dplyr.html#tibbles"><i class="fa fa-check"></i><b>2.2.2</b> Tibbles</a></li>
+<li class="chapter" data-level="2.2.3" data-path="dplyr.html"><a href="dplyr.html#filter"><i class="fa fa-check"></i><b>2.2.3</b> filter()</a></li>
+<li class="chapter" data-level="2.2.4" data-path="dplyr.html"><a href="dplyr.html#select"><i class="fa fa-check"></i><b>2.2.4</b> select()</a></li>
+<li class="chapter" data-level="2.2.5" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>2.2.5</b> mutate()</a></li>
+<li class="chapter" data-level="2.2.6" data-path="dplyr.html"><a href="dplyr.html#arrange"><i class="fa fa-check"></i><b>2.2.6</b> arrange()</a></li>
+<li class="chapter" data-level="2.2.7" data-path="dplyr.html"><a href="dplyr.html#summarise-e-group_by"><i class="fa fa-check"></i><b>2.2.7</b> summarise() e group_by()</a></li>
+<li class="chapter" data-level="2.2.8" data-path="dplyr.html"><a href="dplyr.html#ungroup"><i class="fa fa-check"></i><b>2.2.8</b> ungroup()</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2.3</b> data.table</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="data.html"><a href="data.html#o-que-é-o"><i class="fa fa-check"></i><b>2.3.1</b> O que é o <code>:=</code>?</a></li>
+<li class="chapter" data-level="2.3.2" data-path="data.html"><a href="data.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>2.3.2</b> Exemplos de Uso</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="pacote-lattice.html"><a href="pacote-lattice.html"><i class="fa fa-check"></i><b>2.4</b> Pacote <code>lattice</code></a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="pacote-lattice.html"><a href="pacote-lattice.html#dispersão-condicional"><i class="fa fa-check"></i><b>2.4.1</b> Dispersão condicional</a></li>
+<li class="chapter" data-level="2.4.2" data-path="pacote-lattice.html"><a href="pacote-lattice.html#histograma-condicional"><i class="fa fa-check"></i><b>2.4.2</b> Histograma condicional</a></li>
+<li class="chapter" data-level="2.4.3" data-path="pacote-lattice.html"><a href="pacote-lattice.html#boxplot-comparativo"><i class="fa fa-check"></i><b>2.4.3</b> Boxplot comparativo</a></li>
+<li class="chapter" data-level="2.4.4" data-path="pacote-lattice.html"><a href="pacote-lattice.html#barras-por-classes"><i class="fa fa-check"></i><b>2.4.4</b> Barras por classes</a></li>
+<li class="chapter" data-level="2.4.5" data-path="pacote-lattice.html"><a href="pacote-lattice.html#gráficos-3d"><i class="fa fa-check"></i><b>2.4.5</b> Gráficos 3D</a></li>
+<li class="chapter" data-level="2.4.6" data-path="pacote-lattice.html"><a href="pacote-lattice.html#densidade-condicional"><i class="fa fa-check"></i><b>2.4.6</b> Densidade Condicional</a></li>
+<li class="chapter" data-level="2.4.7" data-path="pacote-lattice.html"><a href="pacote-lattice.html#matrix-de-dispersão-scatterplot-matrix"><i class="fa fa-check"></i><b>2.4.7</b> Matrix de dispersão (Scatterplot Matrix)</a></li>
+<li class="chapter" data-level="2.4.8" data-path="pacote-lattice.html"><a href="pacote-lattice.html#temporal-condicional"><i class="fa fa-check"></i><b>2.4.8</b> Temporal condicional</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>3</b> Dendrometria</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="diâmetros.html"><a href="diâmetros.html"><i class="fa fa-check"></i><b>3.1</b> Diâmetros</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="diâmetros.html"><a href="diâmetros.html#histogramas-de-distribuição-diamétrica"><i class="fa fa-check"></i><b>3.1.1</b> Histogramas de distribuição diamétrica</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inventário-florestal.html"><a href="inventário-florestal.html"><i class="fa fa-check"></i><b>4</b> Inventário florestal</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html"><i class="fa fa-check"></i><b>4.1</b> Fitossociologia (Teoria)</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#estrutura-horizontal"><i class="fa fa-check"></i><b>4.1.1</b> Estrutura horizontal</a></li>
+<li class="chapter" data-level="4.1.2" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#diversidade"><i class="fa fa-check"></i><b>4.1.2</b> Diversidade</a></li>
+<li class="chapter" data-level="4.1.3" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#agregação"><i class="fa fa-check"></i><b>4.1.3</b> Agregação</a></li>
+<li class="chapter" data-level="4.1.4" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#estrutura-vertical"><i class="fa fa-check"></i><b>4.1.4</b> Estrutura vertical</a></li>
+<li class="chapter" data-level="4.1.5" data-path="fitossociologia-teoria.html"><a href="fitossociologia-teoria.html#regeneração"><i class="fa fa-check"></i><b>4.1.5</b> Regeneração</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html"><i class="fa fa-check"></i><b>4.2</b> Fitossociologia (Aplicação)</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#consistência-dos-dados"><i class="fa fa-check"></i><b>4.2.1</b> Consistência dos dados</a></li>
+<li class="chapter" data-level="4.2.2" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#distribuição-diamétrica-geral"><i class="fa fa-check"></i><b>4.2.2</b> Distribuição diamétrica geral</a></li>
+<li class="chapter" data-level="4.2.3" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#distribuição-por-espécies-boxplots"><i class="fa fa-check"></i><b>4.2.3</b> Distribuição por espécies (boxplots)</a></li>
+<li class="chapter" data-level="4.2.4" data-path="fitossociologia-aplicação.html"><a href="fitossociologia-aplicação.html#parâmetros-fitossociológicos"><i class="fa fa-check"></i><b>4.2.4</b> Parâmetros Fitossociológicos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html"><i class="fa fa-check"></i><b>4.3</b> Processo em Conglomerados (Teoria)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#média-da-população"><i class="fa fa-check"></i><b>4.3.1</b> Média da população</a></li>
+<li class="chapter" data-level="4.3.2" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#média-por-subunidadae"><i class="fa fa-check"></i><b>4.3.2</b> Média por subunidadae</a></li>
+<li class="chapter" data-level="4.3.3" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-total"><i class="fa fa-check"></i><b>4.3.3</b> Variância total</a></li>
+<li class="chapter" data-level="4.3.4" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-dentro-do-conglomerado"><i class="fa fa-check"></i><b>4.3.4</b> Variância dentro do conglomerado</a></li>
+<li class="chapter" data-level="4.3.5" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-entre-conglomerados"><i class="fa fa-check"></i><b>4.3.5</b> Variância entre conglomerados</a></li>
+<li class="chapter" data-level="4.3.6" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-entre-e-dentro"><i class="fa fa-check"></i><b>4.3.6</b> Variância entre e dentro</a></li>
+<li class="chapter" data-level="4.3.7" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#coeficiente-de-correlação-intraconglomerado"><i class="fa fa-check"></i><b>4.3.7</b> Coeficiente de correlação intraconglomerado</a></li>
+<li class="chapter" data-level="4.3.8" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intensidade-amostral-requerida"><i class="fa fa-check"></i><b>4.3.8</b> Intensidade amostral requerida</a></li>
+<li class="chapter" data-level="4.3.9" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-total-1"><i class="fa fa-check"></i><b>4.3.9</b> Variância total</a></li>
+<li class="chapter" data-level="4.3.10" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#variância-da-média"><i class="fa fa-check"></i><b>4.3.10</b> Variância da média</a></li>
+<li class="chapter" data-level="4.3.11" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-padrão"><i class="fa fa-check"></i><b>4.3.11</b> Erro padrão</a></li>
+<li class="chapter" data-level="4.3.12" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-da-amostragem-absoluto"><i class="fa fa-check"></i><b>4.3.12</b> Erro da amostragem absoluto</a></li>
+<li class="chapter" data-level="4.3.13" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#erro-de-amostragem-relativo"><i class="fa fa-check"></i><b>4.3.13</b> Erro de amostragem relativo</a></li>
+<li class="chapter" data-level="4.3.14" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-para-média"><i class="fa fa-check"></i><b>4.3.14</b> Intervalo de confiança para Média</a></li>
+<li class="chapter" data-level="4.3.15" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#estimativa-total"><i class="fa fa-check"></i><b>4.3.15</b> Estimativa Total</a></li>
+<li class="chapter" data-level="4.3.16" data-path="processo-em-conglomerados-teoria.html"><a href="processo-em-conglomerados-teoria.html#intervalo-de-confiança-total"><i class="fa fa-check"></i><b>4.3.16</b> Intervalo de confiança total</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="manejo-de-florestas-plantadas.html"><a href="manejo-de-florestas-plantadas.html"><i class="fa fa-check"></i><b>5</b> Manejo de Florestas Plantadas</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="altura-dominante.html"><a href="altura-dominante.html"><i class="fa fa-check"></i><b>5.1</b> Altura Dominante</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="altura-dominante.html"><a href="altura-dominante.html#calculando-altura-dominante-por-parcela-assman"><i class="fa fa-check"></i><b>5.1.1</b> Calculando altura dominante por parcela (Assman)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i>Referências</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Entre Florestas e Dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dplyr" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> dplyr<a href="dplyr.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>O pacote dplyr é uma das ferramentas mais populares do ecossistema R para manipulação de dados. Ele fornece uma sintaxe simples e eficiente para tarefas como filtragem, ordenação, agrupamento e transformação de dados. Neste capítulo, exploraremos as principais funções do dplyr aplicadas a um conjunto de dados florestais.</p>
+<div id="o-que-é-o-pipe" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> O que é o Pipe <code>%&gt;%</code>?<a href="dplyr.html#o-que-é-o-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O operador <code>%&gt;%</code> é chamado de pipe.
+Ele permite encadear funções de maneira a facilitar a leitura e compreensão do código.
+Ao invés de ficar atribuindo valores intermediários ou aninhando várias funções, você simplesmente passa o resultado de uma função como entrada para a próxima.</p>
+<div id="exemplos-de-uso" class="section level4 hasAnchor" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Exemplos de Uso<a href="dplyr.html#exemplos-de-uso" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Vamos usar o conjunto de dados mtcars para entender como o pipe facilita a manipulação de dados:</p>
+<p>Sem <code>%&gt;%</code> (Sem Pipe)
+Imagine que queremos fazer as seguintes operações no dataset mtcars:</p>
+<p>Filtrar apenas os carros que têm mais de 20 milhas por galão (mpg &gt; 20).
+Selecionar apenas as colunas mpg, cyl, e hp.
+Sem o operador <code>%&gt;%</code>, o código ficaria assim:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dplyr.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb118-2"><a href="dplyr.html#cb118-2" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="dplyr.html#cb118-3" tabindex="-1"></a><span class="co"># Sem pipe</span></span>
+<span id="cb118-4"><a href="dplyr.html#cb118-4" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> <span class="fu">filter</span>(mtcars, mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span>
+<span id="cb118-5"><a href="dplyr.html#cb118-5" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> <span class="fu">select</span>(filtered_data, mpg, cyl, hp)</span></code></pre></div>
+<p><br>
+Com <code>%&gt;%</code> (Com Pipe)
+Podemos simplificar isso usando o pipe:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="dplyr.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb119-2"><a href="dplyr.html#cb119-2" tabindex="-1"></a></span>
+<span id="cb119-3"><a href="dplyr.html#cb119-3" tabindex="-1"></a><span class="co"># Usando pipe</span></span>
+<span id="cb119-4"><a href="dplyr.html#cb119-4" tabindex="-1"></a>selected_data <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb119-5"><a href="dplyr.html#cb119-5" tabindex="-1"></a>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb119-6"><a href="dplyr.html#cb119-6" tabindex="-1"></a>  <span class="fu">select</span>(mpg, cyl, hp)</span></code></pre></div>
+<table class="table table-striped table-hover" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+mpg
+</th>
+<th style="text-align:right;">
+cyl
+</th>
+<th style="text-align:right;">
+hp
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Mazda RX4
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mazda RX4 Wag
+</td>
+<td style="text-align:right;">
+21.0
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Datsun 710
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hornet 4 Drive
+</td>
+<td style="text-align:right;">
+21.4
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Merc 240D
+</td>
+<td style="text-align:right;">
+24.4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Merc 230
+</td>
+<td style="text-align:right;">
+22.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+95
+</td>
+</tr>
+</tbody>
+</table>
+<p><br>
+Note como o código com <code>%&gt;%</code> é mais legível e direto. Ele segue uma lógica sequencial que permite facilmente entender o que está sendo feito em cada etapa.</p>
+<hr />
+</div>
+</div>
+<div id="tibbles" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Tibbles<a href="dplyr.html#tibbles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tibbles são data frames com ajustes que os deixam mais amigáveis aos cientistas de dados. Elas são parte do pacote {tibble}. Assim, para começar a usá-las, instale e carregue o pacote.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="dplyr.html#cb120-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb120-2"><a href="dplyr.html#cb120-2" tabindex="-1"></a><span class="fu">library</span>(tibble)</span></code></pre></div>
+<p>Criando um exemplo:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="dplyr.html#cb121-1" tabindex="-1"></a><span class="co"># Criando um exemplo de dados florestais</span></span>
+<span id="cb121-2"><a href="dplyr.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb121-3"><a href="dplyr.html#cb121-3" tabindex="-1"></a></span>
+<span id="cb121-4"><a href="dplyr.html#cb121-4" tabindex="-1"></a>dados_florestais <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb121-5"><a href="dplyr.html#cb121-5" tabindex="-1"></a>  <span class="at">parcela =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">10</span>),</span>
+<span id="cb121-6"><a href="dplyr.html#cb121-6" tabindex="-1"></a>  <span class="at">especie =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;Cedro&quot;</span>, <span class="st">&quot;Ipê&quot;</span>, <span class="st">&quot;Jatobá&quot;</span>, <span class="st">&quot;Angelim&quot;</span>, <span class="st">&quot;Castanheira&quot;</span>), <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb121-7"><a href="dplyr.html#cb121-7" tabindex="-1"></a>  <span class="at">dap_cm =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">80</span>), <span class="dv">1</span>),  <span class="co"># Diâmetro em cm</span></span>
+<span id="cb121-8"><a href="dplyr.html#cb121-8" tabindex="-1"></a>  <span class="at">altura_m =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">50</span>, <span class="dv">5</span>, <span class="dv">30</span>), <span class="dv">1</span>),  <span class="co"># Altura em metros</span></span>
+<span id="cb121-9"><a href="dplyr.html#cb121-9" tabindex="-1"></a>  <span class="at">volume_m3 =</span> dap_cm <span class="sc">*</span> altura_m <span class="sc">*</span> <span class="fl">0.00007854</span> <span class="co"># Fórmula fictícia para volume</span></span>
+<span id="cb121-10"><a href="dplyr.html#cb121-10" tabindex="-1"></a>)</span>
+<span id="cb121-11"><a href="dplyr.html#cb121-11" tabindex="-1"></a></span>
+<span id="cb121-12"><a href="dplyr.html#cb121-12" tabindex="-1"></a>dados_florestais</span></code></pre></div>
+<pre><code>## # A tibble: 50 × 5
+##    parcela especie     dap_cm altura_m volume_m3
+##      &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1       1 Angelim       45.1     27.5    0.0974
+##  2       1 Jatobá        46.4     16.2    0.0590
+##  3       1 Ipê           59.3     15.8    0.0736
+##  4       1 Ipê           43.4     15.4    0.0525
+##  5       1 Jatobá        30.6     12.9    0.0310
+##  6       1 Castanheira   47.5      8.5    0.0317
+##  7       1 Cedro         51.2     24.8    0.0997
+##  8       1 Castanheira   56.2     26      0.115 
+##  9       1 Cedro         76.9      9.8    0.0592
+## 10       1 Jatobá        29       16.4    0.0374
+## # ℹ 40 more rows</code></pre>
+<hr />
+</div>
+<div id="filter" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> filter()<a href="dplyr.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podemos filtrar árvores de uma espécie específica ou com características particulares. Exemplo: selecionar árvores com DAP maior que 50 cm.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="dplyr.html#cb123-1" tabindex="-1"></a><span class="co"># Filtrando árvores com DAP &gt; 50 cm</span></span>
+<span id="cb123-2"><a href="dplyr.html#cb123-2" tabindex="-1"></a>arvores_grandes <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb123-3"><a href="dplyr.html#cb123-3" tabindex="-1"></a>  <span class="fu">filter</span>(dap_cm <span class="sc">&gt;</span> <span class="dv">50</span>)</span>
+<span id="cb123-4"><a href="dplyr.html#cb123-4" tabindex="-1"></a></span>
+<span id="cb123-5"><a href="dplyr.html#cb123-5" tabindex="-1"></a><span class="fu">head</span>(arvores_grandes)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
+##   parcela especie     dap_cm altura_m volume_m3
+##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1       1 Ipê           59.3     15.8    0.0736
+## 2       1 Cedro         51.2     24.8    0.0997
+## 3       1 Castanheira   56.2     26      0.115 
+## 4       1 Cedro         76.9      9.8    0.0592
+## 5       2 Ipê           53.7     29.9    0.126 
+## 6       3 Ipê           58.3      5.9    0.0270</code></pre>
+</div>
+<div id="select" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> select()<a href="dplyr.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para trabalhar com um subconjunto de variáveis, podemos usar select(). Exemplo: selecionar apenas as colunas especie, dap_cm e altura_m.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="dplyr.html#cb125-1" tabindex="-1"></a><span class="co"># Selecionando colunas específicas</span></span>
+<span id="cb125-2"><a href="dplyr.html#cb125-2" tabindex="-1"></a>dados_selecionados <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb125-3"><a href="dplyr.html#cb125-3" tabindex="-1"></a>  <span class="fu">select</span>(especie, dap_cm, altura_m)</span>
+<span id="cb125-4"><a href="dplyr.html#cb125-4" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="dplyr.html#cb125-5" tabindex="-1"></a><span class="fu">head</span>(dados_selecionados)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   especie     dap_cm altura_m
+##   &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Angelim       45.1     27.5
+## 2 Jatobá        46.4     16.2
+## 3 Ipê           59.3     15.8
+## 4 Ipê           43.4     15.4
+## 5 Jatobá        30.6     12.9
+## 6 Castanheira   47.5      8.5</code></pre>
+</div>
+<div id="mutate" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> mutate()<a href="dplyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Podemos criar novas variáveis com base em cálculos. Exemplo: calcular o índice de esbeltez (altura/DAP).</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="dplyr.html#cb127-1" tabindex="-1"></a><span class="co"># Adicionando o índice de esbeltez</span></span>
+<span id="cb127-2"><a href="dplyr.html#cb127-2" tabindex="-1"></a>dados_florestais <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb127-3"><a href="dplyr.html#cb127-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">indice_esbeltez =</span> altura_m <span class="sc">/</span> dap_cm)</span>
+<span id="cb127-4"><a href="dplyr.html#cb127-4" tabindex="-1"></a></span>
+<span id="cb127-5"><a href="dplyr.html#cb127-5" tabindex="-1"></a><span class="fu">head</span>(dados_florestais)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##   parcela especie     dap_cm altura_m volume_m3
+##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1       1 Angelim       45.1     27.5    0.0974
+## 2       1 Jatobá        46.4     16.2    0.0590
+## 3       1 Ipê           59.3     15.8    0.0736
+## 4       1 Ipê           43.4     15.4    0.0525
+## 5       1 Jatobá        30.6     12.9    0.0310
+## 6       1 Castanheira   47.5      8.5    0.0317
+## # ℹ 1 more variable: indice_esbeltez &lt;dbl&gt;</code></pre>
+</div>
+<div id="arrange" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> arrange()<a href="dplyr.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para ordenar as árvores pelo DAP em ordem decrescente:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="dplyr.html#cb129-1" tabindex="-1"></a><span class="co"># Ordenando por DAP</span></span>
+<span id="cb129-2"><a href="dplyr.html#cb129-2" tabindex="-1"></a>dados_ordenados <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb129-3"><a href="dplyr.html#cb129-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(dap_cm))</span>
+<span id="cb129-4"><a href="dplyr.html#cb129-4" tabindex="-1"></a></span>
+<span id="cb129-5"><a href="dplyr.html#cb129-5" tabindex="-1"></a><span class="fu">head</span>(dados_ordenados)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##   parcela especie     dap_cm altura_m volume_m3
+##     &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1       3 Angelim       78       20.3    0.124 
+## 2       1 Cedro         76.9      9.8    0.0592
+## 3       5 Angelim       73.2     24.9    0.143 
+## 4       4 Castanheira   72.6     18.9    0.108 
+## 5       5 Cedro         72.3     28.5    0.162 
+## 6       4 Cedro         70.8     16.3    0.0906
+## # ℹ 1 more variable: indice_esbeltez &lt;dbl&gt;</code></pre>
+</div>
+<div id="summarise-e-group_by" class="section level3 hasAnchor" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> summarise() e group_by()<a href="dplyr.html#summarise-e-group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Agrupar e resumir dados é uma tarefa comum em análises florestais. Exemplo: calcular o DAP médio e o volume total por espécie.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="dplyr.html#cb131-1" tabindex="-1"></a><span class="co"># Resumo por espécie</span></span>
+<span id="cb131-2"><a href="dplyr.html#cb131-2" tabindex="-1"></a>resumo_especies <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb131-3"><a href="dplyr.html#cb131-3" tabindex="-1"></a>  <span class="fu">group_by</span>(especie) <span class="sc">%&gt;%</span></span>
+<span id="cb131-4"><a href="dplyr.html#cb131-4" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb131-5"><a href="dplyr.html#cb131-5" tabindex="-1"></a>    <span class="at">dap_medio =</span> <span class="fu">mean</span>(dap_cm),</span>
+<span id="cb131-6"><a href="dplyr.html#cb131-6" tabindex="-1"></a>    <span class="at">volume_total =</span> <span class="fu">sum</span>(volume_m3)</span>
+<span id="cb131-7"><a href="dplyr.html#cb131-7" tabindex="-1"></a>  )</span>
+<span id="cb131-8"><a href="dplyr.html#cb131-8" tabindex="-1"></a></span>
+<span id="cb131-9"><a href="dplyr.html#cb131-9" tabindex="-1"></a>resumo_especies</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   especie     dap_medio volume_total
+##   &lt;chr&gt;           &lt;dbl&gt;        &lt;dbl&gt;
+## 1 Angelim          50.2        0.682
+## 2 Castanheira      48.2        0.603
+## 3 Cedro            53.5        0.732
+## 4 Ipê              36.9        0.490
+## 5 Jatobá           34.9        0.387</code></pre>
+</div>
+<div id="ungroup" class="section level3 hasAnchor" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> ungroup()<a href="dplyr.html#ungroup" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Após usar group_by() em uma análise, o objeto resultante permanece “agrupado”. Isso pode afetar operações subsequentes. Para remover o agrupamento, usamos ungroup().</p>
+<p>Exemplo: calcular o DAP médio por espécie e, em seguida, adicionar uma coluna ao dataset original com o DAP médio total (sem agrupamento).</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="dplyr.html#cb133-1" tabindex="-1"></a><span class="co"># Resumo por espécie com agrupamento</span></span>
+<span id="cb133-2"><a href="dplyr.html#cb133-2" tabindex="-1"></a>resumo_especies <span class="ot">&lt;-</span> dados_florestais <span class="sc">%&gt;%</span></span>
+<span id="cb133-3"><a href="dplyr.html#cb133-3" tabindex="-1"></a>  <span class="fu">group_by</span>(especie) <span class="sc">%&gt;%</span></span>
+<span id="cb133-4"><a href="dplyr.html#cb133-4" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">dap_medio =</span> <span class="fu">mean</span>(dap_cm))</span>
+<span id="cb133-5"><a href="dplyr.html#cb133-5" tabindex="-1"></a></span>
+<span id="cb133-6"><a href="dplyr.html#cb133-6" tabindex="-1"></a><span class="co"># Adicionando o DAP médio geral</span></span>
+<span id="cb133-7"><a href="dplyr.html#cb133-7" tabindex="-1"></a>dap_geral <span class="ot">&lt;-</span> resumo_especies <span class="sc">%&gt;%</span></span>
+<span id="cb133-8"><a href="dplyr.html#cb133-8" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb133-9"><a href="dplyr.html#cb133-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">dap_medio_geral =</span> <span class="fu">mean</span>(dap_medio))</span>
+<span id="cb133-10"><a href="dplyr.html#cb133-10" tabindex="-1"></a></span>
+<span id="cb133-11"><a href="dplyr.html#cb133-11" tabindex="-1"></a>dap_geral</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   dap_medio_geral
+##             &lt;dbl&gt;
+## 1            44.7</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="funções-da-família-apply-no-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/1_r_intermediario.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"title": "Entre Florestas e Dados",
+"favicon": "images/favico.ico",
+"language": {
+"chapter_title": "",
+"search_placeholder": "Procurar no livro...",
+"toc_title": "Índice"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

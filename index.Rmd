@@ -21,12 +21,13 @@ output:
 "Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
 análises de dados florestais utilizando a linguagem R.
 
-## Por que este livro? {-}
+**Por que este livro?**
+
 Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
 florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
 e monitoramento ambiental.
 
-## Autor {-}
+**Autor**
 
 <div class="author-container">
   <img class="author-image" src="images/ArthurExpo.png" alt="Arthur Guilherme Schirmbeck Chaves" />
