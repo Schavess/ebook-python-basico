@@ -272,7 +272,7 @@ Podemos criar vetores usando a função c().
 ```{r}
 # Criando vetores de diferentes tipos
 vetor_numerico <- c(1, 2, 3, 4, 5)
-vetor_caractere <- c("Maçã", "Banana", "Laranja")
+vetor_caractere <- c("Maçã", "Banana", "Laranja", "Goiaba")
 vetor_logico <- c(TRUE, FALSE, TRUE)
 
 # Visualizando os vetores
@@ -280,9 +280,52 @@ print(vetor_numerico)
 print(vetor_caractere)
 print(vetor_logico)
 
+# Comprimento do vetor
+length(vetor_numerico)
+
+```
+> ATENÇÃO: no R, a indexação começa em 1 (ao contrário de muitas outras linguagens como Python, C ou JavaScript, que utilizam a indexação a partir de 0). 
+
+```{r}
+
+# Acessando o primeiro elemento do vetor
+vetor_caractere[1]
+
+# Acessando os 3 primeiros elementos
+vetor_caractere[1:3]
+
+# Acessando uma lista de elementos
+vetor_caractere[c(1,4)]
+
 ```
 
-### Arrays
+### Matrix (Array 2D)
+```{r}
+a <- seq(from=1, to=6)
+b <- seq(from=1, to=10)
+
+# Criando matrizes 
+A <- matrix(a, nrow = 2, ncol = 3, byrow = TRUE) 
+print(A)
+
+# Dimensão da Matrix
+dim(A)
+
+B <- matrix(b, nrow = 5, ncol = 2, byrow = FALSE)
+print(B)
+
+# Dimensão da Matrix
+dim(B)
+
+# Acessando a segunda Coluna de B
+print(B[, 2])
+
+# Acessando a primeira linha de A
+print(A[1,])
+
+```
+
+### Arrays multidimensionais
 
 Um array em R é uma estrutura de dados multidimensional que pode armazenar elementos de um único tipo (númerico, caractere, etc.). Ele é como uma extensão de vetores, podendo ter duas ou mais dimensões.
 
@@ -414,7 +457,7 @@ soma(2, 3)  # Resultado: 5
 
 ```
 
-### Usando funçÕes
+### Usando funções
 O R oferece várias funções embutidas para realizar tarefas comuns. Aqui estão alguns exemplos:
 
 Funções matemáticas
@@ -457,26 +500,55 @@ nome_da_funcao <- function(argumento1, argumento2, ...) {
 
 ```
 Exemplos:
+
+#### Função com 1 argumentos
 ```{r}
-# Função quadrado
+# Função quadrado (1 argumento)
 quadrado <- function(x) {
   return(x^2)
 }
 
 quadrado(4)
+```
+#### Função com dois argumentos
 
-# Calcula o volume de um cilindro
+```{r}
+
+# Calcula o volume de um cilindro (2 argumentos)
 volume_cilindro <- function(raio, altura) {
   volume <- pi * raio^2 * altura
   return(volume)
 }
 
-# Usando a função
+# Usando a função com os argumentos
 volume_cilindro(raio = 3, altura = 5)  # Resultado: 141.37
 
-# ou
+# ou usando a função pela ordem dos argumentos
 volume_cilindro(3, 5)  # Resultado: 141.37
 
+```
+### Argumentos padrão (default)
+Você pode definir valores padrão para os argumentos, tornando-os opcionais ao chamar a função.
+```r
+# Função com argumento padrão
+saudacao <- function(nome = "Visitante") {
+  return(paste("Olá,", nome, "!"))
+}
+
+# Chamadas da função
+saudacao("Maria")  # Resultado: "Olá, Maria !"
+saudacao()         # Resultado: "Olá, Visitante !"
+
+```
+### Função anônima
+A função será executada somente naquele instante; não havendo necessidade de se nomeá-la. No javascript são conhecidas como *arrow functions*.
+
+```r
+# Função anônima em apply()
+vetor <- c(1, 2, 3, 4)
+resultado <- sapply(vetor, function(x) x^2)
+
+print(resultado)  # Resultado: [1]  1  4  9 16
 
 ```
 

@@ -22,7 +22,8 @@ conversão-de-tipos
 estruturas-de-controle
 arrays-e-dataframes
 vetor
-arrays
+matrix-array-2d
+arrays-multidimensionais
 criando-arrays
 acessando-elementos
 dataframes
@@ -36,6 +37,10 @@ dataframe-vs.-lista
 funções
 usando-funções
 criando-funções
+função-com-1-argumentos
+função-com-dois-argumentos
+argumentos-padrão-default
+função-anônima
 gerenciamento-de-pacotes
 o-que-são-pacotes
 instalando-pacotes
@@ -88,7 +93,6 @@ ungroup
 data.table
 o-que-é-o
 exemplos-de-uso-1
-manipulando-dados-com-dplyr
 dendrometria
 diâmetros
 histogramas-de-distribuição-diamétrica

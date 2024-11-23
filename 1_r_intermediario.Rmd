@@ -143,6 +143,7 @@ As funções da família `apply()` tornam o R extremamente poderoso e eficiente 
 ---
 
 ## dplyr
+O pacote dplyr é uma das ferramentas mais populares do ecossistema R para manipulação de dados. Ele fornece uma sintaxe simples e eficiente para tarefas como filtragem, ordenação, agrupamento e transformação de dados. Neste capítulo, exploraremos as principais funções do dplyr aplicadas a um conjunto de dados florestais.
 
 ### O que é o Pipe `%>%`?
 O operador `%>%` é chamado de pipe.
@@ -337,8 +338,3 @@ DT[, valor_2 := valor * 3]
 
 print(DT)
 ```
-
-## Manipulando dados com dplyr
-
-O pacote dplyr é uma das ferramentas mais populares do ecossistema R para manipulação de dados. Ele fornece uma sintaxe simples e eficiente para tarefas como filtragem, ordenação, agrupamento e transformação de dados. Neste capítulo, exploraremos as principais funções do dplyr aplicadas a um conjunto de dados florestais.
-

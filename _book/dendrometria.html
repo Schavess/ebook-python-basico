@@ -220,8 +220,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.5" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#arrays-e-dataframes"><i class="fa fa-check"></i><b>1.5</b> Arrays e Dataframes</a>
 <ul>
 <li class="chapter" data-level="1.5.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#vetor"><i class="fa fa-check"></i><b>1.5.1</b> Vetor</a></li>
-<li class="chapter" data-level="1.5.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#arrays"><i class="fa fa-check"></i><b>1.5.2</b> Arrays</a></li>
-<li class="chapter" data-level="1.5.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dataframes"><i class="fa fa-check"></i><b>1.5.3</b> Dataframes</a></li>
+<li class="chapter" data-level="1.5.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#matrix-array-2d"><i class="fa fa-check"></i><b>1.5.2</b> Matrix (Array 2D)</a></li>
+<li class="chapter" data-level="1.5.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#arrays-multidimensionais"><i class="fa fa-check"></i><b>1.5.3</b> Arrays multidimensionais</a></li>
+<li class="chapter" data-level="1.5.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#dataframes"><i class="fa fa-check"></i><b>1.5.4</b> Dataframes</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#listas"><i class="fa fa-check"></i><b>1.6</b> Listas</a>
 <ul>
@@ -231,8 +232,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="1.7" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#funções"><i class="fa fa-check"></i><b>1.7</b> Funções</a>
 <ul>
-<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#usando-funções"><i class="fa fa-check"></i><b>1.7.1</b> Usando funçÕes</a></li>
+<li class="chapter" data-level="1.7.1" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#usando-funções"><i class="fa fa-check"></i><b>1.7.1</b> Usando funções</a></li>
 <li class="chapter" data-level="1.7.2" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#criando-funções"><i class="fa fa-check"></i><b>1.7.2</b> Criando funções</a></li>
+<li class="chapter" data-level="1.7.3" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#argumentos-padrão-default"><i class="fa fa-check"></i><b>1.7.3</b> Argumentos padrão (default)</a></li>
+<li class="chapter" data-level="1.7.4" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#função-anônima"><i class="fa fa-check"></i><b>1.7.4</b> Função anônima</a></li>
 </ul></li>
 <li class="chapter" data-level="1.8" data-path="introdução-ao-r.html"><a href="introdução-ao-r.html#gerenciamento-de-pacotes"><i class="fa fa-check"></i><b>1.8</b> Gerenciamento de Pacotes 📦</a>
 <ul>
@@ -281,7 +284,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.3.1" data-path="r-intermediário.html"><a href="r-intermediário.html#o-que-é-o"><i class="fa fa-check"></i><b>2.3.1</b> O que é o <code>:=</code>?</a></li>
 <li class="chapter" data-level="2.3.2" data-path="r-intermediário.html"><a href="r-intermediário.html#exemplos-de-uso-1"><i class="fa fa-check"></i><b>2.3.2</b> Exemplos de Uso</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="r-intermediário.html"><a href="r-intermediário.html#manipulando-dados-com-dplyr"><i class="fa fa-check"></i><b>2.4</b> Manipulando dados com dplyr</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="dendrometria.html"><a href="dendrometria.html"><i class="fa fa-check"></i><b>3</b> Dendrometria</a>
 <ul>
@@ -343,51 +345,51 @@ div.csl-indent {
 <p>Os engenheiros florestais geralmente estabelecem classes diamétricas em intervalos fixos de 1,5 ou 2,0 cm para poderem comparar entre si as inúmeras parcelas; bem como para acompanhar a mudança de classe das árvores ao longo do tempo.</p>
 <div id="criando-dados-para-demonstração" class="section level4 hasAnchor" number="3.1.1.1">
 <h4><span class="header-section-number">3.1.1.1</span> Criando dados para demonstração<a href="dendrometria.html#criando-dados-para-demonstração" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="dendrometria.html#cb113-1" tabindex="-1"></a><span class="co"># Definir número de árvores por parcela</span></span>
-<span id="cb113-2"><a href="dendrometria.html#cb113-2" tabindex="-1"></a>n_arvores <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb113-3"><a href="dendrometria.html#cb113-3" tabindex="-1"></a></span>
-<span id="cb113-4"><a href="dendrometria.html#cb113-4" tabindex="-1"></a><span class="co"># Gerar dados de 3 parcelas com diâmetros distribuídos normalmente</span></span>
-<span id="cb113-5"><a href="dendrometria.html#cb113-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para garantir reprodutibilidade</span></span>
-<span id="cb113-6"><a href="dendrometria.html#cb113-6" tabindex="-1"></a></span>
-<span id="cb113-7"><a href="dendrometria.html#cb113-7" tabindex="-1"></a>parcela1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">5</span>)  <span class="co"># Parcela 1 com média 25 cm e desvio padrão 5 cm</span></span>
-<span id="cb113-8"><a href="dendrometria.html#cb113-8" tabindex="-1"></a>parcela2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">7</span>)  <span class="co"># Parcela 2 com média 30 cm e desvio padrão 7 cm</span></span>
-<span id="cb113-9"><a href="dendrometria.html#cb113-9" tabindex="-1"></a>parcela3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">6</span>)  <span class="co"># Parcela 3 com média 35 cm e desvio padrão 6 cm</span></span>
-<span id="cb113-10"><a href="dendrometria.html#cb113-10" tabindex="-1"></a></span>
-<span id="cb113-11"><a href="dendrometria.html#cb113-11" tabindex="-1"></a><span class="co"># Criar um data frame com os dados das parcelas</span></span>
-<span id="cb113-12"><a href="dendrometria.html#cb113-12" tabindex="-1"></a>dados_inventario <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb113-13"><a href="dendrometria.html#cb113-13" tabindex="-1"></a>  <span class="at">Parcela =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>), <span class="at">each =</span> n_arvores),</span>
-<span id="cb113-14"><a href="dendrometria.html#cb113-14" tabindex="-1"></a>  <span class="at">Diametro =</span> <span class="fu">c</span>(parcela1, parcela2, parcela3)</span>
-<span id="cb113-15"><a href="dendrometria.html#cb113-15" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="dendrometria.html#cb135-1" tabindex="-1"></a><span class="co"># Definir número de árvores por parcela</span></span>
+<span id="cb135-2"><a href="dendrometria.html#cb135-2" tabindex="-1"></a>n_arvores <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb135-3"><a href="dendrometria.html#cb135-3" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="dendrometria.html#cb135-4" tabindex="-1"></a><span class="co"># Gerar dados de 3 parcelas com diâmetros distribuídos normalmente</span></span>
+<span id="cb135-5"><a href="dendrometria.html#cb135-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># Para garantir reprodutibilidade</span></span>
+<span id="cb135-6"><a href="dendrometria.html#cb135-6" tabindex="-1"></a></span>
+<span id="cb135-7"><a href="dendrometria.html#cb135-7" tabindex="-1"></a>parcela1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">25</span>, <span class="at">sd =</span> <span class="dv">5</span>)  <span class="co"># Parcela 1 com média 25 cm e desvio padrão 5 cm</span></span>
+<span id="cb135-8"><a href="dendrometria.html#cb135-8" tabindex="-1"></a>parcela2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">30</span>, <span class="at">sd =</span> <span class="dv">7</span>)  <span class="co"># Parcela 2 com média 30 cm e desvio padrão 7 cm</span></span>
+<span id="cb135-9"><a href="dendrometria.html#cb135-9" tabindex="-1"></a>parcela3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_arvores, <span class="at">mean =</span> <span class="dv">35</span>, <span class="at">sd =</span> <span class="dv">6</span>)  <span class="co"># Parcela 3 com média 35 cm e desvio padrão 6 cm</span></span>
+<span id="cb135-10"><a href="dendrometria.html#cb135-10" tabindex="-1"></a></span>
+<span id="cb135-11"><a href="dendrometria.html#cb135-11" tabindex="-1"></a><span class="co"># Criar um data frame com os dados das parcelas</span></span>
+<span id="cb135-12"><a href="dendrometria.html#cb135-12" tabindex="-1"></a>dados_inventario <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb135-13"><a href="dendrometria.html#cb135-13" tabindex="-1"></a>  <span class="at">Parcela =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>), <span class="at">each =</span> n_arvores),</span>
+<span id="cb135-14"><a href="dendrometria.html#cb135-14" tabindex="-1"></a>  <span class="at">Diametro =</span> <span class="fu">c</span>(parcela1, parcela2, parcela3)</span>
+<span id="cb135-15"><a href="dendrometria.html#cb135-15" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="construindo-os-histogramas" class="section level4 hasAnchor" number="3.1.1.2">
 <h4><span class="header-section-number">3.1.1.2</span> Construindo os histogramas<a href="dendrometria.html#construindo-os-histogramas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="dendrometria.html#cb114-1" tabindex="-1"></a><span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
-<span id="cb114-2"><a href="dendrometria.html#cb114-2" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb114-3"><a href="dendrometria.html#cb114-3" tabindex="-1"></a>min_diametro <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">min</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor mínimo de diâmetro arredondado para baixo</span></span>
-<span id="cb114-4"><a href="dendrometria.html#cb114-4" tabindex="-1"></a>max_diametro <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor máximo de diâmetro arredondado para cima</span></span>
-<span id="cb114-5"><a href="dendrometria.html#cb114-5" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)  <span class="co"># Definir as classes com intervalo de 2 cm</span></span>
-<span id="cb114-6"><a href="dendrometria.html#cb114-6" tabindex="-1"></a></span>
-<span id="cb114-7"><a href="dendrometria.html#cb114-7" tabindex="-1"></a><span class="co"># Criar layout para os gráficos</span></span>
-<span id="cb114-8"><a href="dendrometria.html#cb114-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
-<span id="cb114-9"><a href="dendrometria.html#cb114-9" tabindex="-1"></a></span>
-<span id="cb114-10"><a href="dendrometria.html#cb114-10" tabindex="-1"></a><span class="co"># Definir lista de parcelas</span></span>
-<span id="cb114-11"><a href="dendrometria.html#cb114-11" tabindex="-1"></a>parcelas <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_inventario<span class="sc">$</span>Parcela)</span>
-<span id="cb114-12"><a href="dendrometria.html#cb114-12" tabindex="-1"></a></span>
-<span id="cb114-13"><a href="dendrometria.html#cb114-13" tabindex="-1"></a><span class="co"># Loop para plotar histogramas de cada parcela</span></span>
-<span id="cb114-14"><a href="dendrometria.html#cb114-14" tabindex="-1"></a><span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
-<span id="cb114-15"><a href="dendrometria.html#cb114-15" tabindex="-1"></a>  <span class="co"># Selecionar os dados da parcela atual</span></span>
-<span id="cb114-16"><a href="dendrometria.html#cb114-16" tabindex="-1"></a>  dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
-<span id="cb114-17"><a href="dendrometria.html#cb114-17" tabindex="-1"></a>  <span class="co"># Plotar o histograma</span></span>
-<span id="cb114-18"><a href="dendrometria.html#cb114-18" tabindex="-1"></a>  <span class="fu">hist</span>(dados_parcela,</span>
-<span id="cb114-19"><a href="dendrometria.html#cb114-19" tabindex="-1"></a>       <span class="at">breaks =</span> intervalos,</span>
-<span id="cb114-20"><a href="dendrometria.html#cb114-20" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
-<span id="cb114-21"><a href="dendrometria.html#cb114-21" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
-<span id="cb114-22"><a href="dendrometria.html#cb114-22" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
-<span id="cb114-23"><a href="dendrometria.html#cb114-23" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb114-24"><a href="dendrometria.html#cb114-24" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>,</span>
-<span id="cb114-25"><a href="dendrometria.html#cb114-25" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb114-26"><a href="dendrometria.html#cb114-26" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="dendrometria.html#cb136-1" tabindex="-1"></a><span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
+<span id="cb136-2"><a href="dendrometria.html#cb136-2" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb136-3"><a href="dendrometria.html#cb136-3" tabindex="-1"></a>min_diametro <span class="ot">&lt;-</span> <span class="fu">floor</span>(<span class="fu">min</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor mínimo de diâmetro arredondado para baixo</span></span>
+<span id="cb136-4"><a href="dendrometria.html#cb136-4" tabindex="-1"></a>max_diametro <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">max</span>(dados_inventario<span class="sc">$</span>Diametro))  <span class="co"># Valor máximo de diâmetro arredondado para cima</span></span>
+<span id="cb136-5"><a href="dendrometria.html#cb136-5" tabindex="-1"></a>intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)  <span class="co"># Definir as classes com intervalo de 2 cm</span></span>
+<span id="cb136-6"><a href="dendrometria.html#cb136-6" tabindex="-1"></a></span>
+<span id="cb136-7"><a href="dendrometria.html#cb136-7" tabindex="-1"></a><span class="co"># Criar layout para os gráficos</span></span>
+<span id="cb136-8"><a href="dendrometria.html#cb136-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
+<span id="cb136-9"><a href="dendrometria.html#cb136-9" tabindex="-1"></a></span>
+<span id="cb136-10"><a href="dendrometria.html#cb136-10" tabindex="-1"></a><span class="co"># Definir lista de parcelas</span></span>
+<span id="cb136-11"><a href="dendrometria.html#cb136-11" tabindex="-1"></a>parcelas <span class="ot">&lt;-</span> <span class="fu">unique</span>(dados_inventario<span class="sc">$</span>Parcela)</span>
+<span id="cb136-12"><a href="dendrometria.html#cb136-12" tabindex="-1"></a></span>
+<span id="cb136-13"><a href="dendrometria.html#cb136-13" tabindex="-1"></a><span class="co"># Loop para plotar histogramas de cada parcela</span></span>
+<span id="cb136-14"><a href="dendrometria.html#cb136-14" tabindex="-1"></a><span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
+<span id="cb136-15"><a href="dendrometria.html#cb136-15" tabindex="-1"></a>  <span class="co"># Selecionar os dados da parcela atual</span></span>
+<span id="cb136-16"><a href="dendrometria.html#cb136-16" tabindex="-1"></a>  dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
+<span id="cb136-17"><a href="dendrometria.html#cb136-17" tabindex="-1"></a>  <span class="co"># Plotar o histograma</span></span>
+<span id="cb136-18"><a href="dendrometria.html#cb136-18" tabindex="-1"></a>  <span class="fu">hist</span>(dados_parcela,</span>
+<span id="cb136-19"><a href="dendrometria.html#cb136-19" tabindex="-1"></a>       <span class="at">breaks =</span> intervalos,</span>
+<span id="cb136-20"><a href="dendrometria.html#cb136-20" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
+<span id="cb136-21"><a href="dendrometria.html#cb136-21" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
+<span id="cb136-22"><a href="dendrometria.html#cb136-22" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
+<span id="cb136-23"><a href="dendrometria.html#cb136-23" tabindex="-1"></a>       <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb136-24"><a href="dendrometria.html#cb136-24" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;skyblue&quot;</span>,</span>
+<span id="cb136-25"><a href="dendrometria.html#cb136-25" tabindex="-1"></a>       <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb136-26"><a href="dendrometria.html#cb136-26" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="exercício" class="section level4 hasAnchor" number="3.1.1.3">
 <h4><span class="header-section-number">3.1.1.3</span> Exercício<a href="dendrometria.html#exercício" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -398,27 +400,27 @@ div.csl-indent {
 Ver a Solução
 </summary>
 <p>Solução do problema</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="dendrometria.html#cb115-1" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
-<span id="cb115-2"><a href="dendrometria.html#cb115-2" tabindex="-1"></a>  </span>
-<span id="cb115-3"><a href="dendrometria.html#cb115-3" tabindex="-1"></a>  <span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
-<span id="cb115-4"><a href="dendrometria.html#cb115-4" tabindex="-1"></a>  intervalo <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
-<span id="cb115-5"><a href="dendrometria.html#cb115-5" tabindex="-1"></a>  intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)</span>
-<span id="cb115-6"><a href="dendrometria.html#cb115-6" tabindex="-1"></a>  </span>
-<span id="cb115-7"><a href="dendrometria.html#cb115-7" tabindex="-1"></a>  <span class="co"># Loop para plotar histogramas de cada parcela</span></span>
-<span id="cb115-8"><a href="dendrometria.html#cb115-8" tabindex="-1"></a>  <span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
-<span id="cb115-9"><a href="dendrometria.html#cb115-9" tabindex="-1"></a>    <span class="co"># Selecionar os dados da parcela atual</span></span>
-<span id="cb115-10"><a href="dendrometria.html#cb115-10" tabindex="-1"></a>    dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
-<span id="cb115-11"><a href="dendrometria.html#cb115-11" tabindex="-1"></a>    <span class="co"># Plotar o histograma</span></span>
-<span id="cb115-12"><a href="dendrometria.html#cb115-12" tabindex="-1"></a>    <span class="fu">hist</span>(dados_parcela,</span>
-<span id="cb115-13"><a href="dendrometria.html#cb115-13" tabindex="-1"></a>        <span class="at">breaks =</span> intervalos,</span>
-<span id="cb115-14"><a href="dendrometria.html#cb115-14" tabindex="-1"></a>        <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
-<span id="cb115-15"><a href="dendrometria.html#cb115-15" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
-<span id="cb115-16"><a href="dendrometria.html#cb115-16" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
-<span id="cb115-17"><a href="dendrometria.html#cb115-17" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb115-18"><a href="dendrometria.html#cb115-18" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb115-19"><a href="dendrometria.html#cb115-19" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
-<span id="cb115-20"><a href="dendrometria.html#cb115-20" tabindex="-1"></a>  }</span></code></pre></div>
-<img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="dendrometria.html#cb137-1" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))  <span class="co"># Define 3 gráficos em uma linha</span></span>
+<span id="cb137-2"><a href="dendrometria.html#cb137-2" tabindex="-1"></a>  </span>
+<span id="cb137-3"><a href="dendrometria.html#cb137-3" tabindex="-1"></a>  <span class="co"># Definir as classes diamétricas com intervalo de 2 cm</span></span>
+<span id="cb137-4"><a href="dendrometria.html#cb137-4" tabindex="-1"></a>  intervalo <span class="ot">&lt;-</span> <span class="fl">1.5</span></span>
+<span id="cb137-5"><a href="dendrometria.html#cb137-5" tabindex="-1"></a>  intervalos <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_diametro <span class="sc">-</span> intervalo, max_diametro <span class="sc">+</span> intervalo, <span class="at">by =</span> intervalo)</span>
+<span id="cb137-6"><a href="dendrometria.html#cb137-6" tabindex="-1"></a>  </span>
+<span id="cb137-7"><a href="dendrometria.html#cb137-7" tabindex="-1"></a>  <span class="co"># Loop para plotar histogramas de cada parcela</span></span>
+<span id="cb137-8"><a href="dendrometria.html#cb137-8" tabindex="-1"></a>  <span class="cf">for</span> (parcela <span class="cf">in</span> parcelas) {</span>
+<span id="cb137-9"><a href="dendrometria.html#cb137-9" tabindex="-1"></a>    <span class="co"># Selecionar os dados da parcela atual</span></span>
+<span id="cb137-10"><a href="dendrometria.html#cb137-10" tabindex="-1"></a>    dados_parcela <span class="ot">&lt;-</span> dados_inventario[dados_inventario<span class="sc">$</span>Parcela <span class="sc">==</span> parcela, <span class="st">&quot;Diametro&quot;</span>]</span>
+<span id="cb137-11"><a href="dendrometria.html#cb137-11" tabindex="-1"></a>    <span class="co"># Plotar o histograma</span></span>
+<span id="cb137-12"><a href="dendrometria.html#cb137-12" tabindex="-1"></a>    <span class="fu">hist</span>(dados_parcela,</span>
+<span id="cb137-13"><a href="dendrometria.html#cb137-13" tabindex="-1"></a>        <span class="at">breaks =</span> intervalos,</span>
+<span id="cb137-14"><a href="dendrometria.html#cb137-14" tabindex="-1"></a>        <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Histograma - parcela &quot;</span>, parcela),</span>
+<span id="cb137-15"><a href="dendrometria.html#cb137-15" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Diâmetro (cm)&quot;</span>, </span>
+<span id="cb137-16"><a href="dendrometria.html#cb137-16" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Frequência&quot;</span>,</span>
+<span id="cb137-17"><a href="dendrometria.html#cb137-17" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>),</span>
+<span id="cb137-18"><a href="dendrometria.html#cb137-18" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb137-19"><a href="dendrometria.html#cb137-19" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb137-20"><a href="dendrometria.html#cb137-20" tabindex="-1"></a>  }</span></code></pre></div>
+<img src="Entre_Florestas_e_Dados_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 </details>
 
 </div>
