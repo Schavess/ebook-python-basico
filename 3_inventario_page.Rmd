@@ -4,117 +4,120 @@ title: "Inventário Florestal"
 
 
 # Inventário florestal
+Este capítulo apresenta uma abordagem prática para a aplicação da linguagem R na solução de problemas típicos de inventário florestal. O foco está na integração de métodos estatísticos com ferramentas computacionais eficientes, permitindo aos profissionais otimizar processos de coleta, organização e interpretação de dados florestais. Exemplos práticos e scripts comentados são fornecidos, visando uma aplicação direta ao contexto profissional, com ênfase em replicabilidade e adaptação às diversas realidades do setor florestal.
 
-## Fitossociologia (Teoria)
+## Fitossociologia
 Os engenheiros florestais realizam estudos de fitossociologia para compreender a composição, a estrutura e as interações das comunidades vegetais em um determinado ecossistema. Esses estudos permitem identificar espécies dominantes, associadas e raras, além de avaliar a biodiversidade e as dinâmicas ecológicas do ambiente. Essas informações são essenciais para planejar o manejo sustentável, recuperar áreas degradadas e conservar ecossistemas naturais.
 
 Os engenheiros florestais realizam estudos de fitossociologia para determinar tipologias vegetais e fitofisionomias, aspectos fundamentais em processos como a Autorização para Exploração Vegetal (AUTEX) e os Programas de Recuperação Ambiental (PRA).
 
-### Estrutura horizontal
 
-#### Densidade absoluta
+### Teoria
+#### Estrutura horizontal
+
+##### Densidade absoluta
 Refere-se ao número de indivíduos de uma espécie \(i\) (\(n_i\)) por unidade de área (\(A\)), expressando a abundância total da espécie na comunidade.
 
 $$
 DA_i = \frac{n_i}{A}
 $$
 
-#### Densidade relativa
+##### Densidade relativa
 É a proporção da densidade absoluta de uma espécie (\(DA_i\)) em relação à soma das densidades absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie em termos de abundância.
 
 $$
 DR_i = \frac{DA_i}{\sum_{i=1}^s (DA_i)}
 $$
 
-#### Dominância absoluta
+##### Dominância absoluta
 Calcula a área basal total (\(G_i\)) de todos os indivíduos de uma espécie por unidade de área (\(A\)). Mede o espaço físico ocupado por uma espécie no ambiente.
 
 $$
 DoA_i = \frac{\sum_{j=1}^{n_i} g_j}{A} = \frac{G_i}{A}
 $$
 
-#### Dominância relativa
+##### Dominância relativa
 Representa a proporção da dominância absoluta de uma espécie (\(DoA_i\)) em relação à dominância total (\(G_T\)) de todas as espécies, expressa em porcentagem. Indica a importância relativa em termos de área ocupada.
 
 $$
 DoR_i = \frac{DoA_i}{\sum_{i=1}^{S} (DoA_i)}*100=\frac{G_i}{G_T}*100
 $$
 
-#### Frequência Absoluta
+##### Frequência Absoluta
 É a relação entre o número de unidades amostrais onde a espécie está presente (\(U_i\)) e o total de unidades amostrais (\(U_T\)), expressa em porcentagem. Mede a distribuição da espécie no espaço amostrado.
 
 $$
 FA_i = \frac{U_i}{U_T}*100
 $$
 
-#### Frequência Relativa
+##### Frequência Relativa
 Corresponde à frequência absoluta de uma espécie (\(FA_i\)) em relação à soma das frequências absolutas de todas as espécies, expressa em porcentagem. Avalia a importância espacial relativa da espécie.
 
 $$
 FR_i = \frac{FA_i}{\sum_{i=1}^{S}(FA_i)}*100
 $$
 
-#### Valor de Cobertura
+##### Valor de Cobertura
 É a soma da densidade relativa (\(DR_i\)), da dominância relativa (\(DoR_i\)) e, em alguns casos, da frequência relativa (\(FR_i\)), dependendo da metodologia. Reflete a contribuição total de uma espécie na comunidade.
 $$
 VC_i = DR_i + DoR_i + FR_i
 $$
 
-#### Porcentagem de Cobertura (Horizontal)
+##### Porcentagem de Cobertura (Horizontal)
 É a média ponderada de densidade relativa, dominância relativa e, opcionalmente, frequência relativa. A interpretação pode variar entre o cálculo bidimensional (\(DR + DoR\)) ou tridimensional (\(DR + DoR + FR\)), dependendo do objetivo.
 $$
 PC_i = \frac{DR_i + DoR_i + FR_i}{3}
 $$
 
-### Diversidade
+#### Diversidade
 
-#### Índice de Shannom
+##### Índice de Shannom
 Quantifica a diversidade da comunidade, considerando tanto a abundância (\(p_i\)) quanto a equitabilidade das espécies. Valores maiores indicam maior diversidade e distribuição equitativa entre as espécies.
 
 $$
 H' = -\sum_{i=1}^S p_i \ln(p_i)
 $$
 
-### Agregação
-#### Índice de Morisita
+#### Agregação
+##### Índice de Morisita
 Mede o padrão de distribuição espacial das espécies. Valores \(I_\delta > 1\) indicam agregação, \(I_\delta = 1\) distribuição ao acaso, e \(I_\delta < 1\) distribuição uniforme.
 
 $$
 I_\delta = \frac{n \sum_{i=1}^S n_i (n_i - 1)}{N (N - 1)}
 $$
 
-### Estrutura vertical
-#### Posição Sociológica Absoluta
+#### Estrutura vertical
+##### Posição Sociológica Absoluta
 Representa a distribuição vertical de uma espécie na comunidade, considerando a contribuição proporcional das classes de altura.
 $$
 PSA_i = \sum_{j=1}^{J}\left(\frac{N_j}{N} \cdot N_{ij}\right)
 $$
 
-#### Posição Sociológica Relativa
+##### Posição Sociológica Relativa
 É a proporção da posição sociológica absoluta de uma espécie (\(PSA_i\)) em relação à soma das posições sociológicas absolutas de todas as espécies, expressa em porcentagem. Indica a importância relativa da espécie na estrutura vertical.
 $$
 PSR_i = \frac{PSA_i}{\sum_{i=1}^{S} PSA_i} \cdot 100
 $$
 
-#### Valor de Importância Absoluta (Horizontal + Vertical)
+##### Valor de Importância Absoluta (Horizontal + Vertical)
 Combina os índices horizontais (densidade relativa, dominância relativa e frequência relativa) com a posição sociológica absoluta para refletir a contribuição global de uma espécie na comunidade.
 $$
 VI_a = DR_i + DoR_i + FR_i + PSA_i
 $$
 
-#### Valor de Importância Relativa (Horizontal + Vertical)
+##### Valor de Importância Relativa (Horizontal + Vertical)
 É a média ponderada dos índices horizontais e verticais. Indica a importância relativa de uma espécie considerando a estrutura horizontal e vertical.
 $$
 VI_r = \frac{DR_i + DoR_i + FR_i + PSA_i}{4}
 $$
 
-### Regeneração
+#### Regeneração
 Pode-se usar os mesmos índices anteriores de estrutura horizontal, vertical, etc. O resultado final será o Indicador de Regeneração Natural que poderá ser usado para calcular o **Valor de Importância Ampliado**:
 $$
 VIA_r = \frac{DR_i + DoR_i + FR_i + PSA_i + RN_i}{5}
 $$
 
-## Fitossociologia (Aplicação)
+### Aplicação
 
 De acordo com o estudo realizado por Verly et al. (2020), a caracterização florística defina para a Reserva Legal do IFMT foi de um fragmento Cerradão em estado de conservação adequada.
 De acordo com [@verly2020], a caracterização florística...
@@ -150,17 +153,17 @@ if (knitr::is_latex_output()) {
 ```
 <br>
 
-### Consistência dos dados
+#### Consistência dos dados
 Antes de qualquer análise, é fundamental verificar a consistência dos dados coletados. Isso envolve identificar e corrigir possíveis erros ou inconsistências, garantindo a qualidade e a confiabilidade das informações para as análises subsequentes.
 ```{r}
-items_excluir <- c("SP", "Morta", "PP", "PS", "Repetida", "Repitida", "Morfoespécie 7", "Morfoespécie 8")
+items_excluir <- c("SP", "Morta", "PP", "PS", "Repetida", "Repitida", "Morfoespécie 1", "Morfoespécie 7", "Morfoespécie 8", "Fabaceae 1")
 BD_ <- BD[!BD$`Nome Científico` %in% items_excluir, ]
 
 BD_$DAP <- as.numeric(BD_$DAP)
 BD_$`H T` <- as.numeric(BD_$`H T`)
 ```
 
-### Distribuição diamétrica geral
+#### Distribuição diamétrica geral
 A análise da distribuição dos diâmetros das árvores fornece insights sobre a estrutura etária e o desenvolvimento da floresta. Uma distribuição equilibrada indica uma regeneração contínua, enquanto a predominância de árvores em determinadas classes diamétricas pode sugerir distúrbios ou práticas de manejo específicas.
 ```{r}
 intervalo <- 5
@@ -170,10 +173,10 @@ hist(BD_$DAP, breaks = intervalos, main = NULL, xlab = "Diâmetro (cm)", ylab = 
 ```
 <br>
 
-### Distribuição por espécies (boxplots)
+#### Distribuição por espécies (boxplots)
 Os boxplots permitem visualizar a variação dos diâmetros por espécie, destacando tendências e identificando outliers. Essa análise auxilia na compreensão do crescimento e do desenvolvimento de cada espécie, bem como na identificação de espécies que possam necessitar de atenção especial no manejo.
 
-#### Boxplot dos DAPs
+##### Boxplot dos DAPs
 ```{r}
 require(ggplot2)
 especies <- unique(BD_$`Nome Científico`)
@@ -191,7 +194,7 @@ p <- ggplot(BD_, aes(x = reorder(`Nome Científico`, DAP, median), y = DAP, fill
 print(p)
 ```
 
-#### boxplot das alturas totais
+##### boxplot das alturas totais
 
 ```{r}
 
@@ -209,10 +212,10 @@ print(p)
 ```
 <br>
 
-### Parâmetros Fitossociológicos
+#### Parâmetros Fitossociológicos
 A aplicação prática dos parâmetros fitossociológicos, como densidade, dominância e frequência, fornece uma visão detalhada da composição e da estrutura da comunidade vegetal. Esses indicadores são essenciais para o planejamento de ações de manejo, conservação e recuperação de áreas florestais.
 
-#### Estrutura horizontal
+##### Estrutura horizontal
 
 ```{r}
 
@@ -266,7 +269,7 @@ if (knitr::is_latex_output()) {
 ```
 <br>
 
-#### Índice de Shannon (Diversidade)
+##### Índice de Shannon (Diversidade)
 Na aplicação, o cálculo do índice de Shannon avalia a diversidade alfa da comunidade vegetal. Um valor alto reflete maior diversidade e distribuição equitativa entre as espécies no local estudado.
 
 ```{r}
@@ -279,7 +282,7 @@ H <- shannon(EH_result$ni)
 cat("Índice de Shannon:", H, "\n")
 
 ```
-#### Índice de Morisita (Agregação)
+##### Índice de Morisita (Agregação)
 Mede o padrão de distribuição espacial das espécies. Valores \(I_\delta > 1\) indicam agregação.
 
 ```{r}
@@ -304,7 +307,7 @@ cat("Índice de Morisita corrigido:", I_delta, "\n")
 
 
 ```
-#### Estrutura vertical e classificação em estratos
+##### Estrutura vertical e classificação em estratos
 A inclusão da dimensão vertical nos parâmetros fitossociológicos agrega uma visão tridimensional da comunidade florestal, indo além da análise convencional baseada apenas na densidade e dominância (horizontal).
 
 ```{r}
@@ -400,6 +403,9 @@ if (knitr::is_latex_output()) {
 Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.
 
 ## Amostragem em Conglomerados 
+A amostragem em conglomerados é uma técnica de amostragem probabilística usada quando a população é grande e geograficamente dispersa. Em vez de selecionar indivíduos diretamente, a população é dividida em grupos chamados conglomerados (geralmente baseados em critérios como localização ou características naturais). Em seguida, alguns conglomerados são escolhidos aleatoriamente, e todos os indivíduos ou uma amostra dentro desses conglomerados são avaliados.
+
+Essa abordagem é eficiente em termos de custo e logística, especialmente em estudos em áreas extensas, mas pode introduzir maior variabilidade nos resultados, dependendo da homogeneidade dos conglomerados.
 
 ### Teoria
 
@@ -618,7 +624,7 @@ var_media
 erro_padrao <- sqrt(var_media)
 erro_padrao
 
-# t tabelado (0.05; 24; bicaldal)
+# t tabelado (0.05; 24; bicaudal)
 t_24 <- qt(0.05 / 2, df = 24, lower.tail = FALSE)
 
 # Erro absoluto
