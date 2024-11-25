@@ -169,7 +169,7 @@
 
 \title{Entre Florestas e Dados}
 \author{Arthur Guilherme Schirmbeck Chaves}
-\date{Última atualização: 2024-11-22}
+\date{Última atualização: 2024-11-23}
 
 \begin{document}
 \maketitle
@@ -184,15 +184,13 @@
 ``Entre Florestas e Dados'' é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
 análises de dados florestais utilizando a linguagem R.
 
-\section*{Por que este livro?}\label{por-que-este-livro}
-\addcontentsline{toc}{section}{Por que este livro?}
+\textbf{Por que este livro?}
 
 Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
 florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
 e monitoramento ambiental.
 
-\section*{Autor}\label{autor}
-\addcontentsline{toc}{section}{Autor}
+\textbf{Autor}
 
 Olá! Meu nome é Arthur Guilherme Schirmbeck Chaves. Sou professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
 analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
@@ -201,15 +199,40 @@ atividades profissionais e didáticas.
 
 \chapter{Introdução ao R}\label{introduuxe7uxe3o-ao-r}
 
-O R é provavelmente a mais importante ferramenta para a análise de dados florestais.
-
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{Instalação do R}\label{instalauxe7uxe3o-do-r}
+O R é provavelmente a mais importante ferramenta para a análise de dados florestais.
+
+Neste capítulo trataremos sobre:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Instalação do R e do RStudio;
+\item
+  Fundamentos da linguagem;
+\item
+  Arrays e Dataframes;
+\item
+  Listas;
+\item
+  Funções;
+\item
+  Gerenciamento de pacotes;
+\item
+  Importação e exportação de dados.
+\item
+  Gráficos básicos no R
+\end{enumerate}
+
+\section{Instalação}\label{instalauxe7uxe3o}
+
+\subsection{Instalação do R}\label{instalauxe7uxe3o-do-r}
 
 A instalação padrão do R é feita a partir do CRAN, uma rede de servidores espalhada pelo mundo que armazena versões idênticas e atualizadas de códigos e documentações para o R.
 
-\subsection{Windows}\label{windows}
+\subsubsection{Windows}\label{windows}
 
 Para instalar o R no Windows, siga os seguintes passos:
 
@@ -231,7 +254,7 @@ Para instalar o R no Windows, siga os seguintes passos:
   Feito o download, clique duas vezes no arquivo baixado e siga as instruções para instalação.
 \end{enumerate}
 
-\subsection{macOS}\label{macos}
+\subsubsection{macOS}\label{macos}
 
 Abra o terminal: \texttt{Command\ +\ Espaço} ``terminal'' e \texttt{Enter}
 
@@ -241,7 +264,7 @@ Abra o terminal: \texttt{Command\ +\ Espaço} ``terminal'' e \texttt{Enter}
 \end{Highlighting}
 \end{Shaded}
 
-\subsection{Linux}\label{linux}
+\subsubsection{Linux}\label{linux}
 
 Abra o terminal Linux: \texttt{ctrl\ +\ alt\ +\ t}
 
@@ -255,7 +278,7 @@ Abra o terminal Linux: \texttt{ctrl\ +\ alt\ +\ t}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{Instalação do RStudio}\label{instalauxe7uxe3o-do-rstudio}
+\subsection{Instalação do RStudio}\label{instalauxe7uxe3o-do-rstudio}
 
 Para instalar o RStudio, siga os passos atualizados abaixo:
 
@@ -273,15 +296,15 @@ Baixe o instalador adequado:
 Na seção ``All Installers'', selecione o instalador correspondente ao seu sistema operacional.
 Instale o RStudio:
 
-\subsection{Windows}\label{windows-1}
+\subsubsection{Windows}\label{windows-1}
 
 Execute o arquivo .exe baixado e siga as instruções do assistente de instalação.
 
-\subsection{macOS}\label{macos-1}
+\subsubsection{macOS}\label{macos-1}
 
 Abra o arquivo .dmg baixado, arraste o ícone do RStudio para a pasta ``Aplicativos'' e, em seguida, ejete a imagem de disco.
 
-\subsection{Linux}\label{linux-1}
+\subsubsection{Linux}\label{linux-1}
 
 Baixe o pacote apropriado (.deb ou .rpm) e instale-o usando as ferramentas de gerenciamento de pacotes do seu sistema.
 Inicie o RStudio:
@@ -291,49 +314,7 @@ Lembre-se de que o RStudio requer o R instalado previamente. Certifique-se de te
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{Sobre o R}\label{sobre-o-r}
-
-\subsection{O que são algoritmos?}\label{o-que-suxe3o-algoritmos}
-
-\textbf{Objetivo do Algoritmo}: Plantar uma árvore.
-
-\textbf{Entradas do Algoritmo}:
-
-\begin{itemize}
-\tightlist
-\item
-  Uma muda de árvore.
-\item
-  Local de plantio escolhido.
-\item
-  Ferramentas para cavar (como uma pá).
-\item
-  Água para regar a muda.
-\end{itemize}
-
-\textbf{Passos do Algoritmo}:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  Selecionar o Local: Escolher um local adequado para plantar a muda, considerando a exposição solar, o tipo de solo e o espaço necessário para o crescimento da árvore.
-\item
-  Cavar um Buraco: Usar a pá para cavar um buraco no local escolhido. O buraco deve ter profundidade e largura suficientes para acomodar as raízes da muda.
-\item
-  Preparar a Muda: Remover a muda do recipiente em que veio, com cuidado para não danificar as raízes.
-\item
-  Plantar a Muda: Colocar a muda no buraco, ajustando a profundidade para que a base do tronco fique no nível do solo. Preencher o buraco com terra, firmemente, mas sem compactar excessivamente.
-\item
-  Regar a Muda: Regar a muda generosamente para umedecer o solo e ajudar a estabelecer as raízes.
-\item
-  Cuidados Posteriores: Incluir instruções básicas de cuidados posteriores, como rega regular, aplicação de mulch para manter a umidade, e proteção contra ervas daninhas.
-\end{enumerate}
-
-\textbf{Saída do Algoritmo}:
-
-Uma árvore plantada e pronta para crescer no local escolhido.
-
-\subsection{O que é uma linguagem de programação?}\label{o-que-uxe9-uma-linguagem-de-programauxe7uxe3o}
+\section{Fundamentos da linguagem}\label{fundamentos-da-linguagem}
 
 Uma linguagem de programação é uma forma padronizada de comunicar instruções a um computador. É como uma língua que permite aos programadores escreverem códigos que são convertidos em ações executáveis pelo computador, permitindo a criação de software, aplicativos, websites, e muito mais. Cada linguagem de programação tem sua própria sintaxe e regras, assim como as línguas humanas têm gramática e vocabulário.
 
@@ -360,8 +341,6 @@ R é reconhecida por sua capacidade de criar gráficos e visualizações de dado
 R utiliza tipagem dinâmica, onde o tipo das variáveis é determinado em tempo de execução. Isso oferece flexibilidade para manipular diferentes tipos de dados, mas requer atenção para evitar inconsistências. Além disso, sua sintaxe foi projetada para facilitar operações vetoriais e manipulação de dados em larga escala, tornando-a eficiente em tarefas analíticas.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\section{Fundamentos da linguagem}\label{fundamentos-da-linguagem}
 
 \subsection{Boas práticas de codaR}\label{boas-pruxe1ticas-de-codar}
 
@@ -565,7 +544,7 @@ Podemos criar vetores usando a função c().
 \begin{Highlighting}[]
 \CommentTok{\# Criando vetores de diferentes tipos}
 \NormalTok{vetor\_numerico }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
-\NormalTok{vetor\_caractere }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Maçã"}\NormalTok{, }\StringTok{"Banana"}\NormalTok{, }\StringTok{"Laranja"}\NormalTok{)}
+\NormalTok{vetor\_caractere }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Maçã"}\NormalTok{, }\StringTok{"Banana"}\NormalTok{, }\StringTok{"Laranja"}\NormalTok{, }\StringTok{"Goiaba"}\NormalTok{)}
 \NormalTok{vetor\_logico }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
 
 \CommentTok{\# Visualizando os vetores}
@@ -584,7 +563,7 @@ Podemos criar vetores usando a função c().
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Maçã"    "Banana"  "Laranja"
+## [1] "Maçã"    "Banana"  "Laranja" "Goiaba"
 \end{verbatim}
 
 \begin{Shaded}
@@ -597,7 +576,134 @@ Podemos criar vetores usando a função c().
 ## [1]  TRUE FALSE  TRUE
 \end{verbatim}
 
-\subsection{Arrays}\label{arrays}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprimento do vetor}
+\FunctionTok{length}\NormalTok{(vetor\_numerico)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{quote}
+ATENÇÃO: no R, a indexação começa em 1 (ao contrário de muitas outras linguagens como Python, C ou JavaScript, que utilizam a indexação a partir de 0).
+\end{quote}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando o primeiro elemento do vetor}
+\NormalTok{vetor\_caractere[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Maçã"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando os 3 primeiros elementos}
+\NormalTok{vetor\_caractere[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Maçã"    "Banana"  "Laranja"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando uma lista de elementos}
+\NormalTok{vetor\_caractere[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Maçã"   "Goiaba"
+\end{verbatim}
+
+\subsection{Matrix (Array 2D)}\label{matrix-array-2d}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{1}\NormalTok{, }\AttributeTok{to=}\DecValTok{6}\NormalTok{)}
+\NormalTok{b }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{1}\NormalTok{, }\AttributeTok{to=}\DecValTok{10}\NormalTok{)}
+
+\CommentTok{\# Criando matrizes }
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(a, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{) }
+\FunctionTok{print}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Dimensão da Matrix}
+\FunctionTok{dim}\NormalTok{(A)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(b, }\AttributeTok{nrow =} \DecValTok{5}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]    1    6
+## [2,]    2    7
+## [3,]    3    8
+## [4,]    4    9
+## [5,]    5   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Dimensão da Matrix}
+\FunctionTok{dim}\NormalTok{(B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando a segunda Coluna de B}
+\FunctionTok{print}\NormalTok{(B[, }\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  6  7  8  9 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Acessando a primeira linha de A}
+\FunctionTok{print}\NormalTok{(A[}\DecValTok{1}\NormalTok{,])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+
+\subsection{Arrays multidimensionais}\label{arrays-multidimensionais}
 
 Um array em R é uma estrutura de dados multidimensional que pode armazenar elementos de um único tipo (númerico, caractere, etc.). Ele é como uma extensão de vetores, podendo ter duas ou mais dimensões.
 
@@ -859,6 +965,230 @@ Embora um dataframe seja tecnicamente uma lista, ele é estruturado de maneira q
 \textbf{Indexação} & Por linhas e colunas & Por índices ou nomes \\
 \textbf{Uso típico} & Dados tabulares & Agrupamento de objetos heterogêneos \\
 \end{longtable}
+
+\section{Funções}\label{funuxe7uxf5es}
+
+Uma função é um bloco de código que realiza uma tarefa específica. Ela recebe entradas (argumentos), processa os dados e retorna um resultado.
+
+Exemplo de Função
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Função simples para calcular a soma de dois números}
+\NormalTok{soma }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) \{}
+\NormalTok{  resultado }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+}\NormalTok{ y}
+  \FunctionTok{return}\NormalTok{(resultado)}
+\NormalTok{\}}
+
+\CommentTok{\# Usando a função}
+\FunctionTok{soma}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)  }\CommentTok{\# Resultado: 5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\subsection{Usando funções}\label{usando-funuxe7uxf5es}
+
+O R oferece várias funções embutidas para realizar tarefas comuns. Aqui estão alguns exemplos:
+
+Funções matemáticas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Funções básicas}
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{16}\NormalTok{)      }\CommentTok{\# Raiz quadrada: 4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(}\DecValTok{10}\NormalTok{)       }\CommentTok{\# Logaritmo natural}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.302585
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FloatTok{3.1415}\NormalTok{, }\DecValTok{2}\NormalTok{)  }\CommentTok{\# Arredondar para 2 casas decimais: 3.14}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.14
+\end{verbatim}
+
+Funções estatísticas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conjunto de dados}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+
+\CommentTok{\# Estatísticas básicas}
+\FunctionTok{mean}\NormalTok{(dados)   }\CommentTok{\# Média: 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{median}\NormalTok{(dados) }\CommentTok{\# Mediana: 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sd}\NormalTok{(dados)     }\CommentTok{\# Desvio padrão}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.581139
+\end{verbatim}
+
+Funções de manipulação de strings
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Manipulando texto}
+\NormalTok{texto }\OtherTok{\textless{}{-}} \StringTok{"Programar no R é divertido!"}
+\FunctionTok{nchar}\NormalTok{(texto)       }\CommentTok{\# Número de caracteres: 27}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 27
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{toupper}\NormalTok{(texto)     }\CommentTok{\# Tudo maiúsculo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "PROGRAMAR NO R É DIVERTIDO!"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tolower}\NormalTok{(texto)     }\CommentTok{\# Tudo minúsculo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "programar no r é divertido!"
+\end{verbatim}
+
+\subsection{Criando funções}\label{criando-funuxe7uxf5es}
+
+Estrutura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome\_da\_funcao }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(argumento1, argumento2, ...) \{}
+  \CommentTok{\# Corpo da função (o que será feito)}
+\NormalTok{  resultado }\OtherTok{\textless{}{-}}\NormalTok{ argumento1 }\SpecialCharTok{+}\NormalTok{ argumento2  }\CommentTok{\# Exemplo}
+  \FunctionTok{return}\NormalTok{(resultado)  }\CommentTok{\# O que será retornado}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Exemplos:
+
+\subsubsection{Função com 1 argumentos}\label{funuxe7uxe3o-com-1-argumentos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Função quadrado (1 argumento)}
+\NormalTok{quadrado }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \FunctionTok{return}\NormalTok{(x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+
+\FunctionTok{quadrado}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16
+\end{verbatim}
+
+\subsubsection{Função com dois argumentos}\label{funuxe7uxe3o-com-dois-argumentos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calcula o volume de um cilindro (2 argumentos)}
+\NormalTok{volume\_cilindro }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(raio, altura) \{}
+\NormalTok{  volume }\OtherTok{\textless{}{-}}\NormalTok{ pi }\SpecialCharTok{*}\NormalTok{ raio}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ altura}
+  \FunctionTok{return}\NormalTok{(volume)}
+\NormalTok{\}}
+
+\CommentTok{\# Usando a função com os argumentos}
+\FunctionTok{volume\_cilindro}\NormalTok{(}\AttributeTok{raio =} \DecValTok{3}\NormalTok{, }\AttributeTok{altura =} \DecValTok{5}\NormalTok{)  }\CommentTok{\# Resultado: 141.37}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 141.3717
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ou usando a função pela ordem dos argumentos}
+\FunctionTok{volume\_cilindro}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)  }\CommentTok{\# Resultado: 141.37}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 141.3717
+\end{verbatim}
+
+\subsection{Argumentos padrão (default)}\label{argumentos-padruxe3o-default}
+
+Você pode definir valores padrão para os argumentos, tornando-os opcionais ao chamar a função.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Função com argumento padrão}
+\NormalTok{saudacao }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{nome =} \StringTok{"Visitante"}\NormalTok{) \{}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Olá,"}\NormalTok{, nome, }\StringTok{"!"}\NormalTok{))}
+\NormalTok{\}}
+
+\CommentTok{\# Chamadas da função}
+\FunctionTok{saudacao}\NormalTok{(}\StringTok{"Maria"}\NormalTok{)  }\CommentTok{\# Resultado: "Olá, Maria !"}
+\FunctionTok{saudacao}\NormalTok{()         }\CommentTok{\# Resultado: "Olá, Visitante !"}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Função anônima}\label{funuxe7uxe3o-anuxf4nima}
+
+A função será executada somente naquele instante; não havendo necessidade de se nomeá-la. No javascript são conhecidas como \emph{arrow functions}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Função anônima em apply()}
+\NormalTok{vetor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{resultado }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(vetor, }\ControlFlowTok{function}\NormalTok{(x) x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(resultado)  }\CommentTok{\# Resultado: [1]  1  4  9 16}
+\end{Highlighting}
+\end{Shaded}
 
 \section{Gerenciamento de Pacotes 📦}\label{gerenciamento-de-pacotes}
 
@@ -1168,7 +1498,112 @@ O R permite salvar dados em diversos formatos com as funções correspondentes:
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\section{Gráficos básicos}\label{gruxe1ficos-buxe1sicos}
+
+Os gráficos são ferramentas fundamentais para analisar e comunicar dados de forma eficiente. No R, a criação de gráficos padrão é extremamente acessível, permitindo a geração de visualizações informativas com poucos comandos. Esses gráficos servem como ponto de partida para análises exploratórias e também para apresentações mais refinadas.
+
+\subsection{Gráficos de dispersão}\label{gruxe1ficos-de-dispersuxe3o}
+
+Um dos gráficos mais utilizados para visualizar a relação entre duas variáveis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exemplo de gráfico de dispersão}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\NormalTok{y }\OtherTok{\textless{}{-}}\NormalTok{ x }\SpecialCharTok{+} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.5}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(x, y, }\AttributeTok{main =} \StringTok{"Gráfico de Dispersão"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Eixo X"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Eixo Y"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-42-1.pdf}
+
+\subsection{Histograma}\label{histograma}
+
+Excelente para visualizar a distribuição de uma variável numérica.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exemplo de histograma}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(dados, }\AttributeTok{main =} \StringTok{"Histograma"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Valores"}\NormalTok{, }\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\subsection{Boxplot}\label{boxplot}
+
+Perfeito para comparar distribuições entre grupos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exemplo de boxplot}
+\NormalTok{grupo }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{), }\AttributeTok{each =} \DecValTok{50}\NormalTok{))}
+\NormalTok{valores }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{5}\NormalTok{), }\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{7}\NormalTok{))}
+\FunctionTok{boxplot}\NormalTok{(valores }\SpecialCharTok{\textasciitilde{}}\NormalTok{ grupo, }\AttributeTok{main =} \StringTok{"Boxplot por Grupo"}\NormalTok{, }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"orange"}\NormalTok{, }\StringTok{"lightgreen"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+\subsection{Gráficos de pizza}\label{gruxe1ficos-de-pizza}
+
+Embora não seja o preferido para análise quantitativa, o gráfico de pizza é útil para exibir proporções.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exemplo de gráfico de pizza}
+\NormalTok{valores }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{25}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{15}\NormalTok{)}
+\NormalTok{categorias }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Categoria A"}\NormalTok{, }\StringTok{"Categoria B"}\NormalTok{, }\StringTok{"Categoria C"}\NormalTok{, }\StringTok{"Categoria D"}\NormalTok{)}
+\FunctionTok{pie}\NormalTok{(valores, }\AttributeTok{labels =}\NormalTok{ categorias, }
+    \AttributeTok{main =} \StringTok{"Gráfico de Pizza"}\NormalTok{, }
+    \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"blue"}\NormalTok{, }\StringTok{"green"}\NormalTok{, }\StringTok{"yellow"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+\subsection{Personalização dos gráficos}\label{personalizauxe7uxe3o-dos-gruxe1ficos}
+
+Os gráficos padrão do R podem ser ajustados para atender a diferentes necessidades. Entre os elementos que podem ser personalizados estão:
+- Títulos e rótulos: main, xlab, ylab.
+- Cores e estilos de linhas: col, lty, lwd.
+- Pontos e símbolos: pch, cex.
+
+Por exemplo, o gráfico de dispersão pode ser ajustado assim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x, y, }
+     \AttributeTok{main =} \StringTok{"Gráfico Personalizado"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Variável X"}\NormalTok{, }
+     \AttributeTok{ylab =} \StringTok{"Variável Y"}\NormalTok{, }
+     \AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }
+     \AttributeTok{pch =} \DecValTok{16}\NormalTok{, }
+     \AttributeTok{cex =} \FloatTok{1.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-46-1.pdf}
+
 \chapter{R Intermediário}\label{r-intermediuxe1rio}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Para aprofundar nossos conhecimentos sobre a linguagem vamos analisar:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Funções da família \texttt{apply()};
+\item
+  O pacote \texttt{dplyr};
+\item
+  O pacote \texttt{data.table}.
+\item
+  O pacote gráfico \texttt{lattice}
+\end{enumerate}
 
 \section{\texorpdfstring{Funções da família \texttt{apply()} no R}{Funções da família apply() no R}}\label{funuxe7uxf5es-da-famuxedlia-apply-no-r}
 
@@ -1403,6 +1838,8 @@ As funções da família \texttt{apply()} tornam o R extremamente poderoso e efi
 
 \section{dplyr}\label{dplyr}
 
+O pacote dplyr é uma das ferramentas mais populares do ecossistema R para manipulação de dados. Ele fornece uma sintaxe simples e eficiente para tarefas como filtragem, ordenação, agrupamento e transformação de dados. Neste capítulo, exploraremos as principais funções do dplyr aplicadas a um conjunto de dados florestais.
+
 \subsection{\texorpdfstring{O que é o Pipe \texttt{\%\textgreater{}\%}?}{O que é o Pipe \%\textgreater\%?}}\label{o-que-uxe9-o-pipe}
 
 O operador \texttt{\%\textgreater{}\%} é chamado de pipe.
@@ -1503,16 +1940,16 @@ Criando um exemplo:
 ## # A tibble: 50 x 5
 ##    parcela especie     dap_cm altura_m volume_m3
 ##      <int> <chr>        <dbl>    <dbl>     <dbl>
-##  1       1 Ipê           32.5     22.3    0.0569
-##  2       1 Ipê           43.5     12.1    0.0413
-##  3       1 Castanheira   12       25.3    0.0238
-##  4       1 Cedro         48.3      7.3    0.0277
-##  5       1 Cedro         55.1     25.6    0.111 
-##  6       1 Castanheira   51.7     15.7    0.0638
-##  7       1 Castanheira   32.5     23.9    0.0610
-##  8       1 Angelim       72.4     21.6    0.123 
-##  9       1 Castanheira   53.8     16.1    0.0680
-## 10       1 Castanheira   31.2     20.7    0.0507
+##  1       1 Cedro         19.4     14.8    0.0226
+##  2       1 Castanheira   23.3     10.3    0.0188
+##  3       1 Ipê           25.1     23.8    0.0469
+##  4       1 Cedro         75.4     16.1    0.0953
+##  5       1 Angelim       79.2     16.3    0.101 
+##  6       1 Cedro         31.7      7.1    0.0177
+##  7       1 Castanheira   19.6     14.1    0.0217
+##  8       1 Ipê           56.3     27.4    0.121 
+##  9       1 Castanheira   50.9     18.6    0.0744
+## 10       1 Cedro         34.1      5.8    0.0155
 ## # i 40 more rows
 \end{verbatim}
 
@@ -1536,12 +1973,12 @@ Podemos filtrar árvores de uma espécie específica ou com características par
 ## # A tibble: 6 x 5
 ##   parcela especie     dap_cm altura_m volume_m3
 ##     <int> <chr>        <dbl>    <dbl>     <dbl>
-## 1       1 Cedro         55.1     25.6    0.111 
-## 2       1 Castanheira   51.7     15.7    0.0638
-## 3       1 Angelim       72.4     21.6    0.123 
-## 4       1 Castanheira   53.8     16.1    0.0680
-## 5       2 Castanheira   70.4     22.6    0.125 
-## 6       2 Cedro         76.7     10.4    0.0626
+## 1       1 Cedro         75.4     16.1    0.0953
+## 2       1 Angelim       79.2     16.3    0.101 
+## 3       1 Ipê           56.3     27.4    0.121 
+## 4       1 Castanheira   50.9     18.6    0.0744
+## 5       2 Castanheira   67       14.7    0.0774
+## 6       2 Cedro         69.2     11.9    0.0647
 \end{verbatim}
 
 \subsection{select()}\label{select}
@@ -1562,12 +1999,12 @@ Para trabalhar com um subconjunto de variáveis, podemos usar select(). Exemplo:
 ## # A tibble: 6 x 3
 ##   especie     dap_cm altura_m
 ##   <chr>        <dbl>    <dbl>
-## 1 Ipê           32.5     22.3
-## 2 Ipê           43.5     12.1
-## 3 Castanheira   12       25.3
-## 4 Cedro         48.3      7.3
-## 5 Cedro         55.1     25.6
-## 6 Castanheira   51.7     15.7
+## 1 Cedro         19.4     14.8
+## 2 Castanheira   23.3     10.3
+## 3 Ipê           25.1     23.8
+## 4 Cedro         75.4     16.1
+## 5 Angelim       79.2     16.3
+## 6 Cedro         31.7      7.1
 \end{verbatim}
 
 \subsection{mutate()}\label{mutate}
@@ -1588,12 +2025,12 @@ Podemos criar novas variáveis com base em cálculos. Exemplo: calcular o índic
 ## # A tibble: 6 x 6
 ##   parcela especie     dap_cm altura_m volume_m3
 ##     <int> <chr>        <dbl>    <dbl>     <dbl>
-## 1       1 Ipê           32.5     22.3    0.0569
-## 2       1 Ipê           43.5     12.1    0.0413
-## 3       1 Castanheira   12       25.3    0.0238
-## 4       1 Cedro         48.3      7.3    0.0277
-## 5       1 Cedro         55.1     25.6    0.111 
-## 6       1 Castanheira   51.7     15.7    0.0638
+## 1       1 Cedro         19.4     14.8    0.0226
+## 2       1 Castanheira   23.3     10.3    0.0188
+## 3       1 Ipê           25.1     23.8    0.0469
+## 4       1 Cedro         75.4     16.1    0.0953
+## 5       1 Angelim       79.2     16.3    0.101 
+## 6       1 Cedro         31.7      7.1    0.0177
 ## # i 1 more variable: indice_esbeltez <dbl>
 \end{verbatim}
 
@@ -1615,12 +2052,12 @@ Para ordenar as árvores pelo DAP em ordem decrescente:
 ## # A tibble: 6 x 6
 ##   parcela especie dap_cm altura_m volume_m3
 ##     <int> <chr>    <dbl>    <dbl>     <dbl>
-## 1       2 Cedro     79.8     22.2    0.139 
-## 2       5 Cedro     78.2     16.6    0.102 
-## 3       2 Cedro     76.7     10.4    0.0626
-## 4       1 Angelim   72.4     21.6    0.123 
-## 5       4 Jatobá    72.3      9.5    0.0539
-## 6       3 Ipê       70.7      7.2    0.0400
+## 1       1 Angelim   79.2     16.3    0.101 
+## 2       3 Jatobá    78.8     29      0.179 
+## 3       5 Jatobá    76.7     21.1    0.127 
+## 4       5 Jatobá    76.5     22.3    0.134 
+## 5       2 Ipê       76        9.3    0.0555
+## 6       1 Cedro     75.4     16.1    0.0953
 ## # i 1 more variable: indice_esbeltez <dbl>
 \end{verbatim}
 
@@ -1646,11 +2083,11 @@ Agrupar e resumir dados é uma tarefa comum em análises florestais. Exemplo: ca
 ## # A tibble: 5 x 3
 ##   especie     dap_medio volume_total
 ##   <chr>           <dbl>        <dbl>
-## 1 Angelim          45.0        0.426
-## 2 Castanheira      38.4        0.721
-## 3 Cedro            51.6        0.699
-## 4 Ipê              36.9        0.588
-## 5 Jatobá           44.5        0.399
+## 1 Angelim          48.3        0.462
+## 2 Castanheira      37.2        0.605
+## 3 Cedro            51.6        0.755
+## 4 Ipê              47.5        0.868
+## 5 Jatobá           53.6        0.845
 \end{verbatim}
 
 \subsection{ungroup()}\label{ungroup}
@@ -1679,7 +2116,7 @@ Exemplo: calcular o DAP médio por espécie e, em seguida, adicionar uma coluna 
 ## # A tibble: 1 x 1
 ##   dap_medio_geral
 ##             <dbl>
-## 1            43.3
+## 1            47.7
 \end{verbatim}
 
 \section{data.table}\label{data.table}
@@ -1751,9 +2188,255 @@ Podemos também modificar uma coluna existente. Vamos modificar a coluna valor\_
 ## 5:  5    30      90
 \end{verbatim}
 
-\section{Manipulando dados com dplyr}\label{manipulando-dados-com-dplyr}
+\section{\texorpdfstring{Pacote \texttt{lattice}}{Pacote lattice}}\label{pacote-lattice}
 
-O pacote dplyr é uma das ferramentas mais populares do ecossistema R para manipulação de dados. Ele fornece uma sintaxe simples e eficiente para tarefas como filtragem, ordenação, agrupamento e transformação de dados. Neste capítulo, exploraremos as principais funções do dplyr aplicadas a um conjunto de dados florestais.
+O pacote lattice é uma poderosa ferramenta para criar gráficos condicionais e exploratórios. Ele é especialmente útil quando trabalhamos com conjuntos de dados categorizados, como medidas florestais agrupadas por espécies, localizações ou períodos de tempo.
+
+\subsection{Dispersão condicional}\label{dispersuxe3o-condicional}
+
+Imagine que temos dados sobre o diâmetro das árvores (DAP) e a altura delas em diferentes parcelas florestais. Com lattice, podemos visualizar as relações entre essas variáveis, separadas por parcelas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lattice)}
+
+\CommentTok{\# Dados simulados}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Parcela =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{each =} \DecValTok{50}\NormalTok{)),}
+  \AttributeTok{DAP =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{5}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{25}\NormalTok{, }\AttributeTok{sd =} \DecValTok{6}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{22}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Altura =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{15}\NormalTok{, }\AttributeTok{sd =} \DecValTok{3}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{18}\NormalTok{, }\AttributeTok{sd =} \DecValTok{2}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{16}\NormalTok{, }\AttributeTok{sd =} \DecValTok{3}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Gráfico de dispersão por parcela}
+\FunctionTok{xyplot}\NormalTok{(Altura }\SpecialCharTok{\textasciitilde{}}\NormalTok{ DAP }\SpecialCharTok{|}\NormalTok{ Parcela, }\AttributeTok{data =}\NormalTok{ dados,}
+       \AttributeTok{main =} \StringTok{"Altura x DAP por Parcela"}\NormalTok{,}
+       \AttributeTok{xlab =} \StringTok{"Diâmetro à Altura do Peito (DAP)"}\NormalTok{,}
+       \AttributeTok{ylab =} \StringTok{"Altura (m)"}\NormalTok{,}
+       \AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{16}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+\subsection{Histograma condicional}\label{histograma-condicional}
+
+Os histogramas condicionais são úteis para visualizar a distribuição do DAP em diferentes espécies de árvores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Dados simulados}
+\NormalTok{dados}\SpecialCharTok{$}\NormalTok{Especie }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Espécie A"}\NormalTok{, }\StringTok{"Espécie B"}\NormalTok{, }\StringTok{"Espécie C"}\NormalTok{), }\AttributeTok{each =} \DecValTok{50}\NormalTok{))}
+
+\CommentTok{\# Histograma por espécie}
+\FunctionTok{histogram}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ DAP }\SpecialCharTok{|}\NormalTok{ Especie, }\AttributeTok{data =}\NormalTok{ dados,}
+          \AttributeTok{main =} \StringTok{"Distribuição do DAP por Espécie"}\NormalTok{,}
+          \AttributeTok{xlab =} \StringTok{"Diâmetro à Altura do Peito (DAP)"}\NormalTok{,}
+          \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+\subsection{Boxplot comparativo}\label{boxplot-comparativo}
+
+Os boxplots são ideais para comparar a altura das árvores entre espécies em diferentes parcelas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Ajustando o boxplot}
+\FunctionTok{bwplot}\NormalTok{(Altura }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Especie }\SpecialCharTok{|}\NormalTok{ Parcela, }\AttributeTok{data =}\NormalTok{ dados,}
+       \AttributeTok{main =} \StringTok{"Altura por Espécie e Parcela"}\NormalTok{,}
+       \AttributeTok{xlab =} \StringTok{"Espécie"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Altura (m)"}\NormalTok{,}
+       \AttributeTok{col =} \StringTok{"forestgreen"}\NormalTok{,}
+       \AttributeTok{par.settings =} \FunctionTok{list}\NormalTok{(}\AttributeTok{box.rectangle =} \FunctionTok{list}\NormalTok{(}\AttributeTok{col =} \StringTok{"blue"}\NormalTok{),}
+                           \AttributeTok{plot.symbol =} \FunctionTok{list}\NormalTok{(}\AttributeTok{col =} \StringTok{"darkgreen"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{16}\NormalTok{)),}
+       \AttributeTok{scales =} \FunctionTok{list}\NormalTok{(}\AttributeTok{x =} \FunctionTok{list}\NormalTok{(}\AttributeTok{rot =} \DecValTok{45}\NormalTok{))) }\CommentTok{\# Rotação dos rótulos no eixo X}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-63-1.pdf}
+
+\subsection{Barras por classes}\label{barras-por-classes}
+
+Se quisermos visualizar a contagem de árvores por espécie em cada parcela, o gráfico de barras é uma escolha apropriada.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Reorganizando os dados para melhor visualização}
+\FunctionTok{library}\NormalTok{(reshape2)}
+\NormalTok{dados\_barras }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(contagem)}
+\FunctionTok{names}\NormalTok{(dados\_barras) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Especie"}\NormalTok{, }\StringTok{"Parcela"}\NormalTok{, }\StringTok{"Contagem"}\NormalTok{)}
+
+\CommentTok{\# Gráfico de barras mais visual}
+\FunctionTok{barchart}\NormalTok{(Contagem }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Especie }\SpecialCharTok{|}\NormalTok{ Parcela, }\AttributeTok{data =}\NormalTok{ dados\_barras,}
+         \AttributeTok{main =} \StringTok{"Número de Árvores por Espécie e Parcela"}\NormalTok{,}
+         \AttributeTok{xlab =} \StringTok{"Espécie"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Número de Árvores"}\NormalTok{,}
+         \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"lightgreen"}\NormalTok{, }\StringTok{"brown"}\NormalTok{),}
+         \AttributeTok{auto.key =} \FunctionTok{list}\NormalTok{(}\AttributeTok{columns =} \DecValTok{3}\NormalTok{), }\CommentTok{\# Legenda com as espécies}
+         \AttributeTok{panel =} \ControlFlowTok{function}\NormalTok{(x, y, ...) \{}
+           \FunctionTok{panel.barchart}\NormalTok{(x, y, ...)}
+           \FunctionTok{panel.text}\NormalTok{(x, y, }\AttributeTok{labels =}\NormalTok{ y, }\AttributeTok{pos =} \DecValTok{3}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.8}\NormalTok{) }\CommentTok{\# Rótulos numéricos}
+\NormalTok{         \},}
+         \AttributeTok{scales =} \FunctionTok{list}\NormalTok{(}\AttributeTok{x =} \FunctionTok{list}\NormalTok{(}\AttributeTok{rot =} \DecValTok{45}\NormalTok{))) }\CommentTok{\# Rotação dos rótulos no eixo X}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-64-1.pdf}
+
+\subsection{Gráficos 3D}\label{gruxe1ficos-3d}
+
+Se você trabalha com dados ambientais ou florestais que envolvem superfícies, como elevação, densidade de árvores ou biomassa em um terreno, os gráficos de superfície podem ser úteis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lattice)}
+
+\CommentTok{\# Dados simulados}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Parcela =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\AttributeTok{each =} \DecValTok{50}\NormalTok{)),  }\CommentTok{\# Três parcelas}
+  \AttributeTok{DAP =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{5}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{25}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{30}\NormalTok{, }\AttributeTok{sd =} \DecValTok{6}\NormalTok{)),  }\CommentTok{\# Diâmetro}
+  \AttributeTok{Altura =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{15}\NormalTok{, }\AttributeTok{sd =} \DecValTok{3}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{18}\NormalTok{, }\AttributeTok{sd =} \DecValTok{2}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{)), }\CommentTok{\# Altura}
+  \AttributeTok{Biomassa =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{200}\NormalTok{, }\AttributeTok{sd =} \DecValTok{50}\NormalTok{), }
+               \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{300}\NormalTok{, }\AttributeTok{sd =} \DecValTok{40}\NormalTok{), }
+               \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{400}\NormalTok{, }\AttributeTok{sd =} \DecValTok{60}\NormalTok{)) }\CommentTok{\# Biomassa}
+\NormalTok{)}
+
+\CommentTok{\# Gráfico 3D condicional}
+\FunctionTok{cloud}\NormalTok{(Biomassa }\SpecialCharTok{\textasciitilde{}}\NormalTok{ DAP }\SpecialCharTok{*}\NormalTok{ Altura }\SpecialCharTok{|}\NormalTok{ Parcela, }\AttributeTok{data =}\NormalTok{ dados,}
+      \AttributeTok{main =} \StringTok{"Relação 3D: Biomassa, DAP e Altura por Parcela"}\NormalTok{,}
+      \AttributeTok{xlab =} \StringTok{"Diâmetro (DAP)"}\NormalTok{,}
+      \AttributeTok{ylab =} \StringTok{"Altura (m)"}\NormalTok{,}
+      \AttributeTok{zlab =} \StringTok{"Biomassa (kg)"}\NormalTok{,}
+      \AttributeTok{screen =} \FunctionTok{list}\NormalTok{(}\AttributeTok{z =} \DecValTok{60}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\DecValTok{60}\NormalTok{),  }\CommentTok{\# Ajuste do ângulo de visualização}
+      \AttributeTok{col =} \StringTok{"forestgreen"}\NormalTok{, }
+      \AttributeTok{pch =} \DecValTok{16}\NormalTok{)  }\CommentTok{\# Pontos no gráfico}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-65-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lattice)}
+
+\CommentTok{\# Gerando coordenadas x e y (grid regular)}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{length =} \DecValTok{30}\NormalTok{)  }\CommentTok{\# 30 pontos no eixo X}
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{length =} \DecValTok{30}\NormalTok{)  }\CommentTok{\# 30 pontos no eixo Y}
+
+\CommentTok{\# Gerando altura (z) com base em uma função para criar uma superfície}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{outer}\NormalTok{(x, y, }\ControlFlowTok{function}\NormalTok{(x, y) x }\SpecialCharTok{*} \DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# Convertendo para um data frame para usar com cloud()}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)}
+\NormalTok{dados}\SpecialCharTok{$}\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{as.vector}\NormalTok{(z)}
+
+\CommentTok{\# Gráfico 3D simulando o terreno}
+\FunctionTok{cloud}\NormalTok{(z }\SpecialCharTok{\textasciitilde{}}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y, }\AttributeTok{data =}\NormalTok{ dados,}
+      \AttributeTok{main =} \StringTok{"Terreno Simulado em 3D"}\NormalTok{,}
+      \AttributeTok{xlab =} \StringTok{"Coordenada X"}\NormalTok{,}
+      \AttributeTok{ylab =} \StringTok{"Coordenada Y"}\NormalTok{,}
+      \AttributeTok{zlab =} \StringTok{"Altura (Z)"}\NormalTok{,}
+      \AttributeTok{screen =} \FunctionTok{list}\NormalTok{(}\AttributeTok{z =} \DecValTok{60}\NormalTok{, }\AttributeTok{x =} \SpecialCharTok{{-}}\DecValTok{60}\NormalTok{),  }\CommentTok{\# Ângulo de visualização}
+      \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{,              }\CommentTok{\# Cor dos pontos}
+      \AttributeTok{panel.3d.cloud =}\NormalTok{ panel}\FloatTok{.3}\NormalTok{dscatter, }\CommentTok{\# Adiciona pontos ao gráfico}
+      \AttributeTok{pch =} \DecValTok{16}\NormalTok{)                       }\CommentTok{\# Pontos sólidos}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-66-1.pdf}
+
+\subsection{Densidade Condicional}\label{densidade-condicional}
+
+Se você deseja comparar distribuições contínuas, como a altura de árvores em diferentes regiões ou espécies, os gráficos de densidade são uma alternativa elegante aos histogramas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gerando dados simulados com a variável Especie}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Altura =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{15}\NormalTok{, }\AttributeTok{sd =} \DecValTok{3}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{18}\NormalTok{, }\AttributeTok{sd =} \DecValTok{2}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Especie =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Espécie A"}\NormalTok{, }\StringTok{"Espécie B"}\NormalTok{, }\StringTok{"Espécie C"}\NormalTok{), }\AttributeTok{each =} \DecValTok{50}\NormalTok{))}
+\NormalTok{)}
+
+
+\CommentTok{\# Gráfico de densidade}
+\FunctionTok{densityplot}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Altura }\SpecialCharTok{|}\NormalTok{ Especie, }\AttributeTok{data =}\NormalTok{ dados,}
+            \AttributeTok{main =} \StringTok{"Densidade da Altura por Espécie"}\NormalTok{,}
+            \AttributeTok{xlab =} \StringTok{"Altura (m)"}\NormalTok{,}
+            \AttributeTok{plot.points =} \ConstantTok{FALSE}\NormalTok{, }\CommentTok{\# Ocultar pontos individuais}
+            \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-67-1.pdf}
+
+\subsection{Matrix de dispersão (Scatterplot Matrix)}\label{matrix-de-dispersuxe3o-scatterplot-matrix}
+
+Se você tem várias variáveis numéricas e quer explorar as relações entre elas, o lattice oferece o splom() (scatterplot matrix).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Gerando os dados simulados com DAP e Altura}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{dados }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{DAP =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{5}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{25}\NormalTok{, }\AttributeTok{sd =} \DecValTok{6}\NormalTok{), }
+          \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{30}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{)),}
+  \AttributeTok{Altura =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{15}\NormalTok{, }\AttributeTok{sd =} \DecValTok{3}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{18}\NormalTok{, }\AttributeTok{sd =} \DecValTok{2}\NormalTok{), }
+             \FunctionTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\AttributeTok{mean =} \DecValTok{20}\NormalTok{, }\AttributeTok{sd =} \DecValTok{4}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Calculando a biomassa}
+\NormalTok{dados}\SpecialCharTok{$}\NormalTok{Biomassa }\OtherTok{\textless{}{-}}\NormalTok{ dados}\SpecialCharTok{$}\NormalTok{DAP }\SpecialCharTok{*}\NormalTok{ dados}\SpecialCharTok{$}\NormalTok{Altura }\SpecialCharTok{*} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{150}\NormalTok{, }\AttributeTok{mean =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.01}\NormalTok{)}
+
+\CommentTok{\# Gerando o scatterplot matrix (splom)}
+\FunctionTok{library}\NormalTok{(lattice)}
+\FunctionTok{splom}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ dados[}\FunctionTok{c}\NormalTok{(}\StringTok{"DAP"}\NormalTok{, }\StringTok{"Altura"}\NormalTok{, }\StringTok{"Biomassa"}\NormalTok{)],}
+      \AttributeTok{main =} \StringTok{"Matriz de Dispersão"}\NormalTok{,}
+      \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{16}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-68-1.pdf}
+
+\subsection{Temporal condicional}\label{temporal-condicional}
+
+Se você possui dados temporais, como crescimento de árvores ao longo de anos ou medições sazonais, os gráficos de linha com painéis são muito úteis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Dados simulados de crescimento anual}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{anos }\OtherTok{\textless{}{-}} \DecValTok{2000}\SpecialCharTok{:}\DecValTok{2020}
+\NormalTok{crescimento }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{Ano =}\NormalTok{ anos, }\AttributeTok{Especie =} \FunctionTok{c}\NormalTok{(}\StringTok{"Espécie A"}\NormalTok{, }\StringTok{"Espécie B"}\NormalTok{, }\StringTok{"Espécie C"}\NormalTok{))}
+\NormalTok{crescimento}\SpecialCharTok{$}\NormalTok{Altura }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(crescimento, }\FunctionTok{ifelse}\NormalTok{(Especie }\SpecialCharTok{==} \StringTok{"Espécie A"}\NormalTok{, }
+                                               \FunctionTok{rnorm}\NormalTok{(}\FunctionTok{length}\NormalTok{(Ano), }\AttributeTok{mean =}\NormalTok{ Ano }\SpecialCharTok{{-}} \DecValTok{1995}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.5}\NormalTok{),}
+                                               \FunctionTok{ifelse}\NormalTok{(Especie }\SpecialCharTok{==} \StringTok{"Espécie B"}\NormalTok{, }
+                                                      \FunctionTok{rnorm}\NormalTok{(}\FunctionTok{length}\NormalTok{(Ano), }\AttributeTok{mean =}\NormalTok{ Ano }\SpecialCharTok{{-}} \DecValTok{1993}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.7}\NormalTok{),}
+                                                      \FunctionTok{rnorm}\NormalTok{(}\FunctionTok{length}\NormalTok{(Ano), }\AttributeTok{mean =}\NormalTok{ Ano }\SpecialCharTok{{-}} \DecValTok{1990}\NormalTok{, }\AttributeTok{sd =} \FloatTok{0.6}\NormalTok{))))}
+
+\CommentTok{\# Gráfico de linha com painéis}
+\FunctionTok{xyplot}\NormalTok{(Altura }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Ano }\SpecialCharTok{|}\NormalTok{ Especie, }\AttributeTok{data =}\NormalTok{ crescimento,}
+       \AttributeTok{type =} \StringTok{"o"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkgreen"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{16}\NormalTok{,}
+       \AttributeTok{main =} \StringTok{"Crescimento por Espécie ao Longo dos Anos"}\NormalTok{,}
+       \AttributeTok{xlab =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Altura (m)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 \chapter{Dendrometria}\label{dendrometria}
 
@@ -1820,7 +2503,7 @@ Os engenheiros florestais geralmente estabelecem classes diamétricas em interva
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 \subsubsection{Exercício}\label{exercuxedcio}
 
@@ -1855,7 +2538,7 @@ Solução do problema
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \chapter{Inventário florestal}\label{inventuxe1rio-florestal}
 
@@ -2546,7 +3229,7 @@ A análise da distribuição dos diâmetros das árvores fornece insights sobre 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-75-1.pdf}
 
 \subsection{Distribuição por espécies (boxplots)}\label{distribuiuxe7uxe3o-por-espuxe9cies-boxplots}
 
@@ -2573,7 +3256,7 @@ Os boxplots permitem visualizar a variação dos diâmetros por espécie, destac
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 \subsubsection{boxplot das alturas totais}\label{boxplot-das-alturas-totais}
 
@@ -2593,7 +3276,7 @@ Os boxplots permitem visualizar a variação dos diâmetros por espécie, destac
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{Entre_Florestas_e_Dados_files/figure-latex/unnamed-chunk-77-1.pdf}
 
 \subsection{Parâmetros Fitossociológicos}\label{paruxe2metros-fitossocioluxf3gicos}
 
@@ -2871,6 +3554,76 @@ Pouteria torta (Mart.) Radlk. & 1 & 0.0105 & 1 & 1.25 & 0.2445 & 0.0132 & 0.0993
 \end{landscape}
 
 Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.
+
+\section{Processo em Conglomerados (Teoria)}\label{processo-em-conglomerados-teoria}
+
+\subsection{Média da população}\label{muxe9dia-da-populauxe7uxe3o}
+
+\[\bar{x} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} \right)}{n \cdot m}\]
+
+\subsection{Média por subunidadae}\label{muxe9dia-por-subunidadae}
+
+\[\bar{x}_i = \frac{\sum_{j=1}^m x_{ij}}{m}\]
+
+\subsection{Variância total}\label{variuxe2ncia-total}
+
+\[S_x^2 = S_e^2 + S_d^2\]
+
+\subsection{Variância dentro do conglomerado}\label{variuxe2ncia-dentro-do-conglomerado}
+
+\[S_d^2 = QM_{dentro} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} - \bar{x}_i \right)^2}{n \cdot (m - 1)}\]
+
+\subsection{Variância entre conglomerados}\label{variuxe2ncia-entre-conglomerados}
+
+\[QM_{entre} = \frac{\sum_{i=1}^n m \cdot \left( \bar{x}_i - \bar{x} \right)^2}{n - 1}\]
+
+\subsection{Variância entre e dentro}\label{variuxe2ncia-entre-e-dentro}
+
+\[S_e^2 = \frac{QM_{entre} - QM_{dentro}}{m}\]
+
+\subsection{Coeficiente de correlação intraconglomerado}\label{coeficiente-de-correlauxe7uxe3o-intraconglomerado}
+
+\[\rho = r = \frac{S_e^2}{S_e^2 + S_d^2}\]
+
+\subsection{Intensidade amostral requerida}\label{intensidade-amostral-requerida}
+
+\[n = \frac{t^2 \cdot S_x^2}{E^2 \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]\]
+
+\subsection{Variância total}\label{variuxe2ncia-total-1}
+
+\[S_x^2 = S_e^2 + S_d^2\]
+
+\subsection{Variância da média}\label{variuxe2ncia-da-muxe9dia}
+
+\[S_{\bar{x}}^2 = \frac{N - n}{N} \cdot \frac{S_e^2}{n} + \frac{M - m}{M} \cdot \frac{S_d^2}{n \cdot m}\]
+
+ou
+
+\[S_{\bar{x}}^2 = \frac{S_x^2}{n \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]\]
+
+\subsection{Erro padrão}\label{erro-padruxe3o}
+
+\[S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}\]
+
+\subsection{Erro da amostragem absoluto}\label{erro-da-amostragem-absoluto}
+
+\[S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}\]
+
+\subsection{Erro de amostragem relativo}\label{erro-de-amostragem-relativo}
+
+\[E_r = \pm \frac{t \cdot S_{\bar{x}}}{\bar{x}} \cdot 100\]
+
+\subsection{Intervalo de confiança para Média}\label{intervalo-de-confianuxe7a-para-muxe9dia}
+
+\[IC\left[\bar{x} - (E_a) \leq \bar{x} \leq \bar{x} + (E_a)\right] = P\]
+
+\subsection{Estimativa Total}\label{estimativa-total}
+
+\[\hat{X} = N \cdot M \cdot \bar{x}\]
+
+\subsection{Intervalo de confiança total}\label{intervalo-de-confianuxe7a-total}
+
+\[IC\left[\hat{X} - N \cdot M \cdot (E_a) \leq \hat{X} \leq \hat{X} + N \cdot M \cdot (E_a)\right] = P\]
 
 \chapter{Manejo de Florestas Plantadas}\label{manejo-de-florestas-plantadas}
 

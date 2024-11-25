@@ -399,36 +399,38 @@ if (knitr::is_latex_output()) {
 <br>
 Na aplicação prática, a utilização do VIA, que combina parâmetros horizontais e verticais com indicadores de regeneração, fornece uma visão holística da importância das espécies. Isso é fundamental para identificar não apenas as espécies dominantes atuais, mas também aquelas com maior potencial de contribuir para a sustentabilidade futura do ecossistema.
 
-## Processo em Conglomerados (Teoria)
+## Amostragem em Conglomerados 
 
-### Média da população
+### Teoria
+
+#### Média da população
 $$\bar{x} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} \right)}{n \cdot m}$$
 
-### Média por subunidadae
+#### Média por subunidadae
 $$\bar{x}_i = \frac{\sum_{j=1}^m x_{ij}}{m}$$
 
-### Variância total
+#### Variância total
 $$S_x^2 = S_e^2 + S_d^2$$
 
-### Variância dentro do conglomerado
+#### Variância dentro do conglomerado
 $$S_d^2 = QM_{dentro} = \frac{\sum_{i=1}^n \sum_{j=1}^m \left( x_{ij} - \bar{x}_i \right)^2}{n \cdot (m - 1)}$$
 
-### Variância entre conglomerados
+#### Variância entre conglomerados
 $$QM_{entre} = \frac{\sum_{i=1}^n m \cdot \left( \bar{x}_i - \bar{x} \right)^2}{n - 1}$$
 
-### Variância entre e dentro
+#### Variância entre e dentro
 $$S_e^2 = \frac{QM_{entre} - QM_{dentro}}{m}$$
 
-### Coeficiente de correlação intraconglomerado
+#### Coeficiente de correlação intraconglomerado
 $$\rho = r = \frac{S_e^2}{S_e^2 + S_d^2}$$
 
-### Intensidade amostral requerida
+#### Intensidade amostral requerida
 $$n = \frac{t^2 \cdot S_x^2}{E^2 \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]$$
 
-### Variância total
+#### Variância total
 $$S_x^2 = S_e^2 + S_d^2$$
 
-### Variância da média
+#### Variância da média
 $$S_{\bar{x}}^2 = \frac{N - n}{N} \cdot \frac{S_e^2}{n} + \frac{M - m}{M} \cdot \frac{S_d^2}{n \cdot m}$$
 
 ou
@@ -436,21 +438,208 @@ ou
 $$S_{\bar{x}}^2 = \frac{S_x^2}{n \cdot M} \cdot \left[ 1 + r \cdot (M - 1) \right]$$
 
 
-### Erro padrão
+#### Erro padrão
 $$S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}$$
 
-### Erro da amostragem absoluto
+#### Erro da amostragem absoluto
 $$S_{\bar{x}} = \sqrt{S_{\bar{x}}^2}$$
 
-### Erro de amostragem relativo
+#### Erro de amostragem relativo
 $$E_r = \pm \frac{t \cdot S_{\bar{x}}}{\bar{x}} \cdot 100$$
 
-### Intervalo de confiança para Média
+#### Intervalo de confiança para Média
 $$IC\left[\bar{x} - (E_a) \leq \bar{x} \leq \bar{x} + (E_a)\right] = P$$
 
-### Estimativa Total
+#### Estimativa Total
 $$\hat{X} = N \cdot M \cdot \bar{x}$$
 
-### Intervalo de confiança total
+#### Intervalo de confiança total
 $$IC\left[\hat{X} - N \cdot M \cdot (E_a) \leq \hat{X} \leq \hat{X} + N \cdot M \cdot (E_a)\right] = P$$
 
+### Aplicação
+Este exemplo se baseia no Capítulo 9 de [@pellico_brena_inventario].
+
+#### Definição dos parâmetros iniciais
+```{r}
+# Área Total
+AREA_TOTAL <- 4000
+
+# Tamanho da subunidade
+a_sub <- 0.25
+
+# Tamanho da Unidade
+a_unidade <- 0.25 * 4
+
+# Número de parcelas cabíveis
+N <- AREA_TOTAL / a_sub
+n_primaria <- 25
+n_secundaria <- 4
+```
+
+#### Dados do Livro
+
+```{r}
+library(dplyr)
+
+# Criando as unidades primárias e subunidades
+unidades <- expand.grid(
+  Unidade_Primaria = 1:25,  # 25 unidades primárias
+  Unidade_Secundaria = 1:4  # 4 subunidades por unidade
+)
+
+# Criando o vetor de volumes (m³/0,1 ha) na ordem por coluna da tabela original
+volumes <- c(
+  # Coluna I
+  84.7, 70.1, 75.6, 81.3, 99.5, 97.3, 70.2, 81.7, 60.9, 67.3, 
+  75.4, 71.0, 61.8, 116.9, 56.0, 68.2, 55.4, 55.0, 78.8, 33.6, 
+  48.8, 82.4, 69.8, 58.4, 27.4,
+  # Coluna II
+  78.2, 65.4, 77.7, 38.7, 47.0, 66.1, 43.5, 68.8, 71.4, 90.5, 
+  88.5, 57.0, 100.9, 91.0, 22.9, 32.5, 61.3, 63.0, 59.6, 44.4, 
+  26.6, 61.8, 49.5, 61.5, 63.6,
+  # Coluna III
+  63.0, 59.6, 66.1, 62.8, 82.1, 57.4, 48.3, 22.6, 75.2, 72.6, 
+  104.6, 79.3, 69.4, 36.9, 94.8, 68.2, 76.3, 56.8, 68.1, 34.1, 
+  67.5, 23.4, 53.9, 45.5, 69.4,
+  # Coluna IV
+  88.5, 58.1, 43.5, 31.1, 77.4, 113.9, 69.3, 78.2, 81.1, 67.1, 
+  105.5, 71.8, 61.0, 57.3, 130.2, 58.6, 40.0, 36.8, 46.8, 79.6, 
+  51.0, 47.1, 0.0, 50.2, 60.8
+)
+
+# Combinando os dados em um data frame
+dados <- data.frame(unidades, Volume = volumes)
+
+# Ordenando dados
+dados <- dados %>% arrange(Unidade_Primaria, Unidade_Secundaria)
+
+```
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+# Para HTML: Tabela interativa
+if (knitr::is_html_output()) {
+  datatable(
+    dados, 
+    options = list(
+      scrollX = TRUE,                             # Ativar scroll horizontal
+      columnDefs = list(
+        list(orderable = FALSE, targets = "_all"),# Desativar ordenação em todas as colunas
+        list(className = "dt-center", targets = "_all") # Centralizar conteúdo
+      ),
+      pageLength = 10                             # Exibir 10 linhas por página
+    )
+  )
+}
+
+```
+
+#### Estatísticas Descritivas
+
+```{r}
+
+
+# Volume médio
+v_medio <- mean(dados$Volume)
+
+# Volume médio por parcela
+v_medio_parc <- dados %>%
+  group_by(Unidade_Primaria) %>%
+  summarise(v_parc = mean(Volume))
+  
+# Variância da população
+var(dados$Volume)
+
+```
+#### Estatísticas para Conglomerados
+
+```{r}
+
+# Quadrado Médio entre Conglomerados
+QM_entre <- sum((v_medio_parc$v_parc-mean(v_medio_parc$v_parc))^2)*(n_secundaria/(n_primaria-1))
+QM_entre
+
+# Variância detro do Conglomerado
+resultado <- merge(dados, v_medio_parc, by="Unidade_Primaria")
+resultado$desv_quad_sub <- (resultado$Volume-resultado$v_parc)^2
+var_dentro <- sum(resultado$desv_quad_sub)/(n_primaria*(n_secundaria-1))
+var_dentro
+
+# Variância entre conglomerados
+var_entre <- (QM_entre-var_dentro)/n_secundaria
+var_entre
+
+# Variância Total
+Var_total <- var_dentro + var_entre
+Var_total
+
+# Coeficiente de Correlação intraconglomerado
+r <- var_entre/(var_entre+var_dentro)
+r
+
+```
+
+#### Intensidade amostral requerida
+
+```{r}
+
+# Passo 1: t tabelado para (0.05; 24; bicaudal)
+t_24 <- qt(0.05 / 2, df = 24, lower.tail = FALSE)
+
+# Cálculo inicial para o número de parcelas requerido (n1)
+n1 <- as.integer(t_24^2 * Var_total / ((0.1 * v_medio)^2 * n_secundaria) * (1 + r * (n_secundaria - 1)))
+gl1 <- n_primaria - 1  # Graus de liberdade para n1
+
+# Passo 2: Recalcular com graus de liberdade ajustados (n2)
+gl2 <- n1 - 1
+t2 <- qt(0.05 / 2, df = gl2, lower.tail = FALSE)
+n2 <- as.integer(t2^2 * Var_total / ((0.1 * v_medio)^2 * n_secundaria) * (1 + r * (n_secundaria - 1)))
+
+# Passo 3: Novo ajuste com graus de liberdade para n2 (n3)
+gl3 <- n2 - 1
+t3 <- qt(0.05 / 2, df = gl3, lower.tail = FALSE)
+n3 <- as.integer(t3^2 * Var_total / ((0.1 * v_medio)^2 * n_secundaria) * (1 + r * (n_secundaria - 1)))
+
+# Resultado final: Média entre n2 e n3 como estimativa final de parcelas requeridas
+p <- ceiling(mean(c(n2, n3)))
+
+# Exibir o resultado
+cat("Número de parcelas requeridas:", p, "\n")
+
+```
+
+#### Estimativas Populacionais
+```{r}
+
+# Variância da média
+var_media <- (Var_total/(n_primaria*n_secundaria))*(1+r*(n_secundaria-1))
+var_media
+
+# Erro padro
+erro_padrao <- sqrt(var_media)
+erro_padrao
+
+# t tabelado (0.05; 24; bicaldal)
+t_24 <- qt(0.05 / 2, df = 24, lower.tail = FALSE)
+
+# Erro absoluto
+Ea <- t_24 * erro_padrao
+Ea
+
+# Erro relativo
+Er <- Ea/v_medio*100
+
+cat("Erro relativo do Inventário: +-", Er, " %")
+
+# IC média
+IC_media <- c(v_medio-Ea, v_medio+Ea)
+
+# Volume Total
+VT <- v_medio*N
+
+cat("Volume Total Estimado: ", VT, "m³")
+
+# Intervalo de Confiança Total
+IC_total <- IC_media*N
+
+cat("IC = [", IC_total[1], " - ", IC_total[2], "] = Prob. de 95% de Confiança")
+```
