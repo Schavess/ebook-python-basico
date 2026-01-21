@@ -432,6 +432,7 @@ Se quisermos visualizar a contagem de árvores por espécie em cada parcela, o g
 ```{r}
 # Reorganizando os dados para melhor visualização
 library(reshape2)
+contagem <- table(dados$Especie, dados$Parcela)
 dados_barras <- as.data.frame(contagem)
 names(dados_barras) <- c("Especie", "Parcela", "Contagem")
 

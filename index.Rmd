@@ -1,14 +1,13 @@
 ---
-title: "Entre Florestas e Dados"
+title: "R Básico e Intermediário"
 author: "Arthur Guilherme Schirmbeck Chaves"
-cover-image: "images/CapaEntreDadosEFlorestas.jpeg"
-description: '"Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções
-práticas para análises de dados florestais utilizando a linguagem R.'
+cover-image: "images/capa.png"
+description: '"R Básico e Intermediário" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos
+e conceitos intermediários da linguagem R para análise de dados e programação estatística.'
 lang: pt-BR
 date: "Última atualização: `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-github-repo: "rstudio/bookdown-demo"
 css: "custom.css"
 number_sections: true
 bibliography: [book.bib]
@@ -18,14 +17,13 @@ output:
 ---
 
 # Sobre {-}
-"Entre Florestas e Dados" é um livro digital dinâmico (sempre atualizado online) que compartilha soluções práticas para
-análises de dados florestais utilizando a linguagem R.
+"R Básico e Intermediário" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos e conceitos
+intermediários da linguagem R para análise de dados e programação estatística.
 
 **Por que este livro?**
 
-Este livro foi criado para preencher uma lacuna na literatura sobre análise de dados aplicada especificamente ao setor
-florestal, com o intuito de capacitar profissionais a tomar decisões fundamentadas em dados de inventários, planejamento
-e monitoramento ambiental.
+Este livro foi criado para fornecer uma base sólida na linguagem R, desde os conceitos fundamentais até técnicas intermediárias,
+permitindo que leitores desenvolvam habilidades práticas para análise de dados, visualização e programação estatística.
 
 **Autor**
 
@@ -44,6 +42,6 @@ e monitoramento ambiental.
 </div>
 
 Olá! Meu nome é Arthur Guilherme Schirmbeck Chaves. Sou professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
-analista de sistemas com sólida experiência em planejamento florestal, inventário, silvicultura e análise de dados,
-estou desenvolvendo este livro para compartilhar soluções práticas e orientadas por dados para os engenheiros florestais empregarem em suas
-atividades profissionais e didáticas.
+analista de sistemas com sólida experiência em análise de dados e programação,
+estou desenvolvendo este livro para compartilhar conhecimentos práticos sobre a linguagem R, desde os fundamentos até conceitos
+intermediários, para que leitores possam aplicar em suas atividades profissionais e acadêmicas.

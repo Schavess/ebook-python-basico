@@ -6,16 +6,16 @@ bookdown::gitbook:
   split_by: section
   highlight: "zenburn"
   config:
-    title: "Entre Florestas e Dados"
-    favicon: "images/favico.ico"
+    title: "R Básico e Intermediário"
+    favicon: "images/favicon.ico"
     toc:
       collapse: chapter
       before: |
         <div class="toc-header">
             <div class="image-container">
-                <img src="images/CapaEntreDadosEFlorestas.jpeg" alt="Capa do Livro">
+                <img src="images/capa.png" alt="Capa do Livro">
                 <div class="text-overlay-title">
-                    <h5>Entre Florestas e Dados</h5>
+                    <h5>R Básico e Intermediário</h5>
                 </div>
                 <div class="text-overlay-author">
                     <p style="font-size: 10px; text-align: center; padding: 5px">Arthur Guilherme Schirmbeck Chaves</p>
@@ -23,6 +23,8 @@ bookdown::gitbook:
             </div>
         </div>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    # Para usar o botão "Edit", preencha com o link do seu repositório:
+    # edit: https://github.com/SEU_USUARIO/SEU_REPO/edit/main/%s
     download: []
     language:
       chapter_title: ""  #"Capítulo "

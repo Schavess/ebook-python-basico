@@ -1,6 +1,11 @@
-# Pastas de build e arquivos gerados
-#_book/
+# Pastas de build e arquivos gerados (bookdown)
+_book/
 _bookdown_files/
+*_files/
+
+# Intermediários gerados pelo knit/bookdown
+*.knit.md
+*.utf8.md
 
 # Arquivos de configuração do RStudio
 .Rproj.user/
@@ -9,6 +14,7 @@ _bookdown_files/
 .Rhistory
 .RData
 .DS_Store
+.Ruserdata
 
 # Outros arquivos ou pastas desnecessárias (opcional)
 *.log
