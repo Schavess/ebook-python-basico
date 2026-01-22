@@ -1,29 +1,41 @@
 ---
-title: "R Básico e Intermediário"
+title: "Python Básico"
 author: "Arthur Guilherme Schirmbeck Chaves"
 cover-image: "images/capa.png"
-description: '"R Básico e Intermediário" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos
-e conceitos intermediários da linguagem R para análise de dados e programação estatística.'
+description: '"Python Básico" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos
+e conceitos básicos da linguagem Python para programação e análise de dados.'
 lang: pt-BR
 date: "Última atualização: `r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-css: "custom.css"
 number_sections: true
 bibliography: [book.bib]
 link-citations: yes
 output: 
-  bookdown::html_book
+  bookdown::gitbook:
+    css: custom.css
+    config:
+      toc:
+        before: |
+          <li><a href="./"><img src="images/capa.png" alt="Python Básico" style="max-width: 200px; margin: 10px auto; display: block;"></a></li>
 ---
 
+```{r setup, include=FALSE}
+# Configuração do reticulate para executar código Python
+library(reticulate)
+# Usar caminho completo do venv no diretório do projeto
+venv_path <- normalizePath("venv", mustWork = FALSE)
+use_virtualenv(venv_path, required = TRUE)
+```
+
 # Sobre {-}
-"R Básico e Intermediário" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos e conceitos
-intermediários da linguagem R para análise de dados e programação estatística.
+"Python Básico" é um livro digital dinâmico (sempre atualizado online) que apresenta os fundamentos e conceitos
+básicos da linguagem Python para programação e análise de dados.
 
 **Por que este livro?**
 
-Este livro foi criado para fornecer uma base sólida na linguagem R, desde os conceitos fundamentais até técnicas intermediárias,
-permitindo que leitores desenvolvam habilidades práticas para análise de dados, visualização e programação estatística.
+Este livro foi criado para fornecer uma base sólida na linguagem Python, desde os conceitos fundamentais até técnicas básicas,
+permitindo que leitores desenvolvam habilidades práticas para programação, análise de dados e automação de tarefas.
 
 **Autor**
 
@@ -43,5 +55,5 @@ permitindo que leitores desenvolvam habilidades práticas para análise de dados
 
 Olá! Meu nome é Arthur Guilherme Schirmbeck Chaves. Sou professor de Engenharia Florestal no IFMT. Como engenheiro florestal e
 analista de sistemas com sólida experiência em análise de dados e programação,
-estou desenvolvendo este livro para compartilhar conhecimentos práticos sobre a linguagem R, desde os fundamentos até conceitos
-intermediários, para que leitores possam aplicar em suas atividades profissionais e acadêmicas.
+estou desenvolvendo este livro para compartilhar conhecimentos práticos sobre a linguagem Python, desde os fundamentos até conceitos
+básicos, para que leitores possam aplicar em suas atividades profissionais e acadêmicas.

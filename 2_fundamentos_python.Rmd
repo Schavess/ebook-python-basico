@@ -1,0 +1,579 @@
+# Fundamentos da Linguagem Python
+
+---
+
+Neste capítulo, exploraremos os fundamentos da linguagem Python, incluindo tipos de dados básicos, operadores e como trabalhar com eles.
+
+---
+
+## Tipos Básicos
+
+Python possui vários tipos de dados embutidos. Conhecer esses tipos é essencial para manipular dados e escrever programas eficientes.
+
+### Boolean (bool)
+
+O tipo booleano representa valores de verdade: `True` ou `False`.
+
+```{python}
+verdadeiro = True
+print(type(verdadeiro))
+
+fake_bool = 'True'
+print(type(fake_bool))
+```
+
+```{python}
+booleano = 1 == 2
+print(type(booleano))
+print(1 == 2)
+```
+
+```{python}
+tree_with_cancro = True
+type(tree_with_cancro)
+```
+
+### String (str)
+
+Strings são sequências de caracteres (texto). Podem ser criadas com aspas simples ou duplas.
+
+```{python}
+a = 'Olá Mundo'
+print(type(a))
+print(a)
+```
+
+```{python}
+x = 'Olá mundo'
+b = "Olá mundo"
+print(b)
+```
+
+**Concatenação de strings:**
+
+```{python}
+c = '!'
+print(a + c)
+print(a + 3*c)
+```
+
+**Erro comum - tentar concatenar string com número:**
+
+```{python, eval=FALSE}
+# Isso geraria um erro:
+# print(3 + 'Arthur')
+```
+
+**Aspas dentro de strings:**
+
+```{python}
+# Use aspas duplas se a string contém aspas simples
+name = "Caixa d'água"
+print(name)
+
+# Ou use escape
+texto_exemplo = 'Fulano disse: "blábláblá" + aspas simples \'denovo!\''
+name2 = "Entre aspas\" jbvjknasdnfkasdfl \""
+print(name2)
+print(texto_exemplo)
+```
+
+**Strings multilinha:**
+
+```{python}
+paragrafo = """Eis um textão com múltiplas linhas.
+Seria uma string?
+Quantos parágrafos eu quiser
+Tá vendo!!!
+"""
+print(paragrafo)
+```
+
+### Integer (int)
+
+Números inteiros, positivos ou negativos.
+
+```{python}
+d = 1000
+print(type(d))
+```
+
+### Float
+
+Números de ponto flutuante (decimais).
+
+```{python}
+e = 0.1
+print(type(e))
+
+# Conversão de inteiro para float
+inteiro = float(1000)
+print(inteiro)
+```
+
+**Operações entre int e float:**
+
+```{python}
+f = d + e
+print(f)
+print(type(f))
+```
+
+**Divisão sempre retorna float:**
+
+```{python}
+e = d / 3
+print(type(e))
+```
+
+### List (Array)
+
+Listas são coleções ordenadas e mutáveis de elementos. Podem conter elementos de diferentes tipos.
+
+```{python}
+lista = [1, 2, 5, 7]
+print(type(lista))
+print(lista)
+```
+
+**Acesso a elementos:**
+
+```{python, eval=FALSE}
+# ATENÇÃO: no Python, a indexação começa em 0 (ao contrário de R, que começa em 1)
+# lista[4]  # Isso geraria um erro IndexError
+```
+
+```{python}
+# Acessando o primeiro elemento (índice 0)
+print(lista[0])
+
+# Acessando os 3 primeiros elementos
+print(lista[0:3])
+
+# Acessando uma lista de elementos
+print(lista[0:2])
+```
+
+**Listas com tipos mistos:**
+
+```{python}
+lista_2 = [1, 4, 6, '6']
+print(type(lista_2))
+```
+
+**Lista ou Array Bidimensional:**
+
+```{python}
+# Lista de listas para representar uma matriz 2x3
+array_2d = [[1, 2, 3], [4, 5, 6]]
+print(array_2d[1][2])  # Acessa o elemento na linha 1, coluna 2
+print(array_2d[0][1])  # Acessa o elemento na linha 0, coluna 1
+
+array_3d = [[1, 2, 3], [4, 5, 6], [7, 8, 9, 10]]
+array_3d[2][0] = 70  # Modifica o elemento
+print(array_3d)
+```
+
+### Tuple
+
+Uma tupla é uma coleção ordenada e **imutável** em Python. Ela é usada para armazenar múltiplos itens em uma única variável. Tuplas são escritas com parênteses `()` e os itens são separados por vírgulas. Sendo imutáveis, uma vez que uma tupla é criada, você não pode alterar, adicionar ou remover itens dela (embora, se a tupla contiver objetos mutáveis, como listas, esses objetos específicos possam ser alterados).
+
+```{python}
+# Criando uma tupla
+minha_tupla = (1, 2, 3, 'Python', True)
+
+# Acessando elementos de uma tupla
+print(minha_tupla[3])  # Saída: Python
+
+# Tentar alterar um valor resultará em erro
+# minha_tupla[1] = 'Java'  # Isso geraria um TypeError
+```
+
+### Dict (Dicionário)
+
+Um dicionário em Python é uma coleção não ordenada (mas a partir do Python 3.7, é mantida a ordem de inserção), mutável e indexada de itens. Diferente de sets que têm apenas valores únicos, os dicionários armazenam pares de chave-valor. As chaves em um dicionário devem ser únicas e imutáveis, o que significa que podem ser strings, números ou tuplas, mas não listas, sets ou outros dicionários. Dicionários são escritos com chaves `{}` e são otimizados para recuperar valores quando a chave é conhecida.
+
+```{python}
+usuarios = []
+
+usuario1 = {'Nome': 'Arthur', 'Sobrenome': 'Chaves', 'Idade': 37}
+usuario2 = {'Nome': 'Tainara', 'Sobrenome': 'Santos', 'Idade': 20}
+
+usuarios = [usuario1, usuario2]
+
+for usuario in usuarios:
+    print(usuario['Sobrenome'])
+
+usuarios[1]['Altura'] = 1.65
+print(usuarios)
+```
+
+### Set
+
+Um set é uma coleção não ordenada, mutável e de itens únicos. Sets são escritos com chaves `{}`. Eles são otimizados para operações que verificam se um item está contido no conjunto, e por serem conjuntos de itens únicos, eles automaticamente removem duplicatas. Sets são úteis para realizar operações matemáticas de conjuntos, como união, interseção, diferença, e diferença simétrica.
+
+```{python}
+a = {1, 2, 3}
+b = {3, 4, 5}
+
+uniao = a | b  # ou a.union(b)
+print(uniao)
+
+intersecao = a & b  # ou a.intersection(b)
+print(intersecao)
+
+diferenca = a - b  # ou a.difference(b)
+diferenca_ba = b - a
+print(diferenca)
+print(diferenca_ba)
+
+dif_simetrica = a ^ b  # ou a.symmetric_difference(b)
+print(dif_simetrica)
+```
+
+### None
+
+`None` representa a ausência de valor. É o equivalente ao `NULL` em outras linguagens.
+
+```{python}
+list_a = [2, 4, 6, None, '', 8]
+
+print(list_a)
+print(type(list_a[3]))
+print(type(list_a[4]))
+```
+
+### Resumo dos Tipos Básicos
+
+| Tipo          | Descrição                         | Exemplo                   |
+|---------------|-----------------------------------|---------------------------|
+| `int`         | Números inteiros                  | `10`                      |
+| `float`       | Números de ponto flutuante        | `10.5`                    |
+| `str`         | Cadeias de caracteres (texto)     | `'Olá'`                   |
+| `bool`        | Valores booleanos                 | `True` ou `False`         |
+| `list`        | Lista de valores                  | `[1, 2, 3]`               |
+| `tuple`       | Tupla de valores imutáveis        | `(1, 2, 3)`               |
+| `dict`        | Dicionário de chave-valor         | `{'chave': 'valor'}`      |
+| `set`         | Conjunto de valores únicos        | `{1, 2, 3}`               |
+| `NoneType`    | Representa a ausência de valor    | `None`                    |
+
+---
+
+## Operadores
+
+Há inúmeras operações que podem ser realizadas com os dados dentro da lógica da programação. A seguir, estão os principais operadores:
+
+| Categoria           | Operador         | Descrição                            | Exemplo           |
+|---------------------|------------------|--------------------------------------|-------------------|
+| Aritmético          | `+`              | Adição                               | `x + y`           |
+|                     | `-`              | Subtração                            | `x - y`           |
+|                     | `*`              | Multiplicação                        | `x * y`           |
+|                     | `/`              | Divisão                              | `x / y`           |
+|                     | `//`             | Divisão inteira                      | `x // y`          |
+|                     | `%`              | Módulo (resto da divisão)            | `x % y`           |
+|                     | `**`             | Exponenciação                        | `x ** y`          |
+| Comparação          | `==`             | Igual a                              | `x == y`          |
+|                     | `!=`             | Diferente de                         | `x != y`          |
+|                     | `>`              | Maior que                            | `x > y`           |
+|                     | `<`              | Menor que                            | `x < y`           |
+|                     | `>=`             | Maior ou igual a                     | `x >= y`          |
+|                     | `<=`             | Menor ou igual a                     | `x <= y`          |
+| Lógico              | `and`            | Verdadeiro se ambos forem verdadeiros| `x and y`         |
+|                     | `or`             | Verdadeiro se pelo menos um for verdadeiro | `x or y`    |
+|                     | `not`            | Inverte o estado lógico              | `not x`           |
+| Atribuição          | `=`              | Atribui um valor                     | `x = y`           |
+|                     | `+=`             | Adiciona e atribui                   | `x += y`          |
+|                     | `-=`             | Subtrai e atribui                    | `x -= y`          |
+|                     | `*=`             | Multiplica e atribui                 | `x *= y`          |
+|                     | `/=`             | Divide e atribui                     | `x /= y`          |
+|                     | `%=`             | Módulo e atribui                     | `x %= y`          |
+|                     | `//=`            | Divisão inteira e atribui            | `x //= y`         |
+|                     | `**=`            | Exponencia e atribui                 | `x **= y`         |
+| Identidade          | `is`             | Verdadeiro se ambos são o mesmo objeto | `x is y`         |
+|                     | `is not`         | Verdadeiro se não são o mesmo objeto | `x is not y`      |
+| Pertencimento       | `in`             | Verdadeiro se encontrado na sequência| `x in y`          |
+|                     | `not in`         | Verdadeiro se não encontrado na sequência | `x not in y`  |
+
+### Operadores Aritméticos
+
+**4 operadores básicos:**
+
+```{python}
+resultado = (4 + 2 * 3) / (2 - 1)
+print(resultado)
+```
+
+**Divisão inteira (`//`):**
+
+```{python}
+print(11 // 2)
+```
+
+**Módulo (`%`):**
+
+```{python}
+print(11 % 2)
+```
+
+```{python}
+def par_ou_impar(valor):
+    if(valor % 2 == 0):
+        return 'Par'
+    else:
+        return 'Ímpar'
+
+print(par_ou_impar(3))
+print(par_ou_impar(6))
+print(par_ou_impar(31))
+```
+
+**Exponenciação (`**`):**
+
+```{python}
+print(10 ** 2)
+```
+
+**Raiz:**
+
+```{python}
+print(100**(1/2))
+print(64**(1/2))
+```
+
+### Operadores de Comparação
+
+```{python}
+a = 2
+b = 2
+print(a == b)
+print(a != b)
+print(a > b)
+print(a < b)
+print(a >= b)
+print(a <= b)
+```
+
+### Operadores Lógicos
+
+```{python}
+a = 2
+b = 2
+c = 3
+
+print(a == b and a != c)
+print(a == b and b >= a)
+print(a == b or a == c)
+print(not(a == b or a == c))
+```
+
+**Tabela Verdade:**
+
+|   A   |   B   | A AND B | A OR B | NOT A | A XOR B |
+|:-----:|:-----:|:-------:|:------:|:-----:|:-------:|
+|  True |  True |   True  |  True  | False |  False  |
+|  True | False |  False  |  True  | False |   True  |
+| False |  True |  False  |  True  |  True |   True  |
+| False | False |  False  | False  |  True |  False  |
+
+### Operadores de Atribuição
+
+```{python}
+x = 10  # Atribui o valor 10 à variável x
+print(x)
+
+x += 5  # Equivalente a x = x + 5
+print(x)
+
+x -= 5  # Equivalente a x = x - 5
+print(x)
+
+x *= 5  # Equivalente a x = x * 5
+print(x)
+
+x /= 5  # Equivalente a x = x / 5
+print(x)
+
+x //= 5  # Equivalente a x = x // 5
+print(x)
+
+x %= 5  # Equivalente a x = x % 5
+print(x)
+
+x **= 5  # Equivalente a x = x ** 5
+print(x)
+```
+
+### Operadores de Identidade
+
+```{python}
+arvore1 = {"nome": "Teca", "idade": 50}
+arvore2 = arvore1  # arvore2 está apontando para o mesmo objeto que arvore1
+
+print(arvore1 is arvore2)  # True, pois arvore2 é o mesmo objeto que arvore1
+
+arvore1['idade'] = 30
+print(arvore2)  # O dicionário foi modificado porque ambos apontam para o mesmo objeto
+```
+
+```{python}
+arvore1 = {"nome": "Teca", "idade": 50}
+arvore3 = {"nome": "Teca", "idade": 50}
+# Usando o operador 'is' para verificar se são o mesmo objeto
+print(arvore1 is arvore3)  # False, pois arvore3 é um objeto diferente com os mesmos dados
+arvore1['idade'] = 30
+print(arvore3)  # arvore3 não foi modificado
+```
+
+### Operadores de Pertencimento
+
+```{python}
+especies = ["Teca", "Mogno", "Cedro"]
+
+# Verificando a presença de uma espécie
+print("Teca" in especies)  # True
+print("Eucalipto" in especies)  # False
+
+# Verificando a ausência de uma espécie
+print("Pinus" not in especies)  # True
+```
+
+---
+
+## Exercícios Práticos
+
+### Exemplo: Calculando o volume de um tronco cilíndrico
+
+```{python, eval=FALSE}
+# Solicite ao usuário o raio e a altura do tronco
+diametro = float(input("Digite o diâmetro do tronco (em metros): "))
+comprimento = float(input("Digite a comprimento do tronco (em metros): "))
+
+# Calcule o volume do tronco
+volume = 3.14159 * (diametro/2)**2 * comprimento
+
+# Mostre o resultado
+print(f"O volume do tronco cilíndrico é de {volume:.2f} metros cúbicos.")
+```
+
+### Exercício 1. Cálculo de mudas por hectare
+
+Dada uma área de plantio em hectares, converta-a para metros quadrados e calcule quantas árvores devem ser plantadas considerando um espaçamento de 3x2 metros entre cada árvore. Além disso considere uma margem de mudas excedentes de 10%.
+
+```{python, eval=FALSE}
+# Solicite ao usuário a área em hectares
+area_hectares = float(input("Digite a área de plantio (em hectares): "))
+espacamento_inicial_linha = float(input("Qual a distância entre linhas do plantio?"))
+espacamento_inicial_planta = float(input("Qual a distância entre plantas do plantio?"))
+percentual_mudas_excedentes = float(input("Qual o percentual de mudas excedentes em (ex.: 10% = 0.1)?"))
+
+# Converta hectares para metros quadrados
+area_m2 = area_hectares / 10000
+
+# Calcule o número de árvores por metro quadrado (considerando 3x2 metros para cada árvore)
+num_arvores_por_ha = 10000 / (espacamento_inicial_linha * espacamento_inicial_planta)
+
+# Calcule o número de mudas necessárias por hectare
+num_mudas = num_arvores_por_ha * (1 + percentual_mudas_excedentes)
+
+# Mostre o resultado
+print(f"Serão necessárias {num_mudas:.0f} mudas por hectare.\n Ou seja, {num_mudas * area_hectares:.0f} no total para a área informada. ")
+```
+
+### Exercício 2. Calcular a produção de madeira
+
+Dada a densidade de plantio (árvores por hectare), o volume médio por árvore (em metros cúbicos) e a área total de plantio (em hectares), calcule a produção total estimada de madeira em metros cúbicos.
+
+```{python, eval=FALSE}
+import math
+
+arvore_por_hectare = float(input("Informe o número de árvores por ha"))
+volume_medio_individual = float(input("Qual o volume médio individual das árvores?"))
+area_total_plantio = float(input("Qual a área total de plantio?"))
+
+producao_total = volume_medio_individual * arvore_por_hectare * area_total_plantio
+print(f"A produção total de madeira nessa área será de {producao_total:.2f} m³")
+print(f"A produção total comercial de madeira nessa área será de {producao_total * 0.4} m³")
+```
+
+### Exercício 3: Lista de Espécies Ameaçadas
+
+Exercício: Verificação de Espécies Proibidas de Corte no Mato Grosso
+
+Como parte de um programa de gestão florestal no estado do Mato Grosso, você precisa implementar uma ferramenta que auxilie na identificação de espécies arbóreas proibidas de corte. Algumas espécies, como a Aroeira, Castanha-do-Pará, entre outras, são protegidas por legislação devido à sua importância ecológica e risco de extinção.
+
+**Objetivos:**
+
+1. Criar uma lista de espécies arbóreas proibidas de corte.
+2. Solicitar ao usuário a inserção do nome de uma espécie arbórea.
+3. Utilizar o operador de pertencimento `in` para verificar se a espécie inserida está na lista de proibidas.
+4. Utilizar o operador de não pertencimento `not in` para confirmar se a espécie inserida pode ser cortada.
+5. Exibir uma mensagem apropriada dependendo do resultado da verificação.
+
+```{python, eval=FALSE}
+# Defina a lista de espécies proibidas de corte
+especies_proibidas = [
+    {
+        "nome_popular": "Jacarandá-da-Bahia",
+        "nome_cientifico": "Jacaranda mimosifolia"
+    },
+    {
+        "nome_popular": "Pau-Brasil",
+        "nome_cientifico": "Caesalpinia echinata"
+    },
+    {
+        "nome_popular": "Mogno",
+        "nome_cientifico": "Swietenia macrophylla"
+    },
+    {
+        "nome_popular": "Castanheira-do-Pará",
+        "nome_cientifico": "Bertholletia excelsa"
+    },
+    {
+        "nome_popular": "Araucária",
+        "nome_cientifico": "Araucaria angustifolia"
+    },
+    {
+        "nome_popular": "Cedro-Rosa",
+        "nome_cientifico": "Cedrela odorata"
+    },
+    {
+        "nome_popular": "Jequitibá-Rosa",
+        "nome_cientifico": "Cariniana legalis"
+    },
+    {
+        "nome_popular": "Imbuia",
+        "nome_cientifico": "Ocotea porosa"
+    },
+    {
+        "nome_popular": "Palmito-Juçara",
+        "nome_cientifico": "Euterpe edulis"
+    },
+    {
+        "nome_popular": "Guapuruvu",
+        "nome_cientifico": "Schizolobium parahyba"
+    }
+]
+
+especies_proibidas_nomes_populares = []
+especies_proibidas_nomes_cientifico = []
+
+for especie in especies_proibidas:
+    especies_proibidas_nomes_populares.append(especie.get("nome_popular").lower())
+    especies_proibidas_nomes_cientifico.append(especie.get("nome_cientifico").lower())
+
+print(especies_proibidas_nomes_populares)
+print(especies_proibidas_nomes_cientifico)
+
+# Solicite ao usuário que insira o nome de uma espécie
+especie_usuario = input("Digite o nome de uma espécie arbórea para verificar se seu corte é proibido: ")
+
+# Verifique se a espécie está na lista de proibidas
+if especie_usuario.lower() in especies_proibidas_nomes_populares or especie_usuario in especies_proibidas_nomes_cientifico:
+    print("Esta é uma espécie proibida de corte")
+else:
+    print("Esta espécie não está na lista de espécies ameaçadas.")
+```
+
+---
+
+No próximo capítulo, vamos explorar conversões de tipos e operações mais avançadas com strings, listas e dicionários.

@@ -3,12 +3,21 @@ _book/
 _bookdown_files/
 *_files/
 
+# Pastas de build do Jupyter Book
+_build/
+.jupyter_cache/
+
 # Intermediários gerados pelo knit/bookdown
 *.knit.md
 *.utf8.md
 
 # Arquivos de configuração do RStudio
 .Rproj.user/
+
+# Ambiente virtual Python
+venv/
+env/
+.venv/
 
 # Arquivos temporários
 .Rhistory
@@ -19,3 +28,6 @@ _bookdown_files/
 # Outros arquivos ou pastas desnecessárias (opcional)
 *.log
 *.aux
+
+# Exemplos do Colab
+colab_examples/

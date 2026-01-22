@@ -1,0 +1,498 @@
+# Conversões e Operações com Tipos
+
+---
+
+Neste capítulo, vamos explorar como converter entre diferentes tipos de dados em Python e como realizar operações avançadas com strings, listas e dicionários.
+
+---
+
+## Builtins
+
+Python possui muitas funções e tipos built-in (embutidos) que estão sempre disponíveis. Para ver todas as funções disponíveis:
+
+```{python, eval=FALSE}
+dir(__builtins__)
+```
+
+Para obter ajuda sobre qualquer função:
+
+```{python, eval=FALSE}
+help(print)
+```
+
+Você também pode usar diretamente:
+
+```{python}
+__builtins__.print('Hello World!')
+```
+
+### Escopo Global
+
+Para ver o que está disponível no escopo atual:
+
+```{python, eval=FALSE}
+dir()
+```
+
+Após importar um módulo:
+
+```{python, eval=FALSE}
+import math as m
+dir()
+```
+
+---
+
+## Conversão de Tipos
+
+Python permite converter explicitamente entre diferentes tipos de dados usando funções de conversão.
+
+### Conversão Explícita
+
+```{python}
+a = 2
+b = '3'
+c = 4
+d = '4'
+
+# Concatenação de strings
+print(b + d)
+
+# Soma de números
+print(a + c)
+
+# Conversão de string para inteiro
+print(a + int(b))
+
+# Conversão de número para string
+print(str(a) + b)
+```
+
+**A soma de duas strings pode ser chamada de concatenação de strings ou textos:**
+
+```{python}
+nome = "Igor"
+sobrenome = "Surubi"
+
+nome_completo = nome + ' ' + sobrenome
+print(nome_completo)
+```
+
+**Conversão para float:**
+
+```{python}
+print(float(a))
+```
+
+**Conversão para boolean:**
+
+```{python}
+print(bool(1))   # True
+print(bool(0))   # False
+print(bool(2))   # True - qualquer número diferente de zero será convertido para True
+print(bool(3))   # True
+print(bool(None))  # False - None é convertido para False
+```
+
+### Conversão Implícita ou Coerção
+
+Python também realiza conversões automáticas em certas situações:
+
+```{python}
+a = 10
+b = 3
+
+print(type(a), type(b))
+
+c = a / b  # Divisão sempre retorna float
+d = a * b  # Multiplicação de int por int retorna int
+
+print(type(c))
+print(type(d))
+```
+
+**Resto (Módulo):**
+
+```{python}
+print(10 % 2)   # 0
+print(10 % 4)   # 2
+print(10 % 3)   # 1
+print(10 // 2)  # 5 - divisão inteira
+print(10 // 4)  # 2
+print(10 // 3)  # 3
+```
+
+---
+
+## Operações com Strings
+
+### Indexação e Slicing
+
+Strings em Python são sequências de caracteres e podem ser acessadas por índice:
+
+```{python}
+name = 'Arthur Guilherme Schirmbeck Chaves'
+
+# Acessar do início até o fim
+print(name[0:])
+
+# Acessar do índice 0 até 7 (não inclui o 7)
+print(name[0:7])
+
+# Acessar um caractere específico
+print(name[7])
+
+# Acessar do índice 1 até o fim
+print(name[1:])
+
+# Acessar o último caractere (índice negativo)
+print(name[-1])
+
+# Inverter a string
+print(name[::-1])
+
+# Acessar do sexto caractere do fim até o fim
+print(name[-6:])
+```
+
+**Slicing com passo:**
+
+```{python}
+sequencia = '0123456789'
+
+# Todos os elementos
+print(sequencia[::])
+
+# Elementos de 2 em 2
+print(sequencia[::2])
+
+# Aplicando em uma string
+print(name[::2])
+
+# Inverter
+print(sequencia[::-1])
+print(name[::-1])
+```
+
+**Criando um nome de usuário:**
+
+```{python}
+name_counter_strike = name[-6:] + "87"
+print(name_counter_strike)
+```
+
+### Verificação de Conteúdo
+
+```{python}
+print("Cha" in name_counter_strike)
+print('Arthur' in name)
+print('arthur' in name)  # Case-sensitive
+```
+
+### Métodos de String
+
+**Conversão de case:**
+
+```{python}
+print(name.upper())
+print(name.lower())
+print('arthur' in name.lower())
+```
+
+**Modificação de strings:**
+
+```{python}
+name = name + " Oliveira"
+print(name)
+```
+
+**Split (dividir):**
+
+```{python}
+# Dividir por espaços
+print(len(name.split()))
+print(name.split('a'))
+print(name.split('Sc'))
+```
+
+---
+
+## Operações com Listas
+
+### Adicionar Elementos
+
+```{python}
+names = ['Arthur', 'Fernanda']
+print(names)
+
+# Adicionar ao final
+names.append('Liane')
+print(names)
+
+# Inserir em posição específica
+names.insert(0, 'Virgulino')
+print(names)
+
+names.insert(2, '&')
+print(names)
+
+# Adicionar qualquer tipo
+names.append(345)
+print(names)
+```
+
+### Remover Elementos
+
+```{python}
+# Remover por índice (retorna o elemento removido)
+removido = names.pop(3)
+print(f"Removido: {removido}")
+print(names)
+```
+
+### Reverter Lista
+
+```{python}
+names.reverse()
+print(names)
+```
+
+### Adicionar Duplicatas
+
+```{python}
+names.append('Arthur')
+print(names)
+```
+
+### Transformar Lista
+
+```{python}
+# Criar nova lista com elementos transformados
+new_names = []
+
+for name in names:
+    # Aplicar lower() apenas se for string
+    if isinstance(name, str):
+        new_names.append(name.lower())
+    else:
+        new_names.append(name)  # Manter outros tipos como estão
+
+print(names)
+print(new_names)
+```
+
+### Ordenar Lista
+
+```{python}
+# Ordenar apenas strings (filtrar outros tipos)
+names_str = [name for name in names if isinstance(name, str)]
+names_str.sort(reverse=False)
+print("Lista original:", names)
+print("Lista ordenada (apenas strings):", names_str)
+```
+
+### Contar Elementos
+
+```{python}
+print(names.count('Fernanda'))
+print(names.count('Arthur'))
+```
+
+### Estender Lista
+
+```{python}
+new_names_2 = ["Igor", "Larissa"]
+names.extend(new_names_2)
+print(names)
+```
+
+---
+
+## Operando com Dicionários (Dict)
+
+### Acessar Valores
+
+```{python}
+pessoa = {'Nome': 'Arthur', 'Idade': 36, 'Função': 'Professor', 'Disciplinas': ['Dendrometria', 'Inventário']}
+
+# Acessar por chave
+print(pessoa['Disciplinas'])
+
+# Acessar com get() (retorna None se não existir)
+print(pessoa.get('Nome'))
+print(pessoa.get('Disciplinas'))
+```
+
+### Métodos Úteis
+
+```{python}
+# Obter todos os pares chave-valor
+print(pessoa.items())
+
+# Obter todas as chaves
+print(pessoa.keys())
+
+# Obter todos os valores
+print(pessoa.values())
+```
+
+### Atualizar Dicionário
+
+```{python}
+# Atualizar valores existentes ou adicionar novos
+pessoa.update({'Idade': 18, 'Nome': 'Arthur Chaves'})
+print(pessoa)
+```
+
+### Lista de Dicionários
+
+```{python}
+pessoas = [pessoa]
+print(pessoas)
+
+nova_pessoa = {'Nome': "João", "Idade": 23, "Função": "Vereador"}
+pessoas.append(nova_pessoa)
+
+nova_pessoa2 = {'Nome': 'Virgulino', 'Idade': 59, 'Função': 'Estudante'}
+pessoas.append(nova_pessoa2)
+
+print(pessoas)
+```
+
+---
+
+## Exercícios de Fixação
+
+### Exercício 1: Conversão de Tipos e Cálculo de Área
+
+Problema: Você tem uma lista de strings representando os comprimentos dos lados de parcelas de uma plantação de Teca, em metros. Converta essas strings para floats e calcule a área total dessas parcelas em hectares (1 hectare = 10.000 metros quadrados). A lista é: `['100.5', '150.2', '120.75', '130.20']`. Considere todas as parcelas como quadradas.
+
+```{python}
+lista = ['100.5', '150.2', '120.75', '130.20']
+
+# List comprehension: converter para float
+lista_numerica = [float(i) for i in lista]
+
+print(lista)
+print(lista_numerica)
+
+# Calcular área de cada parcela (quadrada)
+area_das_parcelas = [(valor ** 2) for valor in lista_numerica]
+
+print(area_das_parcelas)
+
+# Calcular área total usando a função sum()
+area_total = sum(area_das_parcelas)
+area_total_ha = area_total / 10000
+
+print(f'Lados das parcelas: {lista_numerica}')
+print(f'Áreas das parcelas: {area_das_parcelas}')
+print(f'Área total: {area_total:.2f} m²')
+print(f'Área amostral Total: {area_total_ha:.2f} hectares')
+```
+
+### Exercício 2: Análise de Crescimento de Árvores
+
+Problema: Dada uma string com alturas de árvores de Teca em centímetros, separadas por vírgulas, `'350, 400, 280, 295, 355'`, escreva um programa que encontre e imprima a altura média dessas árvores, convertendo cada altura para metros antes do cálculo.
+
+```{python}
+lista_string_alturas = '350, 400, 280, 295, 355'
+lista_alturas = lista_string_alturas.split(", ")
+
+# Converter para float e dividir por 100 para obter metros
+lista_alturas = [(float(i) / 100) for i in lista_alturas]
+
+altura_media = sum(lista_alturas) / len(lista_alturas)
+print(f'Altura média = {altura_media:.2f} metros')
+```
+
+### Exercício 3: Gerenciamento de Espécies em Listas
+
+Problema: Você tem uma lista de espécies plantadas em diferentes parcelas: `['Teca', 'Pinho', 'Eucalipto', 'Teca', 'Eucalipto', 'Pinho', 'Teca']`. Escreva um programa que conte quantas vezes cada espécie aparece na lista e imprima o resultado.
+
+```{python}
+especies = ['Teca', 'Pinho', 'Eucalipto', 'Teca', 'Eucalipto', 'Pinho', 'Teca']
+
+# Criar um dicionário para contar
+contagem = {}
+
+for especie in especies:
+    if especie in contagem:
+        contagem[especie] += 1
+    else:
+        contagem[especie] = 1
+
+print("Contagem de espécies:")
+for especie, quantidade in contagem.items():
+    print(f"{especie}: {quantidade}")
+```
+
+### Exercício 4: Atualização de Inventário Florestal
+
+Problema: Dado um dicionário representando o número de árvores por espécie em uma determinada área: `{'Teca': 120, 'Eucalipto': 200, 'Pinho': 150}`, escreva um programa que atualize o inventário adicionando 25 árvores de Teca e removendo 30 árvores de Eucalipto. Após a atualização, imprima o dicionário atualizado.
+
+```{python}
+# Dicionário representando o número de árvores por espécie
+inventario = {'Teca': 120, 'Eucalipto': 200, 'Pinho': 150}
+
+# Atualizando o inventário
+inventario['Teca'] += 25  # Adiciona 25 árvores de Teca
+inventario['Eucalipto'] -= 30  # Remove 30 árvores de Eucalipto
+
+# Imprimindo o dicionário atualizado
+print(inventario)
+```
+
+### Exercício 5: Análise de Dados de Chuva
+
+Problema: Você recebeu uma string contendo dados de chuva (em mm) para cada mês do ano, separados por vírgulas: `'120, 80, 100, 90, 110, 130, 140, 150, 100, 110, 80, 70'`. Converta essa string em uma lista de inteiros, calcule a média de chuva e identifique os meses com chuva acima da média. Imprima a média e os meses identificados (use índice 0 para Janeiro, 1 para Fevereiro, etc.).
+
+```{python}
+# Dados de chuva em string
+dados_chuva_str = '120, 80, 100, 90, 110, 130, 140, 150, 100, 110, 80, 70'
+
+# Convertendo a string em uma lista de inteiros
+dados_chuva = [int(x) for x in dados_chuva_str.split(', ')]
+
+# Calculando a média de chuva
+media_chuva = sum(dados_chuva) / len(dados_chuva)
+
+# Identificando os meses com chuva acima da média
+meses_acima_da_media = [i for i, chuva in enumerate(dados_chuva) if chuva > media_chuva]
+
+# Nomes dos meses
+nomes_meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+               'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
+# Imprimindo a média e os meses identificados
+print(f"Média de chuva: {media_chuva:.2f} mm")
+print(f"Meses com chuva acima da média (índices): {meses_acima_da_media}")
+print("Meses com chuva acima da média:")
+for indice in meses_acima_da_media:
+    print(f"  {nomes_meses[indice]}: {dados_chuva[indice]} mm")
+```
+
+---
+
+## Laços de Repetição (Preview)
+
+Vamos ver um exemplo de como usar laços para iterar sobre strings:
+
+```{python}
+name = 'Arthur'
+for i in name:
+    print('Olá meus amigos!', i)
+```
+
+E com while:
+
+```{python}
+i = 0
+while i < 20:
+    i = i + 1
+    print('A aula acabou?', i)
+```
+
+---
+
+No próximo capítulo, vamos explorar em detalhes as estruturas de controle, incluindo condicionais e laços de repetição.

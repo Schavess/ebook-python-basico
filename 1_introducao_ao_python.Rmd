@@ -1,0 +1,368 @@
+# Introdução ao Python
+
+---
+
+Python é uma das linguagens de programação mais populares e versáteis do mundo, sendo amplamente utilizada em ciência de dados, desenvolvimento web, automação, inteligência artificial e muito mais.
+
+Neste capítulo trataremos sobre:
+
+1. O que são algoritmos;
+2. O que é uma linguagem de programação;
+3. Introdução ao Python;
+4. Instalação do Python;
+5. PEP 8 e boas práticas de código;
+6. Ambientes de desenvolvimento.
+
+---
+
+## O que são algoritmos?
+
+**Objetivo do Algoritmo**: Plantar uma árvore.
+
+**Entradas do Algoritmo**:
+
+* Uma muda de árvore.
+* Local de plantio escolhido.
+* Ferramentas para cavar (como uma pá).
+* Água para regar a muda.
+
+**Passos do Algoritmo**:
+
+1. Selecionar o Local: Escolher um local adequado para plantar a muda, considerando a exposição solar, o tipo de solo e o espaço necessário para o crescimento da árvore.
+
+2. Cavar um Buraco: Usar a pá para cavar um buraco no local escolhido. O buraco deve ter profundidade e largura suficientes para acomodar as raízes da muda.
+
+3. Preparar a Muda: Remover a muda do recipiente em que veio, com cuidado para não danificar as raízes.
+
+4. Plantar a Muda: Colocar a muda no buraco, ajustando a profundidade para que a base do tronco fique no nível do solo. Preencher o buraco com terra, firmemente, mas sem compactar excessivamente.
+
+5. Regar a Muda: Regar a muda generosamente para umedecer o solo e ajudar a estabelecer as raízes.
+
+6. Cuidados Posteriores: Incluir instruções básicas de cuidados posteriores, como rega regular, aplicação de mulch para manter a umidade, e proteção contra ervas daninhas.
+
+**Saída do Algoritmo**:
+
+Uma árvore plantada e pronta para crescer no local escolhido.
+
+*Por que isso é um algoritmo?*
+
+* Sequência de Passos: O processo é dividido em etapas claras e sequenciais.
+* Execução Determinística: Seguindo os mesmos passos, espera-se chegar ao mesmo resultado (uma árvore plantada corretamente).
+* Universalidade: Este algoritmo pode ser aplicado para plantar diferentes tipos de árvores, mudando apenas algumas variáveis específicas (como o tamanho do buraco para diferentes tamanhos de raiz).
+
+---
+
+## O que é uma linguagem de programação?
+
+Uma linguagem de programação é uma forma padronizada de comunicar instruções a um computador. É como uma língua que permite aos programadores escreverem códigos que são convertidos em ações executáveis pelo computador, permitindo a criação de software, aplicativos, websites, e muito mais. Cada linguagem de programação tem sua própria sintaxe e regras, assim como as línguas humanas têm gramática e vocabulário.
+
+---
+
+## Python 🐍
+
+**Python** é uma linguagem poderosa e flexível que facilita o desenvolvimento de software ao abstrair complexidades, promover a clareza no código, e suportar uma ampla variedade de aplicações, tornando-a uma excelente escolha tanto para programadores iniciantes quanto para os mais experientes.
+
+**Alto Nível**: Python é uma linguagem de programação de alto nível, o que significa que ela simplifica e abstrai muitos dos detalhes complicados do funcionamento interno do computador, como a gestão da memória. Isso permite que os programadores se concentrem mais na lógica de como resolver um problema do que nos detalhes de como o computador executa essas soluções.
+
+**Propósito Geral**: Python é adequado para uma ampla gama de aplicações, desde desenvolvimento web até ciência de dados, automação, aprendizado de máquina e muito mais. Essa versatilidade faz com que seja uma escolha popular em diversas disciplinas e indústrias, servindo tanto para tarefas simples quanto para complexas análises de dados.
+
+**Legibilidade do Código**: A filosofia de design do Python põe grande ênfase na legibilidade do código, usando indentação significativa. Isso significa que a estrutura do código Python é clara e intuitiva, tornando-o acessível para iniciantes e permitindo que programadores mais experientes mantenham e compartilhem código de forma eficaz.
+
+**Tipagem Dinâmica**: Python é uma linguagem de tipagem dinâmica. Diferentemente de algumas linguagens onde você precisa declarar o tipo de cada variável (como inteiro, string, etc.) antes de usá-las, em Python, o tipo é automaticamente determinado no momento em que o programa é executado. Isso traz flexibilidade no desenvolvimento de software, mas também exige que os programadores sejam cuidadosos para evitar erros relacionados ao tipo de dados.
+
+---
+
+## Instalação do Python
+
+### Windows
+
+Para instalar o Python no Windows, siga os seguintes passos:
+
+1. Acesse o site oficial do Python: https://www.python.org/
+
+2. Clique em **Downloads** e escolha a versão mais recente do Python 3.
+
+3. Baixe o instalador executável (.exe).
+
+4. Execute o instalador e **marque a opção "Add Python to PATH"** antes de clicar em "Install Now".
+
+5. Aguarde a instalação ser concluída.
+
+6. Para verificar a instalação, abra o Prompt de Comando (cmd) e digite:
+   ```bash
+   python --version
+   ```
+
+### macOS
+
+Abra o terminal: `Command + Espaço` "terminal" e `Enter`
+
+```{bash, eval=FALSE}
+brew install python3
+```
+
+Ou baixe o instalador diretamente do site https://www.python.org/downloads/
+
+### Linux
+
+Abra o terminal Linux: `ctrl + alt + t`
+
+```{bash, eval=FALSE}
+sudo apt update
+sudo apt upgrade
+sudo apt install -y python3 python3-pip
+```
+
+---
+
+## PEP 8 e Boas Práticas de Código
+
+O PEP 8 é o guia de estilo oficial para a escrita de código Python legível. Seguir essas diretrizes torna seu código mais consistente e fácil de ler para outros desenvolvedores.
+
+### Identação em Python
+
+Python se importa com identação e quebra de linhas. A identação é obrigatória e define a estrutura do código.
+
+**Código com erros de identação:**
+
+```{python, eval=FALSE}
+def minha_funcao():
+  print("Olá, mundo!") # Erro de identação
+
+minha_funcao()
+for i in range(5):
+print(i) # Erro de identação, este comando deveria estar indentado
+if i == 3:
+print("i é 3") # Erro de identação, este comando deveria estar mais indentado
+```
+
+**Código sem erros de identação:**
+
+```{python}
+# Código correto para a estrutura acima
+def minha_funcao():
+    print("Olá, mundo!") # Identação correta
+
+for i in range(0, 5, 2):
+    print(i) # Identação correta
+    if i == 3:
+        print("i é 3") # Identação correta
+```
+
+### Largura da linha (PEP 8)
+
+O PEP 8 recomenda que as linhas tenham no máximo 79 caracteres. A maioria dos editores modernos permite configurar uma régua visual na coluna 79 para ajudar a seguir essa regra.
+
+### Detalhes sobre importação de bibliotecas
+
+```{python}
+# Correto - uma importação por linha
+import os
+import sys
+```
+
+```{python, eval=FALSE}
+# Errado - múltiplas importações na mesma linha
+import os, sys
+```
+
+```{python, eval=FALSE}
+# Correto - importação específica
+from google.colab import drive
+```
+
+```{python, eval=FALSE}
+# Correto - importação com alias
+import numpy as np
+```
+
+### Espaços em expressões
+
+```{python}
+# Correto
+x = 1
+y = 2
+z = x + y
+lista = [1, 2, 3]
+```
+
+```{python, eval=FALSE}
+# Incorreto
+x=1
+y = 2
+z = x+y
+lista = [1,2,3]
+```
+
+### Comentários
+
+```{python}
+# Correto: calcular o quadrado de x
+x = 10
+x_squared = x ** 2
+```
+
+```{python, eval=FALSE}
+# Incorreto - comentários óbvios não são necessários
+x = 10  # x = 10
+x_squared = x ** 2  # x^2
+```
+
+### Convenções de Nomenclatura
+
+* Nomes de variáveis e funções: `lower_case_with_underscores`
+* Nomes de classes e exceções: `CapWords`
+* Constantes: `ALL_CAPS_WITH_UNDERSCORES`
+* Métodos privados de uma classe: `_single_leading_underscore(self, ...)`
+
+```{python}
+# Variável
+number_of_students = 50
+dominant_height = 25.3
+
+# Função
+def calculate_average(score_list):
+    return sum(score_list) / len(score_list)
+
+# Classe
+class StudentDatabase:
+    def __init__(self):
+        self._data = {}
+
+# Constante
+MAX_SIZE = 100
+```
+
+### Linhas em branco
+
+```{python, eval=FALSE}
+import sys
+import math
+
+
+# Duas linhas em branco após importações
+def func1():
+    pass
+
+
+def func2():
+    pass
+
+# Duas linhas em branco entre funções de nível superior
+
+class MyClass:
+    def __init__(self):
+        pass
+
+    # Uma linha em branco entre métodos de uma classe
+    def method1(self):
+        pass
+```
+
+---
+
+## Dúvidas sobre uma função?
+
+Para obter ajuda sobre qualquer função ou objeto em Python, use a função `help()`:
+
+```{python, eval=FALSE}
+help(print)
+```
+
+Ou use o operador `?` em ambientes interativos como Jupyter:
+
+```{python, eval=FALSE}
+?print
+```
+
+Para ver todas as funções built-in disponíveis:
+
+```{python, eval=FALSE}
+dir(__builtins__)
+```
+
+---
+
+## Ambientes de Desenvolvimento
+
+Existem várias opções para escrever e executar código Python:
+
+### 1. IDLE (Python Integrated Development Environment)
+
+O IDLE vem instalado junto com o Python e é uma opção simples para iniciantes.
+
+### 2. Editores de Texto
+
+* **Visual Studio Code**: Editor gratuito e poderoso com extensões para Python
+* **Sublime Text**: Editor leve e rápido
+* **Atom**: Editor open-source
+
+### 3. IDEs (Integrated Development Environments)
+
+* **PyCharm**: IDE completa e profissional (versão Community é gratuita)
+* **Spyder**: IDE focada em ciência de dados
+* **Jupyter Notebook**: Ambiente interativo ideal para análise de dados
+
+### 4. Ambientes Online
+
+* **Google Colab**: Ambiente Jupyter gratuito na nuvem
+* **Repl.it**: Editor online com suporte a Python
+* **PythonAnywhere**: Ambiente Python hospedado
+
+---
+
+## Primeiros Passos
+
+Vamos começar com um exemplo simples:
+
+```{python}
+# Meu primeiro programa em Python
+print("Hello World!")
+print(456)
+```
+
+Python se importa com identação e quebra de linhas. Veja um exemplo de função:
+
+```{python}
+def imprime(objeto):
+    print(objeto)
+
+imprime(234)
+```
+
+Você também pode criar funções mais complexas:
+
+```{python}
+def calcula_cap_pelo_dap(dap):
+    print(dap * 3.1416)
+
+calcula_cap_pelo_dap(67)
+```
+
+```{python}
+def soma_simples(a, b):
+    soma = a + b
+    print(soma)
+
+soma_simples(4, 5)
+```
+
+Para quebrar linhas longas, você pode usar o caractere de continuação `\`:
+
+```{python}
+print(\
+      'Hello World!'\
+      )
+```
+
+---
+
+## Próximos Passos
+
+Agora que você tem uma introdução ao Python e suas características principais, nos próximos capítulos vamos explorar:
+
+* Tipos de dados fundamentais
+* Operadores e expressões
+* Estruturas de controle
+* Funções e módulos
+* E muito mais!

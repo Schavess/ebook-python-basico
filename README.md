@@ -1,24 +1,51 @@
 Seja bem vindo xomano!! 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). 
+Este é um livro sobre **Python** criado com **bookdown** (https://github.com/rstudio/bookdown) e **reticulate** para executar código Python.
 
-This template provides a skeleton file structure that you can edit to create your book. 
-
-The contents inside the .Rmd files provide some pointers to help you get started, but feel free to also delete the content in each file and start fresh.
+O livro apresenta os fundamentos e conceitos básicos da linguagem Python para programação e análise de dados.
 
 ## Como visualizar (renderizar) no RStudio
 
-### Dependências
+### Pacotes R Necessários
 
-No Console do R:
+No Console do RStudio:
 
 ```r
-install.packages(c("rmarkdown", "bookdown", "knitr"))
+install.packages(c("rmarkdown", "bookdown", "knitr", "reticulate"))
 ```
+
+### Configuração do Python com reticulate
+
+Este projeto usa **reticulate** para executar código Python dentro dos arquivos .Rmd. Para configurar:
+
+1. **Instalar e configurar reticulate:**
+   ```r
+   source("setup_reticulate.R")
+   ```
+
+2. **Instalar dependências Python no venv:**
+   ```r
+   source("install_python_deps.R")
+   ```
+
+   Ou instale manualmente no venv:
+   ```powershell
+   .\venv\Scripts\Activate.ps1
+   python -m pip install -r requirements.txt
+   ```
+
+3. **Verificar configuração:**
+   ```r
+   library(reticulate)
+   use_virtualenv("venv", required = TRUE)
+   py_config()
+   ```
+
+O chunk de setup já está configurado no `index.Rmd` e será executado automaticamente ao renderizar o livro.
 
 ### Renderizar o livro (HTML)
 
-No Console do R, com o projeto aberto (`Entre Florestas e Dados.Rproj`):
+No Console do RStudio, com o projeto aberto (`Python_Basico.Rproj`):
 
 ```r
 bookdown::render_book("index.Rmd", "bookdown::gitbook")
@@ -35,7 +62,7 @@ install.packages("servr")
 bookdown::serve_book()
 ```
 
-## Criar um novo ebook a partir deste projeto (template)
+## Criar um novo ebook a partir deste projeto
 
 1) Copie a pasta do projeto para um novo diretório (ex.: `meu-novo-livro/`).
 

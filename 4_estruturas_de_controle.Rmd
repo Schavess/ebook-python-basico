@@ -1,0 +1,541 @@
+# Estruturas de Controle
+
+---
+
+As estruturas de controle são fundamentais na programação, permitindo que o código tome decisões e execute ações repetitivas. Neste capítulo, vamos explorar condicionais, laços de repetição, recursividade e muito mais.
+
+---
+
+## Desvio Condicional
+
+Os desvios condicionais permitem que o programa execute diferentes blocos de código dependendo de condições específicas.
+
+### Simples (if)
+
+A estrutura mais básica executa um bloco de código apenas se a condição for verdadeira:
+
+```{python}
+nota = 6
+if(nota < 6):
+    print('Você ficou de PF!')
+```
+
+### Composto (if-else)
+
+Permite executar um bloco se a condição for verdadeira e outro se for falsa:
+
+```{python}
+notas = [5.5, 6.7, 5.4, 7.0]
+
+media_notas = sum(notas)/len(notas)
+
+if(media_notas >= 6):
+    print(f'Nota final: {media_notas}.  Parabéns, você está aprovado!')
+else:
+    print(f'Nota final: {media_notas}.Você ficou de PF!')
+```
+
+### Múltiplas Condições (if-elif-else)
+
+Quando há múltiplas condições a verificar:
+
+```{python}
+if(media_notas < 5):
+    print(f'Nota: {media_notas}.Você precisa estudar muito!')
+elif(media_notas >= 5 and media_notas < 6):
+    print(f'Nota: {media_notas}.Cuidado! Estude mais!')
+else:
+    print(f'Nota: {media_notas}.Você está no caminho correto!')
+```
+
+### Exercício: Conceitos
+
+Crie um desvio condicional composto para definir o Conceito da média das notas do Gustavo. Estas foram as notas dele: 6.5, 4.6, 7.8, 5.4
+
+| Conceitos | notas |
+|-----------|-------|
+| A         | 9-10  |
+| B         | 7-9   |
+| C         | 6-7   |
+| D         | 5-6   |
+| E         | 0-5   |
+
+```{python}
+notas_gustavo = [6.5, 4.6, 7.8, 5.4]
+media_gustavo = sum(notas_gustavo) / len(notas_gustavo)
+
+if media_gustavo >= 9:
+    conceito = 'A'
+elif media_gustavo >= 7:
+    conceito = 'B'
+elif media_gustavo >= 6:
+    conceito = 'C'
+elif media_gustavo >= 5:
+    conceito = 'D'
+else:
+    conceito = 'E'
+
+print(f'Média: {media_gustavo:.2f}')
+print(f'Conceito: {conceito}')
+```
+
+---
+
+## Laços de Repetição
+
+Os laços de repetição permitem executar um bloco de código múltiplas vezes.
+
+### While
+
+O laço `while` executa um bloco de código enquanto uma condição for verdadeira:
+
+```{python}
+i = 0
+while (i < 10):
+    print(i)
+    i += 1
+print(f'i={i}')
+```
+
+**Exemplo interativo:**
+
+```{python, eval=FALSE}
+from random import randint
+
+# Menos um é um valor que fará do while False por padrão para pedir o número do usuário
+numero_informado = -1
+numero_secreto = randint(0, 10)
+
+while (numero_informado != numero_secreto):
+    numero_informado = int(input('Informe um número entre 0 e 10: '))
+print(f'Número secreto encontrado: {numero_secreto}')
+```
+
+### For
+
+O laço `for` itera sobre uma sequência (lista, string, tupla, etc.).
+
+#### range()
+
+A função `range()` gera uma sequência de números:
+
+```{python}
+# range(7) gera números de 0 a 6
+for i in range(7):
+    print(i)
+```
+
+```{python}
+# range(2, 7) gera números de 2 a 6
+for i in range(2, 7):
+    print(i)
+```
+
+```{python}
+# range(0, 8, 2) gera números de 0 a 7, de 2 em 2
+for i in range(0, 8, 2):
+    print(i)
+```
+
+#### Iterando sobre strings e listas
+
+```{python}
+name = 'Arthur'
+for i in name:
+    print(i)
+```
+
+```{python}
+names = ['Arthur', 'Fernanda', 'Marcos']
+for i in names:
+    print(i)
+```
+
+#### Iterando sobre dicionários
+
+```{python}
+cadastro = {'nome': 'José',
+            'idade': 45,
+            'cel': '065999325454',
+            'endereço': 'Rua ABC'}
+```
+
+**Iterando sobre chaves:**
+
+```{python}
+for i in cadastro.keys():
+    print(i)
+```
+
+**Iterando sobre valores:**
+
+```{python}
+for i in cadastro.values():
+    print(i)
+```
+
+**Iterando sobre pares chave-valor:**
+
+```{python}
+for i, j in cadastro.items():
+    print(i, '=', j)
+```
+
+### For com Else
+
+O bloco `else` em um laço `for` é executado quando o laço termina normalmente (não foi interrompido por `break`):
+
+```{python}
+sequencia = range(1, 11)
+sequencia_inversa = list(sequencia)[::-1]
+
+for i in sequencia_inversa:
+    print(i)
+else:
+    print('Decolou!🚀')
+```
+
+### Break e Continue
+
+**Break:** Interrompe completamente o laço:
+
+```{python}
+for x in range(1, 11):
+    if x == 5:
+        break
+    print(x)
+
+print('Acabou!')
+```
+
+**Continue:** Pula para a próxima iteração do laço:
+
+```{python}
+for x in range(1, 11):
+    if x % 2 == 0:
+        continue
+    print(x)
+```
+
+---
+
+## Match-Case (Switch)
+
+A partir do Python 3.10, foi introduzido o `match-case`, que funciona como um `switch` em outras linguagens.
+
+### Fake Switch (Antes do Python 3.10)
+
+Antes do Python 3.10, era comum usar dicionários para simular um switch:
+
+```{python}
+def dia_da_semana_switch(dia):
+    dias = {
+          1: "Domingo",
+          2: "Segunda-Feira",
+          3: "Terça-Feira",
+          4: "Quarta-Feira",
+          5: "Quinta-Feira",
+          6: "Sexta-Feira",
+          7: "Sábado",
+    }
+    return dias.get(dia, "Dia Inválido")
+
+print(dia_da_semana_switch(2))
+```
+
+### Match-Case (Python 3.10+)
+
+```{python}
+def dia_da_semana(dia):
+    match dia:
+        case 1:
+            return 'Domingo'
+        case 2:
+            return 'Segunda-Feira'
+        case 3:
+            return 'Terça-Feira'
+        case 4:
+            return 'Quarta-Feira'
+        case 5:
+            return 'Quinta-Feira'
+        case 6:
+            return 'Sexta-Feira'
+        case 7:
+            return 'Sábado'
+        case _:
+            return 'Dia Inválido'
+
+print(dia_da_semana(1))
+```
+
+**Match com múltiplos valores:**
+
+```{python}
+def get_tipo_dia(dia):
+    match dia:
+        case 2 | 3 | 4 | 5 | 6:
+            return 'Dia de semana'
+        case 1 | 7:
+            return 'Fim de semana'
+        case _:
+            return '** inválido **'
+
+print(get_tipo_dia(5))
+```
+
+---
+
+## Packing e Unpacking
+
+### Packing
+
+Packing é o processo de agrupar valores em uma estrutura de dados:
+
+```{python}
+lista = [1, 2, 3]
+```
+
+### Unpacking
+
+Unpacking é o processo de extrair valores de uma estrutura de dados:
+
+```{python}
+x, y, z = lista
+print(x)
+print(y)
+print(z)
+```
+
+### Swap (Troca)
+
+Unpacking permite trocar valores facilmente:
+
+```{python}
+x = 1
+y = 2
+print(x, y)
+
+x, y = y, x  # Troca os valores
+print(x, y)
+```
+
+**Aplicação prática - Sequência de Fibonacci:**
+
+```{python}
+def fibonacci(limite):
+    penultimo = 0
+    ultimo = 1
+    print(f'{penultimo},{ultimo}', end=',' )
+    while ultimo < limite:
+        proximo = penultimo + ultimo
+        print(proximo, end = ',')
+        penultimo = ultimo
+        ultimo = proximo
+
+fibonacci(100)
+```
+
+**Usando swap para simplificar:**
+
+```{python}
+def fibonacci(limite):
+    penultimo = 0
+    ultimo = 1
+    print(f'{penultimo},{ultimo}', end=',' )
+    while ultimo < limite:
+        penultimo, ultimo = ultimo, penultimo + ultimo  # Usando swap
+        print(ultimo, end = ',')
+
+fibonacci(100)
+```
+
+---
+
+## Recursividade
+
+Recursividade é quando uma função chama a si mesma. É uma técnica poderosa para resolver problemas que podem ser divididos em subproblemas similares.
+
+### Fatorial
+
+A função fatorial de um número inteiro não negativo $n$, denotado por $n!$, é definida como o produto de todos os inteiros positivos menores ou iguais a $n$. Formalmente:
+
+$$
+n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1
+$$
+
+Para $n = 0$, por definição:
+
+$$
+0! = 1
+$$
+
+**Implementação recursiva:**
+
+```{python}
+def fatorial(n):
+    # Caso base: fatorial de 0 ou 1
+    if n == 0 or n == 1:
+        return 1
+    # Passo recursivo: n! = n * (n-1)!
+    else:
+        return n * fatorial(n-1)
+
+# Exemplo de uso
+print(fatorial(4))
+```
+
+### Sequência de Fibonacci
+
+A sequência de Fibonacci é uma série de números onde cada número é a soma dos dois anteriores, começando com 0 e 1. A função de Fibonacci $F(n)$ para um número inteiro não negativo $n$ é definida recursivamente como:
+
+$$
+F(n) =
+\begin{cases}
+0 & \text{se } n = 0 \\
+1 & \text{se } n = 1 \\
+F(n-1) + F(n-2) & \text{se } n > 1
+\end{cases}
+$$
+
+**Implementação recursiva:**
+
+```{python}
+def fibonacci(n):
+    # Caso base: n = 0 ou n = 1
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    # Passo recursivo: soma dos dois anteriores
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+# Exemplo de uso
+print(fibonacci(8))
+```
+
+**Versão otimizada que retorna a sequência:**
+
+```{python}
+def fibonacci_sequence(n, sequence=None):
+    # Inicializa a lista na primeira chamada
+    if sequence is None:
+        sequence = [0, 1]
+
+    # Verifica se a lista já tem todos os valores até a posição n
+    if n >= len(sequence):
+        # Calcula o próximo número e o adiciona à lista
+        next_value = fibonacci_sequence(n-1, sequence)[n-1] + fibonacci_sequence(n-2, sequence)[n-2]
+        sequence.append(next_value)
+
+    # Retorna a lista até a posição n
+    return sequence[:n+1]
+
+# Exemplo de uso
+print(fibonacci_sequence(10))
+```
+
+---
+
+## Lista de Exercícios
+
+### Exercício 1: Cálculo de Volume Total de Madeira por Lote
+
+Crie uma função recursiva que estime o volume total de madeira (em metros cúbicos) que pode ser extraído de um lote, dado o número de toras. A função deve receber o número de toras por lote, o comprimento médio das toras (em metros) e o diâmetro médio (em centímetros) das toras.
+
+```{python}
+def calcular_volume_madeira(n_toras, comprimento_medio, diametro_medio, acumulado=0):
+    if n_toras == 0:
+        return acumulado
+    else:
+        volume_tora = (comprimento_medio * (diametro_medio/100) ** 2) * 3.141592 / 4
+        return calcular_volume_madeira(n_toras-1, comprimento_medio, diametro_medio, acumulado + volume_tora)
+
+# Exemplo de uso
+n_toras = 5
+comprimento_medio = 10  # metros
+diametro_medio = 30  # centímetros
+volume_total = calcular_volume_madeira(n_toras, comprimento_medio, diametro_medio)
+print(f'Volume total: {volume_total:.2f} m³')
+```
+
+### Exercício 2: Classificação de Áreas de Reflorestamento por Classe de Sítio
+
+Utilizando desvios condicionais, crie um sistema que classifique áreas de reflorestamento baseado na altura dominante (Hdom) das árvores. A classificação em classes de sítio deve ser feita de acordo com a Hdom informada pelo usuário.
+
+```{python}
+def classificar_sitio(hdom):
+    if hdom >= 30:
+        return "Classe de Sítio I - Excelente"
+    elif hdom >= 25:
+        return "Classe de Sítio II - Bom"
+    elif hdom >= 20:
+        return "Classe de Sítio III - Médio"
+    else:
+        return "Classe de Sítio IV - Ruim"
+
+# Exemplo de uso
+hdom = 26  # Altura dominante em metros
+print(classificar_sitio(hdom))
+```
+
+### Exercício 3: Modelo de Crescimento Florestal
+
+Desenvolva um script que modele o crescimento de uma floresta, dada uma taxa de crescimento constante. O script deve criar uma lista com o volume acumulado de madeira a cada ano.
+
+```{python}
+def modelo_crescimento(volume_inicial, taxa_crescimento, anos):
+    volumes = [volume_inicial]
+    for ano in range(1, anos + 1):
+        volume_ano = volumes[-1] * (1 + taxa_crescimento)
+        volumes.append(volume_ano)
+    return volumes
+
+# Exemplo de uso
+volume_inicial = 100  # Volume inicial de madeira em metros cúbicos
+taxa_crescimento = 0.05  # Taxa de crescimento anual (5%)
+anos = 10  # Número de anos
+volumes_acumulados = modelo_crescimento(volume_inicial, taxa_crescimento, anos)
+
+print("Volume acumulado por ano:")
+for ano, volume in enumerate(volumes_acumulados):
+    print(f"Ano {ano}: {volume:.2f} m³")
+```
+
+**Visualização com matplotlib:**
+
+```{python, eval=FALSE}
+import matplotlib.pyplot as plt
+
+# Dados do exemplo anterior
+volume_inicial = 100
+taxa_crescimento = 0.05
+anos = 10
+
+# Gerar a lista com os volumes acumulados
+volumes_acumulados = modelo_crescimento(volume_inicial, taxa_crescimento, anos)
+
+# Plotar o gráfico
+plt.figure(figsize=(10, 6))
+plt.plot(range(anos + 1), volumes_acumulados, marker='o', linestyle='-', color='green')
+plt.title('Crescimento Acumulado do Volume de Madeira ao Longo dos Anos')
+plt.xlabel('Ano')
+plt.ylabel('Volume Acumulado de Madeira (m³)')
+plt.grid(True)
+plt.show()
+```
+
+---
+
+## Resumo
+
+Neste capítulo, exploramos:
+
+* **Desvios condicionais**: `if`, `if-else`, `if-elif-else`
+* **Laços de repetição**: `while`, `for`
+* **Controle de fluxo**: `break`, `continue`
+* **Match-case**: Estrutura de seleção múltipla (Python 3.10+)
+* **Packing e Unpacking**: Técnicas para trabalhar com estruturas de dados
+* **Recursividade**: Funções que chamam a si mesmas
+
+Essas estruturas são fundamentais para criar programas que tomam decisões e processam dados de forma eficiente. Pratique com os exercícios para consolidar seu conhecimento!
