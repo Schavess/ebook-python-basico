@@ -13,7 +13,7 @@ bibliography: [book.bib]
 link-citations: yes
 output: 
   bookdown::gitbook:
-    css: custom.css
+    css: style.css
     config:
       toc:
         before: |
@@ -23,9 +23,28 @@ output:
 ```{r setup, include=FALSE}
 # Configuração do reticulate para executar código Python
 library(reticulate)
+library(knitr)
+
+# Configurar engine Python explicitamente
+knitr::knit_engines$set(python = reticulate::eng_python)
+
 # Usar caminho completo do venv no diretório do projeto
 venv_path <- normalizePath("venv", mustWork = FALSE)
 use_virtualenv(venv_path, required = TRUE)
+
+# Configurar matplotlib backend ANTES de qualquer código Python
+# Usar import() do reticulate em vez de py_run_string para melhor controle
+matplotlib <- import("matplotlib")
+matplotlib$use("Agg", force = TRUE)
+
+# Configurar opções do knitr para gráficos Python
+opts_chunk$set(
+  fig.path = "figures/",
+  fig.width = 7,
+  fig.height = 5,
+  dpi = 96,
+  dev = "png"
+)
 ```
 
 # Sobre {-}

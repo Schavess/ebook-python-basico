@@ -12,105 +12,58 @@ p code {
   white-space: inherit;
 }
 
-/* Código inline no texto - cor escura */
-code {
-  color: #353533 !important;
-}
-
-/* Blocos de código fonte (sourceCode) - fundo escuro */
-pre.sourceCode,
-pre.sourceCode code {
+pre,
+pre code {
   background-color: #2d2d4d !important;
-  border: 1px solid #444 !important;
+  /* color: #f8f8f2 !important; */
+  border: 1px solid #444;
   overflow-x: auto;
 }
 
-pre.sourceCode {
+pre {
+  background-color: #2d2d4d !important;
   padding: 15px !important;
   border-radius: 5px;
+  border: 1px solid #444;
+  overflow-x: auto;
   margin: 0 !important;
   box-shadow: none !important;
 }
 
-/* Código dentro de blocos pre.sourceCode - texto claro sobre fundo escuro */
-pre.sourceCode code,
-.sourceCode code {
+pre code {
   background-color: transparent !important;
-  color: #f8f8f2 !important; /* Texto claro base para contraste */
   padding: 0;
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* Syntax highlighting com cores claras diferenciadas - APENAS para código fonte */
-/* Keywords (palavras-chave) - azul claro */
-pre.sourceCode code .kw,
-.sourceCode code .kw {
-  color: #66d9ef !important;
-}
-
-/* Strings (strings) - amarelo claro */
-pre.sourceCode code .st,
-.sourceCode code .st {
-  color: #e6db74 !important;
-}
-
-/* Comments (comentários) - cinza claro */
-pre.sourceCode code .co,
-.sourceCode code .co {
-  color: #75715e !important;
-}
-
-/* Numbers (números) - roxo claro */
-pre.sourceCode code .dv,
-.sourceCode code .dv {
-  color: #ae81ff !important;
-}
-
-/* Functions (funções) - verde claro */
-pre.sourceCode code .fu,
-.sourceCode code .fu {
-  color: #a6e22e !important;
-}
-
-/* Variables (variáveis) - branco/bege claro */
-pre.sourceCode code .va,
-.sourceCode code .va {
-  color: #f8f8f2 !important;
-}
-
-/* Operators (operadores) - rosa claro */
-pre.sourceCode code .op,
-.sourceCode code .op {
-  color: #f92672 !important;
-}
-
-/* Blocos de output (resultado da execução) - fundo claro, texto escuro */
 pre:not(.sourceCode) {
-  background-color: #ffffff !important; /* Fundo branco */
-  color: #353533 !important; /* Texto escuro */
-  border: 1px solid #ddd !important; /* Borda leve */
-  padding: 10px !important;
+  background-color: #ffffff00 !important;
+  /* Fundo branco */
+  color: #000000 !important;
+  /* Texto preto */
+  border: 1px solid #ddd;
+  /* Borda leve */
+  padding: 10px;
   border-radius: 5px;
-  margin: 10px 0 !important;
-  box-shadow: none !important;
+  margin: 10px 0;
 }
 
 
-/* Estilo para a barra de rolagem - apenas para blocos de código fonte */
-pre.sourceCode::-webkit-scrollbar {
+/* Estilo para a barra de rolagem */
+pre::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-pre.sourceCode::-webkit-scrollbar-track {
+pre::-webkit-scrollbar-track {
   background-color: #2d2d2d;
   /* Fundo da barra de rolagem para combinar com o bloco */
   border-radius: 5px;
 }
 
-pre.sourceCode::-webkit-scrollbar-thumb {
+pre::-webkit-scrollbar-thumb {
   background-color: #444;
   /* Cor do polegar da barra de rolagem */
   border-radius: 5px;

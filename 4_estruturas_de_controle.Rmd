@@ -504,7 +504,7 @@ for ano, volume in enumerate(volumes_acumulados):
 
 **Visualização com matplotlib:**
 
-```{python, eval=FALSE}
+```{python}
 import matplotlib.pyplot as plt
 
 # Dados do exemplo anterior

@@ -1,6 +1,11 @@
 /* Custom CSS para Bookdown
- * Mantém apenas customizações específicas sem quebrar o estilo padrão
+ * Mantém customizações visuais preservando funcionalidades nativas
+ * Compatível com botão de copiar código do gitbook
  */
+
+/* ============================================
+   Estilos Básicos
+   ============================================ */
 
 body,
 p {
@@ -16,7 +21,143 @@ p code {
   white-space: inherit;
 }
 
-/* Classes customizadas para layout do autor e imagens */
+/* ============================================
+   Blocos de Código - Preservar Botão Copiar
+   ============================================ */
+
+/* Container do código - necessário para posicionamento do botão */
+.sourceCode {
+  position: relative;
+}
+
+/* Blocos de código Python/R gerados pelo knitr */
+pre.sourceCode {
+  background-color: #2d2d4d;
+  color: #f8f8f2;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 15px;
+  overflow-x: auto;
+  margin: 1em 0;
+  box-shadow: none;
+  position: relative; /* Importante para o botão de copiar */
+}
+
+pre.sourceCode code {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: inherit;
+}
+
+/* Outros blocos pre (não código fonte) */
+pre:not(.sourceCode) {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Estilo para a barra de rolagem dos blocos de código */
+pre.sourceCode::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre.sourceCode::-webkit-scrollbar-track {
+  background-color: #2d2d2d;
+  border-radius: 5px;
+}
+
+pre.sourceCode::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 5px;
+  border: 2px solid #2d2d2d;
+}
+
+/* ============================================
+   Botão de Copiar Código - GARANTIR FUNCIONALIDADE
+   ============================================ */
+
+/* IMPORTANTE: Não esconder botões de copiar código */
+.copy-button,
+button.copy-button,
+.btn-copy-code,
+button[data-clipboard-target],
+a[data-clipboard-target],
+.clipboard-btn,
+[class*="copy"],
+[class*="clipboard"],
+button[aria-label*="copy"],
+button[aria-label*="Copy"] {
+  position: absolute !important;
+  top: 5px !important;
+  right: 5px !important;
+  z-index: 1000 !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s !important;
+  display: block !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 3px !important;
+  padding: 4px 8px !important;
+  cursor: pointer !important;
+}
+
+.copy-button:hover,
+button.copy-button:hover,
+.btn-copy-code:hover,
+button[data-clipboard-target]:hover,
+a[data-clipboard-target]:hover,
+.clipboard-btn:hover,
+[class*="copy"]:hover,
+[class*="clipboard"]:hover {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Garantir que o container do código não esconda o botão */
+.sourceCode:hover .copy-button,
+.sourceCode:hover button.copy-button,
+.sourceCode:hover [class*="copy"],
+.sourceCode:hover [class*="clipboard"],
+pre.sourceCode:hover .copy-button,
+pre.sourceCode:hover button.copy-button {
+  opacity: 1 !important;
+}
+
+/* Garantir que qualquer botão dentro de blocos de código seja visível */
+pre button,
+pre.sourceCode button,
+.sourceCode button,
+pre a[role="button"],
+pre button[type="button"],
+pre > button {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 0.7 !important;
+  z-index: 1000 !important;
+  position: absolute !important;
+  top: 5px !important;
+  right: 5px !important;
+}
+
+pre:hover button,
+pre.sourceCode:hover button,
+.sourceCode:hover button {
+  opacity: 1 !important;
+}
+
+/* ============================================
+   Classes Customizadas para Layout
+   ============================================ */
+
 .author-container {
   display: flex;
   flex-direction: column;
@@ -50,17 +191,24 @@ p code {
   display: inline-block;
 }
 
-/* Esconde botões da toolbar do bookdown */
-a[title="Share"],
-a[title="Facebook"],
-a[title="PDF"],
-a[title="Twitter"],
-a[title="Edit"],
-a[title="Information about the toolbar"] {
+/* ============================================
+   Esconder Botões da Toolbar do Bookdown
+   ============================================ */
+
+/* IMPORTANTE: Não esconder botões de copiar código */
+a[title="Share"]:not([class*="copy"]):not([class*="clipboard"]),
+a[title="Facebook"]:not([class*="copy"]):not([class*="clipboard"]),
+a[title="PDF"]:not([class*="copy"]):not([class*="clipboard"]),
+a[title="Twitter"]:not([class*="copy"]):not([class*="clipboard"]),
+a[title="Edit"]:not([class*="copy"]):not([class*="clipboard"]),
+a[title="Information about the toolbar"]:not([class*="copy"]):not([class*="clipboard"]) {
   display: none;
 }
 
-/* Capa no Sumário */
+/* ============================================
+   Capa no Sumário
+   ============================================ */
+
 .toc-header {
   text-align: center;
   position: relative;
@@ -97,4 +245,25 @@ a[title="Information about the toolbar"] {
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
+}
+
+/* ============================================
+   Scrollbar Personalizada (Global)
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
